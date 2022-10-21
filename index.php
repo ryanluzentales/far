@@ -10,7 +10,7 @@ error_reporting(0);
 
 <head>
 
-    <title>Car Rental Portal</title>
+    <title>Find a Room</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">

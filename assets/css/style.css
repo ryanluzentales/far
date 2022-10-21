@@ -5456,13 +5456,78 @@ h5 {
 }
 
 
+
 }
 .welcome{
   font-family: 'Lato', sans-serif;
 	margin:0px;
   margin-right: 40px;
-	padding:0px !important;
+	padding: 10px;
 	overflow-x:hidden;
-	color:#5f5b5b;
+  background-color: #00ABB3;
+	color:#ffffff;
+  border-radius: 5px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
+.review-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+  padding: 10px 20px ;
+
+}
+
+.create-name {
+  font-style: sans-serif;
+  font-size: 20px;
+
+}
+
+.create-comment {
+  font-style: sans-serif;
+  font-size: 15px;
+}
+
+.name-input{
+  font-style: sans-serif;
+  font-size: 15px;
+  width: 300px;
+  height: 30px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 15px;
+  padding: 20px 10px;
+
+}
+
+.comment-input {
+  font-style: sans-serif;
+  font-size: 15px;
+  width: 600px;
+  height: 200px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 15px;
+  padding: 20px 10px;
+
+
+}
+
+.review-bottom {
+  background-color:#00ABB3;
+  color: white;
+  font-style: sans-serif;
+  font-size: 20px;
+  width: 150px;
+  height: 40px;
+  border-style: solid;
+  border-color: #00ABB3;
+  border-radius: 15px;
+  text-align: center;
+  padding: 20px 0;
+}
+.create-review-title{
+  padding: 0px;
+  margin: 0px;
+}
