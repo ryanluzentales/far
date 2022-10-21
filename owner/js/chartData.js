@@ -27,7 +27,7 @@ var swirlData = {
 var doughnutData = [
     {
         value: 300,
-        color:"#F7464A",
+        color: "#F7464A",
         highlight: "#FF5A5E",
         label: "Red"
     },
@@ -75,7 +75,7 @@ var radarData = {
 var polarData = [
     {
         value: 300,
-        color:"#F7464A",
+        color: "#F7464A",
         highlight: "#FF5A5E",
         label: "Red"
     },
@@ -107,7 +107,7 @@ var polarData = [
 ];
 
 var barChartData = {
-	labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
         {
             label: "My First dataset",

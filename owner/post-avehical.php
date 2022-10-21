@@ -10,6 +10,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$vehicletitle = $_POST['vehicletitle'];
 		$brand = $_POST['brandname'];
 		$vehicleoverview = $_POST['vehicalorcview'];
+		$address = $_POST['address'];
+		$address = str_replace(" ", "+", $address);
 		$priceperday = $_POST['priceperday'];
 		$fueltype = $_POST['fueltype'];
 		$modelyear = $_POST['modelyear'];
@@ -201,11 +203,14 @@ if (strlen($_SESSION['alogin']) == 0) {
 													<div class="col-sm-4">
 														<input type="text" name="modelyear" class="form-control" required>
 													</div>
+
 													<label class="col-sm-2 control-label">Seating Capacity<span style="color:red">*</span></label>
 													<div class="col-sm-4">
 														<input type="text" name="seatingcapacity" class="form-control" required>
 													</div>
 												</div>
+
+
 												<div class="hr-dashed"></div>
 
 

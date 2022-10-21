@@ -74,8 +74,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 										<div class="panel-heading">Create Apartment</div>
 										<div class="panel-body">
 											<form method="post" name="chngpwd" class="form-horizontal" onSubmit="return valid();">
-
-
 												<?php if ($error) { ?><div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } else if ($msg) { ?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 												<div class="form-group">
 													<label class="col-sm-4 control-label">Apartment Name</label>
@@ -84,13 +82,30 @@ if (strlen($_SESSION['alogin']) == 0) {
 													</div>
 												</div>
 
-												<div class="hr-dashed"></div>
+												<div class="form-group">
+													<?php
+													if (isset($_POST["submit_address"])) {
+														$address = $_POST["address"];
+														$address = str_replace(" ", "+", $address);
+													?>
+													<?php
+													}
+													?>
+													<form method="POST">
+														<label class=" col-sm-2 control-label">Address<span style="color:red">*</span></label>
+														<div class="col-sm-4">
+															<input type="text" name="address" class="form-control" required>
+														</div>
+
+														<iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $address; ?>&output=embed"></iframe>
+														<input id="formSubmit" type="submit"></input>
+													</form>
+												</div>
 
 												<div class="form-group">
-													<label class="col-sm-4 control-label">Address</label>
-													<div class="col-sm-8">
-														<input type="text" class="form-c	ontrol" name="address" id="address" required>
-													</div>
+													<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque aliquam, non quia praesentium esse autem! Quae voluptatibus vero ad, delectus nemo vitae nostrum est. Nihil corporis consequatur cumque reprehenderit maxime?</p>
+													<img src="../assets/imagess/download.png" width="50%" height="250"> </img>
+													<input type="file"></input>
 												</div>
 
 												<div class="form-group">
@@ -119,6 +134,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		</div>
 
 		<!-- Loading Scripts -->
+		<script src="../owner/js/refresh.js"></script>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/bootstrap-select.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
