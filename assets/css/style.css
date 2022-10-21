@@ -920,7 +920,7 @@ table thead th, table thead td {
 	margin:0 2px 0;
 }
 .user_login ul.dropdown-menu {
-  background: #111111 none repeat scroll 0 0;
+  background: #5f5b5b 0 0;
   border-radius: 0;
   padding: 15px 0;
   top: 107%;
@@ -933,7 +933,7 @@ table thead th, table thead td {
 	2.1 Navigation & Dropdown Menu 
 ------------------------------------------*/
 #navigation_bar {
-  background: #111111 none repeat scroll 0 0;
+  background: #5f5b5b none repeat scroll 0 0;
   border-radius: 0;
   padding: 0;
 }
@@ -1024,8 +1024,8 @@ nav.navbar {
 }
 .user_login .dropdown-menu > .active > a, .user_login .dropdown-menu > .active > a:focus, .user_login .dropdown-menu > .active > a:hover, 
 .user_login  .dropdown-menu > .active > a:hover, .user_login  .dropdown-menu > li > a:focus, .user_login .dropdown-menu > li > a:hover {
-	background:#fff;
-	color:#111;
+	background:#5f5b5b;
+	color:#00ABB3;
 }
 @media (min-width:768px) {
 	
@@ -5456,7 +5456,13 @@ h5 {
 }
 
 
-
 }
-
+.welcome{
+  font-family: 'Lato', sans-serif;
+	margin:0px;
+  margin-right: 40px;
+	padding:0px !important;
+	overflow-x:hidden;
+	color:#5f5b5b;
+}
 
