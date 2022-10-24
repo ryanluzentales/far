@@ -31,18 +31,19 @@ if (strlen($_SESSION['ologin']) == 0) {
 
 		<title>Car Rental Portal |Admin Manage Brands </title>
 
-		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/style.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
-		<link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
-		<link href="assets/css/slick.css" rel="stylesheet">
-		<link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
-		<link href="assets/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-		<link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+
+		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
+		<link rel="stylesheet" href="./assets/css/style.css" type="text/css">
+		<link rel="stylesheet" href="./assets/css/owl.carousel.css" type="text/css">
+		<link rel="stylesheet" href="./assets/css/owl.transitions.css" type="text/css">
+		<link href="./assets/css/slick.css" rel="stylesheet">
+		<link href="./assets/css/bootstrap-slider.min.css" rel="stylesheet">
+		<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+		<link rel="apple-touch-icon-precomposed" href="./assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+		<link rel="shortcut icon" href="./assets/images/favicon-icon/favicon.png">
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
 		<!-- Font awesome -->
@@ -84,7 +85,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 	</head>
 
 	<body>
-		<?php include('includes/header-index.php'); ?>
+		<?php include('includes/header.php'); ?>
 
 		<div class="ts-main-content">
 			<?php include('includes/leftbar.php'); ?>
@@ -174,14 +175,15 @@ if (strlen($_SESSION['ologin']) == 0) {
 		<script src="js/chartData.js"></script>
 		<script src="js/main.js"></script>
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/interface.js"></script>
-		<script src="assets/js/bootstrap-slider.min.js"></script>
+
+
+		<script src="./assets/js/jquery.min.js"></script>
+		<script src="./assets/js/bootstrap.min.js"></script>
+		<script src="./assets/js/interface.js"></script>
+		<script src="./assets/js/bootstrap-slider.min.js"></script>
 		<!--Slider-JS-->
-		<script src="assets/js/slick.min.js"></script>
-		<script src="assets/js/owl.carousel.min.js"></script>
+		<script src="./assets/js/slick.min.js"></script>
+		<script src="./assets/js/owl.carousel.min.js"></script>
 	</body>
 
 	</html>

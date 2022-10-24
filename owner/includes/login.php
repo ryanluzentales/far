@@ -11,12 +11,14 @@ if (isset($_POST['ologin'])) {
   if ($query->rowCount() > 0) {
     $_SESSION['ologin'] = $_POST['email'];
     $_SESSION['fname'] = $results->FullName;
+
     echo "<script type='text/javascript'> document.location = '../owner/dashboard.php'; </script>";
   } else {
 
     echo "<script>alert('Invalid Details');</script>";
   }
 }
+
 ?>
 
 <div class="modal fade" id="loginform">

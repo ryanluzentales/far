@@ -10,7 +10,7 @@ error_reporting(0);
 
 <head>
 
-    <title>Car Rental Portal</title>
+    <title>Find a Room</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
@@ -19,9 +19,12 @@ error_reporting(0);
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -31,7 +34,7 @@ error_reporting(0);
 
 
     <!--Header-->
-    <?php include('includes/header-index.php'); ?>
+    <?php include('includes/header.php'); ?>
     <!-- /Header -->
 
 
@@ -50,38 +53,44 @@ error_reporting(0);
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
                         <?php $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand limit 9";
-                        $query = $dbh->prepare($sql);
-                        $query->execute();
-                        $results = $query->fetchAll(PDO::FETCH_OBJ);
-                        $cnt = 1;
-                        if ($query->rowCount() > 0) {
-                            foreach ($results as $result) {
-                        ?>
+            $query = $dbh->prepare($sql);
+            $query->execute();
+            $results = $query->fetchAll(PDO::FETCH_OBJ);
+            $cnt = 1;
+            if ($query->rowCount() > 0) {
+              foreach ($results as $result) {
+            ?>
 
-                                <div class="col-list-3">
-                                    <div class="recent-car-list">
-                                        <div class="car-info-box"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
-                                            <ul>
-                                                <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
-                                                </li>
-                                                <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                                                    Model</li>
-                                                <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                                    seats</li>
-                                            </ul>
-                                        </div>
-                                        <div class="car-title-m">
-                                            <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
-                                                    <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                                            <span class="price">$<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
-                                        </div>
-                                        <div class="inventory_info_m">
-                                            <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
-                                        </div>
-                                    </div>
+                        <div class="col-list-3">
+                            <div class="recent-car-list">
+                                <div class="car-info-box"> <a
+                                        href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                            src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                            class="img-responsive" alt="image"></a>
+                                    <ul>
+                                        <li><i class="fa fa-car"
+                                                aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                        </li>
+                                        <li><i class="fa fa-calendar"
+                                                aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
+                                            Model</li>
+                                        <li><i class="fa fa-user"
+                                                aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
+                                            seats</li>
+                                    </ul>
                                 </div>
+                                <div class="car-title-m">
+                                    <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                            <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                                    <span class="price">$<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                                </div>
+                                <div class="inventory_info_m">
+                                    <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                                </div>
+                            </div>
+                        </div>
                         <?php }
-                        } ?>
+            } ?>
 
                     </div>
                 </div>
