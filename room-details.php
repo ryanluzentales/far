@@ -143,18 +143,18 @@ if (isset($_POST['submit'])) {
                     <div class="main_features">
                         <ul>
 
-                            <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <li> <i class="fa fa-home" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->ModelYear); ?></h5>
-                                <p>Reg.Year</p>
+                                <p>Housing Type</p>
                             </li>
                             <li> <i class="fa fa-home" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->FuelType); ?></h5>
-                                <p>Fuel Type</p>
+                                <p>Type of Room</p>
                             </li>
 
                             <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
-                                <p>Seats</p>
+                                <p>Availability</p>
                             </li>
                         </ul>
                     </div>

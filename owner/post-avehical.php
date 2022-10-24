@@ -214,7 +214,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="col-sm-4">
                                                     <input type="text" name="priceperday" class="form-control" required>
                                                 </div>
-                                                <label class="col-sm-2 control-label">Select Fuel Type<span
+                                                <label class="col-sm-2 control-label">Select the Type of Room<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <select class="selectpicker" name="fueltype" required>
@@ -229,13 +229,13 @@ if (strlen($_SESSION['ologin']) == 0) {
 
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Model Year<span
+                                                <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="modelyear" class="form-control" required>
                                                 </div>
 
-                                                <label class="col-sm-2 control-label">Seating Capacity<span
+                                                <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="seatingcapacity" class="form-control"
