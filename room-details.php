@@ -157,8 +157,8 @@ if (isset($_POST['submit'])) {
                                             </a></li>
 
                                         <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Inclusions</a></li>
-                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews
-                                            </a></li>
+                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews </a></li>
+                                        <li role="presentation"><a href="#ratings" aria-controls="ratings" role="tab" data-toggle="tab">Ratings</a></li>
                                         <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
 
                                     </ul>
@@ -171,6 +171,11 @@ if (isset($_POST['submit'])) {
 
                                             <p><?php echo htmlentities($result->VehiclesOverview); ?></p>
                                         </div>
+
+                                        <div role="tabpanel" class="tab-pane" id="ratings">
+                                          <h2> display ratings here</h2>
+                                        </div>
+
 
                                         <div role="tabpanel" class="tab-pane" id="location">
                                             <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $result->address; ?>&output=embed"></iframe>
