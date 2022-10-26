@@ -100,14 +100,15 @@ if (isset($_POST['submit'])) {
     ?>
 
             <section id="listing_img_slider">
-                <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                <div><img src="../admin/img/vehicleimages/<?php echo htmlen
+                tities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <?php if ($result->Vimage5 == "") {
                 } else {
                 ?>
-                    <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                    <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <?php } ?>
             </section>
 
@@ -392,10 +393,10 @@ if (isset($_POST['submit'])) {
                             $results = $query->fetchAll(PDO::FETCH_OBJ);
                             $cnt = 1;
                             if ($query->rowCount() > 0) {
-                                foreach ($results as $result) { ?>
+                                foreach ($results as $result) { ?>  
                                     <div class="col-md-3 grid_listing">
                                         <div class="product-listing-m gray-bg">
-                                            <div class="product-listing-img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" /> </a>
+                                            <div class="product-listing-img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" /> </a>
                                             </div>
                                             <div class="product-listing-content">
                                                 <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
