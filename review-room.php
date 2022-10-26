@@ -251,7 +251,7 @@ if(isset($_POST['submit']))
                                         <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
                                         <p>Availability</p>
 
-                                    <li> <i class="fa fa-pencil" aria-hidden="false"></i>
+                                    <li> <i class="fa fa-pencil" aria-hidden="true" onclick=""></i>
                                         <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
                                         <p>Reviews</p>
                                     </li>

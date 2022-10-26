@@ -32,19 +32,19 @@ if (strlen($_SESSION['ologin']) == 0) {
 		<title>Car Rental Portal |Admin Manage Brands </title>
 
 
-		<link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
-		<link rel="stylesheet" href="./assets/css/style.css" type="text/css">
-		<link rel="stylesheet" href="./assets/css/owl.carousel.css" type="text/css">
-		<link rel="stylesheet" href="./assets/css/owl.transitions.css" type="text/css">
-		<link href="./assets/css/slick.css" rel="stylesheet">
-		<link href="./assets/css/bootstrap-slider.min.css" rel="stylesheet">
-		<link href="./assets/css/font-awesome.min.css" rel="stylesheet">
-		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="./assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="./assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="./assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
-		<link rel="apple-touch-icon-precomposed" href="./assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
-		<link rel="shortcut icon" href="./assets/images/favicon-icon/favicon.png">
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
 		<!-- Font awesome -->
 		<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -62,6 +62,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		<link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
 		<!-- Admin Stye -->
 		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 		<style>
 			.errorWrap {
 				padding: 10px;
@@ -164,16 +165,18 @@ if (strlen($_SESSION['ologin']) == 0) {
 			</div>
 		</div>
 
-		<!-- Loading Scripts -->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap-select.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/jquery.dataTables.min.js"></script>
-		<script src="js/dataTables.bootstrap.min.js"></script>
-		<script src="js/Chart.min.js"></script>
-		<script src="js/fileinput.js"></script>
-		<script src="js/chartData.js"></script>
-		<script src="js/main.js"></script>
+    <!-- Loading Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
 
 
 
