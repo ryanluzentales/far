@@ -252,8 +252,7 @@ if(isset($_POST['submit']))
                                         <p>Availability</p>
 
                                     <li> <i class="fa fa-pencil" aria-hidden="false"></i>
-                                        <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
-                                        <p>Reviews</p>
+                                        <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Reviews</a>
                                     </li>
                                     </li>
                                 </ul>

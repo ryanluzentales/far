@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password="";
-$db = "comment_system_php";
+$db = "far_db";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password,$db);

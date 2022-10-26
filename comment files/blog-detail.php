@@ -32,11 +32,7 @@ function commenttree($parentid=NULL)
 	
 	while($data=mysqli_fetch_array($result))
 	{
-		// echo $data['comment_id'];
-		
-		// echo '<pre>';
-		// print_r($data);
-		
+	
 		
 		if($data['comment_id']=='0')
 		{
