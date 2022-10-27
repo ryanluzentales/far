@@ -67,95 +67,92 @@ if (strlen($_SESSION['alogin']) == 0) {
             <div class="content-wrapper">
                 <div class="container-fluid">
 
-                    <div class="row">
-                        <div class="col-md-12">
+                <div class="row">
+						<div class="col-md-12">
 
-                            <h2 class="page-title">New Bookings</h2>
+							<h2 class="page-title">New Apartment</h2>
 
-                            <!-- Zero Configuration Table -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Bookings Info</div>
-                                <div class="panel-body">
+							<!-- Zero Configuration Table -->
+							<div class="panel panel-default">
+								<div class="panel-heading">Apartment Info</div>
+								<div class="panel-body">
 
-                                    <table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Booking No.</th>
-                                                <th>Vehicle</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
-                                                <th>Status</th>
-                                                <th>Posting date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tfoot>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Booking No.</th>
-                                                <th>Vehicle</th>
-                                                <th>From Date</th>
-                                                <th>To Date</th>
-                                                <th>Status</th>
-                                                <th>Posting date</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                        <tbody>
+									<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+										<thead>
+											<tr>
+												<th>#</th>
+												
+												<th>Booking No.</th>
+												
+												<th>Apartment Name</th>
+												<th>Address</th>
+												<th>Status</th>
+												<th>Posting date</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										<tfoot>
+											<tr>
+												<th>#</th>
+											
+												<th>Booking No.</th>
+												
+												<th>From Date</th>
+												<th>To Date</th>
+												<th>Status</th>
+												<th>Posting date</th>
+												<th>Action</th>
+											</tr>
+										</tfoot>
+										<tbody>
 
-                                            <?php
-                                            $status = 0;
-                                            $sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id where tblbooking.Status=:status";
-                                            $query = $dbh->prepare($sql);
-                                            $query->bindParam(':status', $status, PDO::PARAM_STR);
-                                            $query->execute();
-                                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                            $cnt = 1;
-                                            if ($query->rowCount() > 0) {
-                                                foreach ($results as $result) {                ?>
-                                                    <tr>
-                                                        <td><?php echo htmlentities($cnt); ?></td>
-                                                        <td><?php echo htmlentities($result->FullName); ?></td>
-                                                        <td><?php echo htmlentities($result->BookingNumber); ?></td>
-                                                        <td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?></td>
-                                                        <td><?php echo htmlentities($result->FromDate); ?></td>
-                                                        <td><?php echo htmlentities($result->ToDate); ?></td>
-                                                        <td><?php
-                                                            if ($result->Status == 0) {
-                                                                echo htmlentities('Not Confirmed yet');
-                                                            } else if ($result->Status == 1) {
-                                                                echo htmlentities('Confirmed');
-                                                            } else {
-                                                                echo htmlentities('Cancelled');
-                                                            }
-                                                            ?></td>
-                                                        <td><?php echo htmlentities($result->PostingDate); ?></td>
-                                                        <td>
+											<?php
+											$status = 0;
+											$sql = "SELECT tblbookings.FromDate,tblbookings.ToDate,tblbookings.message,tblbookings.Status,tblbookings.PostingDate,tblbookings.id,tblbookings.BookingNumber  from tblbookings join verify on verify.BookingNumber=tblbookings.BookingNumber join tblowner on tblowner.EmailId=tblbookings.userEmail where tblbookings.Status=:status";
+											$query = $dbh->prepare($sql);
+											$query->bindParam(':status', $status, PDO::PARAM_STR);
+											$query->execute();
+											$results = $query->fetchAll(PDO::FETCH_OBJ);
+											$cnt = 1;
+											if ($query->rowCount() > 0) {
+												foreach ($results as $result) {				?>
+													<tr>
+														<td><?php echo htmlentities($cnt); ?></td>
 
+														<td><?php echo htmlentities($result->BookingNumber); ?></td>
+														<td><?php echo htmlentities($result->FromDate); ?></td>
+														<td><?php echo htmlentities($result->ToDate); ?></td>
+														<td><?php
+															if ($result->Status == 0) {
+																echo htmlentities('Not Confirmed yet');
+															} else if ($result->Status == 1) {
+																echo htmlentities('Confirmed');
+															} else {
+																echo htmlentities('Cancelled');
+															}
+															?></td>
+														<td><?php echo htmlentities($result->PostingDate); ?></td>
+														<td>
+															<a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"> View</a>
+														</td>
 
-                                                            <a href="bookig-details.php?bid=<?php echo htmlentities($result->id); ?>"> View</a>
-                                                        </td>
+													</tr>
+											<?php $cnt = $cnt + 1;
+												}
+											} ?>
 
-                                                    </tr>
-                                            <?php $cnt = $cnt + 1;
-                                                }
-                                            } ?>
-
-                                        </tbody>
-                                    </table>
+										</tbody>
+									</table>
 
 
 
-                                </div>
-                            </div>
+								</div>
+							</div>
 
 
 
-                        </div>
-                    </div>
+						</div>
+					</div>
 
                 </div>
             </div>

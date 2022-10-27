@@ -11,14 +11,14 @@ if (strlen($_SESSION['ologin']) == 0) {
 
     <head>
 
-        <title>Car Rental Portal - pending apartment</title>
+        <title>Car Rental Portal - My Booking</title>
         <!--Bootstrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
         <!--Custome Style -->
         <link rel="stylesheet" href="assets/css/style.css" type="text/css">
         <!--OWL Carousel slider-->
         <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
-        <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">s
+        <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
         <!--slick-slider -->
         <link href="assets/css/slick.css" rel="stylesheet">
         <!--bootstrap-slider -->
@@ -50,8 +50,8 @@ if (strlen($_SESSION['ologin']) == 0) {
 
         <!--Header-->
         <?php include('includes/header.php'); ?>
-        <!--Page Header-->
-        <!-- /Header -->
+
+
 
         <?php
         $useremail = $_SESSION['ologin'];
@@ -78,12 +78,12 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                 <div class="col-md-8 col-sm-8">
                                     <div class="profile_wrap">
-                                        <h5 class="uppercase underline">My Apartment </h5>
+                                        <h5 class="uppercase underline">My Apartments </h5>
                                         <div class="my_vehicles_list">
                                             <ul class="vehicle_listing">
                                                 <?php
                                                 $useremail = $_SESSION['ologin'];
-                                                $sql = "SELECT tblvehicles.Vimage1 as Vimage1,tblvehicles.VehiclesTitle,tblvehicles.id as vid,tblbrands.BrandName,tblbookings.FromDate,tblbookings.ToDate,tblbookings.message,tblbookings.Status,tblvehicles.PricePerDay,DATEDIFF(tblbookings.ToDate,tblbookings.FromDate) as totaldays,tblbookings.BookingNumber  from tblbookings join tblvehicles on tblbookings.VehicleId=tblvehicles.id join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblbookings.userEmail=:useremail order by tblbookingss.id desc";
+                                                $sql = "SELECT tblbookings.FromDate,tblbookings.ToDate,tblbookings.message,tblbookings.Status,tblbookings.BookingNumber from tblbookings join verify on tblbookings.BookingNumber=verify.BookingNumber where tblbookings.userEmail=:useremail order by tblbookings.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -93,14 +93,10 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     foreach ($results as $result) {  ?>
 
                                                         <li>
-                                                            <h4 style="color:red">Apartment No
+                                                        <h4 style="color:red">Booking No
                                                                 #<?php echo htmlentities($result->BookingNumber); ?></h4>
-                                                            <div class="vehicle_img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->vid); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" alt="image"></a> </div>
-                                                            <div class="vehicle_title">
-
-                                                                <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->vid); ?>">
-                                                                        <?php echo htmlentities($result->BrandName); ?> ,
-                                                                        <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                    
+                                                            <div class="vehicle_title">                                                           
                                                                 <p><b>From </b> <?php echo htmlentities($result->FromDate); ?> <b>To </b>
                                                                     <?php echo htmlentities($result->ToDate); ?></p>
                                                                 <div style="float: left">
@@ -128,32 +124,12 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                         </li>
 
-                                                        <h5 style="color:blue">Invoice</h5>
-                                                        <table>
-                                                            <tr>
-                                                                <th>Car Name</th>
-                                                                <th>From Date</th>
-                                                                <th>To Date</th>
-                                                                <th>Total Days</th>
-                                                                <th>Rent / Day</th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><?php echo htmlentities($result->VehiclesTitle); ?>,
-                                                                    <?php echo htmlentities($result->BrandName); ?></td>
-                                                                <td><?php echo htmlentities($result->FromDate); ?></td>
-                                                                <td> <?php echo htmlentities($result->ToDate); ?></td>
-                                                                <td><?php echo htmlentities($tds = $result->totaldays); ?></td>
-                                                                <td> <?php echo htmlentities($ppd = $result->PricePerDay); ?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th colspan="4" style="text-align:center;"> Grand Total</th>
-                                                                <th><?php echo htmlentities($tds * $ppd); ?></th>
-                                                            </tr>
-                                                        </table>
+                                                       >
+                                                       
                                                         <hr />
                                                     <?php }
                                                 } else { ?>
-                                                    <h5 align="center" style="color:red">No pending apartments</h5>
+                                                    <h5 align="center" style="color:red">No booking yet</h5>
                                                 <?php } ?>
 
 

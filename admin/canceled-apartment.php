@@ -21,7 +21,7 @@ else{
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Car Rental Portal | Canceled Bookings   </title>
+	<title>Car Rental Portal | Confirmed Bookings   </title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -71,7 +71,7 @@ else{
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Canceled Bookings</h2>
+						<h2 class="page-title">Cancelled Apartment</h2>
 
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
@@ -82,11 +82,9 @@ else{
 									<thead>
 										<tr>
 										<th>#</th>
-											<th>Name</th>
-											<th>Booking No.</th>
-											<th>Vehicle</th>
-											<th>From Date</th>
-											<th>To Date</th>
+											<th>Apartment No.</th>
+											<th>Apartment Name</th>
+											<th>Address</th>
 											<th>Status</th>
 											<th>Posting date</th>
 											<th>Action</th>
@@ -95,11 +93,9 @@ else{
 									<tfoot>
 										<tr>
 										<th>#</th>
-										<th>Name</th>
-											<th>Booking No.</th>
-											<th>Vehicle</th>
-											<th>From Date</th>
-											<th>To Date</th>
+											<th>Apartment No.</th>
+											<th>Apartment Name</th>
+											<th>Address</th>
 											<th>Status</th>
 											<th>Posting date</th>
 											<th>Action</th>
@@ -110,7 +106,7 @@ else{
 									<?php 
 
 $status=2;
-									$sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id   where tblbooking.Status=:status";
+									$sql = "SELECT tblbookings.FromDate,tblbookings.ToDate,tblbookings.message,tblbookings.Status,tblbookings.PostingDate,tblbookings.id,tblbookings.BookingNumber from tblbookings join verify on verify.BookingNumber=tblbookings.BookingNumber join tblowner on tblowner.EmailId=tblbookings.userEmail where tblbookings.Status=:status";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query->execute();
@@ -122,9 +118,9 @@ foreach($results as $result)
 {				?>	
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($result->FullName);?></td>
+											
 											<td><?php echo htmlentities($result->BookingNumber);?></td>
-											<td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></td>
+											
 											<td><?php echo htmlentities($result->FromDate);?></td>
 											<td><?php echo htmlentities($result->ToDate);?></td>
 											<td><?php 
@@ -142,7 +138,7 @@ echo htmlentities('Confirmed');
 										<td>
 
 
-<a href="bookig-details.php?bid=<?php echo htmlentities($result->id);?>"> View</a>
+<a href="apartment-details.php?bid=<?php echo htmlentities($result->id);?>"> View</a>
 </td>
 
 										</tr>

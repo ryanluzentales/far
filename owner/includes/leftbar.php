@@ -26,7 +26,7 @@
 				</ul>
 			</li>
 
-			<li><a href="my-booking.php"><i class="fa fa-file"></i> Manage Apartment </a>
+			<li><a href="pending-apartment.php"><i class="fa fa-file"></i> Manage Apartment </a>
 
 			</li>
 
