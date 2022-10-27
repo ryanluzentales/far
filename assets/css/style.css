@@ -5531,3 +5531,66 @@ h5 {
   padding: 0px;
   margin: 0px;
 }
+
+
+/*Review Page*/
+
+.comment-form-container {
+  padding: 20px 0;
+  margin: auto;
+}
+
+#frm-comment {
+margin: auto;
+width: 80%;
+}
+
+.review-title {
+  
+}
+
+.label-name {
+  font-size: 20px;
+}
+
+.label-comment{
+  font-size: 20px;
+}
+
+.input-field-name {
+  width: 300px;
+  height: 50px;
+  margin-left: 10px;
+}
+
+.input-field-comment {
+  width: 600px;
+  height: 150px;
+  margin-left: 10px;
+}
+
+.comment-btn-submit {
+  margin-left: 10px;
+  background-color: #00ABB3;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  padding: 10px 40px;
+}
+
+/*comment display*/
+
+.display {
+  width:80%;
+  margin: auto;
+}
+
+.posted-by {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 17px;
+}
+
+.posted-at {
+  font-style: italic;
+}
