@@ -47,102 +47,83 @@ if (isset($_POST['submit'])) {
 
 function showComments()
 {
-	$comment="";
-	
-	$comment.=commenttree();
-	
-	echo $comment;
+    $comment = "";
+
+    $comment .= commenttree();
+
+    echo $comment;
 }
 
-function commenttree($parentid=NULL)
+function commenttree($parentid = NULL)
 {
-	$comments='';
-	$sql='';
-	
-	if(is_null($parentid))
-	{
-	$sql="select * from comments where comment_id='0'";
-	}
-	
-	else 
-	{
-		$sql="select * from comments where comment_id=$parentid";
-	}
-	
-	
-	$result=mysqli_query($GLOBALS['conn'],$sql);
-	
-	while($data=mysqli_fetch_array($result))
-	{
-		
-		if($data['comment_id']=='0')
-		{
-		 $comments.='
+    $comments = '';
+    $sql = '';
+
+    if (is_null($parentid)) {
+        $sql = "select * from comments where comment_id='0'";
+    } else {
+        $sql = "select * from comments where comment_id=$parentid";
+    }
+
+
+    $result = mysqli_query($GLOBALS['conn'], $sql);
+
+    while ($data = mysqli_fetch_array($result)) {
+
+        if ($data['comment_id'] == '0') {
+            $comments .= '
 		 <div class="media border comment0 p-3">
     <div class="media-body">
-      <h4>'.$data['name'].'<small><i> Posted on February 19, 2016</i></small></h4>
+      <h4>' . $data['name'] . '<small><i> Posted on February 19, 2016</i></small></h4>
      
-	 '.$data['description'].'
+	 ' . $data['description'] . '
       
-	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply('.$data['id'].')">reply</a></p>
+	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply(' . $data['id'] . ')">reply</a></p>
 	 </div>
 	 </div>
 	  ';
-		}
-		else 
-		{
-			$comments.='<div class="media border reply p-3">
+        } else {
+            $comments .= '<div class="media border reply p-3">
     <div class="media-body">
-      <h4>'.$data['name'].'<small><i> Posted on February 19, 2016</i></small></h4>
+      <h4>' . $data['name'] . '<small><i> Posted on February 19, 2016</i></small></h4>
      
-	 '.$data['description'].'
+	 ' . $data['description'] . '
       
-	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply('.$data['id'].')">reply</a></p>
+	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply(' . $data['id'] . ')">reply</a></p>
 	  </div>
 	  </div>
 	  ';
-		}
-	  
-		
-        $comments.='<div class="media  parent  p-3">
-    <div class="media-body">'.commenttree($data['id']).'</div></div>';
+        }
 
-		}
 
-	
-	return $comments;
+        $comments .= '<div class="media  parent  p-3">
+    <div class="media-body">' . commenttree($data['id']) . '</div></div>';
+    }
 
+
+    return $comments;
 }
 
 
-$vhid=$_GET['vhid'];
+$vhid = $_GET['vhid'];
 
-if(isset($_POST['submit']))
-{
-	
-	if(empty($_POST['commentid']))
-	{
-		$commentid='0';
-	}
-	else 
-	{
-		$commentid=$_POST['commentid'];
-	}
-	
-	$sql="insert into comments (vhid_id,comment_id,name,description) values ('".$vhid."','".$commentid."','".$_POST['name']."','".$_POST['description']."')";
-	
-	$result=mysqli_query($conn,$sql);
-	
-	if($result)
-	{
-		echo '<script>alert("comment added successfully, we will published after verify your comment.")</script>';
-	}
-	
-	else 
-	{
-		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-	}
-	
+if (isset($_POST['submit'])) {
+
+    if (empty($_POST['commentid'])) {
+        $commentid = '0';
+    } else {
+        $commentid = $_POST['commentid'];
+    }
+
+    $sql = "insert into comments (vhid_id,comment_id,name,description) values ('" . $vhid . "','" . $commentid . "','" . $_POST['name'] . "','" . $_POST['description'] . "')";
+
+    $result = mysqli_query($conn, $sql);
+
+    if ($result) {
+        echo '<script>alert("comment added successfully, we will published after verify your comment.")</script>';
+    } else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+    }
 }
 
 
@@ -281,73 +262,75 @@ if(isset($_POST['submit']))
                                         </div>
 
                                         <div role="tabpanel" class="tab-pane" id="ratings">
-                                        <div align="center" style="background: lightblue;padding: 50px;color:white;">
-        <i class="fa fa-star fa-2x" data-index="0"></i>
-        <i class="fa fa-star fa-2x" data-index="1"></i>
-        <i class="fa fa-star fa-2x" data-index="2"></i>
-        <i class="fa fa-star fa-2x" data-index="3"></i>
-        <i class="fa fa-star fa-2x" data-index="4"></i>
-        
-        <br><br>
-        <?php echo round($avg,2) ?>
-    </div>
-    <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
-    <script>
-        var ratedIndex = -1, uID = 0;
+                                            <div align="center" style="background: lightblue;padding: 50px;color:white;">
+                                                <i class="fa fa-star fa-2x" data-index="0"></i>
+                                                <i class="fa fa-star fa-2x" data-index="1"></i>
+                                                <i class="fa fa-star fa-2x" data-index="2"></i>
+                                                <i class="fa fa-star fa-2x" data-index="3"></i>
+                                                <i class="fa fa-star fa-2x" data-index="4"></i>
 
-        $(document).ready(function () {
-            resetStarColors();
+                                                <br><br>
+                                                <?php echo round($avg, 2) ?>
+                                            </div>
+                                            <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+                                            <script>
+                                                var ratedIndex = -1,
+                                                    uID = 0;
 
-            if (localStorage.getItem('ratedIndex') != null) {
-                setStars(parseInt(localStorage.getItem('ratedIndex')));
-                uID = localStorage.getItem('uID');
-            }
+                                                $(document).ready(function() {
+                                                    resetStarColors();
 
-            $('.fa-star').on('click', function () {
-               ratedIndex = parseInt($(this).data('index'));
-               localStorage.setItem('ratedIndex', ratedIndex);
-               saveToTheDB();
-            });
+                                                    if (localStorage.getItem('ratedIndex') != null) {
+                                                        setStars(parseInt(localStorage.getItem('ratedIndex')));
+                                                        uID = localStorage.getItem('uID');
+                                                    }
 
-            $('.fa-star').mouseover(function () {
-                resetStarColors();
-                var currentIndex = parseInt($(this).data('index'));
-                setStars(currentIndex);
-            });
+                                                    $('.fa-star').on('click', function() {
+                                                        ratedIndex = parseInt($(this).data('index'));
+                                                        localStorage.setItem('ratedIndex', ratedIndex);
+                                                        saveToTheDB();
+                                                    });
 
-            $('.fa-star').mouseleave(function () {
-                resetStarColors();
+                                                    $('.fa-star').mouseover(function() {
+                                                        resetStarColors();
+                                                        var currentIndex = parseInt($(this).data('index'));
+                                                        setStars(currentIndex);
+                                                    });
 
-                if (ratedIndex != -1)
-                    setStars(ratedIndex);
-            });
-        });
+                                                    $('.fa-star').mouseleave(function() {
+                                                        resetStarColors();
 
-        function saveToTheDB() {
-            $.ajax({
-               url: "index.php",
-               method: "POST",
-               dataType: 'json',
-               data: {
-                   save: 1,
-                   uID: uID,
-                   ratedIndex: ratedIndex
-               }, success: function (r) {
-                    uID = r.id;
-                    localStorage.setItem('uID', uID);
-               }
-            });
-        }
+                                                        if (ratedIndex != -1)
+                                                            setStars(ratedIndex);
+                                                    });
+                                                });
 
-        function setStars(max) {
-            for (var i=0; i <= max; i++)
-                $('.fa-star:eq('+i+')').css('color', 'green');
-        }
+                                                function saveToTheDB() {
+                                                    $.ajax({
+                                                        url: "index.php",
+                                                        method: "POST",
+                                                        dataType: 'json',
+                                                        data: {
+                                                            save: 1,
+                                                            uID: uID,
+                                                            ratedIndex: ratedIndex
+                                                        },
+                                                        success: function(r) {
+                                                            uID = r.id;
+                                                            localStorage.setItem('uID', uID);
+                                                        }
+                                                    });
+                                                }
 
-        function resetStarColors() {
-            $('.fa-star').css('color', 'white');
-        }
-    </script>
+                                                function setStars(max) {
+                                                    for (var i = 0; i <= max; i++)
+                                                        $('.fa-star:eq(' + i + ')').css('color', 'green');
+                                                }
+
+                                                function resetStarColors() {
+                                                    $('.fa-star').css('color', 'white');
+                                                }
+                                            </script>
                                         </div>
 
 
@@ -356,11 +339,11 @@ if(isset($_POST['submit']))
                                         </div>
 
                                         <div role="tabpanel" class="tab-pane" id="reviews">
-                                            <div role="tabpanel" class="reviewtab">                                           
+                                            <div role="tabpanel" class="reviewtab">
                                                 <h4 class="mt-4">Post Your Comment</h4>
 
-                                                <form method="post">                                                
-                                                                                                                                            
+                                                <form method="post">
+
                                                     <input type="hidden" name="commentid" id="commentid">
                                                     <label>Name</label>
                                                     <input type="text" class="form-control" name="name">
@@ -369,14 +352,13 @@ if(isset($_POST['submit']))
                                                     <input type="submit" name="submit" class="btn btn-primary mt-2">
 
                                                     <script>
-                                                            function reply(commentid)
-                                                                 {
-	                                                    //alert(commentid);
-	                                                         $("#commentid").val(commentid);
-                                                                 }
-                                                    </script>   
+                                                        function reply(commentid) {
+                                                            //alert(commentid);
+                                                            $("#commentid").val(commentid);
+                                                        }
+                                                    </script>
                                                 </form>
-                                                
+
 
                                             </div>
                                         </div>
@@ -624,7 +606,7 @@ if(isset($_POST['submit']))
 
             <!--Forgot-password-Form -->
             <?php include('includes/forgotpassword.php'); ?>
-            
+
 
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>

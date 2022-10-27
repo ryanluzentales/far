@@ -6,11 +6,12 @@ if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
-    $useremail = $_SESSION['login'];
+    $useremail = $_SESSION['ologin'];
     $status = 0;
     $vhid = $_GET['vhid'];
+    $bookingno = $_GET['bookingno'];
     $bookingno = mt_rand(100000000, 999999999);
-    $ret = "SELECT * FROM tblbooking where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
+    $ret = "SELECT * FROM tblbookings where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
     $query1 = $dbh->prepare($ret);
     $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
@@ -20,7 +21,7 @@ if (isset($_POST['submit'])) {
 
     if ($query1->rowCount() == 0) {
 
-        $sql = "INSERT INTO  tblbooking(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:fromdate,:todate,:message,:status)";
+        $sql = "INSERT INTO  tblbookings(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:fromdate,:todate,:message,:status)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
         $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
@@ -33,16 +34,17 @@ if (isset($_POST['submit'])) {
         $lastInsertId = $dbh->lastInsertId();
         if ($lastInsertId) {
             echo "<script>alert('Booking successfull.');</script>";
-            echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
+            echo "<script type='text/javascript'> document.location = 'pending-apartment.php?bookingno=<?$result->bookingno?>'; </script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again');</script>";
             echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
         }
     } else {
-        echo "<script>alert('Car already booked for these days');</script>";
+        echo "<script>alert('ROom already booked for these days');</script>";
         echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
     }
 }
+
 
 ?>
 
@@ -52,28 +54,41 @@ if (isset($_POST['submit'])) {
 
 <head>
 
-    <title>Car Rental | Vehicle Details</title>
+    <title>Find a Room</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-    <!--Custome Style -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    <!--OWL Carousel slider-->
     <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
     <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
-    <!--slick-slider -->
     <link href="assets/css/slick.css" rel="stylesheet">
-    <!--bootstrap-slider -->
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
-    <!--FontAwesome Font Style -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-
-
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+
+
+    <!-- Font awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Sandstone Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Bootstrap Datatables -->
+    <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
+    <!-- Bootstrap social button library -->
+    <link rel="stylesheet" href="css/bootstrap-social.css">
+    <!-- Bootstrap select -->
+    <link rel="stylesheet" href="css/bootstrap-select.css">
+    <!-- Bootstrap file input -->
+    <link rel="stylesheet" href="css/fileinput.min.css">
+    <!-- Awesome Bootstrap checkbox -->
+    <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
+    <!-- owner Stye -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -100,19 +115,17 @@ if (isset($_POST['submit'])) {
     ?>
 
             <section id="listing_img_slider">
-                <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <?php if ($result->Vimage5 == "") {
                 } else {
                 ?>
-                    <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
+                    <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
                 <?php } ?>
             </section>
 
-
-            <!--/Listing-Image-Slider-->
 
 
             <!--Listing-detail-->
@@ -135,18 +148,23 @@ if (isset($_POST['submit'])) {
                             <div class="main_features">
                                 <ul>
 
-                                    <li> <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <li> <i class="fa fa-home" aria-hidden="true"></i>
                                         <h5><?php echo htmlentities($result->ModelYear); ?></h5>
-                                        <p>Reg.Year</p>
+                                        <p>Housing Type</p>
                                     </li>
-                                    <li> <i class="fa fa-cogs" aria-hidden="true"></i>
+
+                                    <li> <i class="fa fa-home" aria-hidden="true"></i>
                                         <h5><?php echo htmlentities($result->FuelType); ?></h5>
-                                        <p>Fuel Type</p>
+                                        <p>Type of Room</p>
                                     </li>
 
                                     <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
                                         <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
-                                        <p>Seats</p>
+                                        <p>Availability</p>
+
+                                    <li> <i class="fa fa-pencil" aria-hidden="false"></i>
+                                        <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Reviews</a>
+                                    </li>
                                     </li>
                                 </ul>
                             </div>
@@ -154,12 +172,12 @@ if (isset($_POST['submit'])) {
                                 <div class="listing_detail_wrap">
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs gray-bg" role="tablist">
-                                        <li role="presentation" class="active"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab">Vehicle Overview
+                                        <li role="presentation" class="active"><a href="#vehicle-overview " aria-controls="vehicle-overview" role="tab" data-toggle="tab">Room Details
                                             </a></li>
 
-                                        <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
-                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews
-                                            </a></li>
+                                        <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Inclusions</a></li>
+                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews </a></li>
+                                        <li role="presentation"><a href="#ratings" aria-controls="ratings" role="tab" data-toggle="tab">Ratings</a></li>
                                         <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
 
                                     </ul>
@@ -173,25 +191,106 @@ if (isset($_POST['submit'])) {
                                             <p><?php echo htmlentities($result->VehiclesOverview); ?></p>
                                         </div>
 
-                                        <div role="tabpanel" class="tab-pane" id="location">
+                                        <div role="tabpanel" class="tab-pane" id="ratings">
+                                            <div align="center" style="background: lightblue;padding: 50px;color:white;">
+                                                <i class="fa fa-star fa-2x" data-index="0"></i>
+                                                <i class="fa fa-star fa-2x" data-index="1"></i>
+                                                <i class="fa fa-star fa-2x" data-index="2"></i>
+                                                <i class="fa fa-star fa-2x" data-index="3"></i>
+                                                <i class="fa fa-star fa-2x" data-index="4"></i>
 
-                                            <h3>display map here</h3>
+                                                <br><br>
+                                                <?php echo round($avg, 2) ?>
+                                            </div>
+                                            <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+                                            <script>
+                                                var ratedIndex = -1,
+                                                    uID = 0;
+
+                                                $(document).ready(function() {
+                                                    resetStarColors();
+
+                                                    if (localStorage.getItem('ratedIndex') != null) {
+                                                        setStars(parseInt(localStorage.getItem('ratedIndex')));
+                                                        uID = localStorage.getItem('uID');
+                                                    }
+
+                                                    $('.fa-star').on('click', function() {
+                                                        ratedIndex = parseInt($(this).data('index'));
+                                                        localStorage.setItem('ratedIndex', ratedIndex);
+                                                        saveToTheDB();
+                                                    });
+
+                                                    $('.fa-star').mouseover(function() {
+                                                        resetStarColors();
+                                                        var currentIndex = parseInt($(this).data('index'));
+                                                        setStars(currentIndex);
+                                                    });
+
+                                                    $('.fa-star').mouseleave(function() {
+                                                        resetStarColors();
+
+                                                        if (ratedIndex != -1)
+                                                            setStars(ratedIndex);
+                                                    });
+                                                });
+
+                                                function saveToTheDB() {
+                                                    $.ajax({
+                                                        url: "index.php",
+                                                        method: "POST",
+                                                        dataType: 'json',
+                                                        data: {
+                                                            save: 1,
+                                                            uID: uID,
+                                                            ratedIndex: ratedIndex
+                                                        },
+                                                        success: function(r) {
+                                                            uID = r.id;
+                                                            localStorage.setItem('uID', uID);
+                                                        }
+                                                    });
+                                                }
+
+                                                function setStars(max) {
+                                                    for (var i = 0; i <= max; i++)
+                                                        $('.fa-star:eq(' + i + ')').css('color', 'green');
+                                                }
+
+                                                function resetStarColors() {
+                                                    $('.fa-star').css('color', 'white');
+                                                }
+                                            </script>
+                                        </div>
+
+
+                                        <div role="tabpanel" class="tab-pane" id="location">
+                                            <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $result->address; ?>&output=embed"></iframe>
                                         </div>
 
                                         <div role="tabpanel" class="tab-pane" id="reviews">
+                                            <div role="tabpanel" class="reviewtab">
+                                                <h4 class="mt-4">Post Your Comment</h4>
+
+                                                <form method="post">
+
+                                                    <input type="hidden" name="commentid" id="commentid">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" name="name">
+                                                    <label>Comment</label>
+                                                    <textarea class="form-control" name="description"></textarea>
+                                                    <input type="submit" name="submit" class="btn btn-primary mt-2">
+
+                                                    <script>
+                                                        function reply(commentid) {
+                                                            //alert(commentid);
+                                                            $("#commentid").val(commentid);
+                                                        }
+                                                    </script>
+                                                </form>
 
 
-                                            <form action="post_comment.php" method="post"><br><br><br>
-                                                <p>
-                                                    Your Name:
-                                                </p>
-                                                <input style="width: 221px;height: 30px;" type="" name="name" placeholder="Please enter your name"></td>
-
-                                                <p>Comment:
-                                                </p>
-                                                <textarea name="comment" rows="5" cols="30" placeholder="Please enter your comment"></textarea> <br>
-                                                <input style="width: 230px;height: 40px;" type="submit" name="submit" value="Post"></td>
-                                            </form>
+                                            </div>
                                         </div>
 
                                         <!-- Accessories -->
@@ -200,12 +299,12 @@ if (isset($_POST['submit'])) {
                                             <table>
                                                 <thead>
                                                     <tr>
-                                                        <th colspan="2">Accessories</th>
+                                                        <th colspan="2">Inclusions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-                                                        <td>Air Conditioner</td>
+                                                        <td>Wifi</td>
                                                         <?php if ($result->AirConditioner == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -215,7 +314,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>AntiLock Braking System</td>
+                                                        <td>Airconditioner</td>
                                                         <?php if ($result->AntiLockBrakingSystem == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -225,7 +324,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Power Steering</td>
+                                                        <td>Single Bed</td>
                                                         <?php if ($result->PowerSteering == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -237,7 +336,7 @@ if (isset($_POST['submit'])) {
 
                                                     <tr>
 
-                                                        <td>Power Windows</td>
+                                                        <td>Refrigerator</td>
 
                                                         <?php if ($result->PowerWindows == 1) {
                                                         ?>
@@ -248,7 +347,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>CD Player</td>
+                                                        <td>Television</td>
                                                         <?php if ($result->CDPlayer == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -258,7 +357,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Leather Seats</td>
+                                                        <td>Kitchen</td>
                                                         <?php if ($result->LeatherSeats == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -268,7 +367,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Central Locking</td>
+                                                        <td>Shared Bathroom</td>
                                                         <?php if ($result->CentralLocking == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -278,7 +377,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Power Door Locks</td>
+                                                        <td>Private Bathroom</td>
                                                         <?php if ($result->PowerDoorLocks == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -287,7 +386,7 @@ if (isset($_POST['submit'])) {
                                                         <?php } ?>
                                                     </tr>
                                                     <tr>
-                                                        <td>Brake Assist</td>
+                                                        <td>Free Electricity</td>
                                                         <?php if ($result->BrakeAssist == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -297,7 +396,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Driver Airbag</td>
+                                                        <td>Free Water</td>
                                                         <?php if ($result->DriverAirbag == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -307,7 +406,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Passenger Airbag</td>
+                                                        <td>Cabinet</td>
                                                         <?php if ($result->PassengerAirbag == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -317,7 +416,7 @@ if (isset($_POST['submit'])) {
                                                     </tr>
 
                                                     <tr>
-                                                        <td>Crash Sensor</td>
+                                                        <td>Balcony</td>
                                                         <?php if ($result->CrashSensor == 1) {
                                                         ?>
                                                             <td><i class="fa fa-check" aria-hidden="true"></i></td>
@@ -338,57 +437,55 @@ if (isset($_POST['submit'])) {
 
                         </div>
 
+                        <!--Side-Bar-->
+                        <aside class="col-md-3">
 
+
+                            <div class="sidebar_widget">
+                                <div class="widget_heading">
+                                    <h5><i aria-hidden="true"></i>Post apartment</h5>
+                                </div>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label>Apartment Name:</label>
+                                        <input type="text" class="form-control" name="fromdate" placeholder="From Date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Address:</label>
+                                        <input type="text" class="form-control" name="todate" placeholder="To Date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
+                                    </div>
+                                    <?php if ($_SESSION['ologin']) { ?>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn" name="submit" value="Submit">
+                                        </div>
+                                    <?php } else { ?>
+                                        <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Submit</a>
+
+                                    <?php } ?>
+                                </form>
+                            </div>
+                        </aside>
                         <!--/Side-Bar-->
                     </div>
 
                     <div class="space-20"></div>
                     <div class="divider"></div>
 
-                    <!--Similar-Cars-->
-                    <div class="similar_cars">
-                        <h3>Similar Cars</h3>
-                        <div class="row">
-                            <?php
-                            $bid = $_SESSION['brndid'];
-                            $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.VehiclesBrand=:bid";
-                            $query = $dbh->prepare($sql);
-                            $query->bindParam(':bid', $bid, PDO::PARAM_STR);
-                            $query->execute();
-                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                            $cnt = 1;
-                            if ($query->rowCount() > 0) {
-                                foreach ($results as $result) { ?>
-                                    <div class="col-md-3 grid_listing">
-                                        <div class="product-listing-m gray-bg">
-                                            <div class="product-listing-img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" /> </a>
-                                            </div>
-                                            <div class="product-listing-content">
-                                                <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
-                                                        , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                                                <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?></p>
 
-                                                <ul class="features_list">
-
-                                                    <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                                        seats</li>
-                                                    <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
-                                                    </li>
-                                                    <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                            <?php }
-                            } ?>
-
-                        </div>
-                    </div>
-                    <!--/Similar-Cars-->
 
                 </div>
             </section>
             <!--/Listing-detail-->
+
+            <!--Back to top-->
+            <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+            <!--/Back to top-->
+
+            <!--Login-Form -->
+
 
             <!--Back to top-->
             <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
@@ -405,15 +502,36 @@ if (isset($_POST['submit'])) {
 
             <!--Forgot-password-Form -->
             <?php include('includes/forgotpassword.php'); ?>
+            <!--/Forgot-password-Form -->
 
+            <!-- Scripts -->
+            <script src="js/jquery.min.js"></script>
+            <script src="js/bootstrap-select.js"></script>
+            <script src="js/bootstrap-select.min.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/bootstrap.js"></script>
+            <script src="js/jquery.dataTables.min.js"></script>
+            <script src="js/dataTables.bootstrap.min.js"></script>
+            <script src="js/Chart.min.js"></script>
+            <script src="js/fileinput.js"></script>
+            <script src="js/chartData.js"></script>
+            <script src="js/main.js"></script>
+
+
+            <?php include('includes/forgotpassword.php'); ?>
+            <!--/Forgot-password-Form -->
+
+            <!-- Scripts -->
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/js/bootstrap.min.js"></script>
             <script src="assets/js/interface.js"></script>
             <script src="assets/js/bootstrap-slider.min.js"></script>
+            <!--Slider-JS-->
             <script src="assets/js/slick.min.js"></script>
             <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
+<?php showComments(); ?>
 
 </html>
 

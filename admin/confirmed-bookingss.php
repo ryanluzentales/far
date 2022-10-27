@@ -7,20 +7,6 @@ if(strlen($_SESSION['alogin'])==0)
 header('location:index.php');
 }
 else{
-if(isset($_REQUEST['eid']))
-	{
-$eid=intval($_GET['eid']);
-$status=1;
-$sql = "UPDATE tblcontactusquery SET status=:status WHERE  id=:eid";
-$query = $dbh->prepare($sql);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
-$query-> bindParam(':eid',$eid, PDO::PARAM_STR);
-$query -> execute();
-
-
-}
-
-
 
  ?>
 
@@ -35,7 +21,7 @@ $query -> execute();
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 	
-	<title>Car Rental Portal |Admin Manage Queries   </title>
+	<title>Car Rental Portal | Confirmed Bookings   </title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -85,21 +71,23 @@ $query -> execute();
 				<div class="row">
 					<div class="col-md-12">
 
-						<h2 class="page-title">Manage Contact Us Queries</h2>
+						<h2 class="page-title">Confirmed Bookings</h2>
 
 						<!-- Zero Configuration Table -->
 						<div class="panel panel-default">
-							<div class="panel-heading">User queries</div>
+							<div class="panel-heading">Bookings Info</div>
 							<div class="panel-body">
-					
+
 								<table id="zctb" class="display table table-striped table-bordered table-hover" cellspacing="0" width="100%">
 									<thead>
 										<tr>
 										<th>#</th>
 											<th>Name</th>
-											<th>Email</th>
-											<th>Contact No</th>
-											<th>Message</th>
+											<th>Booking No.</th>
+											<th>Vehicle</th>
+											<th>From Date</th>
+											<th>To Date</th>
+											<th>Status</th>
 											<th>Posting date</th>
 											<th>Action</th>
 										</tr>
@@ -107,19 +95,24 @@ $query -> execute();
 									<tfoot>
 										<tr>
 										<th>#</th>
-											<th>Name</th>
-											<th>Email</th>
-											<th>Contact No</th>
-											<th>Message</th>
+										<th>Name</th>
+											<th>Booking No.</th>
+											<th>Vehicle</th>
+											<th>From Date</th>
+											<th>To Date</th>
+											<th>Status</th>
 											<th>Posting date</th>
 											<th>Action</th>
-										</tr>
 										</tr>
 									</tfoot>
 									<tbody>
 
-									<?php $sql = "SELECT * from  tblcontactusquery ";
+									<?php 
+
+$status=1;
+									$sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id   where tblbooking.Status=:status";
 $query = $dbh -> prepare($sql);
+$query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;
@@ -129,19 +122,29 @@ foreach($results as $result)
 {				?>	
 										<tr>
 											<td><?php echo htmlentities($cnt);?></td>
-											<td><?php echo htmlentities($result->name);?></td>
-											<td><?php echo htmlentities($result->EmailId);?></td>
-											<td><?php echo htmlentities($result->ContactNumber);?></td>
-											<td><?php echo htmlentities($result->Message);?></td>
-											<td><?php echo htmlentities($result->PostingDate);?></td>
-																<?php if($result->status==1)
+											<td><?php echo htmlentities($result->FullName);?></td>
+											<td><?php echo htmlentities($result->BookingNumber);?></td>
+											<td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->BrandName);?> , <?php echo htmlentities($result->VehiclesTitle);?></td>
+											<td><?php echo htmlentities($result->FromDate);?></td>
+											<td><?php echo htmlentities($result->ToDate);?></td>
+											<td><?php 
+if($result->Status==0)
 {
-	?><td>Read</td>
-<?php } else {?>
+echo htmlentities('Not Confirmed yet');
+} else if ($result->Status==1) {
+echo htmlentities('Confirmed');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></td>
+											<td><?php echo htmlentities($result->PostingDate);?></td>
+										<td>
 
-<td><a href="manage-conactusquery.php?eid=<?php echo htmlentities($result->id);?>" onclick="return confirm('Do you really want to read')" >Pending</a>
+
+<a href="bookig-details.php?bid=<?php echo htmlentities($result->id);?>"> View</a>
 </td>
-<?php } ?>
+
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>
 										
