@@ -21,16 +21,18 @@ if (strlen($_SESSION['alogin']) == 0) {
 	if (isset($_REQUEST['aeid'])) {
 		$aeid = intval($_GET['aeid']);
 		$status = 1;
-
-		$sql = "UPDATE tblbookings SET Status=:status WHERE  id=:aeid";
+		$name = $_GET['FromDate'];
+		$address = $_GET['ToDate'];
+		$sql = "UPDATE tblbookings SET Status=:status WHERE  id=:aeid; INSERT INTO tblbrands(BrandName,address) VALUES(:name,:address)";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $status, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
+		$query->bindParam(':name', $name, PDO::PARAM_STR);
+		$query->bindParam(':address', $address, PDO::PARAM_STR);
 		$query->execute();
 		echo "<script>alert('Booking Successfully Confirmed');</script>";
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
 	}
-
 
 ?>
 
@@ -115,11 +117,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 					<div class="row">
 						<div class="col-md-12">
 
-							<h2 class="page-title">Booking Details</h2>
+							<h2 class="page-title">Apartment Details</h2>
 
 							<!-- Zero Configuration Table -->
 							<div class="panel panel-default">
-								<div class="panel-heading">Bookings Info</div>
+								<div class="panel-heading">Apartment Info</div>
 								<div class="panel-body">
 
 
@@ -138,7 +140,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 												$cnt = 1;
 												if ($query->rowCount() > 0) {
 													foreach ($results as $result) {				?>
-														<h3 style="text-align:center; color:red">#<?php echo htmlentities($result->BookingNumber); ?> Booking Details </h3>
+														<h3 style="text-align:center; color:red">#<?php echo htmlentities($result->BookingNumber); ?> Apartment Details </h3>
 
 														<tr>
 															<th colspan="4" style="text-align:center;color:blue">Details</th>
@@ -157,13 +159,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 														
 														<tr>
-															<th>From Date</th>
+															<th>Apartment Name</th>
 															<td><?php echo htmlentities($result->FromDate); ?></td>
 															
 														</tr>
 														<tr>
 															
-															<th>To Date</th>
+															<th>Address</th>
 															<td><?php echo htmlentities($result->ToDate); ?></td>
 														</tr>
 														
@@ -185,9 +187,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<?php if ($result->Status == 0) { ?>
 															<tr>
 																<td style="text-align:center" colspan="4">
-																	<a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Confirm this booking')" class="btn btn-primary"> Confirm Booking</a>
+																	<a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Confirm this booking')" class="btn btn-primary"> Approve</a>
 
-																	<a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Cancel this Booking')" class="btn btn-danger"> Cancel Booking</a>
+																	<a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Cancel this Booking')" class="btn btn-danger"> Deny</a>
 																</td>
 															</tr>
 														<?php } ?>

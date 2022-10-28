@@ -206,14 +206,14 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <div class="col-sm-4">
                                                         <input type="text" name="priceperday" class="form-control" required>
                                                     </div>
-                                                    <label class="col-sm-2 control-label">Select the Type of Room<span style="color:red">*</span></label>
+                                                    <label class="col-sm-2 control-label">Type of Bath<span style="color:red">*</span></label>
                                                     <div class="col-sm-4">
                                                         <select class="selectpicker" name="fueltype" required>
                                                             <option value=""> Select </option>
 
-                                                            <option value="Petrol">Petrol</option>
-                                                            <option value="Diesel">Diesel</option>
-                                                            <option value="CNG">CNG</option>
+                                                            <option value="Private Bath">Private Bath</option>
+                                                            <option value="Shared Bath">Shared Bath</option>
+                                                        
                                                         </select>
                                                     </div>
                                                 </div>

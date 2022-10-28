@@ -9,7 +9,7 @@ error_reporting(0);
 
 <head>
 
-    <title>Car Rental Portal | Car Listing</title>
+    <title>FAR | Room Listing</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->

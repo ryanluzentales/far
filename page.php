@@ -9,7 +9,7 @@ include('includes/config.php');
 
 <head>
 
-    <title>Car Rental Portal | Page details</title>
+    <title>FAR | Page details</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->

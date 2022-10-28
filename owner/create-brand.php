@@ -107,7 +107,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <?php } ?>
                                                 <div class="form-group">
                                                     <label class="col-sm-2 control-label">Apartment Name</label>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-6">
                                                         <input type="text" class="form-control" name="brand" id="brand" required>
                                                     </div>
                                                 </div>
@@ -115,18 +115,22 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="form-group">
 
                                                     <label class=" col-sm-2 control-label">Address<span style="color:red">*</span></label>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-6">
                                                         <input type="text" name="address" class="form-control" required>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-                                                        aliquam, non quia praesentium esse autem! Quae voluptatibus vero ad,
-                                                        delectus nemo vitae nostrum est. Nihil corporis consequatur cumque
-                                                        reprehenderit maxime?</p>
-                                                    <img src="../assets/imagess/download.png" width="50%" height="250">
+                                                    <h6>You can pay using the details below</h6>
+                                                    <p>BPI: 1234-8643-1234</p>
+                                                    <p>BDO: 1234-8643-1234</p>
+                                                    <p>GCASH: 1234-8643-1234</p>
+                                                    <h6>You can also pay through GCASH using the QR Code provided below</h6>
+                                                    <p>After paying, please upload the receipt on the upload file button below.</p>
+                                                    <p>The Apartment will be posted once the administrator confirmed the payment and details</p>
+                                                    
+                                                    <img src="../assets/imagess/download.png" width="25%" height="250">
                                                     </img>
                                                     <input type="file"></input>
                                                 </div>

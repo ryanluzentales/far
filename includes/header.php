@@ -62,8 +62,6 @@
                                     <li><a href="profile.php">Profile Settings</a></li>
                                     <li><a href="update-password.php">Update Password</a></li>
                                     <li><a href="my-booking.php">My Booking</a></li>
-                                    <li><a href="post-testimonial.php">Post a Testimonial</a></li>
-                                    <li><a href="my-testimonials.php">My Testimonial</a></li>
                                     <li><a href="logout.php">Sign Out</a></li>
                                 <?php } ?>
                             </ul>
@@ -81,10 +79,7 @@
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a> </li>
-                    <li><a href="#">About Us</a></li>
                     <li><a href="car-listing.php">Find a Room</a>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="contact-us.php">Contact Us</a></li>
 
                 </ul>
             </div>

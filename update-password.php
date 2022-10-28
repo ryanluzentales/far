@@ -33,7 +33,7 @@ if (strlen($_SESSION['login']) == 0) {
 
 <head>
 
-    <title>Car Rental Portal - Update Password</title>
+    <title>FAR - Update Password</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->

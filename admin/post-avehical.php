@@ -153,11 +153,11 @@ $error="Something went wrong. Please try again";
 									<div class="panel-body">
 <form method="post" class="form-horizontal" enctype="multipart/form-data">
 <div class="form-group">
-<label class="col-sm-2 control-label">Vehicle Title<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Room Name<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <input type="text" name="vehicletitle" class="form-control" required>
 </div>
-<label class="col-sm-2 control-label">Select Brand<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Select Apartment<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <select class="selectpicker" name="brandname" required>
 <option value=""> Select </option>
@@ -180,36 +180,36 @@ foreach($results as $result)
 											
 <div class="hr-dashed"></div>
 <div class="form-group">
-<label class="col-sm-2 control-label">Vehical Overview<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Room Description<span style="color:red">*</span></label>
 <div class="col-sm-10">
 <textarea class="form-control" name="vehicalorcview" rows="3" required></textarea>
 </div>
 </div>
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Price Per Day(in USD)<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Price Per Month(in PHP)<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <input type="text" name="priceperday" class="form-control" required>
 </div>
-<label class="col-sm-2 control-label">Select Fuel Type<span style="color:red">*</span></label>
+<label class="col-sm-2 control-label">Select Bath Type<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <select class="selectpicker" name="fueltype" required>
 <option value=""> Select </option>
 
-<option value="Petrol">Petrol</option>
-<option value="Diesel">Diesel</option>
-<option value="CNG">CNG</option>
+<option value="Petrol">Private Bath</option>
+<option value="Diesel">Shared Bath</option>
+
 </select>
 </div>
 </div>
 
 
 <div class="form-group">
-<label class="col-sm-2 control-label">Model Year<span style="color:red">*</span></label>
+<!-- <label class="col-sm-2 control-label">Housing Type<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <input type="text" name="modelyear" class="form-control" required>
-</div>
-<label class="col-sm-2 control-label">Seating Capacity<span style="color:red">*</span></label>
+</div> -->
+<label class="col-sm-2 control-label">Room Capacity<span style="color:red">*</span></label>
 <div class="col-sm-4">
 <input type="text" name="seatingcapacity" class="form-control" required>
 </div>
@@ -256,7 +256,7 @@ Image 5<input type="file" name="img5">
 <div class="row">
 <div class="col-md-12">
 <div class="panel panel-default">
-<div class="panel-heading">Accessories</div>
+<div class="panel-heading">Inclusions</div>
 <div class="panel-body">
 
 
@@ -264,22 +264,22 @@ Image 5<input type="file" name="img5">
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="airconditioner" name="airconditioner" value="1">
-<label for="airconditioner"> Air Conditioner </label>
+<label for="airconditioner">Wifi </label>
 </div>
 </div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="powerdoorlocks" name="powerdoorlocks" value="1">
-<label for="powerdoorlocks"> Power Door Locks </label>
+<label for="powerdoorlocks"> Airconditioner </label>
 </div></div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="antilockbrakingsys" name="antilockbrakingsys" value="1">
-<label for="antilockbrakingsys"> AntiLock Braking System </label>
+<label for="antilockbrakingsys"> Refrigerator </label>
 </div></div>
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="brakeassist" name="brakeassist" value="1">
-<label for="brakeassist"> Brake Assist </label>
+<label for="brakeassist"> Television </label>
 </div>
 </div>
 
@@ -290,23 +290,23 @@ Image 5<input type="file" name="img5">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="powersteering" name="powersteering" value="1">
 <input type="checkbox" id="powersteering" name="powersteering" value="1">
-<label for="inlineCheckbox5"> Power Steering </label>
+<label for="inlineCheckbox5"> Kitchen </label>
 </div>
 </div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="driverairbag" name="driverairbag" value="1">
-<label for="driverairbag">Driver Airbag</label>
+<label for="driverairbag">Shared Bath</label>
 </div>
 </div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="passengerairbag" name="passengerairbag" value="1">
-<label for="passengerairbag"> Passenger Airbag </label>
+<label for="passengerairbag"> Private Bath</label>
 </div></div>
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-<label for="powerwindow"> Power Windows </label>
+<label for="powerwindow"> Free Electricity </label>
 </div>
 </div>
 
@@ -315,23 +315,23 @@ Image 5<input type="file" name="img5">
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="cdplayer" name="cdplayer" value="1">
-<label for="cdplayer"> CD Player </label>
+<label for="cdplayer"> Free Water </label>
 </div>
 </div>
 <div class="col-sm-3">
 <div class="checkbox h checkbox-inline">
 <input type="checkbox" id="centrallocking" name="centrallocking" value="1">
-<label for="centrallocking">Central Locking</label>
+<label for="centrallocking">Cabinet</label>
 </div></div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="crashcensor" name="crashcensor" value="1">
-<label for="crashcensor"> Crash Sensor </label>
+<label for="crashcensor"> Balcony </label>
 </div></div>
 <div class="col-sm-3">
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="leatherseats" name="leatherseats" value="1">
-<label for="leatherseats"> Leather Seats </label>
+<label for="leatherseats"> Double Deck Bed </label>
 </div>
 </div>
 </div>

@@ -19,7 +19,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>Car Rental Portal | Confirmed Bookings </title>
+		<title>FAR| Confirmed Bookings </title>
 
 
 

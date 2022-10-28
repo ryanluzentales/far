@@ -9,7 +9,7 @@ error_reporting(0);
 
 <head>
 
-    <title>Car Rental Portal | Car Listing</title>
+    <title>FAR | Room Listing</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->
@@ -45,23 +45,6 @@ error_reporting(0);
     <?php include('includes/header.php'); ?>
     <!-- /Header -->
 
-    <!--Page Header-->
-    <section class="page-header listing_page">
-        <div class="container">
-            <div class="page-header_wrap">
-                <div class="page-heading">
-                    <h1>Car Listing</h1>
-                </div>
-                <ul class="coustom-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>Car Listing</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Dark Overlay-->
-        <div class="dark-overlay"></div>
-    </section>
-    <!-- /Page Header-->
 
     <!--Listing-->
     <section class="listing-page">
@@ -99,7 +82,7 @@ error_reporting(0);
             foreach ($results as $result) {  ?>
                     <div class="product-listing-m gray-bg">
                         <div class="product-listing-img"><img
-                                src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
@@ -129,13 +112,13 @@ error_reporting(0);
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room</h5>
                         </div>
                         <div class="sidebar_filter">
                             <form action="#" method="get">
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Select Brand</option>
+                                        <option>Select Apartment</option>
 
                                         <?php $sql = "SELECT * from  tblbrands ";
                     $query = $dbh->prepare($sql);
@@ -153,10 +136,9 @@ error_reporting(0);
                                 </div>
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Select Fuel Type</option>
-                                        <option value="Petrol">Petrol</option>
-                                        <option value="Diesel">Diesel</option>
-                                        <option value="CNG">CNG</option>
+                                        <option>BathType</option>
+                                        <option value="Petrol">Private Bath</option>
+                                        <option value="Diesel">Shared Bath</option>
                                     </select>
                                 </div>
 
@@ -170,7 +152,7 @@ error_reporting(0);
 
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Cars</h5>
+                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Rooms</h5>
                         </div>
                         <div class="recent_addedcars">
                             <ul>
@@ -185,7 +167,7 @@ error_reporting(0);
                                 <li class="gray-bg">
                                     <div class="recent_post_img"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
-                                                src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                                src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
@@ -207,9 +189,6 @@ error_reporting(0);
     </section>
     <!-- /Listing-->
 
-    <!--Footer -->
-    <?php include('includes/footer.php'); ?>
-    <!-- /Footer-->
 
     <!--Back to top-->
     <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>

@@ -131,43 +131,10 @@ if (isset($_POST['submit'])) {
             <!--Listing-detail-->
             <section class="listing-detail">
                 <div class="container">
-                    <div class="listing_detail_head row">
-                        <div class="col-md-9">
-                            <h2><?php echo htmlentities($result->BrandName); ?> ,
-                                <?php echo htmlentities($result->VehiclesTitle); ?></h2>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="price_info">
-                                <p>$<?php echo htmlentities($result->PricePerDay); ?> </p>Per Day
-
-                            </div>
-                        </div>
-                    </div>
+                   
                     <div class="row">
                         <div class="col-md-9">
-                            <div class="main_features">
-                                <ul>
-
-                                    <li> <i class="fa fa-home" aria-hidden="true"></i>
-                                        <h5><?php echo htmlentities($result->ModelYear); ?></h5>
-                                        <p>Housing Type</p>
-                                    </li>
-
-                                    <li> <i class="fa fa-home" aria-hidden="true"></i>
-                                        <h5><?php echo htmlentities($result->FuelType); ?></h5>
-                                        <p>Type of Room</p>
-                                    </li>
-
-                                    <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                        <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
-                                        <p>Availability</p>
-
-                                    <li> <i class="fa fa-pencil" aria-hidden="false"></i>
-                                        <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Reviews</a>
-                                    </li>
-                                    </li>
-                                </ul>
-                            </div>
+                            
                     <?php }
             } ?>
 
@@ -205,12 +172,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </aside>
                         <!--/Side-Bar-->
-                    </div>
-
-                    <div class="space-20"></div>
-                    <div class="divider"></div>
-
-
+                    </div> 
 
                 </div>
             </section>

@@ -35,7 +35,7 @@ $msg="Profile Updated Successfully";
 
 <head>
 
-    <title>Car Rental Portal | My Profile</title>
+    <title>FAR | My Profile</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->

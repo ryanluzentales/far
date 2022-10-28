@@ -11,7 +11,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <head>
 
-        <title>Car Rental Portal - My Booking</title>
+        <title>FAR - My Booking</title>
         <!--Bootstrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
         <!--Custome Style -->
