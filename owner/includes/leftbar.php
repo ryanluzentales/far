@@ -4,12 +4,12 @@
 			<li class="ts-label">Main</li>
 			<li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-			<li><a href="#"><i class="fa fa-files-o"></i> Apartments</a>
+			<!-- <li><a href="#"><i class="fa fa-files-o"></i> Apartments</a>
 				<ul>
 					<li><a href="create-brand.php">Create Apartments</a></li>
 					<li><a href="manage-brands.php">Manage Apartments</a></li>
 				</ul>
-			</li>
+			</li> -->
 
 			<li><a href="#"><i class="fa fa-car"></i> Rooms</a>
 				<ul>
