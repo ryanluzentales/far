@@ -133,58 +133,8 @@ $brands=$query3->rowCount();
 						</div>
 					</div>
 				</div>
-
-
-
-<div class="row">
-					<div class="col-md-12">
-
-						
-						<div class="row">
-							<div class="col-md-12">
-								<div class="row">
-									<div class="col-md-3">
-										<div class="panel panel-default">
-											<div class="panel-body bk-primary text-light">
-												<div class="stat-panel text-center">
-<?php 
-$sql4 ="SELECT id from tblsubscribers ";
-$query4 = $dbh -> prepare($sql4);
-$query4->execute();
-$results4=$query4->fetchAll(PDO::FETCH_OBJ);
-$subscribers=$query4->rowCount();
-?>
-													
-												<?php 
-$sql6 ="SELECT id from tblcontactusquery ";
-$query6 = $dbh -> prepare($sql6);;
-$query6->execute();
-$results6=$query6->fetchAll(PDO::FETCH_OBJ);
-$query=$query6->rowCount();
-?>
-													
-<?php 
-$sql5 ="SELECT id from tbltestimonial ";
-$query5= $dbh -> prepare($sql5);
-$query5->execute();
-$results5=$query5->fetchAll(PDO::FETCH_OBJ);
-$testimonials=$query5->rowCount();
-?>
-
-								
-							</div>
-						</div>
-					</div>
+				
 				</div>
-
-
-
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>

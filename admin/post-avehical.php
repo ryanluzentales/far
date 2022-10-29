@@ -218,7 +218,9 @@ foreach($results as $result)
 
 
 <div class="form-group">
-<div class="col-sm-12">
+<div
+ class="col-sm-12">
+
 <h4><b>Upload Images</b></h4>
 </div>
 </div>
