@@ -7,18 +7,7 @@
                 </div>
                 <div class="col-sm-9 col-md-10">
                     <div class="header_info">
-                        <?php
-                        $sql = "SELECT EmailId,ContactNo from tblcontactusinfo";
-                        $query = $dbh->prepare($sql);
-                        $query->execute();
-                        $results = $query->fetchAll(PDO::FETCH_OBJ);
-                        foreach ($results as $result) {
-                            $email = $result->EmailId;
-                            $contactno = $result->ContactNo;
-                        }
-                        ?>
                         <div class="social-follow">
-
                         </div>
                         <?php if (strlen($_SESSION['ologin']) == 0) {
                         ?>
