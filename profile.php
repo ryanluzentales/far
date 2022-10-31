@@ -85,24 +85,7 @@ $msg="Profile Updated Successfully";
 
     <!--Header-->
     <?php include('includes/header.php');?>
-    <!-- /Header -->
-    <!--Page Header-->
-    <section class="page-header profile_page">
-        <div class="container">
-            <div class="page-header_wrap">
-                <div class="page-heading">
-                    <h1>Your Profile</h1>
-                </div>
-                <ul class="coustom-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>Profile</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Dark Overlay-->
-        <div class="dark-overlay"></div>
-    </section>
-    <!-- /Page Header-->
+ 
 
 
     <?php 
@@ -119,25 +102,14 @@ foreach($results as $result)
 { ?>
     <section class="user_profile inner_pages">
         <div class="container">
-            <div class="user_profile_info gray-bg padding_4x4_40">
-                <div class="upload_user_logo"> <img src="assets/images/dealer-logo.jpg" alt="image">
-                </div>
-
-                <div class="dealer_info">
-                    <h5><?php echo htmlentities($result->FullName);?></h5>
-                    <p><?php echo htmlentities($result->Address);?><br>
-                        <?php echo htmlentities($result->City);?>&nbsp;<?php echo htmlentities($result->Country);?></p>
-                </div>
-            </div>
-
             <div class="row">
                 <div class="col-md-3 col-sm-3">
                     <?php include('includes/sidebar.php');?>
                     <div class="col-md-6 col-sm-8">
                         <div class="profile_wrap">
-                            <h5 class="uppercase underline">Genral Settings</h5>
+                            <h5 class="uppercase">ACCOUNT SETTINGS</h5>
                             <?php  
-         if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
+                                if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
                             <form method="post">
                                 <div class="form-group">
                                     <label class="control-label">Reg Date -</label>

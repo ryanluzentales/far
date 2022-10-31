@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include('includes/config.php');
 if (strlen($_SESSION['ologin']) == 0) {
     header('location:index.php');
@@ -11,7 +11,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
     <head>
 
-        <title>Car Rental Portal - My Booking</title>
+    <title>Car Rental Portal - My Booking</title>
         <!--Bootstrap -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
         <!--Custome Style -->
@@ -41,7 +41,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+       
     </head>
 
     <body>
@@ -83,7 +83,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <ul class="vehicle_listing">
                                                 <?php
                                                 $useremail = $_SESSION['ologin'];
-                                                $sql = "SELECT tblbookings.FromDate,tblbookings.ToDate,tblbookings.message,tblbookings.Status,tblbookings.BookingNumber from tblbookings join verify on tblbookings.BookingNumber=verify.BookingNumber where tblbookings.userEmail=:useremail order by tblbookings.id desc";
+                                                $sql = "SELECT tblapartments.FromDate,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.BookingNumber from tblapartments join verify on tblapartments.BookingNumber=verify.BookingNumber where tblapartments.userEmail=:useremail order by tblapartments.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -97,10 +97,11 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                                 #<?php echo htmlentities($result->BookingNumber); ?></h4>
                     
                                                             <div class="vehicle_title">                                                           
-                                                                <p><b>From </b> <?php echo htmlentities($result->FromDate); ?> <b>To </b>
+                                                                <p><b>Name </b> <?php echo htmlentities($result->FromDate); ?> </p> 
+                                                                <br><b>Address </b>
                                                                     <?php echo htmlentities($result->ToDate); ?></p>
                                                                 <div style="float: left">
-                                                                    <p><b>Message:</b> <?php echo htmlentities($result->message); ?> </p>
+                                                                    <p><b>Gender:</b> <?php echo htmlentities($result->message); ?> </p>
                                                                 </div>
                                                             </div>
                                                             <?php if ($result->Status == 1) { ?>
@@ -150,7 +151,6 @@ if (strlen($_SESSION['ologin']) == 0) {
                 <!--Slider-JS-->
                 <script src="assets/js/slick.min.js"></script>
                 <script src="assets/js/owl.carousel.min.js"></script>
-    </body>
 
     </html>
 <?php } ?>

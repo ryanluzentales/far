@@ -76,7 +76,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="panel-body bk-success text-light">
                                                     <div class="stat-panel text-center">
                                                         <?php
-                                                        $sql1 = "SELECT id from tblvehicles ";
+                                                        $sql1 = "SELECT id from tblrooms ";
                                                         $query1 = $dbh->prepare($sql1);;
                                                         $query1->execute();
                                                         $results1 = $query1->fetchAll(PDO::FETCH_OBJ);

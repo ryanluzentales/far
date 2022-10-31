@@ -11,7 +11,7 @@ if (isset($_POST['submit'])) {
     $vhid = $_GET['vhid'];
     $bookingno = $_GET['bookingno'];
     $bookingno = mt_rand(100000000, 999999999);
-    $ret = "SELECT * FROM tblbookings where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
+    $ret = "SELECT * FROM tblapartments where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
     $query1 = $dbh->prepare($ret);
     $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
 
     if ($query1->rowCount() == 0) {
 
-        $sql = "INSERT INTO tblbookings(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:bookingno,:fromdate,:todate,:message,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+        $sql = "INSERT INTO tblapartments(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:bookingno,:fromdate,:todate,:message,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
         $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
@@ -103,7 +103,7 @@ if (isset($_POST['submit'])) {
 
     <?php
     $vhid = intval($_GET['vhid']);
-    $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.id=:vhid";
+    $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query->execute();
@@ -142,8 +142,6 @@ if (isset($_POST['submit'])) {
 
                         <!--Side-Bar-->
                         <aside class="col-md-3">
-
-
                             <div class="sidebar_widget">
                                 <div class="widget_heading">
                                     <h5><i aria-hidden="true"></i>Post apartment</h5>
@@ -151,14 +149,23 @@ if (isset($_POST['submit'])) {
                                 <form method="post">
                                     <div class="form-group">
                                         <label>Apartment Name:</label>
-                                        <input type="text" class="form-control" name="fromdate" placeholder="From Date" required>
+                                        <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Address:</label>
-                                        <input type="text" class="form-control" name="todate" placeholder="To Date" required>
+                                        <input type="text" class="form-control" name="todate" placeholder="Address" required>
                                     </div>
                                     <div class="form-group">
-                                        <textarea rows="4" class="form-control" name="message" placeholder="Message" required></textarea>
+                                        <label>Gender:</label>
+                                        <input type="text" class="form-control" name="todate" placeholder="Gender" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Landmark</label>
+                                        <input type="text" class="form-control" name="landmark" placeholder="Landmaek">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Proof of Paymnet</label>
+                                        <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
                                     </div>
                                     <?php if ($_SESSION['ologin']) { ?>
                                         <div class="form-group">
