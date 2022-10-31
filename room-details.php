@@ -173,7 +173,7 @@ if (isset($_POST['submit'])) {
 
     <?php
     $vhid = intval($_GET['vhid']);
-    $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.id=:vhid";
+    $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query->execute();
@@ -552,7 +552,7 @@ if (isset($_POST['submit'])) {
                         <div class="row">
                             <?php
                             $bid = $_SESSION['brndid'];
-                            $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.VehiclesBrand=:bid";
+                            $sql = "SELECT tblrooms.VehiclesTitle,tblbrands.BrandName,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:bid";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':bid', $bid, PDO::PARAM_STR);
                             $query->execute();

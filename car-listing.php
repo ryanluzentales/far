@@ -55,7 +55,7 @@ error_reporting(0);
                         <div class="sorting-count">
                             <?php
               //Query for Listing count
-              $sql = "SELECT id from tblvehicles";
+              $sql = "SELECT id from tblrooms";
               $query = $dbh->prepare($sql);
               $query->execute();
               $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -65,7 +65,7 @@ error_reporting(0);
                         </div>
                     </div>
 
-                    <?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand";
+                    <?php $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand";
           $query = $dbh->prepare($sql);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -149,7 +149,7 @@ error_reporting(0);
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);

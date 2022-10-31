@@ -58,7 +58,7 @@ error_reporting(0);
               //Query for Listing count
               $brand = $_POST['brand'];
               $fueltype = $_POST['fueltype'];
-              $sql = "SELECT id from tblvehicles where tblvehicles.VehiclesBrand=:brand and tblvehicles.FuelType=:fueltype";
+              $sql = "SELECT id from tblrooms where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
               $query = $dbh->prepare($sql);
               $query->bindParam(':brand', $brand, PDO::PARAM_STR);
               $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
@@ -72,7 +72,7 @@ error_reporting(0);
 
                     <?php
 
-          $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand where tblvehicles.VehiclesBrand=:brand and tblvehicles.FuelType=:fueltype";
+          $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
           $query = $dbh->prepare($sql);
           $query->bindParam(':brand', $brand, PDO::PARAM_STR);
           $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
@@ -158,7 +158,7 @@ error_reporting(0);
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblvehicles.*,tblbrands.BrandName,tblbrands.id as bid  from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);

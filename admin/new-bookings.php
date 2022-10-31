@@ -108,7 +108,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 											<?php
 											$status = 0;
-											$sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id where tblbooking.Status=:status";
+											$sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblbrands on tblrooms.VehiclesBrand=tblbrands.id where tblbooking.Status=:status";
 											$query = $dbh->prepare($sql);
 											$query->bindParam(':status', $status, PDO::PARAM_STR);
 											$query->execute();
