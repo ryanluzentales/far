@@ -83,7 +83,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<th>#</th>
 												
 												<th>Booking No.</th>
-												
+                                                <th>Owner Email Address</th>
+												<th>Proof of Payment</th>
+                                                <th>Gender</th>
 												<th>Apartment Name</th>
 												<th>Address</th>
 												<th>Status</th>
@@ -91,24 +93,12 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<th>Action</th>
 											</tr>
 										</thead>
-										<tfoot>
-											<tr>
-												<th>#</th>
-											
-												<th>Booking No.</th>
-												
-												<th>From Date</th>
-												<th>To Date</th>
-												<th>Status</th>
-												<th>Posting date</th>
-												<th>Action</th>
-											</tr>
-										</tfoot>
+										
 										<tbody>
 
 											<?php
 											$status = 0;
-											$sql = "SELECT tblapartments.FromDate,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
+											$sql = "SELECT tblapartments.userEmail,tblapartments.FromDate,tblapartments.gender,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber,tblapartments.Payment from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
 											$query = $dbh->prepare($sql);
 											$query->bindParam(':status', $status, PDO::PARAM_STR);
 											$query->execute();
@@ -118,8 +108,10 @@ if (strlen($_SESSION['alogin']) == 0) {
 												foreach ($results as $result) {				?>
 													<tr>
 														<td><?php echo htmlentities($cnt); ?></td>
-
-														<td><?php echo htmlentities($result->BookingNumber); ?></td>
+                                                        <td><?php echo htmlentities($result->BookingNumber); ?></td>
+                                                        <td><?php echo htmlentities($result->userEmail); ?></td>
+                                                        <td><a href="view-payment.php?id=<?php echo htmlentities($result->id);?>">View Proof of Payment</td>
+                                                        <td><?php echo htmlentities($result->gender); ?></td>
 														<td><?php echo htmlentities($result->FromDate); ?></td>
 														<td><?php echo htmlentities($result->ToDate); ?></td>
 														<td><?php
