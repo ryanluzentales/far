@@ -1,50 +1,38 @@
 <?php
 session_start();
 include('includes/config.php');
-error_reporting(0);
+//error_reporting(0);
 if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
+    $gender = $_POST['gender'];
     $useremail = $_SESSION['ologin'];
     $status = 0;
-    $vhid = $_GET['vhid'];
-    $bookingno = $_GET['bookingno'];
+    $paymentreceipt = $_FILES["payment"]["name"];
     $bookingno = mt_rand(100000000, 999999999);
-    $ret = "SELECT * FROM tblapartments where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
-    $query1 = $dbh->prepare($ret);
-    $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
-    $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-    $query1->bindParam(':todate', $todate, PDO::PARAM_STR);
-    $query1->execute();
-    $results1 = $query1->fetchAll(PDO::FETCH_OBJ);
+    move_uploaded_file($_FILES["payment"]["tmp_name"], "../admin/img/payment/" . $_FILES["payment"]["name"]);
 
-    if ($query1->rowCount() == 0) {
-
-        $sql = "INSERT INTO tblapartments(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:bookingno,:fromdate,:todate,:message,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
-        $query = $dbh->prepare($sql);
-        $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
-        $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
-        $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
-        $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
-        $query->bindParam(':todate', $todate, PDO::PARAM_STR);
-        $query->bindParam(':message', $message, PDO::PARAM_STR);
-        $query->bindParam(':status', $status, PDO::PARAM_STR);
-        $query->execute();
-        $lastInsertId = $dbh->lastInsertId();
-        if ($lastInsertId) {
-            echo "<script>alert('Booking successfull.');</script>";
-            echo "<script type='text/javascript'> document.location = 'pending-apartment.php'; </script>";
-        } else {
-            echo "<script>alert('Something went wrong. Please try again');</script>";
-            echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
-        }
+    $sql = "INSERT INTO tblapartments(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,gender,Payment,Status) VALUES(:bookingno,:useremail,:bookingno,:fromdate,:todate,:message,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $query = $dbh->prepare($sql);
+    $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
+    $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+    $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':paymentreceipt', $paymentreceipt, PDO::PARAM_STR);
+    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
+    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
+    $query->bindParam(':message', $message, PDO::PARAM_STR);
+    $query->bindParam(':status', $status, PDO::PARAM_STR);
+    $query->execute();
+    $lastInsertId = $dbh->lastInsertId();
+    if ($lastInsertId) {
+        echo "<script>alert('Booking successfull.');</script>";
+        echo "<script type='text/javascript'> document.location = 'pending-apartment.php'; </script>";
     } else {
-        echo "<script>alert('ROom already booked for these days');</script>";
-        echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
-    }
-}
-
+         echo "<script>alert('Something went wrong. Please try again');</script>";
+         echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+     }
+  } 
 
 ?>
 
@@ -99,45 +87,13 @@ if (isset($_POST['submit'])) {
     <?php include('includes/header.php'); ?>
     <!-- /Header -->
 
-    <!--Listing-Image-Slider-->
 
-    <?php
-    $vhid = intval($_GET['vhid']);
-    $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
-    $query = $dbh->prepare($sql);
-    $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
-    $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    $cnt = 1;
-    if ($query->rowCount() > 0) {
-        foreach ($results as $result) {
-            $_SESSION['brndid'] = $result->bid;
-    ?>
-
-            <section id="listing_img_slider">
-                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <?php if ($result->Vimage5 == "") {
-                } else {
-                ?>
-                    <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive" alt="image" width="900" height="560"></div>
-                <?php } ?>
-            </section>
-
-
-
-            <!--Listing-detail-->
             <section class="listing-detail">
                 <div class="container">
                    
                     <div class="row">
                         <div class="col-md-9">
                             
-                    <?php }
-            } ?>
-
                         </div>
 
                         <!--Side-Bar-->
@@ -146,7 +102,7 @@ if (isset($_POST['submit'])) {
                                 <div class="widget_heading">
                                     <h5><i aria-hidden="true"></i>Post apartment</h5>
                                 </div>
-                                <form method="post">
+                                <form method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <label>Apartment Name:</label>
                                         <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name" required>
@@ -156,25 +112,25 @@ if (isset($_POST['submit'])) {
                                         <input type="text" class="form-control" name="todate" placeholder="Address" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Gender:</label>
-                                        <input type="text" class="form-control" name="todate" placeholder="Gender" required>
+                                        <label>Landmark:</label>
+                                        <input type="text" class="form-control" name="message" placeholder="Landmaek">
                                     </div>
                                     <div class="form-group">
-                                        <label>Landmark</label>
-                                        <input type="text" class="form-control" name="landmark" placeholder="Landmaek">
+                                        <label>Gender:</label> <br>
+                                        <select class="selectpicker" name="gender" required>
+                                                    <option value=""> Select </option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                    <option value="Mixed">Mixed</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label>Proof of Paymnet</label>
                                         <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
                                     </div>
-                                    <?php if ($_SESSION['ologin']) { ?>
                                         <div class="form-group">
                                             <input type="submit" class="btn" name="submit" value="Submit">
                                         </div>
-                                    <?php } else { ?>
-                                        <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Submit</a>
-
-                                    <?php } ?>
                                 </form>
                             </div>
                         </aside>
@@ -236,7 +192,7 @@ if (isset($_POST['submit'])) {
             <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
-<?php showComments(); ?>
+
 
 </html>
 

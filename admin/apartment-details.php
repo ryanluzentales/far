@@ -171,7 +171,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 														
 													
 														<tr>
-															<th>Booking Status</th>
+															<th>Apartment Status</th>
 															<td><?php
 																if ($result->Status == 0) {
 																	echo htmlentities('Not Confirmed yet');
