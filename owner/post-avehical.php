@@ -11,7 +11,6 @@ if (strlen($_SESSION['ologin']) == 0) {
         $brand = $_POST['brandname'];
         $vehicleoverview = $_POST['vehicalorcview'];
         $address = $_POST['address'];
-        $address = str_replace(" ", "+", $address);
         $priceperday = $_POST['priceperday'];
         $fueltype = $_POST['fueltype'];
         $modelyear = $_POST['modelyear'];
@@ -39,7 +38,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         move_uploaded_file($_FILES["img4"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img4"]["name"]);
         move_uploaded_file($_FILES["img5"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-        $sql = "INSERT INTO tblrooms(VehiclesTitle,VehiclesBrand,VehiclesOverview,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+        $sql = "INSERT INTO tblrooms(VehiclesTitle,VehiclesBrand,VehiclesOverview,Address,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -48,6 +47,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
         $query->bindParam(':modelyear', $modelyear, PDO::PARAM_STR);
         $query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
+        $query->bindParam(':address', $address, PDO::PARAM_STR);
         $query->bindParam(':vimage1', $vimage1, PDO::PARAM_STR);
         $query->bindParam(':vimage2', $vimage2, PDO::PARAM_STR);
         $query->bindParam(':vimage3', $vimage3, PDO::PARAM_STR);
@@ -182,7 +182,9 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="col-sm-4">
                                                     <select class="selectpicker" name="brandname" required>
                                                         <option value=""> Select </option>
-                                                        <?php $ret = "select id,BrandName from tblbrands";
+                                                        <?php
+                                                            $currentEmail = $_SESSION['ologin']; 
+                                                            $ret = "select tblapartments.id,tblapartments.FromDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
                                                             $query = $dbh->prepare($ret);
                                                             //$query->bindParam(':id',$id, PDO::PARAM_STR);
                                                             $query->execute();
@@ -191,7 +193,30 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                                 foreach ($results as $result) {
                                                             ?>
                                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                                            <?php echo htmlentities($result->BrandName); ?></option>
+                                                            <?php echo htmlentities($result->FromDate); ?></option>
+                                                        <?php }
+                                                            } ?>
+
+                                                    </select>
+                                                </div>
+                                                <br>
+                                                <label class="col-sm-2 control-label">Apartment Address<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-4">
+                                                    <select class="selectpicker" name="address" required>
+                                                        <option value=""> Select </option>
+                                                        <?php
+                                                            $currentEmail = $_SESSION['ologin']; 
+                                                            $rett = "select tblapartments.id,tblapartments.ToDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
+                                                            $query = $dbh->prepare($rett);
+                                                            //$query->bindParam(':id',$id, PDO::PARAM_STR);
+                                                            $query->execute();
+                                                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                                            if ($query->rowCount() > 0) {
+                                                                foreach ($results as $result) {
+                                                            ?>
+                                                        <option value="<?php echo htmlentities($result->ToDate); ?>">
+                                                            <?php echo htmlentities($result->ToDate); ?></option>
                                                         <?php }
                                                             } ?>
 
@@ -251,7 +276,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="seatingcapacity" class="form-control"
+                                                    <input type="number" name="seatingcapacity" class="form-control"
                                                         required>
                                                 </div>
                                             </div>
@@ -274,11 +299,11 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 2<span style="color:red">*</span><input type="file"
-                                                        name="img2" required>
+                                                        name="img2" >
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 3<span style="color:red">*</span><input type="file"
-                                                        name="img3" required>
+                                                        name="img3" >
                                                 </div>
                                             </div>
 
@@ -286,7 +311,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     Image 4<span style="color:red">*</span><input type="file"
-                                                        name="img4" required>
+                                                        name="img4" >
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 5<input type="file" name="img5">
