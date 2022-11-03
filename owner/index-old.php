@@ -49,7 +49,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
+                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartment.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -60,7 +60,7 @@ error_reporting(0);
 
                                 <div class="col-list-3">
                                     <div class="recent-car-list">
-                                        <div class="car-info-box"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
+                                        <div class="car-info-box"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
                                             <ul>
                                                 <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                                 </li>

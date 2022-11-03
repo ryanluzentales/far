@@ -4,13 +4,6 @@
 			<li class="ts-label">Main</li>
 			<li><a href="dashboard.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-			<li><a href="#"><i class="fa fa-files-o"></i> Apartment</a>
-				<ul>
-					<li><a href="create-brand.php">Create Apertment</a></li>
-					<li><a href="manage-brands.php">Manage Apartment</a></li>
-				</ul>
-			</li>
-
 			<li><a href="#"><i class="fa fa-car"></i> Room</a>
 				<ul>
 					<li><a href="post-avehical.php">Post a Room</a></li>

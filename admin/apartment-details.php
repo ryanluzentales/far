@@ -1,4 +1,13 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/PHPMailer/src/Exception.php';
+require 'vendor/PHPMailer/src/PHPMailer.php';
+require 'vendor/PHPMailer/src/SMTP.php';
+
+
+
 session_start();
 error_reporting(0);
 include('includes/config.php');
@@ -7,7 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 } else {
 	if (isset($_REQUEST['eid'])) {
 		$eid = intval($_GET['eid']);
-		$status = "2";
+ 		$status = "2";
 		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:eid";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $status, PDO::PARAM_STR);
@@ -15,6 +24,49 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->execute();
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php; </script>";
+
+	}if(isset($_REQUEST['eid'])){
+		$email  = "ryanluzentales@gmail.com";
+    	$subject = "APARTMENT DENIED";
+    	$message = "smaple email details";
+   	 	$mail = new PHPMailer(true);                            
+   	 	try {
+        //Server settingss
+        	$mail->isSMTP();                                     
+        	$mail->Host = 'smtp.elasticemail.com';                      
+        	$mail->SMTPAuth = true;                             
+        	$mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
+       		$mail->Password = 'E702AD4B97B16CDB74BCE9381FBDB0C6471B';             
+       	 	$mail->SMTPOptions = array(
+            	'ssl' => array(
+            	'verify_peer' => false,
+            	'verify_peer_name' => false,
+            	'allow_self_signed' => true
+            	)
+        );                         
+        $mail->SMTPSecure = 'none';                           
+        $mail->Port = 2525;                                   
+
+        //Send Email
+        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        
+        //Recipients
+        $mail->addAddress($email);              
+        $mail->addReplyTo($email); 
+        
+        //Content
+        $mail->isHTML(true);                                  
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        $mail->send();
+		
+       $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
+    } catch (Exception $e) {
+	   $_SESSION['result'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
+	   $_SESSION['status'] = 'error';
+    }
 	}
 
 
@@ -30,8 +82,52 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->bindParam(':name', $name, PDO::PARAM_STR);
 		$query->bindParam(':address', $address, PDO::PARAM_STR);
 		$query->execute();
-		echo "<script>alert('Booking Successfully Confirmed');</script>";
+		echo '<script type="text/javascript">alert("'.$FromDate.'");</script>';
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
+
+	} if(isset($_REQUEST['aeid'])){
+		$email = "ryanluzentales@gmail.com";
+    	$subject = "APARTMENT APPROVED";
+    	$message = "smaple email details";
+		
+   	 	$mail = new PHPMailer(true);             
+   	 	try {
+        //Server settingss
+        	$mail->isSMTP();                                     
+        	$mail->Host = 'smtp.elasticemail.com';                      
+        	$mail->SMTPAuth = true;                             
+        	$mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
+       		$mail->Password = 'E702AD4B97B16CDB74BCE9381FBDB0C6471B';             
+       	 	$mail->SMTPOptions = array(
+            	'ssl' => array(
+            	'verify_peer' => false,
+            	'verify_peer_name' => false,
+            	'allow_self_signed' => true
+            	)
+        );                         
+        $mail->SMTPSecure = 'none';                           
+        $mail->Port = 2525;                                   
+
+        //Send Email
+        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        
+        //Recipients
+        $mail->addAddress($email);              
+        $mail->addReplyTo($email);
+        
+        //Content
+        $mail->isHTML(true);                                  
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        $mail->send();
+		
+       $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
+    } catch (Exception $e) {
+	   $_SESSION['result'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
+	   $_SESSION['status'] = 'error';
+    }
 	}
 
 ?>
@@ -47,7 +143,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		<meta name="author" content="">
 		<meta name="theme-color" content="#3e454c">
 
-		<title>Car Rental Portal | New Bookings </title>
+		<title>FAR | New Bookings </title>
 
 		<!--Bootstrap -->
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -187,9 +283,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<?php if ($result->Status == 0) { ?>
 															<tr>
 																<td style="text-align:center" colspan="4">
-																	<a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Confirm this booking')" class="btn btn-primary"> Approve</a>
+																	<a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Confirm and send email notification')" class="btn btn-primary"> Approve</a>
 
-																	<a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Do you really want to Cancel this Booking')" class="btn btn-danger"> Deny</a>
+																	<a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>" onclick="return confirm('Deny and send email notification')" class="btn btn-danger"> Deny</a>
 																</td>
 															</tr>
 														<?php } ?>
@@ -245,6 +341,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 						window.print();
 					}
 				</script>
+
+
 	</body>
 
 	</html>
