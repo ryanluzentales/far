@@ -246,7 +246,7 @@ if (isset($_POST['submit'])) {
                                             </a></li>
 
                                         <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Inclusions</a></li>
-                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews </a></li>
+                                        
                                         <li role="presentation"><a href="#ratings" aria-controls="ratings" role="tab" data-toggle="tab">Ratings</a></li>
                                         <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
 
@@ -336,31 +336,6 @@ if (isset($_POST['submit'])) {
 
                                         <div role="tabpanel" class="tab-pane" id="location">
                                             <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $result->address; ?>&output=embed"></iframe>
-                                        </div>
-
-                                        <div role="tabpanel" class="tab-pane" id="reviews">
-                                            <div role="tabpanel" class="reviewtab">
-                                                <h4 class="mt-4">Post Your Comment</h4>
-
-                                                <form method="post">
-
-                                                    <input type="hidden" name="commentid" id="commentid">
-                                                    <label>Name</label>
-                                                    <input type="text" class="form-control" name="name">
-                                                    <label>Comment</label>
-                                                    <textarea class="form-control" name="description"></textarea>
-                                                    <input type="submit" name="submit" class="btn btn-primary mt-2">
-
-                                                    <script>
-                                                        function reply(commentid) {
-                                                            //alert(commentid);
-                                                            $("#commentid").val(commentid);
-                                                        }
-                                                    </script>
-                                                </form>
-
-
-                                            </div>
                                         </div>
 
                                         <!-- Accessories -->

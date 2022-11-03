@@ -2,7 +2,9 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
-
+if (strlen($_SESSION['login']) == 0) {
+    header('location:index.php');
+} else {
 ?>
 
 <!DOCTYPE HTML>
@@ -47,8 +49,8 @@ error_reporting(0);
             <h4 class="review-title">Review Page</h4>
             <div class="input-row">
                 <div class="label-name">Name:</div><br>
-                <input type="hidden" name="comment_id" id="commentId" /> <input class="input-field-name" type="text"
-                    name="name" id="name" placeholder="Enter your name" />
+                <input type="hidden" name="comment_id" id="commentId" /> 
+                <input class="input-field-name" type="text"name="name" id="name" placeholder="Enter your name" />
             </div>
             <br>
             <div class="input-row">
@@ -164,7 +166,6 @@ error_reporting(0);
     </script>
 
 
-
     <!--Back to top-->
     <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
     <!--/Back to top-->
@@ -196,3 +197,5 @@ error_reporting(0);
 <!-- Mirrored from themes.webmasterdriver.net/carforyou/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jun 2017 07:22:11 GMT -->
 
 </html>
+
+<?php } ?>
