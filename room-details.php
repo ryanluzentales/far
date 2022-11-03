@@ -173,7 +173,7 @@ if (isset($_POST['submit'])) {
 
     <?php
     $vhid = intval($_GET['vhid']);
-    $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
+    $sql = "SELECT tblrooms.*,tblapartments.FromDate, tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query->execute();
@@ -335,7 +335,7 @@ if (isset($_POST['submit'])) {
 
 
                                         <div role="tabpanel" class="tab-pane" id="location">
-                                            <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $result->address; ?>&output=embed"></iframe>
+                                            <iframe width="100%" height="500" src="https://maps.google.com/maps?q=<?php echo $result->Address; ?>&output=embed"></iframe>
                                         </div>
 
                                         <!-- Accessories -->

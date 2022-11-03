@@ -26,17 +26,18 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php; </script>";
 
 	}if(isset($_REQUEST['eid'])){
-		$email  = "ryanluzentales@gmail.com";
+		$email = 'jrobertosy@gmail.com';
     	$subject = "APARTMENT DENIED";
     	$message = "smaple email details";
-   	 	$mail = new PHPMailer(true);                            
+		
+   	 	$mail = new PHPMailer(true);             
    	 	try {
         //Server settingss
         	$mail->isSMTP();                                     
         	$mail->Host = 'smtp.elasticemail.com';                      
         	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
-       		$mail->Password = 'E702AD4B97B16CDB74BCE9381FBDB0C6471B';             
+        	$mail->Username = 'farapplication22@gmail.com';     
+       		$mail->Password = '1F3184FDC6D1B412923C0E46A3CBEDB59123';             
        	 	$mail->SMTPOptions = array(
             	'ssl' => array(
             	'verify_peer' => false,
@@ -48,11 +49,11 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        $mail->setFrom('farapplication22@gmail.com');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo($email); 
+        $mail->addReplyTo($email);
         
         //Content
         $mail->isHTML(true);                                  
@@ -82,11 +83,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->bindParam(':name', $name, PDO::PARAM_STR);
 		$query->bindParam(':address', $address, PDO::PARAM_STR);
 		$query->execute();
-		echo '<script type="text/javascript">alert("'.$FromDate.'");</script>';
+		echo '<script type="text/javascript">alert("Apartment confirmed");</script>';
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
 
 	} if(isset($_REQUEST['aeid'])){
-		$email = "ryanluzentales@gmail.com";
+		$email = 'jrobertosy@gmail.com';
     	$subject = "APARTMENT APPROVED";
     	$message = "smaple email details";
 		
@@ -96,8 +97,8 @@ if (strlen($_SESSION['alogin']) == 0) {
         	$mail->isSMTP();                                     
         	$mail->Host = 'smtp.elasticemail.com';                      
         	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
-       		$mail->Password = 'E702AD4B97B16CDB74BCE9381FBDB0C6471B';             
+        	$mail->Username = 'farapplication22@gmail.com';     
+       		$mail->Password = '1F3184FDC6D1B412923C0E46A3CBEDB59123';             
        	 	$mail->SMTPOptions = array(
             	'ssl' => array(
             	'verify_peer' => false,
@@ -109,7 +110,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        $mail->setFrom('farapplication22@gmail.com');
         
         //Recipients
         $mail->addAddress($email);              

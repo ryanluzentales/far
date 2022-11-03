@@ -161,7 +161,7 @@ $error="Something went wrong. Please try again";
 <div class="col-sm-4">
 <select class="selectpicker" name="brandname" required>
 <option value=""> Select </option>
-<?php $ret="select id,FromDate from tblbrands";
+<?php $ret="select id,FromDate from tblapartments";
 $query= $dbh -> prepare($ret);
 //$query->bindParam(':id',$id, PDO::PARAM_STR);
 $query-> execute();

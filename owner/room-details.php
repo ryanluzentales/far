@@ -158,8 +158,7 @@ if (isset($_POST['submit'])) {
                                             </a></li>
 
                                         <li role="presentation"><a href="#accessories" aria-controls="accessories" role="tab" data-toggle="tab">Accessories</a></li>
-                                        <li role="presentation"><a href="#reviews " aria-controls="reviews" role="tab" data-toggle="tab">Reviews
-                                            </a></li>
+                                        
                                         <li role="presentation"><a href="#location" aria-controls="location" role="tab" data-toggle="tab">Location</a></li>
 
                                     </ul>
@@ -176,22 +175,6 @@ if (isset($_POST['submit'])) {
                                         <div role="tabpanel" class="tab-pane" id="location">
 
                                             <h3>display map here</h3>
-                                        </div>
-
-                                        <div role="tabpanel" class="tab-pane" id="reviews">
-
-
-                                            <form action="post_comment.php" method="post"><br><br><br>
-                                                <p>
-                                                    Your Name:
-                                                </p>
-                                                <input style="width: 221px;height: 30px;" type="" name="name" placeholder="Please enter your name"></td>
-
-                                                <p>Comment:
-                                                </p>
-                                                <textarea name="comment" rows="5" cols="30" placeholder="Please enter your comment"></textarea> <br>
-                                                <input style="width: 230px;height: 40px;" type="submit" name="submit" value="Post"></td>
-                                            </form>
                                         </div>
 
                                         <!-- Accessories -->
