@@ -161,7 +161,7 @@ $error="Something went wrong. Please try again";
 <div class="col-sm-4">
 <select class="selectpicker" name="brandname" required>
 <option value=""> Select </option>
-<?php $ret="select id,BrandName from tblbrands";
+<?php $ret="select id,FromDate from tblbrands";
 $query= $dbh -> prepare($ret);
 //$query->bindParam(':id',$id, PDO::PARAM_STR);
 $query-> execute();
@@ -171,7 +171,7 @@ if($query -> rowCount() > 0)
 foreach($results as $result)
 {
 ?>
-<option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->BrandName);?></option>
+<option value="<?php echo htmlentities($result->id);?>"><?php echo htmlentities($result->FromDate);?></option>
 <?php }} ?>
 
 </select>

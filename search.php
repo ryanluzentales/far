@@ -73,8 +73,8 @@ error_reporting(0);
               //Query for Listing count
               $searchdata = $_POST['searchdata'];
               $sql = "SELECT tblrooms.id from tblrooms 
-join tblbrands on tblbrands.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.BrandName=:search || tblrooms.ModelYear=:search";
+join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
+where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
               $query = $dbh->prepare($sql);
               $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
               $query->execute();
@@ -86,9 +86,9 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                     </div>
 
                     <?php
-          $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms 
-join tblbrands on tblbrands.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.BrandName=:search || tblrooms.ModelYear=:search";
+          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
+join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
+where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
           $query = $dbh->prepare($sql);
           $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
           $query->execute();
@@ -102,7 +102,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
                             <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
@@ -136,7 +136,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                                     <select class="form-control">
                                         <option>Select Brand</option>
 
-                                        <?php $sql = "SELECT * from  tblbrands ";
+                                        <?php $sql = "SELECT * from  tblapartments ";
                     $query = $dbh->prepare($sql);
                     $query->execute();
                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -144,7 +144,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->BrandName); ?></option>
+                                            <?php echo htmlentities($result->FromDate); ?></option>
                                         <?php }
                     } ?>
 
@@ -173,7 +173,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -187,7 +187,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblbrands.B
                                                 src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
-                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
                                         <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>

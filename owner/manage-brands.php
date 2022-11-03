@@ -7,7 +7,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 } else {
 	if (isset($_GET['del'])) {
 		$id = $_GET['del'];
-		$sql = "delete from tblbrands  WHERE id=:id";
+		$sql = "delete from tblapartments  WHERE id=:id";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':id', $id, PDO::PARAM_STR);
 		$query->execute();
@@ -127,7 +127,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 										</tfoot>
 										<tbody>
 
-											<?php $sql = "SELECT * from  tblbrands ";
+											<?php $sql = "SELECT * from  tblapartments ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -136,7 +136,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 												foreach ($results as $result) {				?>
 													<tr>
 														<td><?php echo htmlentities($cnt); ?></td>
-														<td><?php echo htmlentities($result->BrandName); ?></td>
+														<td><?php echo htmlentities($result->FromDate); ?></td>
 														<td><?php echo htmlentities($result->address); ?></td>
 														<td><?php echo htmlentities($result->CreationDate); ?></td>
 														<td><?php echo htmlentities($result->UpdationDate); ?></td>

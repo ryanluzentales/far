@@ -120,7 +120,7 @@ if (isset($_POST['submit'])) {
                 <div class="container">
                     <div class="listing_detail_head row">
                         <div class="col-md-9">
-                            <h2><?php echo htmlentities($result->BrandName); ?> ,
+                            <h2><?php echo htmlentities($result->FromDate); ?> ,
                                 <?php echo htmlentities($result->VehiclesTitle); ?></h2>
                         </div>
                         <div class="col-md-3">
@@ -364,7 +364,7 @@ if (isset($_POST['submit'])) {
                                             <div class="product-listing-img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image" /> </a>
                                             </div>
                                             <div class="product-listing-content">
-                                                <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                                                <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                         , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
                                                 <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?></p>
 

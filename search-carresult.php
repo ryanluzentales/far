@@ -72,7 +72,7 @@ error_reporting(0);
 
                     <?php
 
-          $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
+          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
           $query = $dbh->prepare($sql);
           $query->bindParam(':brand', $brand, PDO::PARAM_STR);
           $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
@@ -87,7 +87,7 @@ error_reporting(0);
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
                             <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
@@ -121,7 +121,7 @@ error_reporting(0);
                                     <select class="form-control">
                                         <option>Select Brand</option>
 
-                                        <?php $sql = "SELECT * from  tblbrands ";
+                                        <?php $sql = "SELECT * from  tblapartments ";
                     $query = $dbh->prepare($sql);
                     $query->execute();
                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -129,7 +129,7 @@ error_reporting(0);
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->BrandName); ?></option>
+                                            <?php echo htmlentities($result->FromDate); ?></option>
                                         <?php }
                     } ?>
 
@@ -158,7 +158,7 @@ error_reporting(0);
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid  from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -172,7 +172,7 @@ error_reporting(0);
                                                 src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
-                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
                                         <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>

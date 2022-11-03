@@ -11,7 +11,7 @@ else{
 if(isset($_POST['submit']))
   {
 $vehicletitle=$_POST['vehicletitle'];
-$brand=$_POST['brandname'];
+$brand=$_POST['FromDate'];
 $vehicleoverview=$_POST['vehicalorcview'];
 $priceperday=$_POST['priceperday'];
 $fueltype=$_POST['fueltype'];
@@ -131,7 +131,7 @@ $msg="Data updated successfully";
 <?php if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php } ?>
 <?php 
 $id=intval($_GET['id']);
-$sql ="SELECT tblrooms.*,tblbrands.BrandName,tblbrands.id as bid from tblrooms join tblbrands on tblbrands.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
+$sql ="SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
 $query = $dbh -> prepare($sql);
 $query-> bindParam(':id', $id, PDO::PARAM_STR);
 $query->execute();
@@ -150,9 +150,9 @@ foreach($results as $result)
 </div>
 <label class="col-sm-2 control-label">Select Brand<span style="color:red">*</span></label>
 <div class="col-sm-4">
-<select class="selectpicker" name="brandname" required>
-<option value="<?php echo htmlentities($result->bid);?>"><?php echo htmlentities($bdname=$result->BrandName); ?> </option>
-<?php $ret="select id,BrandName from tblbrands";
+<select class="selectpicker" name="FromDate" required>
+<option value="<?php echo htmlentities($result->bid);?>"><?php echo htmlentities($bdname=$result->FromDate); ?> </option>
+<?php $ret="select id,FromDate from tblapartments";
 $query= $dbh -> prepare($ret);
 //$query->bindParam(':id',$id, PDO::PARAM_STR);
 $query-> execute();
@@ -161,12 +161,12 @@ if($query -> rowCount() > 0)
 {
 foreach($resultss as $results)
 {
-if($results->BrandName==$bdname)
+if($results->FromDate==$bdname)
 {
 continue;
 } else{
 ?>
-<option value="<?php echo htmlentities($results->id);?>"><?php echo htmlentities($results->BrandName);?></option>
+<option value="<?php echo htmlentities($results->id);?>"><?php echo htmlentities($results->FromDate);?></option>
 <?php }}} ?>
 
 </select>

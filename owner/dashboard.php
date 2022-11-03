@@ -115,7 +115,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="panel-body bk-warning text-light">
                                                     <div class="stat-panel text-center">
                                                         <?php
-                                                        $sql3 = "SELECT id from tblbrands ";
+                                                        $sql3 = "SELECT id from tblapartments ";
                                                         $query3 = $dbh->prepare($sql3);
                                                         $query3->execute();
                                                         $results3 = $query3->fetchAll(PDO::FETCH_OBJ);

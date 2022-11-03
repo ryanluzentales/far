@@ -13,7 +13,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $user_id = $_SESSION['ologin'];
         $brand = $_POST['brand'];
         $address = $_POST['address'];
-        $sql = "INSERT INTO  tblbrands(BrandName, address) VALUES(:brand,:address)";
+        $sql = "INSERT INTO  tblapartments(FromDate, address) VALUES(:brand,:address)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
         $query->bindParam(':address', $address, PDO::PARAM_STR);

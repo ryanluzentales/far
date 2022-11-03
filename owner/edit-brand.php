@@ -9,7 +9,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 	if (isset($_POST['submit'])) {
 		$brand = $_POST['brand'];
 		$id = $_GET['id'];
-		$sql = "update  tblbrands set BrandName=:brand where id=:id";
+		$sql = "update  tblapartments set FromDate=:brand where id=:id";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
 		$query->bindParam(':id', $id, PDO::PARAM_STR);
@@ -110,7 +110,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
 												<?php
 												$id = $_GET['id'];
-												$ret = "select * from tblbrands where id=:id";
+												$ret = "select * from tblapartments where id=:id";
 												$query = $dbh->prepare($ret);
 												$query->bindParam(':id', $id, PDO::PARAM_STR);
 												$query->execute();
@@ -123,7 +123,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 														<div class="form-group">
 															<label class="col-sm-4 control-label">Brand Name</label>
 															<div class="col-sm-8">
-																<input type="text" class="form-control" value="<?php echo htmlentities($result->BrandName); ?>" name="brand" id="brand" required>
+																<input type="text" class="form-control" value="<?php echo htmlentities($result->FromDate); ?>" name="brand" id="brand" required>
 															</div>
 														</div>
 														<div class="hr-dashed"></div>

@@ -75,7 +75,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$status = 1;
 		$name = $_GET['FromDate'];
 		$address = $_GET['ToDate'];
-		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblbrands(BrandName,address) VALUES(:name,:address)";
+		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblapartments(FromDate,address) VALUES(:name,:address)";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $status, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
