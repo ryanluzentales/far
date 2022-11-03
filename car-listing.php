@@ -112,7 +112,7 @@ error_reporting(0);
                                     <select class="form-control" name="brand">
                                         <option>Select Apartment</option>
 
-                                        <?php $sql = "SELECT * from  tblapartments ";
+                                        <?php $sql = "SELECT DISTINCT tblapartments.message from  tblapartments order by tblapartments.message desc ";
                     $query = $dbh->prepare($sql);
                     $query->execute();
                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -120,20 +120,13 @@ error_reporting(0);
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->FromDate); ?></option>
+                                            <?php echo htmlentities($result->message); ?></option>
                                         <?php }
                     } ?>
 
                                     </select>
                                 </div>
-                                <div class="form-group select">
-                                    <select class="form-control" name="fueltype">
-                                        <option>Bath Type</option>
-                                        <option value="Petrol">Private Bath</option>
-                                        <option value="Diesel">Shared Bath</option>
-                                        
-                                    </select>
-                                </div>
+                              
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"

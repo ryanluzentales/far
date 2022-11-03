@@ -51,10 +51,7 @@ error_reporting(0);
                 <div class="page-heading">
                     <h1>Search Result of keyword "<?php echo $_POST['searchdata']; ?>"</h1>
                 </div>
-                <ul class="coustom-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>Car Listing</li>
-                </ul>
+
             </div>
         </div>
         <!-- Dark Overlay-->
@@ -72,9 +69,7 @@ error_reporting(0);
                             <?php
               //Query for Listing count
               $searchdata = $_POST['searchdata'];
-              $sql = "SELECT tblrooms.id from tblrooms 
-join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
+              $sql = "SELECT tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
               $query = $dbh->prepare($sql);
               $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
               $query->execute();
@@ -86,7 +81,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                     </div>
 
                     <?php
-          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
+          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
 where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
           $query = $dbh->prepare($sql);

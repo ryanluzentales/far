@@ -46,7 +46,6 @@ error_reporting(0);
     <!-- /Header -->
 
 
-
     <!--Listing-->
     <section class="listing-page">
         <div class="container">
@@ -56,12 +55,8 @@ error_reporting(0);
                         <div class="sorting-count">
                             <?php
               //Query for Listing count
-              $brand = $_POST['brand'];
-              $fueltype = $_POST['fueltype'];
-              $sql = "SELECT id from tblrooms where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
+              $sql = "SELECT id from tblrooms";
               $query = $dbh->prepare($sql);
-              $query->bindParam(':brand', $brand, PDO::PARAM_STR);
-              $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
               $query->execute();
               $results = $query->fetchAll(PDO::FETCH_OBJ);
               $cnt = $query->rowCount();
@@ -70,12 +65,8 @@ error_reporting(0);
                         </div>
                     </div>
 
-                    <?php
-
-          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
+                    <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand";
           $query = $dbh->prepare($sql);
-          $query->bindParam(':brand', $brand, PDO::PARAM_STR);
-          $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
           $cnt = 1;
@@ -113,15 +104,15 @@ error_reporting(0);
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room</h5>
                         </div>
                         <div class="sidebar_filter">
-                            <form action="#" method="get">
+                            <form action="search-carresult.php" method="post">
                                 <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>Select Brand</option>
+                                    <select class="form-control" name="brand">
+                                        <option>Select Apartment</option>
 
-                                        <?php $sql = "SELECT * from  tblapartments ";
+                                        <?php $sql = "SELECT DISTINCT tblapartments.message from  tblapartments order by tblapartments.message desc ";
                     $query = $dbh->prepare($sql);
                     $query->execute();
                     $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -129,24 +120,17 @@ error_reporting(0);
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->FromDate); ?></option>
+                                            <?php echo htmlentities($result->message); ?></option>
                                         <?php }
                     } ?>
 
                                     </select>
                                 </div>
-                                <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>BathType</option>
-                                        <option value="Petrol">Private Bath</option>
-                                        <option value="Diesel">Shared Bath</option>
-                                        
-                                    </select>
-                                </div>
+                              
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
-                                            aria-hidden="true"></i> Search Room</button>
+                                            aria-hidden="true"></i>Search Room</button>
                                 </div>
                             </form>
                         </div>
@@ -212,6 +196,7 @@ error_reporting(0);
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/interface.js"></script>
+
     <!--bootstrap-slider-JS-->
     <script src="assets/js/bootstrap-slider.min.js"></script>
     <!--Slider-JS-->
