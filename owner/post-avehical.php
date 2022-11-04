@@ -68,7 +68,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $query->execute();
         $lastInsertId = $dbh->lastInsertId();
         if ($lastInsertId) {
-            $msg = "Vehicle posted successfully";
+            $msg = " Room posted successfully";
         } else {
             $error = "Something went wrong. Please try again";
         }
@@ -263,7 +263,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="fueltype" required>
+                                                    <select class="selectpicker" name="modelyear" required>
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Apartment</option>
@@ -299,11 +299,11 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 2<span style="color:red">*</span><input type="file"
-                                                        name="img2" >
+                                                        name="img2">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 3<span style="color:red">*</span><input type="file"
-                                                        name="img3" >
+                                                        name="img3">
                                                 </div>
                                             </div>
 
@@ -311,7 +311,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     Image 4<span style="color:red">*</span><input type="file"
-                                                        name="img4" >
+                                                        name="img4">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 5<input type="file" name="img5">

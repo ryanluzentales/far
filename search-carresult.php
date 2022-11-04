@@ -110,7 +110,7 @@ error_reporting(0);
                             <form action="search-carresult.php" method="post">
                                 <div class="form-group select">
                                     <select class="form-control" name="brand">
-                                        <option>Select Apartment</option>
+                                        <option>Select Room</option>
 
                                         <?php $sql = "SELECT DISTINCT tblapartments.message from  tblapartments order by tblapartments.message desc ";
                     $query = $dbh->prepare($sql);
@@ -126,7 +126,7 @@ error_reporting(0);
 
                                     </select>
                                 </div>
-                              
+
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"

@@ -123,13 +123,13 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find Your Car </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room </h5>
                         </div>
                         <div class="sidebar_filter">
                             <form action="#" method="get">
                                 <div class="form-group select">
                                     <select class="form-control">
-                                        <option>Select Brand</option>
+                                        <option>Select Landmark</option>
 
                                         <?php $sql = "SELECT * from  tblapartments ";
                     $query = $dbh->prepare($sql);
@@ -139,24 +139,24 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->FromDate); ?></option>
+                                            <?php echo htmlentities($result->message); ?></option>
                                         <?php }
                     } ?>
 
                                     </select>
                                 </div>
-                                <div class="form-group select">
+                                <!-- <div class="form-group select">
                                     <select class="form-control">
                                         <option>Select Fuel Type</option>
                                         <option value="Petrol">Petrol</option>
                                         <option value="Diesel">Diesel</option>
                                         <option value="CNG">CNG</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
-                                            aria-hidden="true"></i> Search Car</button>
+                                            aria-hidden="true"></i> Search Room</button>
                                 </div>
                             </form>
                         </div>

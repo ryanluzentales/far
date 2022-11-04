@@ -19,9 +19,12 @@ error_reporting(0);
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -58,28 +61,33 @@ error_reporting(0);
                             foreach ($results as $result) {
                         ?>
 
-                                <div class="col-list-3">
-                                    <div class="recent-car-list">
-                                        <div class="car-info-box"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="image"></a>
-                                            <ul>
-                                                <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
-                                                </li>
-                                                <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
+                        <div class="col-list-3">
+                            <div class="recent-car-list">
+                                <div class="car-info-box"> <a
+                                        href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                            src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                            class="img-responsive" alt="image"></a>
+                                    <ul>
+                                        <li><i class="fa fa-car"
+                                                aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                        </li>
+                                        <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
                                                     Type</li> -->
-                                                <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                                    Person</li>
-                                            </ul>
-                                        </div>
-                                        <div class="car-title-m">
-                                            <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
-                                                    <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                                            <span class="price">$<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
-                                        </div>
-                                        <div class="inventory_info_m">
-                                            <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
-                                        </div>
-                                    </div>
+                                        <li><i class="fa fa-user"
+                                                aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
+                                            Person</li>
+                                    </ul>
                                 </div>
+                                <div class="car-title-m">
+                                    <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                            <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                                    <span class="price">$<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                                </div>
+                                <div class="inventory_info_m">
+                                    <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                                </div>
+                            </div>
+                        </div>
                         <?php }
                         } ?>
 
