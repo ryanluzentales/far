@@ -105,7 +105,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>Booking No.</th>
                                             <th>Room</th>
                                             <th>Date</th>
-                                            <th>To Date</th>
+
                                             <th>Status</th>
                                             <th>Posting date</th>
                                             <th>Action</th>
@@ -118,7 +118,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>Booking No.</th>
                                             <th>Room</th>
                                             <th>Date</th>
-                                            <th>To Date</th>
+
                                             <th>Status</th>
                                             <th>Posting date</th>
                                             <th>Action</th>
@@ -144,7 +144,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                     , <?php echo htmlentities($result->VehiclesTitle); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
-                                            <td><?php echo htmlentities($result->ToDate); ?></td>
+
                                             <td><?php
 															if ($result->Status == 0) {
 																echo htmlentities('Not Confirmed yet');

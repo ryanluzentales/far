@@ -83,11 +83,11 @@ $msg="Vehicle  record deleted successfully";
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2 class="page-title">Manage Vehicles</h2>
+                        <h2 class="page-title">Manage Rooms</h2>
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Vehicle Details</div>
+                            <div class="panel-heading">Room Details</div>
                             <div class="panel-body">
                                 <?php if($error){?><div class="errorWrap">
                                     <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
@@ -98,22 +98,22 @@ $msg="Vehicle  record deleted successfully";
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Vehicle Title</th>
-                                            <th>Brand </th>
-                                            <th>Price Per day</th>
-                                            <th>Fuel Type</th>
-                                            <th>Model Year</th>
+                                            <th>Room Title</th>
+                                            <th>Apartment</th>
+                                            <th>Price Per Month</th>
+                                            <th>Bath Type</th>
+                                            <th>Housing Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>#</th>
-                                            <th>Vehicle Title</th>
-                                            <th>Brand </th>
-                                            <th>Price Per day</th>
-                                            <th>Fuel Type</th>
-                                            <th>Model Year</th>
+                                            <th>Room Title</th>
+                                            <th>Apartment</th>
+                                            <th>Price Per Month</th>
+                                            <th>Bath Type</th>
+                                            <th>Housing Type</th>
                                             <th>Action</th>
                                         </tr>
                                         </tr>

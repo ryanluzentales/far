@@ -179,7 +179,7 @@ foreach($results as $result)
                                             <tr>
                                                 <th>Total Days</th>
                                                 <td><?php echo htmlentities($tdays=$result->totalnodays);?></td>
-                                                <th>Rent Per Days</th>
+                                                <th>Rent Per Month</th>
                                                 <td><?php echo htmlentities($ppdays=$result->PricePerDay);?></td>
                                             </tr>
                                             <tr>

@@ -84,9 +84,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Booking No.</th>
-                                            <th>Vehicle</th>
+                                            <th>Room</th>
                                             <th>From Date</th>
-                                            <th>To Date</th>
+
                                             <th>Status</th>
                                             <th>Posting date</th>
                                             <th>Action</th>
@@ -97,9 +97,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <th>#</th>
                                             <th>Name</th>
                                             <th>Booking No.</th>
-                                            <th>Vehicle</th>
+                                            <th>Room</th>
                                             <th>From Date</th>
-                                            <th>To Date</th>
+
                                             <th>Status</th>
                                             <th>Posting date</th>
                                             <th>Action</th>
@@ -124,7 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                     , <?php echo htmlentities($result->VehiclesTitle); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
-                                            <td><?php echo htmlentities($result->ToDate); ?></td>
+
                                             <td><?php
 															if ($result->Status == 0) {
 																echo htmlentities('Not Confirmed yet');
