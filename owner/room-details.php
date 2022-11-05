@@ -235,7 +235,7 @@ if (isset($_POST['submit'])) {
 
                             <li> <i class="fa fa-home" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->FuelType); ?></h5>
-                                <p>Type of Room</p>
+                                <p>Bath Type</p>
                             </li>
 
                             <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
