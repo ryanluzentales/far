@@ -19,7 +19,7 @@ if (strlen($_SESSION['ologin']) == 0) {
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
 
-    <title>Car Rental Portal | New Bookings </title>
+    <title>FAR | New Bookings </title>
 
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -104,7 +104,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>Name</th>
                                             <th>Booking No.</th>
                                             <th>Room</th>
-                                            <th>From Date</th>
+                                            <th>Date</th>
 
                                             <th>Status</th>
                                             <th>Posting date</th>
@@ -117,7 +117,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>Name</th>
                                             <th>Booking No.</th>
                                             <th>Room</th>
-                                            <th>From Date</th>
+                                            <th>Date</th>
 
                                             <th>Status</th>
                                             <th>Posting date</th>

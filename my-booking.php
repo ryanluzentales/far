@@ -135,11 +135,11 @@ if (strlen($_SESSION['login']) == 0) {
                                     <h5 style="color:blue">Invoice</h5>
                                     <table>
                                         <tr>
-                                            <th>Car Name</th>
+                                            <th>Room Name</th>
                                             <th>From Date</th>
                                             <th>To Date</th>
-                                            <th>Total Days</th>
-                                            <th>Rent / Day</th>
+                                            <th>Total Month</th>
+                                            <th>Rent / Month</th>
                                         </tr>
                                         <tr>
                                             <td><?php echo htmlentities($result->VehiclesTitle); ?>,

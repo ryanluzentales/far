@@ -179,7 +179,7 @@ DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePer
                                                 </th>
                                             </tr>
                                             <tr>
-                                                <th>Vehicle Name</th>
+                                                <th>Room Name</th>
                                                 <td><a
                                                         href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                         , <?php echo htmlentities($result->VehiclesTitle); ?></td>

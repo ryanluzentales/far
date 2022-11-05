@@ -9,7 +9,7 @@ error_reporting(0);
 
 <head>
 
-    <title>Car Rental Portal | Car Listing</title>
+    <title>FAR | Room Listing</title>
     <!--Bootstrap -->
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->
@@ -26,9 +26,12 @@ error_reporting(0);
 
 
     <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -93,24 +96,30 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                     $cnt = 1;
                     if ($query->rowCount() > 0) {
                         foreach ($results as $result) {  ?>
-                            <div class="product-listing-m gray-bg">
-                                <div class="product-listing-img"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive" alt="Image" /> </a>
-                                </div>
-                                <div class="product-listing-content">
-                                    <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
-                                            , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                                    <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
-                                    <ul>
-                                        <li><i class="fa fa-user" aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                            seats</li>
-                                        <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
-                                        </li>
-                                        <li><i class="fa fa-car" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
-                                    </ul>
-                                    <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View
-                                        Details <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a>
-                                </div>
-                            </div>
+                    <div class="product-listing-m gray-bg">
+                        <div class="product-listing-img"><img
+                                src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                class="img-responsive" alt="Image" /> </a>
+                        </div>
+                        <div class="product-listing-content">
+                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                    , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                            <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
+                            <ul>
+                                <li><i class="fa fa-user"
+                                        aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
+                                    seats</li>
+                                <li><i class="fa fa-calendar"
+                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
+                                </li>
+                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                </li>
+                            </ul>
+                            <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View
+                                Details <span class="angle_arrow"><i class="fa fa-angle-right"
+                                        aria-hidden="true"></i></span></a>
+                        </div>
+                    </div>
                     <?php }
                     } ?>
                 </div>
@@ -134,8 +143,8 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                                         $cnt = 1;
                                         if ($query->rowCount() > 0) {
                                             foreach ($results as $result) {       ?>
-                                                <option value="<?php echo htmlentities($result->id); ?>">
-                                                    <?php echo htmlentities($result->FromDate); ?></option>
+                                        <option value="<?php echo htmlentities($result->id); ?>">
+                                            <?php echo htmlentities($result->FromDate); ?></option>
                                         <?php }
                                         } ?>
 
@@ -151,7 +160,8 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                                 </div>
 
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-block"><i class="fa fa-search" aria-hidden="true"></i> Search Car</button>
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Search a Room</button>
                                 </div>
                             </form>
                         </div>
@@ -159,7 +169,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
 
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-car" aria-hidden="true"></i> Related Rooms</h5>
+                            <h5><i class="fa" aria-hidden="true"></i> Related Rooms</h5>
                         </div>
                         <div class="recent_addedcars">
                             <ul>
@@ -171,14 +181,18 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                                 if ($query->rowCount() > 0) {
                                     foreach ($results as $result) {  ?>
 
-                                        <li class="gray-bg">
-                                            <div class="recent_post_img"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" alt="image"></a> </div>
-                                            <div class="recent_post_title"> <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
-                                                    , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                                                <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
-                                                    Day</p>
-                                            </div>
-                                        </li>
+                                <li class="gray-bg">
+                                    <div class="recent_post_img"> <a
+                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                                src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                                alt="image"></a> </div>
+                                    <div class="recent_post_title"> <a
+                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            , <?php echo htmlentities($result->VehiclesTitle); ?></a>
+                                        <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
+                                            Day</p>
+                                    </div>
+                                </li>
                                 <?php }
                                 } ?>
 

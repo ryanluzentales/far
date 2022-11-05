@@ -51,9 +51,12 @@ if (isset($_POST['submit'])) {
     <link href="assets/css/slick.css" rel="stylesheet">
     <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -88,108 +91,117 @@ if (isset($_POST['submit'])) {
     <!-- /Header -->
 
 
-            <section class="listing-detail">
-                <div class="container">
-                   
-                    <div class="row">
-                        <div class="col-md-9">
-                            
-                        </div>
+    <section class="listing-detail">
+        <div class="container">
 
-                        <!--Side-Bar-->
-                        <aside class="col-md-3">
-                            <div class="sidebar_widget">
-                                <div class="widget_heading">
-                                    <h5><i aria-hidden="true"></i>Post apartment</h5>
-                                </div>
-                                <form method="post" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label>Apartment Name:</label>
-                                        <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Address:</label>
-                                        <input type="text" class="form-control" name="todate" placeholder="Address" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Landmark:</label>
-                                        <input type="text" class="form-control" name="message" placeholder="Landmaek">
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Gender:</label> <br>
-                                        <select class="selectpicker" name="gender" required>
-                                                    <option value=""> Select </option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                    <option value="Mixed">Mixed</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Proof of Paymnet</label>
-                                        <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
-                                    </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn" name="submit" value="Submit">
-                                        </div>
-                                </form>
-                            </div>
-                        </aside>
-                        <!--/Side-Bar-->
-                    </div> 
+            <div class="row">
+                <div class="col-md-9">
 
                 </div>
-            </section>
-            <!--/Listing-detail-->
 
-            <!--Back to top-->
-            <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-            <!--/Back to top-->
+                <!--Side-Bar-->
+                <aside class="col-md-3">
+                    <div class="sidebar_widget">
+                        <div class="widget_heading">
+                            <h5><i aria-hidden="true"></i>Post apartment</h5>
+                        </div>
+                        <form method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label>Apartment Name:</label>
+                                <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label>Address:</label>
+                                <input type="text" class="form-control" name="todate" placeholder="Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Landmark:</label>
+                                <input type="text" class="form-control" name="message" placeholder="Landmaek">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender:</label> <br>
+                                <select class="selectpicker" name="gender" required>
+                                    <option value=""> Select </option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Mixed">Mixed</option>
+                                </select>
+                            </div>
+                            <div>
+                                <p>For payment you may use the details below:</p>
+                                <p>BPI:</p>
+                                <p>Union Bank:</p>
+                                <p>Gcash:</p>
+                                <p>Please upload your proof of payment below:</p>
+                            </div>
 
-            <!--Login-Form -->
+                            <div class="form-group">
+                                <label>Proof of Paymnet</label>
+                                <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn" name="submit" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </aside>
+                <!--/Side-Bar-->
+            </div>
+
+        </div>
+    </section>
+    <!--/Listing-detail-->
+
+    <!--Back to top-->
+    <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+    <!--/Back to top-->
+
+    <!--Login-Form -->
 
 
-            <!--Back to top-->
-            <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
-            <!--/Back to top-->
+    <!--Back to top-->
+    <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
+    <!--/Back to top-->
 
-            <!--Login-Form -->
-            <?php include('includes/login.php'); ?>
-            <!--/Login-Form -->
+    <!--Login-Form -->
+    <?php include('includes/login.php'); ?>
+    <!--/Login-Form -->
 
-            <!--Register-Form -->
-            <?php include('includes/registration.php'); ?>
+    <!--Register-Form -->
+    <?php include('includes/registration.php'); ?>
 
-            <!--/Register-Form -->
+    <!--/Register-Form -->
 
-            <!--Forgot-password-Form -->
-            <?php include('includes/forgotpassword.php'); ?>
-            <!--/Forgot-password-Form -->
+    <!--Forgot-password-Form -->
+    <?php include('includes/forgotpassword.php'); ?>
+    <!--/Forgot-password-Form -->
 
-            <!-- Scripts -->
-            <script src="js/jquery.min.js"></script>
-            <script src="js/bootstrap-select.js"></script>
-            <script src="js/bootstrap-select.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/bootstrap.js"></script>
-            <script src="js/jquery.dataTables.min.js"></script>
-            <script src="js/dataTables.bootstrap.min.js"></script>
-            <script src="js/Chart.min.js"></script>
-            <script src="js/fileinput.js"></script>
-            <script src="js/chartData.js"></script>
-            <script src="js/main.js"></script>
+    <!-- Scripts -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/bootstrap-select.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/dataTables.bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/fileinput.js"></script>
+    <script src="js/chartData.js"></script>
+    <script src="js/main.js"></script>
 
 
-            <?php include('includes/forgotpassword.php'); ?>
-            <!--/Forgot-password-Form -->
+    <?php include('includes/forgotpassword.php'); ?>
+    <!--/Forgot-password-Form -->
 
-            <!-- Scripts -->
-            <script src="assets/js/jquery.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/interface.js"></script>
-            <script src="assets/js/bootstrap-slider.min.js"></script>
-            <!--Slider-JS-->
-            <script src="assets/js/slick.min.js"></script>
-            <script src="assets/js/owl.carousel.min.js"></script>
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <!--Slider-JS-->
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
 

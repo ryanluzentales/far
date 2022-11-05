@@ -190,18 +190,18 @@ if (isset($_POST['submit'])) {
     ?>
 
     <section id="listing_img_slider">
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive"
+        <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>" class="img-responsive"
                 alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive"
+        <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>" class="img-responsive"
                 alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive"
+        <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage3); ?>" class="img-responsive"
                 alt="image" width="900" height="560"></div>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive"
+        <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage4); ?>" class="img-responsive"
                 alt="image" width="900" height="560"></div>
         <?php if ($result->Vimage5 == "") {
                 } else {
                 ?>
-        <div><img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive"
+        <div><img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage5); ?>" class="img-responsive"
                 alt="image" width="900" height="560"></div>
         <?php } ?>
     </section>
@@ -522,7 +522,7 @@ if (isset($_POST['submit'])) {
                         <div class="product-listing-m gray-bg">
                             <div class="product-listing-img"> <a
                                     href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
-                                        src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                        src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                         class="img-responsive" alt="image" /> </a>
                             </div>
                             <div class="product-listing-content">
@@ -538,7 +538,7 @@ if (isset($_POST['submit'])) {
                                     <li><i class="fa fa-calendar"
                                             aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
                                     </li>
-                                    <li><i class="fa fa-car"
+                                    <li><i class="fa "
                                             aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                 </ul>
                             </div>

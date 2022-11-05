@@ -68,7 +68,7 @@ error_reporting(0);
                                             src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                             class="img-responsive" alt="image"></a>
                                     <ul>
-                                        <li><i class="fa fa-car"
+                                        <li><i class=""
                                                 aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                         </li>
                                         <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>

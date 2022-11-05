@@ -243,7 +243,8 @@ if (isset($_POST['submit'])) {
                                 <p>Availability</p>
 
                             <li> <i class="fa fa-pencil" aria-hidden="false"></i>
-                                <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Reviews</a>
+                                <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Ratings and
+                                    Reviews</a>
                             </li>
                             </li>
                         </ul>
@@ -526,7 +527,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <?php if ($_SESSION['login']) { ?>
                             <div class="form-group">
-                                <input type="submit" class="btn" name="submit" value="Book Now">
+                                <input type="submit" class="btn" name="submit" value="Reserve Now">
                             </div>
                             <?php } else { ?>
                             <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
@@ -576,7 +577,7 @@ if (isset($_POST['submit'])) {
                                     <li><i class="fa fa-calendar"
                                             aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
                                     </li>
-                                    <li><i class="fa fa-car"
+                                    <li><i class="fa "
                                             aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                 </ul>
                             </div>

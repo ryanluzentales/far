@@ -107,8 +107,8 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                                 <li><i class="fa fa-calendar"
                                         aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
                                 </li>
-                                <li><i class="fa fa-car"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
+                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                </li>
                             </ul>
                             <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View
                                 Details <span class="angle_arrow"><i class="fa fa-angle-right"
@@ -164,7 +164,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
 
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-car" aria-hidden="true"></i> Recently Listed Cars</h5>
+                            <h5><i class="fa " aria-hidden="true"></i> Recently Listed Rooms</h5>
                         </div>
                         <div class="recent_addedcars">
                             <ul>
