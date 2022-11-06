@@ -200,6 +200,9 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     </select>
                                                 </div>
                                                 <br>
+                                                <br>
+                                                <br>
+                                                <br>
                                                 <label class="col-sm-2 control-label">Apartment Address<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -222,6 +225,22 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                     </select>
                                                 </div>
+                                                <label class="col-sm-2 control-label">Apartment Image<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-3">
+                                                    <input type="file" name="vehicletitle" class="form-control"
+                                                        required>
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <label class="col-sm-2 control-label">Landmark<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-3">
+                                                    <input type="Text" name="vehicletitle" class="form-control"
+                                                        required>
+                                                </div>
                                             </div>
 
                                             <div class="hr-dashed"></div>
@@ -235,11 +254,12 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
+                                                <label class="col-sm-2 control-label">Contact Number<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="priceperday" class="form-control" required>
                                                 </div>
+
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -251,15 +271,15 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                     </select>
                                                 </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <!-- <label class="col-sm-2 control-label">Housing Type<span
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="modelyear" class="form-control" required>
-                                                </div> -->
+                                                    <input type="text" name="priceperday" class="form-control" required>
+                                                </div>
+
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -272,7 +292,8 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                     </select>
                                                 </div>
-
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -287,7 +308,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <h4><b>Upload Images</b></h4>
+                                                    <h4><b>Upload photos of the room</b></h4>
                                                 </div>
                                             </div>
 
