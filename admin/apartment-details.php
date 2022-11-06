@@ -110,7 +110,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('realtimenumber1@gmail.com');
+        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
         
         //Recipients
         $mail->addAddress($email);              
