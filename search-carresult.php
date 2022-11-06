@@ -42,7 +42,7 @@ error_reporting(0);
 
 
     <!--Header-->
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header-no-search.php'); ?>
     <!-- /Header -->
 
 
