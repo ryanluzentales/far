@@ -9,6 +9,10 @@
                 </div>
                 <div class=" col-sm-9 col-md-10">
                     <div class="header_info">
+
+                        <div>
+                            toggle sample
+                        </div>
                         <div class="social-follow">
                         </div>
                         <?php if (strlen($_SESSION['login']) == 0) {

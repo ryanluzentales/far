@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <!--Side-Bar-->
-                <aside class="col-md-3">
+                <aside class="col-md-12">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
                             <h5><i aria-hidden="true"></i>Post apartment</h5>
@@ -117,10 +117,27 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Landmark:</label>
-                                <input type="text" class="form-control" name="message" placeholder="Landmaek">
+                                <input type="text" class="form-control" name="message" placeholder="Landmark">
                             </div>
                             <div class="form-group">
-                                <label>Gender:</label> <br>
+                                <label>Contact Number:</label>
+                                <input type="number" class="form-control" name="message" placeholder="Contact Number">
+                            </div>
+                            <div class="form-group">
+                                <label>Housing Type:</label> <br>
+                                <select class="selectpicker" name="gender" required>
+                                    <option value=""> Select </option>
+                                    <option value="Male">Apartment</option>
+                                    <option value="Female">Dormitory</option>
+                                    <option value="Mixed">Boarding House</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Please upload an image of your Apartment</label>
+                                <input type="file" class="form-control" name="payment" placeholder="Apartment Image">
+                            </div>
+                            <div class="form-group">
+                                <label>Gender allowed:</label> <br>
                                 <select class="selectpicker" name="gender" required>
                                     <option value=""> Select </option>
                                     <option value="Male">Male</option>
@@ -130,14 +147,19 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div>
                                 <p>For payment you may use the details below:</p>
-                                <p>BPI:</p>
-                                <p>Union Bank:</p>
-                                <p>Gcash:</p>
-                                <p>Please upload your proof of payment below:</p>
-                            </div>
+                                <p>BPI: 1243-3540-1231</p>
+                                <p>Union Bank: 124-3540-1231</p>
+                                <p>Gcash: 09208262854</p>
 
+                            </div>
+                            <p>You can also pay through GCASH using the number above or QR code below.</p>
+                            <img src="assets/imagess/download.png" alt="QR Code" width="250" height="250">
+
+                            <p>For the post to be confirm, we need to check the proof of payment and other details.
+                                Please upload your
+                                proof of payment below:</p>
                             <div class="form-group">
-                                <label>Proof of Paymnet</label>
+                                <label>Proof of Payment</label>
                                 <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
                             </div>
                             <div class="form-group">
