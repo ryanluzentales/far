@@ -5544,3 +5544,52 @@ h5 {
   color: white;
   border-radius: 30px;
 }
+
+
+/*Inclusion Styles*/
+
+.inclusion-wrapper {
+  background-color: red;
+  position: relative;
+  
+
+}
+
+.inclusion-division {
+  display: flex;
+  justify-content: space-around;
+  
+
+}
+
+.inc-furniture {
+  background-color: blue;
+  width: 250px;
+  padding: 10px;
+
+}
+
+.inc-electronics{
+  background-color: #00ABB3;
+  width: 250px;
+  padding: 10px;
+
+}
+
+.inc-free-utilities {
+  background-color: #089901;
+  width: 250px;
+  padding: 10px;
+
+}
+
+.inc-others {
+  background-color: pink;
+  width: 250px;
+  padding: 10px;
+
+}
+
+.inc-title {
+  color: white;
+}
