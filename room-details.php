@@ -510,8 +510,8 @@ if (isset($_POST['submit'])) {
                         <form method="post">
                             <div class="form-group">
                                 <label>Date:</label>
-                                <input type="date" class="form-control" name="fromdate" placeholder="From Date"
-                                    required>
+                                <input type="date" value="<?php echo date('Y-m-d');?>" class="form-control"
+                                    name="fromdate" placeholder="From Date" required>
                             </div>
                             <!-- <div class="form-group">
                                 <label>To Date:</label>

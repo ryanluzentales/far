@@ -2,8 +2,8 @@
 session_start();
 include('includes/config.php');
 //error_reporting(0);
-if (strlen($_SESSION['ologin']) == 0) {
-    header('location:index.php');
+if (strlen($_SESSION['login']) == 0) {
+    header('location:review-room-guest.php');
 } else {
 ?>
 
@@ -58,13 +58,13 @@ if (strlen($_SESSION['ologin']) == 0) {
 
 
     <?php 
-     $user_name = strval($_SESSION['ologin']);
+     $user_name = strval($_SESSION['login']);
      $room_id = strval($_GET['vhid']);
     ?>
     <div class="container">
-        <h1 class="mt-5 mb-5">Review & Rating</h1>
+        <h1 class="mt-5 mb-5">Ratings and Review</h1>
         <div class="card">
-            <div class="card-header">Sample Product</div>
+            <div class="card-header">Overall review</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-4 text-center">
@@ -127,7 +127,10 @@ if (strlen($_SESSION['ologin']) == 0) {
                         </div>
                         </p>
                     </div>
-
+                    <div class="col-sm-4 text-center">
+                        <h3 class="mt-4 mb-3">Write Review Here</h3>
+                        <button type="button" name="add_review" id="add_review" class="btn btn-primary">Review</button>
+                    </div>
                 </div>
             </div>
         </div>

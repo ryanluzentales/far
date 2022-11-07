@@ -41,8 +41,10 @@ if(isset($_POST["action"]))
 	$total_user_rating = 0;
 	$review_content = array();
 
-	$query = "SELECT * FROM review_table join tblrooms on review_table.room_id=tblrooms.id order by review_table.review_id desc";
+	$query = "SELECT * FROM review_table where review_table.room_id='1'";
 
+	//review_table.room_id!='null' join tblrooms on review_table.room_id=tblrooms.id order byreview_table.room_id desc
+	
 	$result = $connect->query($query, PDO::FETCH_ASSOC);
 
 	foreach($result as $row)
