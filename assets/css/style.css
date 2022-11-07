@@ -5594,3 +5594,16 @@ width: 80%;
 .posted-at {
   font-style: italic;
 }
+
+
+.review-wrapper {
+  margin: 35px 50px 50px 0;
+  
+}
+
+.review-click {
+  background-color: #00ABB3;
+  padding: 20px;
+  color: white;
+  border-radius: 30px;
+}

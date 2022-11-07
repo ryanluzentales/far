@@ -218,7 +218,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="col-md-3">
                     <div class="price_info">
-                        <p>$<?php echo htmlentities($result->PricePerDay); ?> </p>Per Day
+                        <p>₱ <?php echo htmlentities($result->PricePerDay); ?> </p>Per Month
 
                     </div>
                 </div>
@@ -242,12 +242,18 @@ if (isset($_POST['submit'])) {
                                 <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
                                 <p>Availability</p>
 
-                            <li> <i class="fa fa-pencil" aria-hidden="false"></i>
-                                <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Reviews</a>
-                            </li>
                             </li>
                         </ul>
                     </div>
+
+
+                    <div class="review-wrapper">
+                        <a class="review-click" href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>">
+                            Give Ratings
+                            and
+                            Reviews</a>
+                    </div>
+
                     <div class="listing_more_info">
                         <div class="listing_detail_wrap">
                             <!-- Nav tabs -->
@@ -528,15 +534,15 @@ if (isset($_POST['submit'])) {
                             <div class="product-listing-content">
                                 <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                         , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                                <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?></p>
+                                <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?></p>
 
                                 <ul class="features_list">
 
                                     <li><i class="fa fa-user"
                                             aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                        seats</li>
+                                        person</li>
                                     <li><i class="fa fa-calendar"
-                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
+                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
                                     </li>
                                     <li><i class="fa "
                                             aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>

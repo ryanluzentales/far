@@ -81,7 +81,7 @@ error_reporting(0);
                                 <div class="car-title-m">
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                                             <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                                    <span class="price">$<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                                    <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Month</span>
                                 </div>
                                 <div class="inventory_info_m">
                                     <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>

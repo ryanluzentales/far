@@ -61,7 +61,8 @@ if (strlen($_SESSION['ologin']) == 0) {
      $user_name = strval($_SESSION['ologin']);
      $room_id = strval($_GET['vhid']);
     ?>
-    <div class="container" <h1 class="mt-5 mb-5">Review & Rating</h1>
+    <div class="container">
+        <h1 class="mt-5 mb-5">Review & Rating</h1>
         <div class="card">
             <div class="card-header">Sample Product</div>
             <div class="card-body">

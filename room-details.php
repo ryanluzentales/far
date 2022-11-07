@@ -218,7 +218,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="col-md-3">
                     <div class="price_info">
-                        <p>$<?php echo htmlentities($result->PricePerDay); ?> </p>Per Day
+                        <p>₱ <?php echo htmlentities($result->PricePerDay); ?> </p>Per Month
 
                     </div>
                 </div>
@@ -241,13 +241,15 @@ if (isset($_POST['submit'])) {
                             <li> <i class="fa fa-user-plus" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->SeatingCapacity); ?></h5>
                                 <p>Availability</p>
-
-                            <li> <i class="fa fa-pencil" aria-hidden="false"></i>
-                                <a href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>"> Ratings and
-                                    Reviews</a>
-                            </li>
                             </li>
                         </ul>
+
+                    </div>
+                    <div class="review-wrapper">
+                        <a class="review-click" href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>">
+                            Ratings
+                            and
+                            Reviews</a>
                     </div>
                     <div class="listing_more_info">
                         <div class="listing_detail_wrap">
@@ -501,19 +503,13 @@ if (isset($_POST['submit'])) {
                 <!--Side-Bar-->
                 <aside class="col-md-3">
 
-                    <div class="share_vehicle">
-                        <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a> <a
-                                href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a> <a href="#"><i
-                                    class="fa fa-linkedin-square" aria-hidden="true"></i></a> <a href="#"><i
-                                    class="fa fa-google-plus-square" aria-hidden="true"></i></a> </p>
-                    </div>
                     <div class="sidebar_widget">
                         <div class="widget_heading">
                             <h5><i class="fa fa-envelope" aria-hidden="true"></i>Reserve Now</h5>
                         </div>
                         <form method="post">
                             <div class="form-group">
-                                <label>From Date:</label>
+                                <label>Date:</label>
                                 <input type="date" class="form-control" name="fromdate" placeholder="From Date"
                                     required>
                             </div>
@@ -567,18 +563,19 @@ if (isset($_POST['submit'])) {
                             <div class="product-listing-content">
                                 <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                         , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                                <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?></p>
+                                <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?></p>
 
                                 <ul class="features_list">
 
                                     <li><i class="fa fa-user"
                                             aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                        seats</li>
+                                        person</li>
                                     <li><i class="fa fa-calendar"
-                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
+                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
                                     </li>
                                     <li><i class="fa "
-                                            aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
+                                            aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

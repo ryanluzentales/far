@@ -80,13 +80,13 @@ error_reporting(0);
                         <div class="product-listing-content">
                             <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
-                            <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
+                            <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?> Per Month</p>
                             <ul>
                                 <li><i class="fa fa-user"
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
-                                    seats</li>
+                                    person</li>
                                 <li><i class="fa fa-calendar"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
+                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
                                 </li>
                                 <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                 </li>
@@ -140,8 +140,8 @@ error_reporting(0);
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                                        <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
-                                            Day</p>
+                                        <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> per
+                                            Month</p>
                                     </div>
                                 </li>
                                 <?php }

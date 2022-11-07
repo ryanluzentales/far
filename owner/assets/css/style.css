@@ -5533,4 +5533,14 @@ h5 {
 }
 
 
+.review-wrapper {
+  margin: 35px 50px 50px 0;
+  
+}
 
+.review-click {
+  background-color: #00abb3;
+  padding: 20px;
+  color: white;
+  border-radius: 30px;
+}

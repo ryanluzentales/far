@@ -103,8 +103,10 @@ if (strlen($_SESSION['login']) == 0) {
                                                     href="room-details.php?vhid=<?php echo htmlentities($result->vid); ?>">
                                                     <?php echo htmlentities($result->FromDate); ?> ,
                                                     <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                                            <p><b>From </b> <?php echo htmlentities($result->FromDate); ?> <b>To </b>
-                                                <?php echo htmlentities($result->ToDate); ?></p>
+                                            <p><b>Reservation Date: </b> <?php echo htmlentities($result->FromDate); ?>
+                                                <b></b>
+                                                <?php echo htmlentities($result->ToDate); ?>
+                                            </p>
                                             <div style="float: left">
                                                 <p><b>Message:</b> <?php echo htmlentities($result->message); ?> </p>
                                             </div>
@@ -124,8 +126,8 @@ if (strlen($_SESSION['login']) == 0) {
 
 
                                         <?php } else { ?>
-                                        <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Not Confirm
-                                                yet</a>
+                                        <div class="vehicle_status"> <a href="#" class="btn outline btn-xs">Not
+                                                Confirm</a>
                                             <div class="clearfix"></div>
                                         </div>
                                         <?php } ?>
@@ -136,22 +138,18 @@ if (strlen($_SESSION['login']) == 0) {
                                     <table>
                                         <tr>
                                             <th>Room Name</th>
-                                            <th>From Date</th>
-                                            <th>To Date</th>
-                                            <th>Total Month</th>
+                                            <th>Date</th>
                                             <th>Rent / Month</th>
                                         </tr>
                                         <tr>
                                             <td><?php echo htmlentities($result->VehiclesTitle); ?>,
                                                 <?php echo htmlentities($result->FromDate); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
-                                            <td> <?php echo htmlentities($result->ToDate); ?></td>
-                                            <td><?php echo htmlentities($tds = $result->totaldays); ?></td>
                                             <td> <?php echo htmlentities($ppd = $result->PricePerDay); ?></td>
                                         </tr>
                                         <tr>
-                                            <th colspan="4" style="text-align:center;"> Grand Total</th>
-                                            <th><?php echo htmlentities($tds * $ppd); ?></th>
+                                            <th colspan="2" style="text-align:center;"> Grand Total</th>
+                                            <th><?php echo htmlentities($ppd = $result->PricePerDay); ?></th>
                                         </tr>
                                     </table>
                                     <hr />
