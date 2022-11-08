@@ -12,7 +12,7 @@
 			</li> -->
 	        <li><a href="create-apartment.php"><i class="fa fa-user"></i>Create Apartment </a>
 
-	        <li><a href="#"><i class="fa fa-car"></i> Rooms</a>
+	        <li><a href="#"><i class="fa fa-home"></i> Rooms</a>
 	            <ul>
 	                <li><a href="post-avehical.php">Post a Room</a></li>
 	                <li><a href="manage-vehicles.php">Manage Room</a></li>
@@ -31,7 +31,6 @@
 
 	        </li>
 
-	        <li><a href="create-apartment.php"><i class="fa fa-user"></i>Create Apartment </a>
 
 
 

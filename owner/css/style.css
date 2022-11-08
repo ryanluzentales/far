@@ -640,7 +640,7 @@ li {
   background-color: #b4b4b4;
 }
 .ts-sidebar {
-  background: #2c3136;
+  background: #fff;
   max-height: 100%;
   transition: max-height 0.3s;
   overflow: hidden;
@@ -657,10 +657,10 @@ li {
 }
 .ts-sidebar .ts-sidebar-search {
   width: 100%;
-  background: #25292a;
+  background: #fff;
   border: none;
   padding: 10px 15px;
-  color: #fff;
+  color: #25292a;
 }
 @media only screen and (min-width: 992px) {
   .ts-sidebar .ts-profile-nav {
@@ -686,7 +686,7 @@ li {
   display: block;
   text-decoration: none;
   padding: 12px 15px;
-  color: #fff;
+  color: #25292a;
 }
 .ts-sidebar-menu li {
   position: relative;
@@ -708,10 +708,10 @@ li {
   max-height: 2000px;
 }
 .ts-sidebar-menu .open > a {
-  background: rgba(51, 56, 62, 0.35);
+  background-color: #fff;
 }
 .ts-sidebar-menu > .open > a {
-  background: #33383e;
+  background-color: #fff;
   border-left: 3px solid #37a6c4;
 }
 .ts-sidebar-menu .open > .more i {
