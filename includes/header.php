@@ -12,11 +12,16 @@
 
 
                         <div class="social-follow">
+                            <span class="switch">
+                                <input type="checkbox" id="switcher"></input>
+                                <label for="switcher"></label>
+                            </span>
                         </div>
                         <?php if (strlen($_SESSION['login']) == 0) {
                         ?>
-                        <div class="login_btn"> <a href="./owner/index.php" class="btn btn-xs uppercase"
-                                data-toggle="modal" data-dismiss="modal">log in as owner</a> </div>
+                        <div class=" login_btn"> <a href="./owner/index.php" class="btn btn-xs uppercase"
+                                data-toggle="modal" data-dismiss="modal">log in as owner</a>
+                        </div>
                         <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                 data-dismiss="modal">Log in</a> </div>
                         <?php } else {

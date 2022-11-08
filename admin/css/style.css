@@ -49,7 +49,7 @@ a:hover {
 *      Buttons        *
 ****************************/
 .btn {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 .btn i {
   position: relative;
@@ -166,7 +166,7 @@ a:hover {
 *      Text size color        *
 ****************************/
 .font-one {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 .text-bold {
   font-weight: bold;
@@ -304,7 +304,7 @@ a:hover {
 .content-format {
   line-height: 1.6em;
   font-weight: 400;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   font-style: normal;
   word-wrap: break-word;
 }
@@ -320,7 +320,7 @@ a:hover {
 .content-format h4,
 .content-format h5,
 .content-format h6 {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-weight: 700;
   font-weight: bold;
   font-style: normal;
@@ -435,7 +435,7 @@ a:hover {
   border: 1px solid #ededed;
   color: #666;
   font-family: Consolas, Monaco, Lucida Console, monospace;
-  font-size: .9em;
+  font-size: 0.9em;
   line-height: 1.714285714;
   margin: 24px 0;
   margin: 1.714285714rem 0;
@@ -454,7 +454,7 @@ a:hover {
   box-shadow: none !important;
   height: 1em !important;
   width: 1em !important;
-  margin: 0 .07em !important;
+  margin: 0 0.07em !important;
   vertical-align: -0.1em !important;
   background: none !important;
   padding: 0 !important;
@@ -518,7 +518,7 @@ li {
   margin-bottom: 4px;
 }
 .chart-dot-list li:before {
-  content: '';
+  content: "";
   height: 12px;
   width: 12px;
   margin-right: 6px;
@@ -527,13 +527,13 @@ li {
   border-radius: 50%;
 }
 .chart-dot-list li.a1:before {
-  background: #F7464A;
+  background: #f7464a;
 }
 .chart-dot-list li.a2:before {
-  background: #46BFBD;
+  background: #46bfbd;
 }
 .chart-dot-list li.a3:before {
-  background: #FDB45C;
+  background: #fdb45c;
 }
 .chart-doughnut {
   padding: 41px 0;

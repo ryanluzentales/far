@@ -790,12 +790,7 @@ table thead th, table thead td {
   float: right;
   text-align: right;
 }
-.social-follow {
-  display: inline-block;
-  margin-left: 20px;
-  margin-top: 0;
-  vertical-align: middle;
-}
+
 .social-follow ul {
 	padding:0px;
 	margin:0px;
@@ -5606,4 +5601,85 @@ width: 80%;
   padding: 20px;
   color: white;
   border-radius: 30px;
+}
+
+/*Switcher*/
+
+
+.social-follow {
+  background-color: #464646;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  flex-direction: column;
+  
+}
+
+.switcher-body{
+  background-color: #464646;
+}
+
+.switch {
+  position: relative;
+ width: 200px;
+  height: 50px;
+  border-radius: 25px;
+}
+
+.switch input {
+  appearance: none;
+  width: 200px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #1E1E1E;
+  outline: none;
+}
+
+
+.switch input::before,
+.switch input::after {
+    z-index: 2;
+    position: absolute;
+    top: 56%;
+    transform: translateY(-50%);
+    font-weight: bolder;
+}
+
+.switch input::before{
+    content: "ON";
+    left: 20px;
+}
+
+.switch input::after {
+  content: "OFF";
+  right: 20px;
+}
+
+.switch input:checked {
+  background-color: #ff9800;
+}
+
+.switch label {
+  z-index: 1;
+  position:absolute;
+  top: 10px;
+  bottom: 4px;
+  border-radius: 20px;
+}
+
+
+.switch input { 
+  transition: 0.25s;
+
+}
+
+.switch input:checked::after,
+.switch input:checked::before {
+  color: #fff;
+  transition: color 0.5s;
+}
+
+.switch input:checked+label {
+  
 }
