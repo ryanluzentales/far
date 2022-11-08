@@ -76,7 +76,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php
                                                         $sql1 = "SELECT id from tblrooms ";
@@ -97,7 +97,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php
                                                         $sql2 = "SELECT id from tblbooking ";
@@ -119,7 +119,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php
                                                         $sql3 = "SELECT id from tblapartments ";

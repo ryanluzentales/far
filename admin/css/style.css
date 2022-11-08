@@ -640,7 +640,7 @@ li {
   background-color: #b4b4b4;
 }
 .ts-sidebar {
-  background: #2c3136;
+  background: #fff;
   max-height: 0;
   transition: max-height 0.3s;
   overflow: hidden;
@@ -656,10 +656,10 @@ li {
 }
 .ts-sidebar .ts-sidebar-search {
   width: 100%;
-  background: #25292a;
+  background: #fff;
   border: none;
   padding: 10px 15px;
-  color: #fff;
+  color: #2c3136;
 }
 @media only screen and (min-width: 992px) {
   .ts-sidebar .ts-profile-nav {
@@ -673,7 +673,7 @@ li {
   }
 }
 .ts-sidebar-menu .ts-label {
-  color: #585c64;
+  color: #2c3136;
   font-weight: bold;
   padding: 8px 15px;
   text-transform: uppercase;
@@ -685,7 +685,7 @@ li {
   display: block;
   text-decoration: none;
   padding: 12px 15px;
-  color: #fff;
+  color: #2c3136;
 }
 .ts-sidebar-menu li {
   position: relative;

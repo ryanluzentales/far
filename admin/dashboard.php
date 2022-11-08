@@ -57,7 +57,7 @@ else{
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-primary text-light">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php 
 $sql ="SELECT id from tblusers ";
@@ -77,7 +77,7 @@ $regusers=$query->rowCount();
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-success text-light">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php 
 $sql1 ="SELECT id from tblrooms ";
@@ -98,7 +98,7 @@ $totalvehicle=$query1->rowCount();
                                     </div>
                                     <div class="col-md-3">
                                         <div class="panel panel-default">
-                                            <div class="panel-body bk-info text-light">
+                                            <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php 
 $sql2 ="SELECT id from tblbooking ";
