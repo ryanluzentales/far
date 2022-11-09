@@ -74,7 +74,7 @@ error_reporting(0);
                             $searchdata = $_POST['searchdata'];
                             $sql = "SELECT tblrooms.id from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                             $query->execute();

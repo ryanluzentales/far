@@ -11,18 +11,18 @@ error_reporting(0);
 
     <title>FAR | Room Listing</title>
     <!--Bootstrap -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" type="text/css">
     <!--Custome Style -->
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
     <!--OWL Carousel slider-->
-    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/owl.transitions.css" type="text/css">
     <!--slick-slider -->
-    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="./assets/css/slick.css" rel="stylesheet">
     <!--bootstrap-slider -->
-    <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="./assets/css/bootstrap-slider.min.css" rel="stylesheet">
     <!--FontAwesome Font Style -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="./assets/css/font-awesome.min.css" rel="stylesheet">
 
 
     <!-- Fav and touch icons -->
@@ -51,7 +51,10 @@ error_reporting(0);
                 <div class="page-heading">
                     <h1>Search Result of keyword "<?php echo $_POST['searchdata']; ?>"</h1>
                 </div>
-
+                <ul class="coustom-breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>ROOM Listing</li>
+                </ul>
             </div>
         </div>
         <!-- Dark Overlay-->
@@ -67,33 +70,35 @@ error_reporting(0);
                     <div class="result-sorting-wrapper">
                         <div class="sorting-count">
                             <?php
-              //Query for Listing count
-              $searchdata = $_POST['searchdata'];
-              $sql = "SELECT tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
-              $query = $dbh->prepare($sql);
-              $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
-              $query->execute();
-              $results = $query->fetchAll(PDO::FETCH_OBJ);
-              $cnt = $query->rowCount();
-              ?>
+                            //Query for Listing count
+                            $searchdata = $_POST['searchdata'];
+                            $sql = "SELECT tblrooms.id from tblrooms 
+join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
+                            $query = $dbh->prepare($sql);
+                            $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
+                            $query->execute();
+                            $results = $query->fetchAll(PDO::FETCH_OBJ);
+                            $cnt = $query->rowCount();
+                            ?>
                             <p><span><?php echo htmlentities($cnt); ?> Listings found againt search</span></p>
                         </div>
                     </div>
 
                     <?php
-          $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid from tblrooms 
+                    $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
-          $query = $dbh->prepare($sql);
-          $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
-          $query->execute();
-          $results = $query->fetchAll(PDO::FETCH_OBJ);
-          $cnt = 1;
-          if ($query->rowCount() > 0) {
-            foreach ($results as $result) {  ?>
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
+                    $query->execute();
+                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                    $cnt = 1;
+                    if ($query->rowCount() > 0) {
+                        foreach ($results as $result) {  ?>
                     <div class="product-listing-m gray-bg">
                         <div class="product-listing-img"><img
-                                src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                src="./admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
@@ -116,47 +121,24 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                         </div>
                     </div>
                     <?php }
-          } ?>
+                    } ?>
                 </div>
 
                 <!--Side-Bar-->
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room </h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find a Room </h5>
                         </div>
                         <div class="sidebar_filter">
-                            <form action="#" method="get">
-                                <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>Select Landmark</option>
-
-                                        <?php $sql = "SELECT * from  tblapartments ";
-                    $query = $dbh->prepare($sql);
-                    $query->execute();
-                    $results = $query->fetchAll(PDO::FETCH_OBJ);
-                    $cnt = 1;
-                    if ($query->rowCount() > 0) {
-                      foreach ($results as $result) {       ?>
-                                        <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->message); ?></option>
-                                        <?php }
-                    } ?>
-
-                                    </select>
-                                </div>
-                                <!-- <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>Select Fuel Type</option>
-                                        <option value="Petrol">Petrol</option>
-                                        <option value="Diesel">Diesel</option>
-                                        <option value="CNG">CNG</option>
-                                    </select>
-                                </div> -->
-
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="Search..." name="searchdata" class="form-control"
+                                    required="true">
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
-                                            aria-hidden="true"></i> Search Room</button>
+                                            aria-hidden="true"></i> Search a Room</button>
                                 </div>
                             </form>
                         </div>
@@ -164,22 +146,22 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
 
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa " aria-hidden="true"></i> Recently Listed Rooms</h5>
+                            <h5><i class="fa" aria-hidden="true"></i> Related Rooms</h5>
                         </div>
                         <div class="recent_addedcars">
                             <ul>
                                 <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
-                $query = $dbh->prepare($sql);
-                $query->execute();
-                $results = $query->fetchAll(PDO::FETCH_OBJ);
-                $cnt = 1;
-                if ($query->rowCount() > 0) {
-                  foreach ($results as $result) {  ?>
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                $cnt = 1;
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) {  ?>
 
                                 <li class="gray-bg">
                                     <div class="recent_post_img"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
-                                                src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                                src="./admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
@@ -189,7 +171,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                                     </div>
                                 </li>
                                 <?php }
-                } ?>
+                                } ?>
 
                             </ul>
                         </div>
@@ -200,11 +182,6 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
         </div>
     </section>
     <!-- /Listing-->
-
-    <!--Footer -->
-    <?php include('includes/footer.php'); ?>
-    <!-- /Footer-->
-
     <!--Back to top-->
     <div id="back-top" class="back-top"> <a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i> </a> </div>
     <!--/Back to top-->
@@ -222,14 +199,14 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
     <?php include('includes/forgotpassword.php'); ?>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/interface.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/interface.js"></script>
     <!--bootstrap-slider-JS-->
-    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <script src="./assets/js/bootstrap-slider.min.js"></script>
     <!--Slider-JS-->
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/owl.carousel.min.js"></script>
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/owl.carousel.min.js"></script>
 
 </body>
 
