@@ -41,7 +41,7 @@ error_reporting(0);
 
 
     <!--Header-->
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header-no-search.php'); ?>
     <!-- /Header -->
 
     <!--Page Header-->
@@ -131,34 +131,11 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                             <h5><i class="fa fa-filter" aria-hidden="true"></i> Find a Room </h5>
                         </div>
                         <div class="sidebar_filter">
-                            <form action="#" method="get">
-                                <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>Select Apartment</option>
-
-                                        <?php $sql = "SELECT * from  tblapartments ";
-                                        $query = $dbh->prepare($sql);
-                                        $query->execute();
-                                        $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                        $cnt = 1;
-                                        if ($query->rowCount() > 0) {
-                                            foreach ($results as $result) {       ?>
-                                        <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->FromDate); ?></option>
-                                        <?php }
-                                        } ?>
-
-                                    </select>
-                                </div>
-                                <div class="form-group select">
-                                    <select class="form-control">
-                                        <option>Select Fuel Type</option>
-                                        <option value="Petrol">Petrol</option>
-                                        <option value="Diesel">Diesel</option>
-                                        <option value="CNG">CNG</option>
-                                    </select>
-                                </div>
-
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="Search..." name="searchdata" class="form-control"
+                                    required="true">
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Search a Room</button>
