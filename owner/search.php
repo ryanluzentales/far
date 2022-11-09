@@ -88,7 +88,7 @@ where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartmen
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle=:search || tblrooms.FuelType=:search || tblapartments.FromDate=:search || tblrooms.ModelYear=:search";
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->execute();
