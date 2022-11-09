@@ -26,7 +26,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php; </script>";
 
 	}if(isset($_REQUEST['eid'])){
-		$email = 'syrobertojr2001@gmail.com';
+		$email = 'jrobertosy@gmail.com';
     	$subject = "APARTMENT DENIED";
     	$message = "Good day owner! your request has been reviews and unfortunately it has been denied and will be reviewed further. If you have any questions please feel free to contact us. Thank you for using FAR app";
 		
@@ -34,10 +34,10 @@ if (strlen($_SESSION['alogin']) == 0) {
    	 	try {
         //Server settingss
         	$mail->isSMTP();                                     
-        	$mail->Host = 'smtp.elasticemail.com';                      
+        	$mail->Host = 'mail.smtp2go.com';                      
         	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'ryanluzentales@gmail.com';     
-       		$mail->Password = 'ED3360C6D3C14A62DC929734501A692C45AC';             
+        	$mail->Username = 'emailsupport@findaroom.app';     
+       		$mail->Password = 'Find4room!';             
        	 	$mail->SMTPOptions = array(
             	'ssl' => array(
             	'verify_peer' => false,
@@ -49,7 +49,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('ryanluzentales@gmail.com');
+        $mail->setFrom('emailsupport@findaroom.com');
         
         //Recipients
         $mail->addAddress($email);              
@@ -95,10 +95,10 @@ if (strlen($_SESSION['alogin']) == 0) {
    	 	try {
         //Server settingss
         	$mail->isSMTP();                                     
-        	$mail->Host = 'smtp.elasticemail.com';                      
+        	$mail->Host = 'mail.smtp2go.com';                      
         	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'realtimenumber1@gmail.com';     
-       		$mail->Password = '27BEA73860A17327F60018F16FDCCB7FE138';             
+        	$mail->Username = 'emailsupport@findaroom.app';     
+       		$mail->Password = 'Find4room!';             
        	 	$mail->SMTPOptions = array(
             	'ssl' => array(
             	'verify_peer' => false,
@@ -110,7 +110,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        $mail->setFrom('emailsupport@findaroom.app');
         
         //Recipients
         $mail->addAddress($email);              

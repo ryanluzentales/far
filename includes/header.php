@@ -10,13 +10,14 @@
                 <div class=" col-sm-9 col-md-10">
                     <div class="header_info">
 
-
                         <div class="social-follow">
                             <span class="switch">
                                 <input type="checkbox" id="switcher"></input>
                                 <label for="switcher"></label>
                             </span>
                         </div>
+
+
                         <?php if (strlen($_SESSION['login']) == 0) {
                         ?>
                         <div class=" login_btn"> <a href="./owner/index.php" class="btn btn-xs uppercase"
