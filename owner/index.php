@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
+                        <?php $sql = "SELECT tblrooms.VehiclesBrand,tblrooms.RoomName,tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -68,11 +68,9 @@ error_reporting(0);
                                             src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                             class="img-responsive" alt="image"></a>
                                     <ul>
-                                        <li><i class=""
-                                                aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                        <li><i aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                         </li>
-                                        <!-- <li><i class="fa fa-calendar" aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                                                    Type</li> -->
+
                                         <li><i class="fa fa-user"
                                                 aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                             Person</li>
@@ -81,7 +79,15 @@ error_reporting(0);
                                 <div class="car-title-m">
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                                             <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
-                                    <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Month</span>
+                                    <br>
+                                    <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                            <?php echo htmlentities($result->RoomName); ?></a></h6>
+
+                                    <br>
+                                    <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                            <?php echo htmlentities($result->FromDate); ?></a></h6>
+
+                                    <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
                                 </div>
                                 <div class="inventory_info_m">
                                     <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>

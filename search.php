@@ -65,7 +65,7 @@ error_reporting(0);
     <!--Listing-->
     <section class="listing-page">
         <div class="container">
-            <div class="row"> 
+            <div class="row">
                 <div class="col-md-9 col-md-push-3">
                     <div class="result-sorting-wrapper">
                         <div class="sorting-count">
@@ -135,7 +135,7 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                             <form action="search.php" method="post" id="header-search-form">
                                 <input type="text" placeholder="Search..." name="searchdata" class="form-control"
                                     required="true">
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Search a Room</button>

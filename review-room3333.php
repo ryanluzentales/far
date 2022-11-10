@@ -1,12 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-//error_reporting(0);
-if (strlen($_SESSION['login']) == 0) {
-        
-    
-    header('location:index.php');
-} else {
+error_reporting(0)
 ?>
 
 <!DOCTYPE HTML>
@@ -60,7 +55,6 @@ if (strlen($_SESSION['login']) == 0) {
 
 
     <?php 
-     $user_name = strval($_SESSION['login']);
      $room_id = strval($_GET['vhid']);
     ?>
     <div class="container">
@@ -430,5 +424,3 @@ $(document).ready(function() {
 
 });
 </script>
-
-<?php } ?>

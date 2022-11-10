@@ -43,6 +43,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $query = $dbh->prepare($sql);
         $query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
+        $query->bindParam(':roomname', $roomname, PDO::PARAM_STR);
         $query->bindParam(':vehicleoverview', $vehicleoverview, PDO::PARAM_STR);
         $query->bindParam(':priceperday', $priceperday, PDO::PARAM_STR);
         $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);

@@ -516,7 +516,7 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                     <?php
                             $bid = $_SESSION['brndid'];
-                            $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:bid";
+                            $sql = "SELECT tblrooms.RoomName,tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:bid";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':bid', $bid, PDO::PARAM_STR);
                             $query->execute();
@@ -534,6 +534,10 @@ if (isset($_POST['submit'])) {
                             <div class="product-listing-content">
                                 <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                         , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                                <br>
+
+                                <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                        <?php echo htmlentities($result->RoomName); ?></a></h5>
                                 <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?></p>
 
                                 <ul class="features_list">
@@ -541,9 +545,7 @@ if (isset($_POST['submit'])) {
                                     <li><i class="fa fa-user"
                                             aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                         person</li>
-                                    <li><i class="fa fa-calendar"
-                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                                    </li>
+
                                     <li><i class="fa "
                                             aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?></li>
                                 </ul>
