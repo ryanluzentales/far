@@ -11,6 +11,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $brand = $_POST['brandname'];
         $vehicleoverview = $_POST['vehicalorcview'];
         $address = $_POST['address'];
+        $roomname = $_POST['roomname'];
         $priceperday = $_POST['priceperday'];
         $fueltype = $_POST['fueltype'];
         $modelyear = $_POST['modelyear'];
@@ -38,7 +39,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         move_uploaded_file($_FILES["img4"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img4"]["name"]);
         move_uploaded_file($_FILES["img5"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-        $sql = "INSERT INTO tblrooms(VehiclesTitle,VehiclesBrand,VehiclesOverview,Address,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+        $sql = "INSERT INTO tblrooms(RoomName,VehiclesTitle,VehiclesBrand,VehiclesOverview,Address,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:roomname,:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -174,13 +175,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Name<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="vehicletitle" class="form-control"
-                                                        required>
+                                                    <input type="text" name="roomname" class="form-control"
+                                                        >
                                                 </div>
                                                 <label class="col-sm-2 control-label">Select an Apartment<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="brandname" required>
+                                                    <select class="selectpicker" name="brandname" >
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
@@ -206,7 +207,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Apartment Address<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="address" required>
+                                                    <select class="selectpicker" name="address" >
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
@@ -229,7 +230,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-3">
                                                     <input type="file" name="vehicletitle" class="form-control"
-                                                        required>
+                                                        >
                                                 </div>
                                                 <br>
                                                 <br>
@@ -239,7 +240,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-3">
                                                     <input type="Text" name="vehicletitle" class="form-control"
-                                                        required>
+                                                        >
                                                 </div>
                                             </div>
 
@@ -249,7 +250,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-10">
                                                     <textarea class="form-control" name="vehicalorcview" rows="3"
-                                                        required></textarea>
+                                                        ></textarea>
                                                 </div>
                                             </div>
 
@@ -257,13 +258,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Contact Number<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control" required>
+                                                    <input type="text" name="priceperday" class="form-control" >
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="fueltype" required>
+                                                    <select class="selectpicker" name="fueltype" >
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Private Bath</option>
@@ -277,13 +278,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control" required>
+                                                    <input type="text" name="priceperday" class="form-control" >
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="modelyear" required>
+                                                    <select class="selectpicker" name="modelyear" >
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Apartment</option>
@@ -298,7 +299,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="number" name="seatingcapacity" class="form-control"
-                                                        required>
+                                                        >
                                                 </div>
                                             </div>
 
@@ -316,7 +317,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     Image 1 <span style="color:red">*</span><input type="file"
-                                                        name="img1" required>
+                                                        name="img1" >
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 2<span style="color:red">*</span><input type="file"

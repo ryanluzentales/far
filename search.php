@@ -65,7 +65,7 @@ error_reporting(0);
     <!--Listing-->
     <section class="listing-page">
         <div class="container">
-            <div class="row">
+            <div class="row"> 
                 <div class="col-md-9 col-md-push-3">
                     <div class="result-sorting-wrapper">
                         <div class="sorting-count">
@@ -74,7 +74,7 @@ error_reporting(0);
                             $searchdata = $_POST['searchdata'];
                             $sql = "SELECT tblrooms.id from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search || tblrooms.PricePerDay LIKE :search || tblrooms.Address LIKE :search";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                             $query->execute();
@@ -88,7 +88,7 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search";
+where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search || tblrooms.PricePerDay LIKE :search";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->execute();
