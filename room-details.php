@@ -44,90 +44,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-
-function showComments()
-{
-    $comment = "";
-
-    $comment .= commenttree();
-
-    echo $comment;
-}
-
-function commenttree($parentid = NULL)
-{
-    $comments = '';
-    $sql = '';
-
-    if (is_null($parentid)) {
-        $sql = "select * from comments where comment_id='0'";
-    } else {
-        $sql = "select * from comments where comment_id=$parentid";
-    }
-
-
-    $result = mysqli_query($GLOBALS['conn'], $sql);
-
-    while ($data = mysqli_fetch_array($result)) {
-
-        if ($data['comment_id'] == '0') {
-            $comments .= '
-		 <div class="media border comment0 p-3">
-    <div class="media-body">
-      <h4>' . $data['name'] . '<small><i> Posted on February 19, 2016</i></small></h4>
-     
-	 ' . $data['description'] . '
-      
-	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply(' . $data['id'] . ')">reply</a></p>
-	 </div>
-	 </div>
-	  ';
-        } else {
-            $comments .= '<div class="media border reply p-3">
-    <div class="media-body">
-      <h4>' . $data['name'] . '<small><i> Posted on February 19, 2016</i></small></h4>
-     
-	 ' . $data['description'] . '
-      
-	  <p><a href="#postcomment" class="btn btn-primary mt-2 float-right" onclick="reply(' . $data['id'] . ')">reply</a></p>
-	  </div>
-	  </div>
-	  ';
-        }
-
-
-        $comments .= '<div class="media  parent  p-3">
-    <div class="media-body">' . commenttree($data['id']) . '</div></div>';
-    }
-
-
-    return $comments;
-}
-
-
-$vhid = $_GET['vhid'];
-
-if (isset($_POST['submit'])) {
-
-    if (empty($_POST['commentid'])) {
-        $commentid = '0';
-    } else {
-        $commentid = $_POST['commentid'];
-    }
-
-    $sql = "insert into comments (vhid_id,comment_id,name,description) values ('" . $vhid . "','" . $commentid . "','" . $_POST['name'] . "','" . $_POST['description'] . "')";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        echo '<script>alert("comment added successfully, we will published after verify your comment.")</script>';
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
-}
-
-
-
 ?>
 
 
@@ -215,6 +131,9 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-9">
                     <h2><?php echo htmlentities($result->FromDate); ?> ,
                         <?php echo htmlentities($result->VehiclesTitle); ?></h2>
+
+                    <h2><?php echo htmlentities($result->RoomName); ?>
+                    </h2>
                 </div>
                 <div class="col-md-3">
                     <div class="price_info">

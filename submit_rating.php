@@ -1,8 +1,6 @@
 <?php
 
-//submit_rating.php
-
-$connect = new PDO("mysql:host=localhost;dbname=far_db", "root", "");
+include('includes/config.php');
 
 if(isset($_POST["rating_data"]))
 {
@@ -21,7 +19,7 @@ if(isset($_POST["rating_data"]))
 	VALUES (:room_id,:user_name, :user_rating, :user_review, :datetime)
 	";
 
-	$statement = $connect->prepare($query);
+	$statement = $dbh->prepare($query);
 
 	$statement->execute($data);
 
@@ -29,8 +27,10 @@ if(isset($_POST["rating_data"]))
 
 }
 
+
 if(isset($_POST["action"]))
 {
+
 	$average_rating = 0;
 	$total_review = 0;
 	$five_star_review = 0;
@@ -41,9 +41,9 @@ if(isset($_POST["action"]))
 	$total_user_rating = 0;
 	$review_content = array();
 
-	$query = "SELECT * FROM review_table join tblrooms on review_table.room_id=tblrooms.id order by review_table.review_id desc";
+	$query = "SELECT  review_table.room_id, review_table.user_name, review_table.user_review, review_table.user_rating, review_table.datetime FROM review_table join tblrooms on tblrooms.id = review_table.room_id ";
 
-	$result = $connect->query($query, PDO::FETCH_ASSOC);
+	$result = $dbh->query($query, PDO::FETCH_ASSOC);
 
 	foreach($result as $row)
 	{

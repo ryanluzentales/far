@@ -1,7 +1,10 @@
 <?php
 session_start();
 include('includes/config.php');
-error_reporting(0)
+error_reporting(0);
+if (strlen($_SESSION['login']) == 0) {
+    header('location:index.php');
+} else {
 ?>
 
 <!DOCTYPE HTML>
@@ -29,8 +32,7 @@ error_reporting(0)
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <script src="jquery-3.2.1.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -55,12 +57,13 @@ error_reporting(0)
 
 
     <?php 
+     $user_name = strval($_SESSION['login']);
      $room_id = strval($_GET['vhid']);
     ?>
     <div class="container">
-        <h1 class="mt-5 mb-5">Ratings and Review</h1>
+        <h1 class="mt-5 mb-5">Review & Rating</h1>
         <div class="card">
-            <div class="card-header">Overall review</div>
+            <div class="card-header">Sample Product</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-4 text-center">
@@ -424,3 +427,5 @@ $(document).ready(function() {
 
 });
 </script>
+
+<?php } ?>
