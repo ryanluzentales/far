@@ -94,7 +94,7 @@ if (isset($_POST['submit'])) {
 
     <?php
     $vhid = intval($_GET['vhid']);
-    $sql = "SELECT tblrooms.*,tblapartments.FromDate, tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
+    $sql = "SELECT tblrooms.*,tblapartments.FromDate, tblapartments.OwnerName, tblapartments.ContactNumber, tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:vhid";
     $query = $dbh->prepare($sql);
     $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query->execute();
@@ -132,8 +132,9 @@ if (isset($_POST['submit'])) {
                     <h2><?php echo htmlentities($result->FromDate); ?> ,
                         <?php echo htmlentities($result->VehiclesTitle); ?></h2>
 
-                    <h2><?php echo htmlentities($result->RoomName); ?>
-                    </h2>
+                    <h2><?php echo htmlentities($result->RoomName); ?> </h2>
+                    <h2> <?php echo htmlentities($result->OwnerName); ?></h2>
+                    <h2> <?php echo htmlentities($result->ContactNumber); ?></h2>
                 </div>
                 <div class="col-md-3">
                     <div class="price_info">

@@ -6,18 +6,27 @@ if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
+    $ownername = $_POST['ownername'];
+    $contactnumber = $_POST['contactnumber'];
+    $housingtype = $_POST['housingtype'];
     $gender = $_POST['gender'];
     $useremail = $_SESSION['ologin'];
     $status = 0;
     $paymentreceipt = $_FILES["payment"]["name"];
+    $apartmentimage = $_FILES["apartmentimage"]["name"];
     $bookingno = mt_rand(100000000, 999999999);
     move_uploaded_file($_FILES["payment"]["tmp_name"], "../admin/img/payment/" . $_FILES["payment"]["name"]);
+    move_uploaded_file($_FILES["apartmentimage"]["tmp_name"], "../admin/img/apartmentimages/" . $_FILES["apartmentimage"]["name"]);
 
-    $sql = "INSERT INTO tblapartments(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,gender,Payment,Status) VALUES(:bookingno,:useremail,:bookingno,:fromdate,:todate,:message,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,VehicleId,FromDate,ToDate,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:bookingno,:fromdate,:todate,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+    $query->bindParam(':ownername', $ownername, PDO::PARAM_STR);
     $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':contactnumber', $contactnumber, PDO::PARAM_STR);
+    $query->bindParam(':housingtype', $housingtype, PDO::PARAM_STR);
+    $query->bindParam(':apartmentimage', $apartmentimage, PDO::PARAM_STR);
     $query->bindParam(':paymentreceipt', $paymentreceipt, PDO::PARAM_STR);
     $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
     $query->bindParam(':todate', $todate, PDO::PARAM_STR);
@@ -83,22 +92,27 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
-
-
     <!--Header-->
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header.php'); 
+    ?>
     <!-- /Header -->
-
+    <?php
+                                $email = $_SESSION['ologin'];   
+                                $sql = "SELECT FullName FROM tblowner WHERE EmailId=:email ";
+                                $query = $dbh->prepare($sql);
+                                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) {
+                                    }
+                                } ?>
 
     <section class="listing-detail">
         <div class="container">
-
             <div class="row">
                 <div class="col-md-9">
-
                 </div>
-
                 <!--Side-Bar-->
                 <aside class="col-md-12">
                     <div class="sidebar_widget">
@@ -108,12 +122,16 @@ if (isset($_POST['submit'])) {
                         <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Apartment Name:</label>
-                                <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name"
-                                    required>
+                                <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" name="ownername"
+                                    value="<?php echo (isset($result->FullName))?$result->FullName:'';?>"
+                                    placeholder="Owner Name">
                             </div>
                             <div class="form-group">
                                 <label>Address:</label>
-                                <input type="text" class="form-control" name="todate" placeholder="Address" required>
+                                <input type="text" class="form-control" name="todate" placeholder="Address">
                             </div>
                             <div class="form-group">
                                 <label>Landmark:</label>
@@ -121,24 +139,26 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="form-group">
                                 <label>Contact Number:</label>
-                                <input type="number" class="form-control" name="message" placeholder="Contact Number">
+                                <input type="number" class="form-control" name="contactnumber"
+                                    placeholder="Contact Number">
                             </div>
                             <div class="form-group">
                                 <label>Housing Type:</label> <br>
-                                <select class="selectpicker" name="gender" required>
+                                <select class="selectpicker" name="housingtype">
                                     <option value=""> Select </option>
-                                    <option value="Male">Apartment</option>
-                                    <option value="Female">Dormitory</option>
-                                    <option value="Mixed">Boarding House</option>
+                                    <option value="Apartment">Apartment</option>
+                                    <option value="Dormitory">Dormitory</option>
+                                    <option value="Boarding House">Boarding House</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Please upload an image of your Apartment</label>
-                                <input type="file" class="form-control" name="payment" placeholder="Apartment Image">
+                                <input type="file" class="form-control" name="apartmentimage"
+                                    placeholder="Apartment Image">
                             </div>
                             <div class="form-group">
                                 <label>Gender allowed:</label> <br>
-                                <select class="selectpicker" name="gender" required>
+                                <select class="selectpicker" name="gender">
                                     <option value=""> Select </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>

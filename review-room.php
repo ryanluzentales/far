@@ -6,6 +6,8 @@ if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
 
+
+
 ?>
 
 <!DOCTYPE HTML>
@@ -58,14 +60,24 @@ if (strlen($_SESSION['login']) == 0) {
 
 
     <?php 
-     $user_name = strval($_SESSION['login']);
+     $user_name = strval($result->FullName);
      $room_id = strval($_GET['vhid']);
+                                $sql = "SELECT FullName FROM tblowner WHERE EmailId=:email ";
+                                $query = $dbh->prepare($sql);
+                                $query->bindParam(':email', $email, PDO::PARAM_STR);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) {
+
+                                        echo htmlentities($result->FullName);
+                                    }
+                                } 
     ?>
     <div class="container">
         <h1 class="mt-5 mb-5">Review & Rating</h1>
         <div class="card">
             <div class="card-header">Sample Product</div>
-            <?php echo $room_id?>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-4 text-center">
