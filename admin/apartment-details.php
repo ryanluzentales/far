@@ -23,37 +23,39 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->bindParam(':eid', $eid, PDO::PARAM_STR);
 		$query->execute();
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
-		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php; </script>";
+		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
 
-	}if(isset($_REQUEST['eid'])){
-		$email = 'jrobertosy@gmail.com';
-    	$subject = "APARTMENT DENIED";
-    	$message = "Good day owner! your request has been reviews and unfortunately it has been denied and will be reviewed further. If you have any questions please feel free to contact us. Thank you for using FAR app";
-		
-   	 	$mail = new PHPMailer(true);             
-   	 	try {
-        //Server settingss
-        	$mail->isSMTP();                                     
-        	$mail->Host = 'mail.smtp2go.com';                      
-        	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'emailsupport@findaroom.app';     
-       		$mail->Password = 'Find4room!';             
-       	 	$mail->SMTPOptions = array(
-            	'ssl' => array(
-            	'verify_peer' => false,
-            	'verify_peer_name' => false,
-            	'allow_self_signed' => true
-            	)
+	}if(isset($_POST['approve'])){
+		$email = 'ryanluzentales@gmail.com';
+        $subject = "APARTMENT DENIED";
+        $message = "Good day owner! your request has been reviewed chuchu DENIED";
+
+
+
+        $mail = new PHPMailer(true);                            
+
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'mail.smtp2go.com';                      
+        $mail->SMTPAuth = true;                             
+        $mail->Username = 'farnotification@findaroom.app';     
+        $mail->Password = 'Find4room!';             
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
         );                         
         $mail->SMTPSecure = 'none';                           
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('emailsupport@findaroom.com');
+        $mail->setFrom('farnotification@findaroom.app');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo($email);
+        $mail->addReplyTo('farnotification@findaroom.app');
         
         //Content
         $mail->isHTML(true);                                  
@@ -64,14 +66,11 @@ if (strlen($_SESSION['alogin']) == 0) {
 		
        $_SESSION['result'] = 'Message has been sent';
 	   $_SESSION['status'] = 'ok';
-    } catch (Exception $e) {
-	   $_SESSION['result'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
-	   $_SESSION['status'] = 'error';
-    }
-	}
+}
 
 
-	if (isset($_REQUEST['aeid'])) {
+
+	if(isset($_REQUEST['aeid'])){
 		$aeid = intval($_GET['aeid']);
 		$status = 1;
 		$name = $_GET['FromDate'];
@@ -87,34 +86,35 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
 
 	} if(isset($_REQUEST['aeid'])){
-		$email = 'jrobertosy@gmail.com';
-    	$subject = "APARTMENT APPROVED";
-    	$message = "Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.";
-		
-   	 	$mail = new PHPMailer(true);             
-   	 	try {
-        //Server settingss
-        	$mail->isSMTP();                                     
-        	$mail->Host = 'mail.smtp2go.com';                      
-        	$mail->SMTPAuth = true;                             
-        	$mail->Username = 'emailsupport@findaroom.app';     
-       		$mail->Password = 'Find4room!';             
-       	 	$mail->SMTPOptions = array(
-            	'ssl' => array(
-            	'verify_peer' => false,
-            	'verify_peer_name' => false,
-            	'allow_self_signed' => true
-            	)
+		$email = 'ryanluzentales@gmail.com';
+        $subject = "APARTMENT APPROVED";
+        $message = "Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.";
+
+
+
+    $mail = new PHPMailer(true);                            
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'mail.smtp2go.com';                      
+        $mail->SMTPAuth = true;                             
+        $mail->Username = 'farnotification@findaroom.app';     
+        $mail->Password = 'Find4room!';             
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
         );                         
         $mail->SMTPSecure = 'none';                           
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('emailsupport@findaroom.app');
+        $mail->setFrom('farnotification@findaroom.app');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo($email);
+        $mail->addReplyTo('farnotification@findaroom.app');
         
         //Content
         $mail->isHTML(true);                                  
@@ -123,13 +123,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
         $mail->send();
 		
-       $_SESSION['result'] = 'Message has been sent';
-	   $_SESSION['status'] = 'ok';
-    } catch (Exception $e) {
-	   $_SESSION['result'] = 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo;
-	   $_SESSION['status'] = 'error';
-    }
-	}
+}
 
 ?>
 
@@ -243,10 +237,20 @@ if (strlen($_SESSION['alogin']) == 0) {
 													foreach ($results as $result) {				?>
                                             <h3 style="text-align:center; color:red">
                                                 #<?php echo htmlentities($result->BookingNumber); ?> Apartment Details
+                                                <?php 
+                                                $email = $result->EmailId;
+                                                $email = $email;
+                                                
+                                                ?>
                                             </h3>
+                                            <div class="form-group">
+                                                <input type="text" name="email" id="email" class="form-control"
+                                                    value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
+                                            </div>
 
                                             <tr>
                                                 <th colspan="4" style="text-align:center;color:blue">Details</th>
+
                                             </tr>
                                             <tr>
                                                 <th>Booking No.</th>
@@ -257,9 +261,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <th>Email Id</th>
                                                 <td><?php echo htmlentities($result->EmailId); ?></td>
 
+
                                             </tr>
-
-
 
                                             <tr>
                                                 <th>Apartment Name</th>
@@ -287,16 +290,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             </tr>
 
+
                                             <?php if ($result->Status == 0) { ?>
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
                                                     <a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>"
                                                         onclick="return confirm('Confirm and send email notification')"
-                                                        class="btn btn-primary"> Approve</a>
+                                                        name="approve" class="btn btn-primary"> Approve</a>
 
                                                     <a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>"
                                                         onclick="return confirm('Deny and send email notification')"
-                                                        class="btn btn-danger"> Deny</a>
+                                                        name="deny " class="btn btn-danger"> Deny</a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
