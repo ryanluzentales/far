@@ -119,6 +119,77 @@ $bookings=$query2->rowCount();
                                         </div>
                                     </div>
 
+
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="stat-panel text-center">
+                                                    <?php 
+$sql2 ="SELECT id from tblapartments where Status='0'";
+$query2= $dbh -> prepare($sql2);
+$query2->execute();
+$results2=$query2->fetchAll(PDO::FETCH_OBJ);
+$bookings=$query2->rowCount();
+?>
+
+                                                    <div class="stat-panel-number h1 ">
+                                                        <?php echo htmlentities($bookings);?></div>
+                                                    <div class="stat-panel-title text-uppercase">New Apartments</div>
+                                                </div>
+                                            </div>
+                                            <a href="manage-apartment.php"
+                                                class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="stat-panel text-center">
+                                                    <?php 
+$sql2 ="SELECT id from tblapartments where Status='1'";
+$query2= $dbh -> prepare($sql2);
+$query2->execute();
+$results2=$query2->fetchAll(PDO::FETCH_OBJ);
+$bookings=$query2->rowCount();
+?>
+
+                                                    <div class="stat-panel-number h1 ">
+                                                        <?php echo htmlentities($bookings);?></div>
+                                                    <div class="stat-panel-title text-uppercase">Confirmed Apartments
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="confirmed-apartment.php"
+                                                class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="stat-panel text-center">
+                                                    <?php 
+$sql2 ="SELECT id from tblapartments where Status='2'";
+$query2= $dbh -> prepare($sql2);
+$query2->execute();
+$results2=$query2->fetchAll(PDO::FETCH_OBJ);
+$bookings=$query2->rowCount();
+?>
+
+                                                    <div class="stat-panel-number h1 ">
+                                                        <?php echo htmlentities($bookings);?></div>
+                                                    <div class="stat-panel-title text-uppercase">Denied Apartments</div>
+                                                </div>
+                                            </div>
+                                            <a href="canceled-apartment.php"
+                                                class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

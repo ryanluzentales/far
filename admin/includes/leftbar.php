@@ -10,6 +10,7 @@
 	                <li><a href="manage-vehicles.php">Manage Rooms</a></li>
 	            </ul>
 	        </li>
+	        <li><a href="create-apartment.php"><i class="fa fa-user"></i>Create Apartment </a>
 
 	        <li><a href="#"><i class="fa fa-sitemap"></i> Manage Apartment</a>
 	            <ul>

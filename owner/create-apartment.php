@@ -249,17 +249,3 @@ if (isset($_POST['submit'])) {
 
 
 </html>
-
-<!-- Amenities -->
-<!-- 
-
-Kitchen
-Free Parking on premises
-TV
-Wifi
-Air conditioning
-Single Bed
-Double Deck bed
-
-
--->

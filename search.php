@@ -72,9 +72,9 @@ error_reporting(0);
                             <?php
                             //Query for Listing count
                             $searchdata = $_POST['searchdata'];
-                            $sql = "SELECT tblrooms.id from tblrooms 
+                            $sql = "SELECT tblrooms.*,tblrooms.RoomName from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search || tblrooms.PricePerDay LIKE :search || tblrooms.Address LIKE :search";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                             $query->execute();
@@ -88,7 +88,7 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || tblapartments.FromDate LIKE :search || tblrooms.ModelYear LIKE :search || tblrooms.PricePerDay LIKE :search";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search ";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->execute();
@@ -104,14 +104,15 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                         <div class="product-listing-content">
                             <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+
+                            <h5><?php echo htmlentities($result->RoomName); ?></h5>
+
                             <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
                                 <li><i class="fa fa-user"
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     seats</li>
-                                <li><i class="fa fa-calendar"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
-                                </li>
+
                                 <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                 </li>
                             </ul>
@@ -143,6 +144,20 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                             </form>
                         </div>
                     </div>
+                    <div class="sidebar_widget">
+
+                        <div class="sidebar_filter">
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Search a Room</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
 
                     <div class="sidebar_widget">
                         <div class="widget_heading">
@@ -165,6 +180,8 @@ where tblrooms.VehiclesTitle LIKE :search || tblrooms.FuelType LIKE :search || t
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            ,
+                                            <?php echo htmlentities($result->RoomName); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
                                         <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>

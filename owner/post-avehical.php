@@ -176,13 +176,12 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Name<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="roomname" class="form-control"
-                                                        >
+                                                    <input type="text" name="roomname" class="form-control">
                                                 </div>
                                                 <label class="col-sm-2 control-label">Select an Apartment<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="brandname" >
+                                                    <select class="selectpicker" name="brandname">
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
@@ -208,7 +207,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Apartment Address<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="address" >
+                                                    <select class="selectpicker" name="address">
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
@@ -230,8 +229,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Apartment Image<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-3">
-                                                    <input type="file" name="vehicletitle" class="form-control"
-                                                        >
+                                                    <input type="file" name="vehicletitle" class="form-control">
                                                 </div>
                                                 <br>
                                                 <br>
@@ -240,8 +238,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Landmark<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-3">
-                                                    <input type="Text" name="vehicletitle" class="form-control"
-                                                        >
+                                                    <input type="Text" name="vehicletitle" class="form-control">
                                                 </div>
                                             </div>
 
@@ -250,8 +247,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Description<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-10">
-                                                    <textarea class="form-control" name="vehicalorcview" rows="3"
-                                                        ></textarea>
+                                                    <textarea class="form-control" name="vehicalorcview"
+                                                        rows="3"></textarea>
                                                 </div>
                                             </div>
 
@@ -259,13 +256,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Contact Number<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control" >
+                                                    <input type="text" name="priceperday" class="form-control">
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="fueltype" >
+                                                    <select class="selectpicker" name="fueltype">
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Private Bath</option>
@@ -279,13 +276,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control" >
+                                                    <input type="text" name="priceperday" class="form-control">
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="modelyear" >
+                                                    <select class="selectpicker" name="modelyear">
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Apartment</option>
@@ -299,8 +296,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="number" name="seatingcapacity" class="form-control"
-                                                        >
+                                                    <input type="number" name="seatingcapacity" class="form-control">
                                                 </div>
                                             </div>
 
@@ -318,7 +314,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     Image 1 <span style="color:red">*</span><input type="file"
-                                                        name="img1" >
+                                                        name="img1">
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 2<span style="color:red">*</span><input type="file"
@@ -390,9 +386,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="checkbox checkbox-inline">
                                                     <input type="checkbox" id="powersteering" name="powersteering"
                                                         value="1">
-                                                    <input type="checkbox" id="powersteering" name="powersteering"
-                                                        value="1">
-                                                    <label for="inlineCheckbox5"> Television </label>
+                                                    <label for="powersteering">Television</label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
@@ -439,8 +433,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="checkbox checkbox-inline">
-                                                    <input type="checkbox" id="leatherseats" name="leatherseats"
-                                                        value="1">
+                                                    <input type="checkbox" id="leatherseats" name="" value="1">
                                                     <label for="leatherseats"> Balcony </label>
                                                 </div>
                                             </div>

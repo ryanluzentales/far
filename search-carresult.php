@@ -80,6 +80,7 @@ error_reporting(0);
                         <div class="product-listing-content">
                             <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                            <h5> </h5>
                             <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
                                 <li><i class="fa fa-user"
@@ -107,26 +108,10 @@ error_reporting(0);
                             <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room</h5>
                         </div>
                         <div class="sidebar_filter">
-                            <form action="search-carresult.php" method="post">
-                                <div class="form-group select">
-                                    <select class="form-control" name="brand">
-                                        <option>Select Room</option>
-
-                                        <?php $sql = "SELECT DISTINCT tblapartments.message from  tblapartments order by tblapartments.message desc ";
-                    $query = $dbh->prepare($sql);
-                    $query->execute();
-                    $results = $query->fetchAll(PDO::FETCH_OBJ);
-                    $cnt = 1;
-                    if ($query->rowCount() > 0) {
-                      foreach ($results as $result) {       ?>
-                                        <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->message); ?></option>
-                                        <?php }
-                    } ?>
-
-                                    </select>
-                                </div>
-
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="Search..." name="searchdata" class="form-control"
+                                    required="true">
+                                <br>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
