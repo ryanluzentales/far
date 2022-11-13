@@ -26,7 +26,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
 
 	}if(isset($_POST['approve'])){
-		$email = 'ryanluzentales@gmail.com';
+		$email = 'jrobertosy@gmail.com';
         $subject = "APARTMENT DENIED";
         $message = "Good day owner! your request has been reviewed chuchu DENIED";
 
@@ -86,7 +86,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
 
 	} if(isset($_REQUEST['aeid'])){
-		$email = 'ryanluzentales@gmail.com';
+		$email = 'jrobertosy@gmail.com';
         $subject = "APARTMENT APPROVED";
         $message = "Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.";
 
@@ -244,7 +244,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 ?>
                                             </h3>
                                             <div class="form-group">
-                                                <input type="text" name="email" id="email" class="form-control"
+                                                <input type="hidden" name="email" id="email" class="form-control"
                                                     value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
                                             </div>
 
