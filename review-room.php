@@ -6,8 +6,6 @@ if (strlen($_SESSION['login']) == 0) {
     header('location:index.php');
 } else {
 
-
-
 ?>
 
 <!DOCTYPE HTML>
@@ -224,6 +222,8 @@ if (strlen($_SESSION['login']) == 0) {
         </div>
     </div>
 </div>
+
+
 
 <style>
 .progress-label-left {
