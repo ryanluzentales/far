@@ -80,14 +80,13 @@ error_reporting(0);
                         <div class="product-listing-content">
                             <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                            <h5><?php echo htmlentities($result->RoomName); ?></h5>
                             <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?> Per Month</p>
                             <ul>
                                 <li><i class="fa fa-user"
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     person</li>
-                                <li><i class="fa fa-calendar"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                                </li>
+
                                 <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                 </li>
                             </ul>
@@ -103,18 +102,21 @@ error_reporting(0);
                 <!--Side-Bar-->
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
+
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room</h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find a Room </h5>
                         </div>
                         <div class="sidebar_filter">
-                            <div class="header_search">
-                                <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                <form action="search.php" method="post" id="header-search-form">
-                                    <input type="text" placeholder="Search..." name="searchdata" class="form-control"
-                                        required="true">
-                                    <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                </form>
-                            </div>
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="Search..." name="searchdata" class="form-control"
+                                    required="true">
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Search a Room</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
 
