@@ -25,9 +25,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
 
-	}if(isset($_POST['approve'])){
-        $email = $result->EmailId;
-		$email = strval($result->EmailId);
+	} if(isset($_REQUEST['eid'])){
+        $email = 'jrobertosy@gmail.com';
         $subject = "APARTMENT DENIED";
         $message = "Good day owner! your request has been reviewed chuchu DENIED";
 
@@ -123,6 +122,8 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Body    = $message;
 
         $mail->send();
+       $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
 		
 }
 
