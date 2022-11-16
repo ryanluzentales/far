@@ -7,7 +7,8 @@ if(isset($_POST["rating_data"]))
 $data = array(
 ':user_name' => $_POST["user_name"],
 ':user_rating' => $_POST["rating_data"],
-'room_id' => $_POST["room_id"],
+':room_id' => $_POST["room_id"],
+':vhid' => $_POST["room_id"],
 ':user_review' => $_POST["user_review"],
 ':datetime' => time()
 );
@@ -15,7 +16,7 @@ $data = array(
 $query = "
 INSERT INTO review_table
 (room_id,user_name, user_rating, user_review, datetime)
-VALUES (:room_id,:user_name, :user_rating, :user_review, :datetime)
+VALUES (:room_id,:user_name, :user_rating, :user_review, :datetime); INSERT INTO verify_comment(room_id, vhid) VALUES (:room_id, :vhid)
 ";
 
 $statement = $dbh->prepare($query);

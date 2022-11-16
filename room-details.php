@@ -269,7 +269,11 @@ if (isset($_POST['submit'])) {
                                     </script>
                                 </div>
 
-
+                                <?php 
+                                $lat = '10.31384972607403';
+                                $long = '123.88173141222408';
+                                
+                                ?>
                                 <div role="tabpanel" class="tab-pane" id="location">
                                     <iframe width="100%" height="500"
                                         src="https://maps.google.com/maps?q=<?php echo $result->Address; ?>&output=embed"></iframe>

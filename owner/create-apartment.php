@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-//error_reporting(0);
+error_reporting(0);
 if (isset($_POST['submit'])) {
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
@@ -89,6 +89,7 @@ if (isset($_POST['submit'])) {
     <!-- owner Stye -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
 </head>
 
 <body>
@@ -133,6 +134,7 @@ if (isset($_POST['submit'])) {
                                 <label>Address:</label>
                                 <input type="text" class="form-control" name="todate" placeholder="Address">
                             </div>
+
                             <div class="form-group">
                                 <label>Landmark:</label>
                                 <input type="text" class="form-control" name="message" placeholder="Landmark">
@@ -189,10 +191,12 @@ if (isset($_POST['submit'])) {
                     </div>
                 </aside>
                 <!--/Side-Bar-->
-            </div>
 
+            </div>
         </div>
+
     </section>
+
     <!--/Listing-detail-->
 
     <!--Back to top-->
@@ -232,7 +236,6 @@ if (isset($_POST['submit'])) {
     <script src="js/chartData.js"></script>
     <script src="js/main.js"></script>
 
-
     <?php include('includes/forgotpassword.php'); ?>
     <!--/Forgot-password-Form -->
 
@@ -246,6 +249,5 @@ if (isset($_POST['submit'])) {
     <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
-
 
 </html>
