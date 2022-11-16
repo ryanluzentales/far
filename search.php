@@ -147,13 +147,19 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     <div class="sidebar_widget">
 
                         <div class="sidebar_filter">
+                            <div class="widget_heading">
+                                <h5><i class="fa fa-money" aria-hidden="true"></i> Price Range </h5>
+                            </div>
                             <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
                             <form action="search.php" method="post" id="header-search-form">
-
+                                <input type="text" placeholder="₱ MIN" name="searchdata" class="form-control"
+                                    required="true">
+                                <input type="text" placeholder="₱ MAX" name="searchdata" class="form-control"
+                                    required="true">
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
-                                            aria-hidden="true"></i> Search a Room</button>
+                                            aria-hidden="true"></i> Apply</button>
                                 </div>
                             </form>
                         </div>

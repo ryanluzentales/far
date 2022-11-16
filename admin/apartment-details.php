@@ -26,7 +26,8 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
 
 	}if(isset($_POST['approve'])){
-		$email = 'jrobertosy@gmail.com';
+        $email = $result->EmailId;
+		$email = strval($result->EmailId);
         $subject = "APARTMENT DENIED";
         $message = "Good day owner! your request has been reviewed chuchu DENIED";
 
@@ -38,7 +39,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->isSMTP();                                     
         $mail->Host = 'mail.smtp2go.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'farnotification@findaroom.app';     
+        $mail->Username = 'swu.phinma.edu.ph';     
         $mail->Password = 'Find4room!';             
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -51,11 +52,11 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('farnotification@findaroom.app');
+        $mail->setFrom('jrobertosy@findaroom.app');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo('farnotification@findaroom.app');
+        $mail->addReplyTo('jrobertosy@findaroom.app');
         
         //Content
         $mail->isHTML(true);                                  
@@ -97,7 +98,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->isSMTP();                                     
         $mail->Host = 'mail.smtp2go.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'farnotification@findaroom.app';     
+        $mail->Username = 'swu.phinma.edu.ph';     
         $mail->Password = 'Find4room!';             
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -110,11 +111,11 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Port = 2525;                                   
 
         //Send Email
-        $mail->setFrom('farnotification@findaroom.app');
+        $mail->setFrom('jrobertosy@findaroom.app');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo('farnotification@findaroom.app');
+        $mail->addReplyTo('jrobertosy@findaroom.app');
         
         //Content
         $mail->isHTML(true);                                  
