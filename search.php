@@ -46,7 +46,7 @@ error_reporting(0);
 
     <!--Page Header-->
     <section class="page-header listing_page">
-        <div class="container">
+        <!--<div class="container">
             <div class="page-header_wrap">
                 <div class="page-heading">
                     <h1>Search Result of keyword "<?php echo $_POST['searchdata']; ?>"</h1>
@@ -56,8 +56,7 @@ error_reporting(0);
                     <li>ROOM Listing</li>
                 </ul>
             </div>
-        </div>
-        <!-- Dark Overlay-->
+        </div> -->
         <div class="dark-overlay"></div>
     </section>
     <!-- /Page Header-->
@@ -72,11 +71,15 @@ error_reporting(0);
                             <?php
                             //Query for Listing count
                             $searchdata = $_POST['searchdata'];
+                            $startprice = $_POST['startprice'];
+                            $endprice = $_POST['endprice'];
                             $sql = "SELECT tblrooms.*,tblrooms.RoomName from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
+                            $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
+                            $query->bindParam(':endprice', $endprice, PDO::PARAM_STR);
                             $query->execute();
                             $results = $query->fetchAll(PDO::FETCH_OBJ);
                             $cnt = $query->rowCount();
@@ -88,9 +91,11 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search ";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
+                    $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
+                    $query->bindParam(':endprice', $endprice, PDO::PARAM_STR);
                     $query->execute();
                     $results = $query->fetchAll(PDO::FETCH_OBJ);
                     $cnt = 1;
@@ -107,7 +112,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
 
                             <h5><?php echo htmlentities($result->RoomName); ?></h5>
 
-                            <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
+                            <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
                                 <li><i class="fa fa-user"
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
@@ -123,6 +128,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     </div>
                     <?php }
                     } ?>
+
                 </div>
 
                 <!--Side-Bar-->
@@ -136,7 +142,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                             <form action="search.php" method="post" id="header-search-form">
                                 <input type="text" placeholder="Search..." name="searchdata" class="form-control"
                                     required="true">
-
+                                <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Search a Room</button>
@@ -144,19 +150,21 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                             </form>
                         </div>
                     </div>
-                    <div class="sidebar_widget">
 
+                    <div class="sidebar_widget">
                         <div class="sidebar_filter">
                             <div class="widget_heading">
                                 <h5><i class="fa fa-money" aria-hidden="true"></i> Price Range </h5>
                             </div>
                             <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
                             <form action="search.php" method="post" id="header-search-form">
-                                <input type="text" placeholder="₱ MIN" name="searchdata" class="form-control"
-                                    required="true">
-                                <input type="text" placeholder="₱ MAX" name="searchdata" class="form-control"
+                                <input type="text" placeholder="₱ MIN" name="startprice" class="form-control"
                                     required="true">
 
+                                <hr>
+                                <input type="text" placeholder="₱ MAX" name="endprice" class="form-control"
+                                    required="true">
+                                <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Apply</button>
@@ -189,7 +197,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                                             ,
                                             <?php echo htmlentities($result->RoomName); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                                        <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
+                                        <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>
                                     </div>
                                 </li>

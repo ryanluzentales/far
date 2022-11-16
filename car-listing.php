@@ -121,6 +121,28 @@ error_reporting(0);
                     </div>
 
                     <div class="sidebar_widget">
+                        <div class="sidebar_filter">
+                            <div class="widget_heading">
+                                <h5><i class="fa fa-money" aria-hidden="true"></i> Price Range </h5>
+                            </div>
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="₱ MIN" name="startprice" class="form-control"
+                                    required="true">
+
+                                <hr>
+                                <input type="text" placeholder="₱ MAX" name="endprice" class="form-control"
+                                    required="true">
+                                <br>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Apply</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="sidebar_widget">
                         <div class="widget_heading">
                             <h5><i class="fa" aria-hidden="true"></i> Recently Listed Rooms</h5>
                         </div>

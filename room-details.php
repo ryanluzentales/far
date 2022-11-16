@@ -131,7 +131,6 @@ if (isset($_POST['submit'])) {
                 <div class="col-md-9">
                     <h2><?php echo htmlentities($result->FromDate); ?> ,
                         <?php echo htmlentities($result->VehiclesTitle); ?></h2>
-
                     <h2><?php echo htmlentities($result->RoomName); ?> </h2>
                     <h2> <?php echo htmlentities($result->OwnerName); ?></h2>
                     <h2> <?php echo htmlentities($result->ContactNumber); ?></h2>
@@ -490,9 +489,7 @@ if (isset($_POST['submit'])) {
                                     <li><i class="fa fa-user"
                                             aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                         person</li>
-                                    <li><i class="fa fa-calendar"
-                                            aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
-                                    </li>
+
                                     <li><i class="fa "
                                             aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
                                     </li>
