@@ -28,7 +28,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	} if(isset($_REQUEST['eid'])){
         $email = 'jrobertosy@gmail.com';
         $subject = "APARTMENT DENIED";
-        $message = "Good day owner! your request has been reviewed chuchu DENIED";
+        $message = "Good day owner! your request has been reviewed and unfortunately it has been denied. Your request will be reviewed further. If you have any questions please feel free to contact us. Thank you for using FAR app";
 
 
 
