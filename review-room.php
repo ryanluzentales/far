@@ -59,7 +59,7 @@ if (strlen($_SESSION['login']) == 0) {
 
     <?php 
      $user_name = strval($result->FullName);
-     $room_id = strval($_GET['vhid']);
+     $room_id = intval($_GET['vhid']);
                                 $sql = "SELECT FullName FROM tblowner WHERE EmailId=:email ";
                                 $query = $dbh->prepare($sql);
                                 $query->bindParam(':email', $email, PDO::PARAM_STR);
@@ -147,6 +147,8 @@ if (strlen($_SESSION['login']) == 0) {
         </div>
         <div class="mt-5" id="review_content"></div>
     </div>
+
+
 
 
     <!--Back to top-->
@@ -434,5 +436,7 @@ $(document).ready(function() {
 
 });
 </script>
+
+
 
 <?php } ?>

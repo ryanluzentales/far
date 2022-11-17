@@ -1,6 +1,7 @@
 <?php
 
 include('includes/config.php');
+
 if(isset($_POST["rating_data"]))
 {
 
@@ -41,7 +42,7 @@ $one_star_review = 0;
 $total_user_rating = 0;
 $review_content = array();
 
-$query = "SELECT * FROM review_table join tblrooms on tblrooms.id = review_table.room_id where review_table.room_id = '2' ";
+$query = "SELECT * FROM review_table join tblrooms on tblrooms.id = review_table.room_id where review_table.room_id = '2' order by review_table.room_id DESC";
 
 $result = $dbh->query($query, PDO::FETCH_ASSOC);
 

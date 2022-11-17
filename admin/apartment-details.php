@@ -38,7 +38,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->isSMTP();                                     
         $mail->Host = 'mail.smtp2go.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'swu.phinma.edu.ph';     
+        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
         $mail->Password = 'Find4room!';             
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -97,7 +97,7 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->isSMTP();                                     
         $mail->Host = 'mail.smtp2go.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'swu.phinma.edu.ph';     
+        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
         $mail->Password = 'Find4room!';             
         $mail->SMTPOptions = array(
             'ssl' => array(
@@ -246,7 +246,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 ?>
                                             </h3>
                                             <div class="form-group">
-                                                <input type="hidden" name="email" id="email" class="form-control"
+                                                <input type="hidden" name="currentemail" id="currentemail"
+                                                    class="form-control"
                                                     value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
                                             </div>
 

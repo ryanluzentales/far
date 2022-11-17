@@ -14,7 +14,8 @@
                         <?php if (strlen($_SESSION['ologin']) == 0) {
                         ?>
                         <div class="login_btn"> <a href="../index.php" class="btn btn-xs uppercase" data-toggle="modal"
-                                data-dismiss="modal">log in as client</a> </div>
+                                data-dismiss="modal"><i class="fa fa-home" aria-hidden="true"></i>OWNER</a>
+                        </div>
                         <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                 data-dismiss="modal">Log in</a> </div>
                         <?php } else {

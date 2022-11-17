@@ -44,22 +44,6 @@ error_reporting(0);
     <?php include('includes/header-no-search.php'); ?>
     <!-- /Header -->
 
-    <!--Page Header-->
-    <section class="page-header listing_page">
-        <!--<div class="container">
-            <div class="page-header_wrap">
-                <div class="page-heading">
-                    <h1>Search Result of keyword "<?php echo $_POST['searchdata']; ?>"</h1>
-                </div>
-                <ul class="coustom-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>ROOM Listing</li>
-                </ul>
-            </div>
-        </div> -->
-        <div class="dark-overlay"></div>
-    </section>
-    <!-- /Page Header-->
 
     <!--Listing-->
     <section class="listing-page">
