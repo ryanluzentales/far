@@ -400,12 +400,12 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="checkbox checkbox-inline">
                                                     <input type="checkbox" id="passengerairbag" name="passengerairbag"
                                                         value="1">
-                                                    <label for="passengerairbag"> Shared Bathroom </label>
+                                                    <label for="passengerairbag"> </label>
                                                 </div>
                                             </div>
                                             <div class="checkbox checkbox-inline">
                                                 <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-                                                <label for="powerwindow"> Private Bath</label>
+                                                <label for="powerwindow"> </label>
                                             </div>
                                         </div>
 

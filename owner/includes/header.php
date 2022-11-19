@@ -78,7 +78,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="index.php">Home</a> </li>
                     <li><a href="./dashboard.php">Dashboard</a></li>
-                    <li><a href="car-listing.php">Find a Room</a>
+                    <li><a href="room-listing.php">Find a Room</a>
 
 
                 </ul>
