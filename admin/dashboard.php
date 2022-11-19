@@ -91,7 +91,7 @@ $totalvehicle=$query1->rowCount();
                                                     <div class="stat-panel-title text-uppercase">Listed Rooms</div>
                                                 </div>
                                             </div>
-                                            <a href="manage-vehicles.php"
+                                            <a href="manage-rooms.php"
                                                 class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                     class="fa fa-arrow-right"></i></a>
                                         </div>

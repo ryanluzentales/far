@@ -36,11 +36,11 @@ if (isset($_POST['submit'])) {
             echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again');</script>";
-            echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+            echo "<script type='text/javascript'> document.location = 'room-listing.php'; </script>";
         }
     } else {
         echo "<script>alert('ROom already booked for these days');</script>";
-        echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+        echo "<script type='text/javascript'> document.location = 'room-listing.php'; </script>";
     }
 }
 
@@ -154,7 +154,7 @@ if (isset($_POST['submit'])) {
                                 <p>Housing Type</p>
                             </li>
 
-                            <li> <i class="fa fa-home" aria-hidden="true"></i>
+                            <li> <i class="fa fa-bath" aria-hidden="true"></i>
                                 <h5><?php echo htmlentities($result->FuelType); ?></h5>
                                 <p>Bath Type</p>
                             </li>
@@ -509,7 +509,6 @@ if (isset($_POST['submit'])) {
     <script src="assets/js/owl.carousel.min.js"></script>
 
 </body>
-<?php showComments(); ?>
 
 </html>
 

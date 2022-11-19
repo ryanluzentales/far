@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
         echo "<script type='text/javascript'> document.location = 'pending-apartment.php'; </script>";
     } else {
          echo "<script>alert('Something went wrong. Please try again');</script>";
-         echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+         echo "<script type='text/javascript'> document.location = 'room-listing.php'; </script>";
      }
   } 
 

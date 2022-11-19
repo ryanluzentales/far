@@ -138,7 +138,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->ModelYear);?></td>
                                             <td><a href="edit-vehicle.php?id=<?php echo $result->id;?>"><i
                                                         class="fa fa-edit"></i></a>&nbsp;&nbsp;
-                                                <a href="manage-vehicles.php?del=<?php echo $result->id;?>"
+                                                <a href="manage-rooms.php?del=<?php echo $result->id;?>"
                                                     onclick="return confirm('Do you want to delete');"><i
                                                         class="fa fa-close"></i></a>
                                             </td>

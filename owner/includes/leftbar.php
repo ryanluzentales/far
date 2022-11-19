@@ -15,7 +15,7 @@
 	        <li><a href="#"><i class="fa fa-home"></i> Rooms</a>
 	            <ul>
 	                <li><a href="post-avehical.php">Post a Room</a></li>
-	                <li><a href="manage-vehicles.php">Manage Room</a></li>
+	                <li><a href="manage-rooms.php">Manage Room</a></li>
 	            </ul>
 	        </li>
 
