@@ -90,6 +90,14 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+
+    <script type="text/javascript"
+        src="https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js"></script>
+    <script src="maplocation.js"></script>
+
 </head>
 
 <body>
@@ -135,6 +143,23 @@ if (isset($_POST['submit'])) {
                                 <input type="text" class="form-control" name="todate" placeholder="Address">
                             </div>
 
+                            <div class="form-group">
+                                <label>Location:</label>
+                                <input type="text" class="form-control" id="location" name="todate"
+                                    placeholder="Location">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Latitude: </label>
+                                <input type="text" class="form-control" id="lat" name="lat" placeholder="Latitude">
+                            </div>
+                            <div class="form-group">
+                                <label>Longitude: </label>
+                                <input type="text" class="form-control" id="lng" name="lat" placeholder="Longitude">
+                            </div>
+                            <div id="us2" style="width: 1100px; height: 400px;">
+                            </div>
+                            <br>
                             <div class="form-group">
                                 <label>Landmark:</label>
                                 <input type="text" class="form-control" name="message" placeholder="Landmark">
@@ -247,6 +272,14 @@ if (isset($_POST['submit'])) {
     <!--Slider-JS-->
     <script src="assets/js/slick.min.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script>
+
+    <script type="text/javascript"
+        src="https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js"></script>
+    <script src="maplocation.js"></script>
 
 </body>
 

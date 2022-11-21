@@ -22,4 +22,6 @@
     <div id="us2" style="width: 500px; height: 400px;"></div>
 </body>
 
+<!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script> -->
+
 </html>
