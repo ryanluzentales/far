@@ -173,6 +173,12 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     <div class="panel-body">
                                         <form method="post" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="form-group">
+                                                <label class="col-sm-2 control-label">id number<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="room-id" class="form-control">
+                                                </div>
+
                                                 <label class="col-sm-2 control-label">Room Name<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -185,7 +191,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
-                                                            $ret = "select tblapartments.id,tblapartments.FromDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
+                                                            $ret = "select tblapartments.id,tblapartments.FromDate,tblapartments.ContactNumber from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
                                                             $query = $dbh->prepare($ret);
                                                             //$query->bindParam(':id',$id, PDO::PARAM_STR);
                                                             $query->execute();
@@ -204,36 +210,12 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <label class="col-sm-2 control-label">Apartment Address<span
+                                                <label class="col-sm-2 control-label">Address<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="address">
-                                                        <option value=""> Select </option>
-                                                        <?php
-                                                            $currentEmail = $_SESSION['ologin']; 
-                                                            $rett = "select tblapartments.id,tblapartments.ToDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
-                                                            $query = $dbh->prepare($rett);
-                                                            //$query->bindParam(':id',$id, PDO::PARAM_STR);
-                                                            $query->execute();
-                                                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                            if ($query->rowCount() > 0) {
-                                                                foreach ($results as $result) {
-                                                            ?>
-                                                        <option value="<?php echo htmlentities($result->ToDate); ?>">
-                                                            <?php echo htmlentities($result->ToDate); ?></option>
-                                                        <?php }
-                                                            } ?>
+                                                    <input type="text" name="address" class="form-control">
+                                                </div>
 
-                                                    </select>
-                                                </div>
-                                                <label class="col-sm-2 control-label">Apartment Image<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-3">
-                                                    <input type="file" name="vehicletitle" class="form-control">
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <br>
                                                 <br>
                                                 <label class="col-sm-2 control-label">Landmark<span
                                                         style="color:red">*</span></label>
@@ -256,7 +238,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Contact Number<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control">
+                                                    <input type="text" name="priceperday" class="form-control"
+                                                        value="<?php echo (isset($result->ContactNumber))?$result->ContactNumber:'';?>">
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Type of Bath<span
@@ -396,19 +379,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <label for="driverairbag">Kitchen</label>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <div class="checkbox checkbox-inline">
-                                                    <input type="checkbox" id="passengerairbag" name="passengerairbag"
-                                                        value="1">
-                                                    <label for="passengerairbag"> </label>
-                                                </div>
-                                            </div>
-                                            <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-                                                <label for="powerwindow"> </label>
-                                            </div>
                                         </div>
-
 
                                         <div class="form-group">
                                             <div class="col-sm-3">

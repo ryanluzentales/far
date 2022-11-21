@@ -107,7 +107,7 @@ if (isset($_POST['submit'])) {
     <!-- /Header -->
     <?php
                                 $email = $_SESSION['ologin'];   
-                                $sql = "SELECT FullName FROM tblowner WHERE EmailId=:email ";
+                                $sql = "SELECT FullName,ContactNo FROM tblowner WHERE EmailId=:email ";
                                 $query = $dbh->prepare($sql);
                                 $query->bindParam(':email', $email, PDO::PARAM_STR);
                                 $query->execute();
@@ -145,14 +145,6 @@ if (isset($_POST['submit'])) {
                                     placeholder="Location">
                             </div>
 
-                            <div class="form-group">
-
-                                <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude">
-                            </div>
-                            <div class="form-group">
-
-                                <input type="hidden" class="form-control" id="lng" name="lat" placeholder="Longitude">
-                            </div>
                             <div id="us2" style="width: 1100px; height: 400px;">
                             </div>
                             <br>
@@ -161,19 +153,24 @@ if (isset($_POST['submit'])) {
                                 <input type="text" class="form-control" name="message" placeholder="Landmark">
                             </div>
                             <div class="form-group">
-                                <label>Contact Number:</label>
-                                <input type="number" class="form-control" name="contactnumber"
-                                    placeholder="Contact Number">
+                                <label>Housing Type:</label> <br>
+                                <input type="text" class="form-control" name="housingtype" placeholder="Housing Type">
+                            </div>
+
+                            <div class="form-group">
+                                <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude">
                             </div>
                             <div class="form-group">
-                                <label>Housing Type:</label> <br>
-                                <select class="selectpicker" name="housingtype">
-                                    <option value=""> Select </option>
-                                    <option value="Apartment">Apartment</option>
-                                    <option value="Dormitory">Dormitory</option>
-                                    <option value="Boarding House">Boarding House</option>
-                                </select>
+                                <input type="hidden" class="form-control" id="lng" name="lat" placeholder="Longitude">
                             </div>
+
+                            <div class="form-group">
+                                <label>Contact Number:</label>
+                                <input type="text" class="form-control" name="contactnumber"
+                                    value="<?php echo (isset($result->ContactNo))?$result->ContactNo:'';?>"
+                                    placeholder="Contact Number">
+                            </div>
+
                             <div class="form-group">
                                 <label>Please upload an image of your Apartment</label>
                                 <input type="file" class="form-control" name="apartmentimage"
