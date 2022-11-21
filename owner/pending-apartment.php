@@ -135,7 +135,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     <hr />
                                     <?php }
                                                 } else { ?>
-                                    <h5 align="center" style="color:red">No booking yet</h5>
+                                    <h5 align="center" style="color:red">No Pending Apartment</h5>
                                     <?php } ?>
 
 
