@@ -112,6 +112,8 @@ error_reporting(0);
                                 <input type="text" placeholder="Search..." name="searchdata" class="form-control"
                                     required="true">
 
+                                <br>
+
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Search a Room</button>

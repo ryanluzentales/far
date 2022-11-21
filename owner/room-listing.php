@@ -104,30 +104,54 @@ error_reporting(0);
                 <aside class="col-md-3 col-md-pull-9">
                     <div class="sidebar_widget">
                         <div class="widget_heading">
-                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find A Room</h5>
+                            <h5><i class="fa fa-filter" aria-hidden="true"></i> Find a Room </h5>
                         </div>
                         <div class="sidebar_filter">
                             <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
                             <form action="search.php" method="post" id="header-search-form">
                                 <input type="text" placeholder="Search..." name="searchdata" class="form-control"
                                     required="true">
-                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+
+                                <br>
 
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
-                                            aria-hidden="true"></i>Search Room</button>
+                                            aria-hidden="true"></i> Search a Room</button>
                                 </div>
                             </form>
                         </div>
                     </div>
 
                     <div class="sidebar_widget">
-                        <div class="widget_heading">
-                            <h5><i class="fa " aria-hidden="true"></i> Recently Listed Room</h5>
+                        <div class="sidebar_filter">
+                            <div class="widget_heading">
+                                <h5><i class="fa fa-money" aria-hidden="true"></i> Price Range </h5>
+                            </div>
+                            <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
+                            <form action="search.php" method="post" id="header-search-form">
+                                <input type="text" placeholder="₱ MIN" name="startprice" class="form-control"
+                                    required="true">
+
+                                <hr>
+                                <input type="text" placeholder="₱ MAX" name="endprice" class="form-control"
+                                    required="true">
+                                <br>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-block"><i class="fa fa-search"
+                                            aria-hidden="true"></i> Apply</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="recent_addedcars">
-                            <ul>
-                                <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                    </div>
+            </div>
+
+            <div class="sidebar_widget">
+                <div class="widget_heading">
+                    <h5><i class="fa " aria-hidden="true"></i> Recently Listed Room</h5>
+                </div>
+                <div class="recent_addedcars">
+                    <ul>
+                        <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -135,27 +159,27 @@ error_reporting(0);
                 if ($query->rowCount() > 0) {
                   foreach ($results as $result) {  ?>
 
-                                <li class="gray-bg">
-                                    <div class="recent_post_img"> <a
-                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
-                                                src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
-                                                alt="image"></a> </div>
-                                    <div class="recent_post_title"> <a
-                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
-                                            , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                                        <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> Per
-                                            Month</p>
-                                    </div>
-                                </li>
-                                <?php }
+                        <li class="gray-bg">
+                            <div class="recent_post_img"> <a
+                                    href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                        src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                        alt="image"></a> </div>
+                            <div class="recent_post_title"> <a
+                                    href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                    , <?php echo htmlentities($result->VehiclesTitle); ?></a>
+                                <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> Per
+                                    Month</p>
+                            </div>
+                        </li>
+                        <?php }
                 } ?>
 
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-                <!--/Side-Bar-->
+                    </ul>
+                </div>
             </div>
+            </aside>
+            <!--/Side-Bar-->
+        </div>
         </div>
     </section>
     <!-- /Listing-->
