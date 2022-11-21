@@ -173,21 +173,21 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     <div class="panel-body">
                                         <form method="post" class="form-horizontal" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">id number<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" name="room-id" class="form-control">
-                                                </div>
+
 
                                                 <label class="col-sm-2 control-label">Room Name<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="roomname" class="form-control">
                                                 </div>
+                                                <br>
+                                                <br>
+                                                <br>
                                                 <label class="col-sm-2 control-label">Select an Apartment<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="brandname">
+                                                    <select class="selectpicker" name="id" id="id"
+                                                        onChange="GetDetail(this.value)">
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
@@ -209,19 +209,27 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <br>
                                                 <label class="col-sm-2 control-label">Address<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="address" class="form-control">
+                                                    <input type="text" id="Address" name="Address" class="form-control">
+                                                </div>
+                                                <br>
+                                                <label class="col-sm-2 control-label">Housing Type<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-4">
+                                                    <input type="text" name="modelyear" id="modelyear"
+                                                        class="form-control">
                                                 </div>
 
                                                 <br>
                                                 <label class="col-sm-2 control-label">Landmark<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-3">
-                                                    <input type="Text" name="vehicletitle" class="form-control">
+                                                    <input type="Text" name="vehicletitle" id="vehicletitle"
+                                                        class="form-control">
                                                 </div>
+
                                             </div>
 
                                             <div class="hr-dashed"></div>
@@ -262,18 +270,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <input type="text" name="priceperday" class="form-control">
                                                 </div>
 
-                                                <label class="col-sm-2 control-label">Housing Type<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-4">
-                                                    <select class="selectpicker" name="modelyear">
-                                                        <option value=""> Select </option>
 
-                                                        <option value="Private Bath">Apartment</option>
-                                                        <option value="Shared Bath">Boarding House</option>
-                                                        <option value="Shared Bath">Dormitory</option>
-
-                                                    </select>
-                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">Room Capacity<span
@@ -283,8 +280,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 </div>
                                             </div>
 
-
                                             <div class="hr-dashed"></div>
+
 
 
                                             <div class="form-group">
@@ -433,6 +430,54 @@ if (strlen($_SESSION['ologin']) == 0) {
     </div>
 
     <!-- Loading Scripts -->
+    <script>
+    // onkeyup event will occur when the user
+    // release the key and calls the function
+    // assigned to this event
+    function GetDetail(str) {
+        if (str.length == 0) {
+            document.getElementById("Address").value = "";
+            document.getElementById("vehicletitle").value = "";
+            document.getElementById("modelyear").value = "";
+            return;
+        } else {
+
+            // Creates a new XMLHttpRequest object
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+
+                // Defines a function to be called when
+                // the readyState property changes
+                if (this.readyState == 4 &&
+                    this.status == 200) {
+
+                    // Typical action to be performed
+                    // when the document is ready
+                    var myObj = JSON.parse(this.responseText);
+
+                    // Returns the response data as a
+                    // string and store this array in
+                    // a variable assign the value
+                    // received to first name input field
+
+                    document.getElementById("Address").value = myObj[0];
+
+                    // Assign the value received to
+                    // last name input field
+                    document.getElementById("vehicletitle").value = myObj[1];
+
+                    document.getElementById("modelyear").value = myObj[2];
+                }
+            };
+
+            // xhttp.open("GET", "filename", true);
+            xmlhttp.open("GET", "autofill.php?id=" + str, true);
+
+            // Sends the request to the server
+            xmlhttp.send();
+        }
+    }
+    </script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
