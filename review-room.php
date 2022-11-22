@@ -324,6 +324,7 @@ $(document).ready(function() {
                     $('#review_modal').modal('hide');
 
                     load_rating_data();
+
                 }
             })
         }
