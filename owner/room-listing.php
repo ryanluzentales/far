@@ -2,6 +2,11 @@
 session_start();
 include('includes/config.php');
 error_reporting(0);
+
+
+if (strlen($_SESSION['ologin']) == 0) {
+    header('location:index.php');
+} else {
 ?>
 
 <!DOCTYPE HTML>
@@ -42,7 +47,7 @@ error_reporting(0);
 
 
     <!--Header-->
-    <?php include('includes/header.php'); ?>
+    <?php include('includes/header-no-search.php'); ?>
     <!-- /Header -->
 
 
@@ -215,3 +220,4 @@ error_reporting(0);
 </body>
 
 </html>
+<?php } ?>

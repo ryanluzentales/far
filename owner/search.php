@@ -111,6 +111,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     </div>
                     <?php }
                     } ?>
+
                 </div>
 
                 <!--Side-Bar-->
@@ -124,7 +125,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                             <form action="search.php" method="post" id="header-search-form">
                                 <input type="text" placeholder="Search..." name="searchdata" class="form-control"
                                     required="true">
-
+                                <br>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-block"><i class="fa fa-search"
                                             aria-hidden="true"></i> Search a Room</button>
@@ -176,8 +177,10 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            ,
+                                            <?php echo htmlentities($result->RoomName); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
-                                        <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
+                                        <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>
                                     </div>
                                 </li>

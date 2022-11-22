@@ -17,9 +17,7 @@
                                 data-toggle="modal" data-dismiss="modal">log in as owner</a> </div>
                         <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                 data-dismiss="modal">Log in</a> </div>
-                        <?php } else {
-                            echo '<h6 class="welcome">Welcome to FAR</h6>';
-                        } ?>
+                        <?php }  ?>
                     </div>
                 </div>
             </div>
