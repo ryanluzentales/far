@@ -81,7 +81,7 @@ if (strlen($_SESSION['login']) == 0) {
                                 <ul class="vehicle_listing">
                                     <?php
                                                 $useremail = $_SESSION['login'];
-                                                $sql = "SELECT tblrooms.Vimage1 as Vimage1,tblrooms.VehiclesTitle,tblrooms.id as vid,tblapartments.FromDate,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblbooking.userEmail=:useremail order by tblbooking.id desc";
+                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.VehiclesTitle,tblrooms.id as vid,tblapartments.FromDate,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblbooking.userEmail=:useremail order by tblbooking.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -142,15 +142,12 @@ if (strlen($_SESSION['login']) == 0) {
                                             <th>Rent / Month</th>
                                         </tr>
                                         <tr>
-                                            <td><?php echo htmlentities($result->VehiclesTitle); ?>,
-                                                <?php echo htmlentities($result->FromDate); ?></td>
+                                            <td><?php echo htmlentities($result->RoomName); ?>
+
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
                                             <td> <?php echo htmlentities($ppd = $result->PricePerDay); ?></td>
                                         </tr>
-                                        <tr>
-                                            <th colspan="2" style="text-align:center;"> Grand Total</th>
-                                            <th><?php echo htmlentities($ppd = $result->PricePerDay); ?></th>
-                                        </tr>
+
                                     </table>
                                     <hr />
                                     <?php }
