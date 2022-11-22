@@ -1,7 +1,7 @@
 <?php
 
 // Get the user id
-$id = $_REQUEST['id'];
+$id = $_REQUEST['brandname'];
 
 // Database connection
 $con = mysqli_connect("localhost", "root", "", "far_db");
