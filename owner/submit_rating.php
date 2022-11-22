@@ -41,7 +41,8 @@ if(isset($_POST["action"]))
 	$total_user_rating = 0;
 	$review_content = array();
 
-	$query = "SELECT * FROM review_table where review_table.room_id='1'";
+	
+$query = "SELECT * FROM review_table join tblrooms on tblrooms.id = review_table.room_id where review_table.room_id = tblrooms.id  order by review_table.room_id DESC";
 
 	//review_table.room_id!='null' join tblrooms on review_table.room_id=tblrooms.id order byreview_table.room_id desc
 	

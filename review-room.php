@@ -179,7 +179,6 @@ if (strlen($_SESSION['login']) == 0) {
 
 </body>
 
-<!-- Mirrored from themes.webmasterdriver.net/carforyou/demo/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 16 Jun 2017 07:22:11 GMT -->
 
 </html>
 
