@@ -134,7 +134,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                             <?php
 												$bid = intval($_GET['bid']);
-												$sql = "SELECT tblusers.*,tblapartments.FromDate,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
+												$sql = "SELECT tblusers.*,tblapartments.FromDate,tblrooms.VehiclesTitle,tblrooms.RoomName,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
 DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePerDay
 									  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id where tblbooking.id=:bid";
 												$query = $dbh->prepare($sql);
@@ -181,8 +181,8 @@ DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePer
                                             <tr>
                                                 <th>Room Name</th>
                                                 <td><a
-                                                        href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
-                                                        , <?php echo htmlentities($result->VehiclesTitle); ?></td>
+                                                        href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>">
+                                                        <?php echo htmlentities($result->RoomName); ?></td>
                                                 <th>Booking Date</th>
                                                 <td><?php echo htmlentities($result->PostingDate); ?></td>
                                             </tr>

@@ -144,7 +144,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($result->FullName); ?></td>
                                             <td><?php echo htmlentities($result->BookingNumber); ?></td>
-                                            <td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                     , <?php echo htmlentities($result->VehiclesTitle); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
 
