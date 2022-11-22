@@ -369,17 +369,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <label for="driverairbag">Kitchen</label>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <div class="checkbox checkbox-inline">
-                                                    <input type="checkbox" id="passengerairbag" name="passengerairbag"
-                                                        value="1">
-                                                    <label for="passengerairbag"> Shared Bathroom </label>
-                                                </div>
-                                            </div>
-                                            <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-                                                <label for="powerwindow"> Private Bath</label>
-                                            </div>
+
                                         </div>
 
 
@@ -418,9 +408,10 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                         <div class="form-group" id="book-section">
                                             <div class="col-sm-8 col-sm-offset-2">
+                                                <button class="btn btn-primary" name="submit"
+                                                    type="submit">Submit</button>
                                                 <button class="btn btn-default" type="reset">Cancel</button>
-                                                <button class="btn btn-primary" name="submit" type="submit">Save
-                                                    changes</button>
+
                                             </div>
                                         </div>
 

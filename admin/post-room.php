@@ -89,7 +89,24 @@ if (strlen($_SESSION['alogin']) == 0) {
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
 
-    <title>FAR | Admin Post Room</title>
+    <title>FAR | Post a Room</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/owl.transitions.css" type="text/css">
+    <link href="assets/css/slick.css" rel="stylesheet">
+    <link href="assets/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="assets/images/favicon-icon/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="assets/images/favicon-icon/apple-touch-icon-114-precomposed.html">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72"
+        href="assets/images/favicon-icon/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/images/favicon-icon/favicon.png">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -107,6 +124,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <link rel="stylesheet" href="css/awesome-bootstrap-checkbox.css">
     <!-- Admin Stye -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
     .errorWrap {
         padding: 10px;
@@ -130,9 +148,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 </head>
 
 <body>
-    <?php include('includes/header.php');?>
+    <?php include('includes/header.php'); ?>
     <div class="ts-main-content">
-        <?php include('includes/leftbar.php');?>
+        <?php include('includes/leftbar.php'); ?>
         <div class="content-wrapper">
             <div class="container-fluid">
 
@@ -162,65 +180,38 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 </div>
                                                 <label class="col-sm-2 control-label">Select an Apartment<span
                                                         style="color:red">*</span></label>
-                                                <div class="col-sm-4">
-                                                    <select class="selectpicker" name="brandname">
-                                                        <option value=""> Select </option>
-                                                        <?php
-                                                            $currentEmail = $_SESSION['alogin']; 
-                                                            $ret = "select tblapartments.id,tblapartments.FromDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
-                                                            $query = $dbh->prepare($ret);
-                                                            //$query->bindParam(':id',$id, PDO::PARAM_STR);
-                                                            $query->execute();
-                                                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                            if ($query->rowCount() > 0) {
-                                                                foreach ($results as $result) {
-                                                            ?>
-                                                        <option value="<?php echo htmlentities($result->id); ?>">
-                                                            <?php echo htmlentities($result->FromDate); ?></option>
-                                                        <?php }
-                                                            } ?>
 
-                                                    </select>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" id="brandname" name="brandname"
+                                                        class="form-control">
                                                 </div>
                                                 <br>
                                                 <br>
                                                 <br>
                                                 <br>
-                                                <label class="col-sm-2 control-label">Apartment Address<span
+                                                <label class="col-sm-2 control-label">Address<span
+                                                        style="color:red">*</span></label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" id="address" name="address" class="form-control">
+                                                </div>
+
+                                                <label class="col-sm-2 control-label">Landmark:<span
+                                                        style="color:red">*</span></label>
+
+                                                <div class="col-sm-4">
+                                                    <input type="text" id="vehicletitle" name="vehicletitle"
+                                                        class="form-control">
+                                                </div>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="address">
-                                                        <option value=""> Select </option>
-                                                        <?php
-                                                            $currentEmail = $_SESSION['alogin']; 
-                                                            $rett = "select tblapartments.id,tblapartments.ToDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
-                                                            $query = $dbh->prepare($rett);
-                                                            //$query->bindParam(':id',$id, PDO::PARAM_STR);
-                                                            $query->execute();
-                                                            $results = $query->fetchAll(PDO::FETCH_OBJ);
-                                                            if ($query->rowCount() > 0) {
-                                                                foreach ($results as $result) {
-                                                            ?>
-                                                        <option value="<?php echo htmlentities($result->ToDate); ?>">
-                                                            <?php echo htmlentities($result->ToDate); ?></option>
-                                                        <?php }
-                                                            } ?>
-
-                                                    </select>
-                                                </div>
-                                                <label class="col-sm-2 control-label">Apartment Image<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-3">
-                                                    <input type="file" name="vehicletitle" class="form-control">
-                                                </div>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <label class="col-sm-2 control-label">Landmark<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-3">
-                                                    <input type="Text" name="vehicletitle" class="form-control">
+                                                    <input type="text" id="modelyear" name="modelyear"
+                                                        class="form-control">
                                                 </div>
                                             </div>
 
@@ -235,12 +226,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-2 control-label">Contact Number<span
+                                                <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="priceperday" class="form-control">
                                                 </div>
-
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -252,29 +242,13 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                     </select>
                                                 </div>
-                                                <br>
-                                                <br>
-                                                <br>
-                                                <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control">
-                                                </div>
-
-                                                <label class="col-sm-2 control-label">Housing Type<span
-                                                        style="color:red">*</span></label>
-                                                <div class="col-sm-4">
-                                                    <select class="selectpicker" name="modelyear">
-                                                        <option value=""> Select </option>
-
-                                                        <option value="Private Bath">Apartment</option>
-                                                        <option value="Shared Bath">Boarding House</option>
-                                                        <option value="Shared Bath">Dormitory</option>
-
-                                                    </select>
-                                                </div>
                                             </div>
+
+
                                             <div class="form-group">
+
+
+
                                                 <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
@@ -288,7 +262,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             <div class="form-group">
                                                 <div class="col-sm-12">
-                                                    <h4><b>Upload photos of the room</b></h4>
+                                                    <h4><b>Upload Images</b></h4>
                                                 </div>
                                             </div>
 
@@ -368,7 +342,9 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <div class="checkbox checkbox-inline">
                                                     <input type="checkbox" id="powersteering" name="powersteering"
                                                         value="1">
-                                                    <label for="powersteering">Television</label>
+                                                    <input type="checkbox" id="powersteering" name="powersteering"
+                                                        value="1">
+                                                    <label for="inlineCheckbox5"> Television </label>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3">
@@ -378,17 +354,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     <label for="driverairbag">Kitchen</label>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-3">
-                                                <div class="checkbox checkbox-inline">
-                                                    <input type="checkbox" id="passengerairbag" name="passengerairbag"
-                                                        value="1">
-                                                    <label for="passengerairbag"> Shared Bathroom </label>
-                                                </div>
-                                            </div>
-                                            <div class="checkbox checkbox-inline">
-                                                <input type="checkbox" id="powerwindow" name="powerwindow" value="1">
-                                                <label for="powerwindow"> Private Bath</label>
-                                            </div>
+
                                         </div>
 
 
@@ -415,7 +381,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </div>
                                             <div class="col-sm-3">
                                                 <div class="checkbox checkbox-inline">
-                                                    <input type="checkbox" id="leatherseats" name="" value="1">
+                                                    <input type="checkbox" id="leatherseats" name="leatherseats"
+                                                        value="1">
                                                     <label for="leatherseats"> Balcony </label>
                                                 </div>
                                             </div>
@@ -426,33 +393,98 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         <div class="form-group" id="book-section">
                                             <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn btn-primary" name="submit" type="submit">Save
-                                                    changes</button>
+                                                <button class="btn btn-primary" name="submit"
+                                                    type="submit">Submit</button>
                                                 <button class="btn btn-default" type="reset">Cancel</button>
 
                                             </div>
                                         </div>
+
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>
 
     <!-- Loading Scripts -->
+    <script>
+    // onkeyup event will occur when the user
+    // release the key and calls the function
+    // assigned to this event
+    function GetDetail(str) {
+        if (str.length == 0) {
+            document.getElementById("address").value = "";
+            document.getElementById("vehicletitle").value = "";
+            document.getElementById("modelyear").value = "";
+            return;
+        } else {
+
+            // Creates a new XMLHttpRequest object
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+
+                // Defines a function to be called when
+                // the readyState property changes
+                if (this.readyState == 4 &&
+                    this.status == 200) {
+
+                    // Typical action to be performed
+                    // when the document is ready
+                    var myObj = JSON.parse(this.responseText);
+
+                    // Returns the response data as a
+                    // string and store this array in
+                    // a variable assign the value
+                    // received to first name input field
+
+                    document.getElementById("address").value = myObj[0];
+
+                    // Assign the value received to
+                    // last name input field
+                    document.getElementById("vehicletitle").value = myObj[1];
+
+                    document.getElementById("modelyear").value = myObj[2];
+                }
+            };
+
+            // xhttp.open("GET", "filename", true);
+            xmlhttp.open("GET", "autofill.php?brandname=" + str, true);
+
+            // Sends the request to the server
+            xmlhttp.send();
+        }
+    }
+    </script>
     <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/dataTables.bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
     <script src="js/fileinput.js"></script>
     <script src="js/chartData.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/interface.js"></script>
+    <script src="./assets/js/bootstrap-slider.min.js"></script>
+    <!--Slider-JS-->
+    <script src="./assets/js/slick.min.js"></script>
+    <script src="./assets/js/owl.carousel.min.js"></script>
 </body>
 
 </html>

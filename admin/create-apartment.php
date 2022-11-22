@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
         echo "<script type='text/javascript'> document.location = 'manage-apartment.php'; </script>";
     } else {
          echo "<script>alert('Something went wrong. Please try again');</script>";
-         echo "<script type='text/javascript'> document.location = 'car-listing.php'; </script>";
+         echo "<script type='text/javascript'> document.location = 'room-listing.php'; </script>";
      }
   } 
 
@@ -82,8 +82,9 @@ if (isset($_POST['submit'])) {
         <?php include('includes/leftbar.php');?>
         <div class="content-wrapper">
             <div class="container-fluid">
+
                 <div class="widget_heading">
-                    <h1><i aria-hidden="true"></i>Post apartment</h1>
+                    <h5><i aria-hidden="true"></i>Post apartment</h5>
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
@@ -91,26 +92,36 @@ if (isset($_POST['submit'])) {
                         <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name">
                     </div>
                     <div class="form-group">
-                        <label>Owner Name:</label>
-                        <input type="text" class="form-control" name="ownername" placeholder="Owner Name">
+                        <input type="hidden" class="form-control" name="ownername"
+                            value="<?php echo (isset($result->FullName))?$result->FullName:'';?>"
+                            placeholder="Owner Name">
                     </div>
 
                     <div class="form-group">
-                        <label>Owner Email Address:</label>
-                        <input type="text" class="form-control" name="useremail" placeholder="Owner Email Address">
+                        <label>Address:</label>
+                        <input type="text" class="form-control" id="location" name="todate" placeholder="Location">
                     </div>
 
                     <div class="form-group">
-                        <label> Apartment Address:</label>
-                        <input type="text" class="form-control" name="todate" placeholder="Address">
+
+                        <input type="hidden" class="form-control" id="lat" name="lat" placeholder="Latitude">
                     </div>
+                    <div class="form-group">
+
+                        <input type="hidden" class="form-control" id="lng" name="lat" placeholder="Longitude">
+                    </div>
+                    <div id="us2" style="width: 1100px; height: 400px;">
+                    </div>
+                    <br>
                     <div class="form-group">
                         <label>Landmark:</label>
                         <input type="text" class="form-control" name="message" placeholder="Landmark">
                     </div>
                     <div class="form-group">
-                        <label>Owner Contact Number:</label>
-                        <input type="number" class="form-control" name="contactnumber" placeholder="Contact Number">
+                        <label>Contact Number:</label>
+                        <input type="text" class="form-control" name="contactnumber"
+                            value="<?php echo (isset($result->ContactNo))?$result->ContactNo:'';?>"
+                            placeholder="Contact Number">
                     </div>
                     <div class="form-group">
                         <label>Housing Type:</label> <br>
@@ -134,7 +145,23 @@ if (isset($_POST['submit'])) {
                             <option value="Mixed">Mixed</option>
                         </select>
                     </div>
+                    <div>
+                        <p>For payment you may use the details below:</p>
+                        <p>BPI: 1243-3540-1231</p>
+                        <p>Union Bank: 124-3540-1231</p>
+                        <p>Gcash: 09208262854</p>
 
+                    </div>
+                    <p>You can also pay through GCASH using the number above or QR code below.</p>
+                    <img src="assets/imagess/download.png" alt="QR Code" width="250" height="250">
+
+                    <p>For the post to be confirm, we need to check the proof of payment and other details.
+                        Please upload your
+                        proof of payment below:</p>
+                    <div class="form-group">
+                        <label>Proof of Payment</label>
+                        <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
+                    </div>
                     <div class="form-group">
                         <input type="submit" class="btn" name="submit" value="Submit">
                     </div>
@@ -156,32 +183,17 @@ if (isset($_POST['submit'])) {
     <script src="js/chartData.js"></script>
     <script src="js/main.js"></script>
 
-    <script>
-    window.onload = function() {
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 
-        // Line chart from swirlData for dashReport
-        var ctx = document.getElementById("dashReport").getContext("2d");
-        window.myLine = new Chart(ctx).Line(swirlData, {
-            responsive: true,
-            scaleShowVerticalLines: false,
-            scaleBeginAtZero: true,
-            multiTooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
-        });
+    <!--<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places"></script> -->
 
-        // Pie Chart from doughutData
-        var doctx = document.getElementById("chart-area3").getContext("2d");
-        window.myDoughnut = new Chart(doctx).Pie(doughnutData, {
-            responsive: true
-        });
-
-        // Dougnut Chart from doughnutData
-        var doctx = document.getElementById("chart-area4").getContext("2d");
-        window.myDoughnut = new Chart(doctx).Doughnut(doughnutData, {
-            responsive: true
-        });
-
-    }
+    <script async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB67jIHZHodP972T_z4ruJndmM9qxKfEr8&libraries=geocode,places&callback=initMap">
     </script>
+
+    <script type="text/javascript"
+        src="https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js"></script>
+    <script src="maplocation.js"></script>
 </body>
 
 </html>
