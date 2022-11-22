@@ -63,14 +63,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="header_search">
-                    <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
-                    <form action="search.php" method="post" id="header-search-form">
-                        <input type="text" placeholder="Search..." name="searchdata" class="form-control"
-                            required="true">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-                </div>
+
             </div>
             <div class="collapse navbar-collapse" id="navigation">
                 <ul class="nav navbar-nav">

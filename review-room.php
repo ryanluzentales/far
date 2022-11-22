@@ -325,6 +325,7 @@ $(document).ready(function() {
 
                     load_rating_data();
 
+                    alert(data);
                 }
             })
         }

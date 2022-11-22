@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-//error_reporting(0);
+error_reporting(0);
 if (strlen($_SESSION['login']) == 0) {
     header('location:review-room-guest.php');
 } else {
@@ -32,9 +32,7 @@ if (strlen($_SESSION['login']) == 0) {
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
     <script src="jquery-3.2.1.min.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    < <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -127,22 +125,12 @@ if (strlen($_SESSION['login']) == 0) {
                         </div>
                         </p>
                     </div>
-                    <div class="col-sm-4 text-center">
-                        <h3 class="mt-4 mb-3">Write Review Here</h3>
-                        <button type="button" name="add_review" id="add_review" class="btn btn-primary">Review</button>
-                    </div>
+
                 </div>
             </div>
         </div>
         <div class="mt-5" id="review_content"></div>
     </div>
-
-
-
-
-
-
-
 
 
     <!--Back to top-->
