@@ -1,17 +1,17 @@
 <?php
 
 // Get the user id
-$id = $_REQUEST['brandname'];
+$brandname = $_REQUEST['brandname'];
 
 // Database connection
 $con = mysqli_connect("localhost", "root", "", "far_db");
 
-if ($id !== "") {
+if ($brandname !== "") {
 	
 	// Get corresponding first name and
 	// last name for that user id	
 	$query = mysqli_query($con, "SELECT ToDate,
-	message, HousingType FROM tblapartments WHERE id='$id'");
+	message, HousingType FROM tblapartments WHERE id='$brandname'");
 
 	$row = mysqli_fetch_array($query);
 
