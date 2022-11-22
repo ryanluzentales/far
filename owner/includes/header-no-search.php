@@ -11,7 +11,7 @@
                     <div class="header_info">
                         <div class="social-follow">
                         </div>
-                        <?php if (strlen($_SESSION['login']) == 0) {
+                        <?php if (strlen($_SESSION['ologin']) == 0) {
                         ?>
                         <div class="login_btn"> <a href="./owner/index.php" class="btn btn-xs uppercase"
                                 data-toggle="modal" data-dismiss="modal">log in as owner</a> </div>
@@ -39,8 +39,8 @@
                         <li class="dropdown"> <a href="#" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false"><i class="fa fa-user-circle" aria-hidden="true"></i>
                                 <?php
-                                $email = $_SESSION['login'];
-                                $sql = "SELECT FullName FROM tblusers WHERE EmailId=:email ";
+                                $email = $_SESSION['ologin'];
+                                $sql = "SELECT FullName FROM tblowner WHERE EmailId=:email ";
                                 $query = $dbh->prepare($sql);
                                 $query->bindParam(':email', $email, PDO::PARAM_STR);
                                 $query->execute();
@@ -53,7 +53,7 @@
                                 } ?>
                                 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="dropdown-menu">
-                                <?php if ($_SESSION['login']) { ?>
+                                <?php if ($_SESSION['ologin']) { ?>
                                 <li><a href="profile.php">Profile Settings</a></li>
                                 <li><a href="update-password.php">Update Password</a></li>
                                 <li><a href="my-booking.php">My Booking</a></li>
