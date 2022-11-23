@@ -128,7 +128,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                         <?php
 											$status = 0;
-											$sql = "SELECT tblusers.FullName,tblapartments.FromDate,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id where tblbooking.Status=:status";
+											$sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id where tblbooking.Status=:status";
 											$query = $dbh->prepare($sql);
 											$query->bindParam(':status', $status, PDO::PARAM_STR);
 											$query->execute();
@@ -140,9 +140,9 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($result->FullName); ?></td>
                                             <td><?php echo htmlentities($result->BookingNumber); ?></td>
-                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
                                                     , <?php echo htmlentities($result->VehiclesTitle); ?></td>
-                                            <td><?php echo htmlentities($result->FromDate); ?></td>
+                                            <td><?php echo htmlentities($result->apartmentname); ?></td>
 
                                             <td><?php
 															if ($result->Status == 0) {

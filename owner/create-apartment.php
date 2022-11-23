@@ -3,7 +3,7 @@ session_start();
 include('includes/config.php');
 error_reporting(0);
 if (isset($_POST['submit'])) {
-    $fromdate = $_POST['fromdate'];
+    $apartmentname = $_POST['apartmentname'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
     $ownername = $_POST['ownername'];
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($_FILES["payment"]["tmp_name"], "../admin/img/payment/" . $_FILES["payment"]["name"]);
     move_uploaded_file($_FILES["apartmentimage"]["tmp_name"], "../admin/img/apartmentimages/" . $_FILES["apartmentimage"]["name"]);
 
-    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,VehicleId,FromDate,ToDate,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:bookingno,:fromdate,:todate,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,ToDate,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:todate,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':housingtype', $housingtype, PDO::PARAM_STR);
     $query->bindParam(':apartmentimage', $apartmentimage, PDO::PARAM_STR);
     $query->bindParam(':paymentreceipt', $paymentreceipt, PDO::PARAM_STR);
-    $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
+    $query->bindParam(':apartmentname', $apartmentname, PDO::PARAM_STR);
     $query->bindParam(':todate', $todate, PDO::PARAM_STR);
     $query->bindParam(':message', $message, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
@@ -131,7 +131,8 @@ if (isset($_POST['submit'])) {
                         <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Apartment Name:</label>
-                                <input type="text" class="form-control" name="fromdate" placeholder="Apartment Name">
+                                <input type="text" class="form-control" name="apartmentname"
+                                    placeholder="Apartment Name">
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="ownername"
