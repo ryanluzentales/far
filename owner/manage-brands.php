@@ -145,7 +145,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 												foreach ($results as $result) {				?>
                                         <tr>
                                             <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo htmlentities($result->Apartmentname); ?></td>
+                                            <td><?php echo htmlentities($result->FromDate); ?></td>
                                             <td><?php echo htmlentities($result->address); ?></td>
                                             <td><?php echo htmlentities($result->CreationDate); ?></td>
                                             <td><?php echo htmlentities($result->UpdationDate); ?></td>

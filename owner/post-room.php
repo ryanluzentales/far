@@ -186,7 +186,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         <option value=""> Select </option>
                                                         <?php
                                                             $currentEmail = $_SESSION['ologin']; 
-                                                            $ret = "select tblapartments.id,tblapartments.Apartmentname from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
+                                                            $ret = "select tblapartments.id,tblapartments.FromDate from tblapartments where tblapartments.userEmail='".$currentEmail."' AND tblapartments.Status='1'";
                                                             $query = $dbh->prepare($ret);
                                                             //$query->bindParam(':id',$id, PDO::PARAM_STR);
                                                             $query->execute();
@@ -195,7 +195,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                                 foreach ($results as $result) {
                                                             ?>
                                                         <option value=" <?php echo htmlentities($result->id); ?>">
-                                                            <?php echo htmlentities($result->Apartmentname); ?></option>
+                                                            <?php echo htmlentities($result->FromDate); ?></option>
                                                         <?php }
                                                             } ?>
 

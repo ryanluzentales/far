@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.VehiclesBrand,tblrooms.RoomName,tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
+                        <?php $sql = "SELECT tblrooms.VehiclesBrand,tblrooms.RoomName,tblrooms.VehiclesTitle,tblapartments.FromDate,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -85,7 +85,7 @@ error_reporting(0);
 
                                     <br>
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->Apartmentname); ?></a></h6>
+                                            <?php echo htmlentities($result->FromDate); ?></a></h6>
 
                                     <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
                                 </div>

@@ -3,14 +3,14 @@ session_start();
 include('includes/config.php');
 error_reporting(0);
 if (isset($_POST['submit'])) {
-    $apartmentname = $_POST['apartmentname'];
+    $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
     $useremail = $_SESSION['login'];
     $status = 0;
     $vhid = $_GET['vhid'];
     $bookingno = mt_rand(100000000, 999999999);
-    $ret = "SELECT * FROM tblbooking where (:apartmentname BETWEEN date(Apartmentname) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
+    $ret = "SELECT * FROM tblbooking where (:fromdate BETWEEN date(FromDate) and date(ToDate) || :todate BETWEEN date(FromDate) and date(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) and VehicleId=:vhid";
     $query1 = $dbh->prepare($ret);
     $query1->bindParam(':vhid', $vhid, PDO::PARAM_STR);
     $query1->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);

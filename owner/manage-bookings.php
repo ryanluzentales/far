@@ -138,7 +138,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id  ";
+                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.FromDate,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id  ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -148,7 +148,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                         <tr>
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($result->FullName); ?></td>
-                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
+                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->FromDate); ?>
                                                     , <?php echo htmlentities($result->VehiclesTitle); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
                                             <td><?php echo htmlentities($result->ToDate); ?></td>

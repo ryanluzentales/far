@@ -70,7 +70,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                         </div>
                     </div>
 
-                    <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand";
+                    <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand";
           $query = $dbh->prepare($sql);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -83,7 +83,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
+                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
                             <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?> Per Month</p>
                             <ul>
@@ -156,7 +156,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                 </div>
                 <div class="recent_addedcars">
                     <ul>
-                        <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                        <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -170,7 +170,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                         src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                         alt="image"></a> </div>
                             <div class="recent_post_title"> <a
-                                    href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
+                                    href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a>
                                 <p class="widget_price">₱<?php echo htmlentities($result->PricePerDay); ?> Per
                                     Month</p>

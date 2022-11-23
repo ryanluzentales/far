@@ -436,6 +436,10 @@ if (isset($_POST['submit'])) {
                                 <input type="date" value="<?php echo date('Y-m-d');?>" class="form-control"
                                     name="fromdate" placeholder="From Date" required>
                             </div>
+                            <!-- <div class="form-group">
+                                <label>To Date:</label>
+                                <input type="date" class="form-control" name="todate" placeholder="To Date" required>
+                            </div> -->
                             <div class="form-group">
                                 <textarea rows="4" class="form-control" name="message" placeholder="Message"
                                     required></textarea>
