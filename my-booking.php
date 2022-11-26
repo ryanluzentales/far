@@ -81,7 +81,7 @@ if (strlen($_SESSION['login']) == 0) {
                                 <ul class="vehicle_listing">
                                     <?php
                                                 $useremail = $_SESSION['login'];
-                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.VehiclesTitle,tblrooms.id as vid,tblapartments.FromDate,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblbooking.userEmail=:useremail order by tblbooking.id desc";
+                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.VehiclesTitle,tblrooms.id as vid,tblapartments.Apartmentname,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblbooking.userEmail=:useremail order by tblbooking.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -101,7 +101,7 @@ if (strlen($_SESSION['login']) == 0) {
 
                                             <h6><a
                                                     href="room-details.php?vhid=<?php echo htmlentities($result->vid); ?>">
-                                                    <?php echo htmlentities($result->FromDate); ?> ,
+                                                    <?php echo htmlentities($result->Apartmentname); ?> ,
                                                     <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
                                             <p><b>Reservation Date: </b> <?php echo htmlentities($result->FromDate); ?>
                                                 <b></b>

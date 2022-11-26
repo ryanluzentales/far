@@ -147,7 +147,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                         </div><?php } ?>
                                         <?php
 											$id = intval($_GET['id']);
-											$sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
+											$sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
 											$query = $dbh->prepare($sql);
 											$query->bindParam(':id', $id, PDO::PARAM_STR);
 											$query->execute();
@@ -170,21 +170,22 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <div class="col-sm-4">
                                                     <select class="selectpicker" name="brandname" required>
                                                         <option value="<?php echo htmlentities($result->bid); ?>">
-                                                            <?php echo htmlentities($bdname = $result->FromDate); ?>
+                                                            <?php echo htmlentities($bdname = $result->Apartmentname); ?>
                                                         </option>
-                                                        <?php $ret = "select id,FromDate from tblapartments";
+                                                        <?php $ret = "select id,Apartmentname from tblapartments";
 																	$query = $dbh->prepare($ret);
 																	//$query->bindParam(':id',$id, PDO::PARAM_STR);
 																	$query->execute();
 																	$resultss = $query->fetchAll(PDO::FETCH_OBJ);
 																	if ($query->rowCount() > 0) {
 																		foreach ($resultss as $results) {
-																			if ($results->FromDate == $bdname) {
+																			if ($results->Apartmentname == $bdname) {
 																				continue;
 																			} else {
 																	?>
                                                         <option value="<?php echo htmlentities($results->id); ?>">
-                                                            <?php echo htmlentities($results->FromDate); ?></option>
+                                                            <?php echo htmlentities($results->Apartmentname); ?>
+                                                        </option>
                                                         <?php }
 																		}
 																	} ?>

@@ -59,7 +59,7 @@ error_reporting(0);
                             $endprice = $_POST['endprice'];
                             $sql = "SELECT tblrooms.*,tblrooms.RoomName from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                             $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
@@ -73,9 +73,9 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     </div>
 
                     <?php
-                    $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms 
+                    $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.FromDate LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
@@ -91,7 +91,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                                 class="img-responsive" alt="Image" /> </a>
                         </div>
                         <div class="product-listing-content">
-                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                            <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
                                     , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
 
                             <h5><?php echo htmlentities($result->RoomName); ?></h5>
@@ -163,7 +163,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
                                 $query = $dbh->prepare($sql);
                                 $query->execute();
                                 $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -177,7 +177,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                                                 src="./admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
-                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->FromDate); ?>
+                                            href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
                                             ,
                                             <?php echo htmlentities($result->RoomName); ?>
                                             , <?php echo htmlentities($result->VehiclesTitle); ?></a>
