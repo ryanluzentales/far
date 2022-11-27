@@ -153,6 +153,22 @@ if($num>0)
                         </div>
 
                         <div class="form-group">
+                            <label for="username">Full Name</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Address</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Contact Number</label>
+                            <input type="text" class="form-control" id="username" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
