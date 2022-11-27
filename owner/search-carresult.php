@@ -87,7 +87,7 @@ error_reporting(0);
                         </div>
                         <div class="product-listing-content">
                             <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                    , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                                    , <?php echo htmlentities($result->Landmark); ?></a></h5>
                             <p class="list-price">$<?php echo htmlentities($result->PricePerDay); ?> Per Day</p>
                             <ul>
                                 <li><i class="fa fa-user"
@@ -171,7 +171,7 @@ error_reporting(0);
                                                 alt="image"></a> </div>
                                     <div class="recent_post_title"> <a
                                             href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                            , <?php echo htmlentities($result->VehiclesTitle); ?></a>
+                                            , <?php echo htmlentities($result->Landmark); ?></a>
                                         <p class="widget_price">$<?php echo htmlentities($result->PricePerDay); ?> Per
                                             Day</p>
                                     </div>

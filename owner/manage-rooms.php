@@ -137,7 +137,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
+                                        <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -146,7 +146,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 												foreach ($results as $result) {				?>
                                         <tr>
                                             <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo htmlentities($result->VehiclesTitle); ?></td>
+                                            <td><?php echo htmlentities($result->Landmark); ?></td>
                                             <td><?php echo htmlentities($result->Apartmentname); ?></td>
                                             <td><?php echo htmlentities($result->PricePerDay); ?></td>
                                             <td><?php echo htmlentities($result->FuelType); ?></td>

@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
+                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -78,7 +78,7 @@ error_reporting(0);
                                 </div>
                                 <div class="car-title-m">
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->VehiclesTitle); ?></a></h6>
+                                            <?php echo htmlentities($result->Landmark); ?></a></h6>
                                     <br>
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                                             <?php echo htmlentities($result->RoomName); ?></a></h6>
@@ -90,7 +90,7 @@ error_reporting(0);
                                     <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Month</span>
                                 </div>
                                 <div class="inventory_info_m">
-                                    <p><?php echo substr($result->VehiclesOverview, 0, 70); ?></p>
+                                    <p><?php echo substr($result->Overview, 0, 70); ?></p>
                                 </div>
                             </div>
                         </div>

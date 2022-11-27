@@ -28,7 +28,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$leatherseats = $_POST['leatherseats'];
 		$id = intval($_GET['id']);
 
-		$sql = "update tblrooms set VehiclesTitle=:vehicletitle,Apartmentname=:brand,VehiclesOverview=:vehicleoverview,PricePerDay=:priceperday,FuelType=:fueltype,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
+		$sql = "update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,FuelType=:fueltype,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -162,8 +162,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" name="vehicletitle" class="form-control"
-                                                        value="<?php echo htmlentities($result->VehiclesTitle) ?>"
-                                                        required>
+                                                        value="<?php echo htmlentities($result->Landmark) ?>" required>
                                                 </div>
                                                 <label class="col-sm-2 control-label">Apartment<span
                                                         style="color:red">*</span></label>
@@ -200,7 +199,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-10">
                                                     <textarea class="form-control" name="vehicalorcview" rows="3"
-                                                        required><?php echo htmlentities($result->VehiclesOverview); ?></textarea>
+                                                        required><?php echo htmlentities($result->Overview); ?></textarea>
                                                 </div>
                                             </div>
 

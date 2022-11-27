@@ -130,7 +130,7 @@ if (isset($_POST['submit'])) {
             <div class="listing_detail_head row">
                 <div class="col-md-9">
                     <h2><?php echo htmlentities($result->Apartmentname); ?> ,
-                        <?php echo htmlentities($result->VehiclesTitle); ?></h2>
+                        <?php echo htmlentities($result->Landmark); ?></h2>
                     <h2><?php echo htmlentities($result->RoomName); ?> </h2>
                     <h2> <?php echo htmlentities($result->OwnerName); ?></h2>
                     <h2> <?php echo htmlentities($result->ContactNumber); ?></h2>
@@ -192,7 +192,7 @@ if (isset($_POST['submit'])) {
                                 <!-- vehicle-overview -->
                                 <div role="tabpanel" class="tab-pane active" id="vehicle-overview">
 
-                                    <p><?php echo htmlentities($result->VehiclesOverview); ?></p>
+                                    <p><?php echo htmlentities($result->Overview); ?></p>
                                 </div>
 
 
@@ -387,7 +387,7 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                     <?php
                             $bid = $_SESSION['brndid'];
-                            $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.VehiclesOverview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:bid";
+                            $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:bid";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':bid', $bid, PDO::PARAM_STR);
                             $query->execute();
@@ -404,7 +404,7 @@ if (isset($_POST['submit'])) {
                             </div>
                             <div class="product-listing-content">
                                 <h5><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                        , <?php echo htmlentities($result->VehiclesTitle); ?></a></h5>
+                                        , <?php echo htmlentities($result->Landmark); ?></a></h5>
                                 <p class="list-price">₱<?php echo htmlentities($result->PricePerDay); ?></p>
 
                                 <ul class="features_list">

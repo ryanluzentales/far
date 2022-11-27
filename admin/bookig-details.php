@@ -116,7 +116,7 @@ echo "<script type='text/javascript'> document.location = 'confirmed-bookings.ph
 
                                             <?php 
 $bid=intval($_GET['bid']);
-									$sql = "SELECT tblusers.*,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
+									$sql = "SELECT tblusers.*,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
 DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePerDay
 									  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id where tblbooking.id=:bid";
 $query = $dbh -> prepare($sql);
@@ -166,7 +166,7 @@ foreach($results as $result)
                                                 <th>Room Name</th>
                                                 <td><a
                                                         href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->Apartmentname);?>
-                                                        , <?php echo htmlentities($result->VehiclesTitle);?></td>
+                                                        , <?php echo htmlentities($result->Landmark);?></td>
                                                 <th>Booking Date</th>
                                                 <td><?php echo htmlentities($result->PostingDate);?></td>
                                             </tr>

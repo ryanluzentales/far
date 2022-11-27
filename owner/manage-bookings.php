@@ -138,7 +138,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
+                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -149,7 +149,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($result->FullName); ?></td>
                                             <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                                    , <?php echo htmlentities($result->VehiclesTitle); ?></td>
+                                                    , <?php echo htmlentities($result->Landmark); ?></td>
                                             <td><?php echo htmlentities($result->FromDate); ?></td>
                                             <td><?php echo htmlentities($result->ToDate); ?></td>
                                             <td><?php echo htmlentities($result->message); ?></td>

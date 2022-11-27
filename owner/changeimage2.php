@@ -9,7 +9,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 	if (isset($_POST['update'])) {
 		$vimage = $_FILES["img2"]["name"];
 		$id = intval($_GET['imgid']);
-		move_uploaded_file($_FILES["img2"]["tmp_name"], "img/vehicleimages/" . $_FILES["img2"]["name"]);
+		move_uploaded_file($_FILES["img2"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img2"]["name"]);
 		$sql = "update tblrooms set Vimage2=:vimage where id=:id";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vimage', $vimage, PDO::PARAM_STR);
@@ -132,7 +132,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 														foreach ($results as $result) {	?>
 
                                                 <div class="col-sm-8">
-                                                    <img src="img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>"
+                                                    <img src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage2); ?>"
                                                         width="300" height="200" style="border:solid 1px #000">
                                                 </div>
                                                 <?php }
