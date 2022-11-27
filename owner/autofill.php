@@ -10,13 +10,13 @@ if ($brandname !== "") {
 	
 	// Get corresponding first name and
 	// last name for that user id	
-	$query = mysqli_query($con, "SELECT ToDate,
+	$query = mysqli_query($con, "SELECT Address,
 	message, HousingType FROM tblapartments WHERE id='$brandname'");
 
 	$row = mysqli_fetch_array($query);
 
 	// Get the first name
-	$ToDate = $row["ToDate"];
+	$Address = $row["Address"];
 
 	// Get the first name
 	$message = $row["message"];
@@ -25,7 +25,7 @@ if ($brandname !== "") {
 }
 
 // Store it in a array
-$result = array("$ToDate", "$message", "$HousingType");
+$result = array("$Address", "$message", "$HousingType");
 
 // Send in JSON encoded form
 $myJSON = json_encode($result);

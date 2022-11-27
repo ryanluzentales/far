@@ -108,7 +108,7 @@ else{
                                         <?php 
 
 $status=2;
-									$sql = "SELECT tblapartments.Apartmentname,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
+									$sql = "SELECT tblapartments.Apartmentname,tblapartments.address,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query->execute();
@@ -124,7 +124,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->BookingNumber);?></td>
 
                                             <td><?php echo htmlentities($result->Apartmentname);?></td>
-                                            <td><?php echo htmlentities($result->ToDate);?></td>
+                                            <td><?php echo htmlentities($result->address);?></td>
                                             <td><?php 
 if($result->Status==0)
 {

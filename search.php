@@ -75,7 +75,7 @@ where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR t
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.VehiclesBrand 
-where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblapartments.ToDate LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
+where tblrooms.VehiclesTitle LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblapartments.Address LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);

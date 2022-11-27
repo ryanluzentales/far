@@ -4,7 +4,7 @@ include('includes/config.php');
 //error_reporting(0);
 if (isset($_POST['submit'])) {
     $apartmentname = $_POST['apartmentname'];
-    $todate = $_POST['todate'];
+    $address = $_POST['address'];
     $message = $_POST['message'];
     $ownername = $_POST['ownername'];
     $contactnumber = $_POST['contactnumber'];
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     $bookingno = mt_rand(100000000, 999999999);
     move_uploaded_file($_FILES["apartmentimage"]["tmp_name"], "admin/img/apartmentimages/" . $_FILES["apartmentimage"]["name"]);
 
-    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,ToDate,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:todate,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,Address,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:address,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':apartmentimage', $apartmentimage, PDO::PARAM_STR);
     $query->bindParam(':paymentreceipt', $paymentreceipt, PDO::PARAM_STR);
     $query->bindParam(':apartmentname', $apartmentname, PDO::PARAM_STR);
-    $query->bindParam(':todate', $todate, PDO::PARAM_STR);
+    $query->bindParam(':address', $address, PDO::PARAM_STR);
     $query->bindParam(':message', $message, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->execute();
@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group">
                         <label>Address:</label>
-                        <input type="text" class="form-control" id="location" name="todate" placeholder="Location">
+                        <input type="text" class="form-control" id="location" name="address" placeholder="Location">
                     </div>
 
                     <div class="form-group">

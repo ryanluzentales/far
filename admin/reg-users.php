@@ -74,6 +74,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     <div class="ts-main-content">
         <?php include('includes/leftbar.php'); ?>
+
         <div class="content-wrapper">
             <div class="container-fluid">
 
@@ -162,11 +163,13 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
         </div>
 
+
     </div>
 
 
 
     <!-- Loading Scripts -->
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

@@ -86,7 +86,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                 <ul class="vehicle_listing">
                                     <?php
                                                 $useremail = $_SESSION['ologin'];
-                                                $sql = "SELECT tblapartments.Apartmentname,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.BookingNumber from tblapartments join verify on tblapartments.BookingNumber=verify.BookingNumber where tblapartments.userEmail=:useremail order by tblapartments.id desc";
+                                                $sql = "SELECT tblapartments.Apartmentname,tblapartments.Address,tblapartments.message,tblapartments.Status,tblapartments.BookingNumber from tblapartments join verify on tblapartments.BookingNumber=verify.BookingNumber where tblapartments.userEmail=:useremail order by tblapartments.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -102,7 +102,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                         <div class="vehicle_title">
                                             <h5><b>Name: </b> <?php echo htmlentities($result->Apartmentname); ?> </h5>
                                             <br><b>Address </b>
-                                            <?php echo htmlentities($result->ToDate); ?></p>
+                                            <?php echo htmlentities($result->Address); ?></p>
                                             <div style="float: left">
                                                 <p><b>Landmark:</b> <?php echo htmlentities($result->message); ?> </p>
                                             </div>
