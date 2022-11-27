@@ -26,7 +26,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>PHP Login Script Without Using Database</title>
+    <title>Administrator Sign-in</title>
     <link href="./css/style.css" rel="stylesheet">
 </head>
 

@@ -6,9 +6,8 @@ $showAlert = false;
 $showError = false;
 $exists=false;
 	
-if(strlen($_SESSION['slogin'])==0)
-	{	
-header('location:index.php');
+if(!isset($_SESSION['UserData']['Username'])){
+	header("location:login.php");
 }
 else{
 	
