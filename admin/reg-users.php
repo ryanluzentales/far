@@ -137,7 +137,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </tfoot>
                                             <tbody>
 
-                                                <?php $sql = "SELECT * from  tblusers ";
+                                                <?php $sql = "SELECT * from  tblowner ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
