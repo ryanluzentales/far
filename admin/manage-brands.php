@@ -130,7 +130,7 @@ foreach($results as $result)
 {				?>
                                         <tr>
                                             <td><?php echo htmlentities($cnt);?></td>
-                                            <td><?php echo htmlentities($result->FromDate);?></td>
+                                            <td><?php echo htmlentities($result->Apartmentname);?></td>
                                             <td><?php echo htmlentities($result->CreationDate);?></td>
                                             <td><?php echo htmlentities($result->UpdationDate);?></td>
                                             <td><a href="edit-brand.php?id=<?php echo $result->id;?>"><i

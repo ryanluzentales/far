@@ -162,90 +162,9 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
         </div>
 
-        <div class="content-wrapper">
-            <div class="container-fluid">
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">OWNER ACCOUNTS</div>
-                            <div class="panel-body">
-                                <?php if ($error) { ?><div class="errorWrap">
-                                    <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
-                                </div>
-                                <?php } else if ($msg) { ?><div class="succWrap">
-                                    <strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?>
-                                </div><?php } ?>
-                                <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                    cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th> Name</th>
-                                            <th>Email </th>
-                                            <th>Contact no</th>
-                                            <th>DOB</th>
-                                            <th>Address</th>
-                                            <th>City</th>
-                                            <th>Country</th>
-                                            <th>Reg Date</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th> Name</th>
-                                            <th>Email </th>
-                                            <th>Contact no</th>
-                                            <th>DOB</th>
-                                            <th>Address</th>
-                                            <th>City</th>
-                                            <th>Country</th>
-                                            <th>Reg Date</th>
-                                        </tr>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-
-                                        <?php $sql = "SELECT * from  tblowner ";
-											$query = $dbh->prepare($sql);
-											$query->execute();
-											$results = $query->fetchAll(PDO::FETCH_OBJ);
-											$cnt = 1;
-											if ($query->rowCount() > 0) {
-												foreach ($results as $result) {				?>
-                                        <tr>
-                                            <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo htmlentities($result->FullName); ?></td>
-                                            <td><?php echo htmlentities($result->EmailId); ?></td>
-                                            <td><?php echo htmlentities($result->ContactNo); ?></td>
-                                            <td><?php echo htmlentities($result->dob); ?></td>
-                                            <td><?php echo htmlentities($result->Address); ?></td>
-                                            <td><?php echo htmlentities($result->City); ?></td>
-                                            <td><?php echo htmlentities($result->Country); ?></td>
-                                            <td><?php echo htmlentities($result->RegDate); ?></td>
-                                        </tr>
-                                        <?php $cnt = $cnt + 1;
-												}
-											} ?>
-
-                                    </tbody>
-                                </table>
-
-
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
+
+
 
     <!-- Loading Scripts -->
     <script src="js/jquery.min.js"></script>

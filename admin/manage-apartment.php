@@ -99,7 +99,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         <?php
 											$status = 0;
-											$sql = "SELECT tblapartments.userEmail,tblapartments.FromDate,tblapartments.gender,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber,tblapartments.Payment from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
+											$sql = "SELECT tblapartments.userEmail,tblapartments.Apartmentname,tblapartments.gender,tblapartments.ToDate,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber,tblapartments.Payment from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
 											$query = $dbh->prepare($sql);
 											$query->bindParam(':status', $status, PDO::PARAM_STR);
 											$query->execute();
@@ -114,7 +114,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <td><a href="view-payment.php?id=<?php echo htmlentities($result->id);?>">View
                                                     Proof of Payment</td>
                                             <td><?php echo htmlentities($result->gender); ?></td>
-                                            <td><?php echo htmlentities($result->FromDate); ?></td>
+                                            <td><?php echo htmlentities($result->Apartmentname); ?></td>
                                             <td><?php echo htmlentities($result->ToDate); ?></td>
                                             <td><?php
 															if ($result->Status == 0) {

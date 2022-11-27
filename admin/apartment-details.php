@@ -73,9 +73,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 	if(isset($_REQUEST['aeid'])){
 		$aeid = intval($_GET['aeid']);
 		$status = 1;
-		$name = $_GET['FromDate'];
+		$name = $_GET['Apartmentname'];
 		$address = $_GET['ToDate'];
-		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblapartments(FromDate,address) VALUES(:name,:address)";
+		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblapartments(Apartmentname,address) VALUES(:name,:address)";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $status, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
@@ -229,7 +229,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             <?php
 												$bid = intval($_GET['bid']);
-												$sql = "SELECT tblowner.*,tblapartments.FromDate, tblapartments.ToDate, tblapartments.message, tblapartments.Status, tblapartments.PostingDate, tblapartments.id, tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.id=:bid";
+												$sql = "SELECT tblowner.*,tblapartments.Apartmentname, tblapartments.ToDate, tblapartments.message, tblapartments.Status, tblapartments.PostingDate, tblapartments.id, tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.id=:bid";
 												$query = $dbh->prepare($sql);
 												$query->bindParam(':bid', $bid, PDO::PARAM_STR);
 												$query->execute();
@@ -269,7 +269,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             <tr>
                                                 <th>Apartment Name</th>
-                                                <td><?php echo htmlentities($result->FromDate); ?></td>
+                                                <td><?php echo htmlentities($result->Apartmentname); ?></td>
 
                                             </tr>
                                             <tr>

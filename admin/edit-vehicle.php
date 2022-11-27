@@ -11,7 +11,7 @@ else{
 if(isset($_POST['submit']))
   {
 $vehicletitle=$_POST['vehicletitle'];
-$brand=$_POST['FromDate'];
+$brand=$_POST['Apartmentname'];
 $vehicleoverview=$_POST['vehicalorcview'];
 $priceperday=$_POST['priceperday'];
 $fueltype=$_POST['fueltype'];
@@ -134,7 +134,7 @@ $msg="Data updated successfully";
                                         </div><?php } ?>
                                         <?php 
 $id=intval($_GET['id']);
-$sql ="SELECT tblrooms.*,tblapartments.FromDate,tblapartments.id as bid from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
+$sql ="SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.id=:id";
 $query = $dbh -> prepare($sql);
 $query-> bindParam(':id', $id, PDO::PARAM_STR);
 $query->execute();
@@ -154,14 +154,14 @@ foreach($results as $result)
                                                         value="<?php echo htmlentities($result->VehiclesTitle)?>"
                                                         required>
                                                 </div>
-                                                <label class="col-sm-2 control-label">Select Brand<span
+                                                <label class="col-sm-2 control-label">Select Apartment<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="FromDate" required>
+                                                    <select class="selectpicker" name="Apartmentname" required>
                                                         <option value="<?php echo htmlentities($result->bid);?>">
-                                                            <?php echo htmlentities($bdname=$result->FromDate); ?>
+                                                            <?php echo htmlentities($bdname=$result->Apartmentname); ?>
                                                         </option>
-                                                        <?php $ret="select id,FromDate from tblapartments";
+                                                        <?php $ret="select id,Apartmentname from tblapartments";
 $query= $dbh -> prepare($ret);
 //$query->bindParam(':id',$id, PDO::PARAM_STR);
 $query-> execute();
@@ -170,13 +170,13 @@ if($query -> rowCount() > 0)
 {
 foreach($resultss as $results)
 {
-if($results->FromDate==$bdname)
+if($results->Apartmentname==$bdname)
 {
 continue;
 } else{
 ?>
                                                         <option value="<?php echo htmlentities($results->id);?>">
-                                                            <?php echo htmlentities($results->FromDate);?></option>
+                                                            <?php echo htmlentities($results->Apartmentname);?></option>
                                                         <?php }}} ?>
 
                                                     </select>

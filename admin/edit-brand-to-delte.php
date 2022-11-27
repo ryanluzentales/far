@@ -12,7 +12,7 @@ if(isset($_POST['submit']))
 {
 $brand=$_POST['brand'];
 $id=$_GET['id'];
-$sql="update  tblbrands set FromDate=:brand where id=:id";
+$sql="update  tblbrands set Apartmentname=:brand where id=:id";
 $query = $dbh->prepare($sql);
 $query->bindParam(':brand',$brand,PDO::PARAM_STR);
 $query->bindParam(':id',$id,PDO::PARAM_STR);
@@ -120,7 +120,7 @@ foreach($results as $result)
                                                 <label class="col-sm-4 control-label">Brand Name</label>
                                                 <div class="col-sm-8">
                                                     <input type="text" class="form-control"
-                                                        value="<?php echo htmlentities($result->FromDate);?>"
+                                                        value="<?php echo htmlentities($result->Apartmentname);?>"
                                                         name="brand" id="brand" required>
                                                 </div>
                                             </div>
