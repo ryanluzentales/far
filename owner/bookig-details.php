@@ -136,7 +136,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 												$bid = intval($_GET['bid']);
 												$sql = "SELECT tblusers.*,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblrooms.RoomName,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber,
 DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePerDay
-									  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id where tblbooking.id=:bid";
+									  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id where tblbooking.id=:bid";
 												$query = $dbh->prepare($sql);
 												$query->bindParam(':bid', $bid, PDO::PARAM_STR);
 												$query->execute();

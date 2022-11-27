@@ -107,7 +107,8 @@ $msg="Booking Successfully Confirmed";
                             <div class="panel-heading">Bookings Info</div>
                             <div class="panel-body">
                                 <?php if($error){?><div class="errorWrap">
-                                    <strong>ERROR</strong>:<?php echo htmlentities($error); ?> </div><?php } 
+                                    <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                                </div><?php } 
 				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
                                 <table id="zctb" class="display table table-striped table-bordered table-hover"
                                     cellspacing="0" width="100%">
@@ -139,7 +140,7 @@ $msg="Booking Successfully Confirmed";
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id  ";
+                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

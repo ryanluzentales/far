@@ -137,7 +137,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand";
+                                        <?php $sql = "SELECT tblrooms.VehiclesTitle,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);

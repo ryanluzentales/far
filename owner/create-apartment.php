@@ -5,7 +5,7 @@ error_reporting(0);
 if (isset($_POST['submit'])) {
     $apartmentname = $_POST['apartmentname'];
     $address = $_POST['address'];
-    $message = $_POST['message'];
+    $Landmark = $_POST['Landmark'];
     $ownername = $_POST['ownername'];
     $contactnumber = $_POST['contactnumber'];
     $housingtype = $_POST['housingtype'];
@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
     move_uploaded_file($_FILES["payment"]["tmp_name"], "../admin/img/payment/" . $_FILES["payment"]["name"]);
     move_uploaded_file($_FILES["apartmentimage"]["tmp_name"], "../admin/img/apartmentimages/" . $_FILES["apartmentimage"]["name"]);
 
-    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,Address,message,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:address,:message,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,Address,Landmark,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:address,:Landmark,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':paymentreceipt', $paymentreceipt, PDO::PARAM_STR);
     $query->bindParam(':apartmentname', $apartmentname, PDO::PARAM_STR);
     $query->bindParam(':address', $address, PDO::PARAM_STR);
-    $query->bindParam(':message', $message, PDO::PARAM_STR);
+    $query->bindParam(':Landmark', $Landmark, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->execute();
     $lastInsertId = $dbh->lastInsertId();
@@ -159,7 +159,7 @@ if (isset($_POST['submit'])) {
                             <br>
                             <div class="form-group">
                                 <label>Landmark:</label>
-                                <input type="text" class="form-control" name="message" placeholder="Landmark">
+                                <input type="text" class="form-control" name="Landmark" placeholder="Landmark">
                             </div>
                             <div class="form-group">
                                 <label>Contact Number:</label>

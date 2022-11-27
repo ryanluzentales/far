@@ -138,7 +138,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id  ";
+                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);

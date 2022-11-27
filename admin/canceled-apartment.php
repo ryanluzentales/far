@@ -108,7 +108,7 @@ else{
                                         <?php 
 
 $status=2;
-									$sql = "SELECT tblapartments.Apartmentname,tblapartments.Address,tblapartments.message,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
+									$sql = "SELECT tblapartments.Apartmentname,tblapartments.Address,tblapartments.Landmark,tblapartments.Status,tblapartments.PostingDate,tblapartments.id,tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.Status=:status";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query->execute();

@@ -112,7 +112,7 @@ else{
                                         <?php 
 
 $status=1;
-									$sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.VehiclesBrand=tblapartments.id   where tblbooking.Status=:status";
+									$sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.VehiclesTitle,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id   where tblbooking.Status=:status";
 $query = $dbh -> prepare($sql);
 $query -> bindParam(':status',$status, PDO::PARAM_STR);
 $query->execute();

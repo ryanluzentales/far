@@ -70,7 +70,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                         </div>
                     </div>
 
-                    <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand";
+                    <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
           $query = $dbh->prepare($sql);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -156,7 +156,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                 </div>
                 <div class="recent_addedcars">
                     <ul>
-                        <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                        <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);

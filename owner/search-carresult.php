@@ -57,7 +57,7 @@ error_reporting(0);
               //Query for Listing count
               $brand = $_POST['brand'];
               $fueltype = $_POST['fueltype'];
-              $sql = "SELECT id from tblrooms where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
+              $sql = "SELECT id from tblrooms where tblrooms.Apartmentname=:brand and tblrooms.FuelType=:fueltype";
               $query = $dbh->prepare($sql);
               $query->bindParam(':brand', $brand, PDO::PARAM_STR);
               $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
@@ -71,7 +71,7 @@ error_reporting(0);
 
                     <?php
 
-          $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand where tblrooms.VehiclesBrand=:brand and tblrooms.FuelType=:fueltype";
+          $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:brand and tblrooms.FuelType=:fueltype";
           $query = $dbh->prepare($sql);
           $query->bindParam(':brand', $brand, PDO::PARAM_STR);
           $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
@@ -128,7 +128,7 @@ error_reporting(0);
                     if ($query->rowCount() > 0) {
                       foreach ($results as $result) {       ?>
                                         <option value="<?php echo htmlentities($result->id); ?>">
-                                            <?php echo htmlentities($result->message); ?></option>
+                                            <?php echo htmlentities($result->Landmark); ?></option>
                                         <?php }
                     } ?>
 
@@ -156,7 +156,7 @@ error_reporting(0);
                         </div>
                         <div class="recent_addedcars">
                             <ul>
-                                <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.VehiclesBrand order by id desc limit 4";
+                                <?php $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname order by id desc limit 4";
                 $query = $dbh->prepare($sql);
                 $query->execute();
                 $results = $query->fetchAll(PDO::FETCH_OBJ);

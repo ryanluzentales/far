@@ -229,7 +229,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             <?php
 												$bid = intval($_GET['bid']);
-												$sql = "SELECT tblowner.*,tblapartments.Apartmentname, tblapartments.Address, tblapartments.message, tblapartments.Status, tblapartments.PostingDate, tblapartments.id, tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.id=:bid";
+												$sql = "SELECT tblowner.*,tblapartments.Apartmentname, tblapartments.Address, tblapartments.Landmark, tblapartments.Status, tblapartments.PostingDate, tblapartments.id, tblapartments.BookingNumber from tblapartments join verify on verify.BookingNumber=tblapartments.BookingNumber join tblowner on tblowner.EmailId=tblapartments.userEmail where tblapartments.id=:bid";
 												$query = $dbh->prepare($sql);
 												$query->bindParam(':bid', $bid, PDO::PARAM_STR);
 												$query->execute();
