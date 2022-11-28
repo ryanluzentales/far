@@ -25,21 +25,19 @@ if (strlen($_SESSION['alogin']) == 0) {
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
 
-	} if(isset($_REQUEST['eid'])){
-        $email = 'jrobertosy@gmail.com';
+	}                                      
+if (isset($_REQUEST['eid'])) {
+        $email =  "ryanluzentales@gmail.com";
         $subject = "APARTMENT DENIED";
-        $message = "Good day owner! your request has been reviewed and unfortunately it has been denied. Your request will be reviewed further. If you have any questions please feel free to contact us. Thank you for using FAR app";
-
-
-
+        $message ="apartment deny";
         $mail = new PHPMailer(true);                            
 
         //Server settings
         $mail->isSMTP();                                     
-        $mail->Host = 'mail.smtp2go.com';                      
+        $mail->Host = 'smtp-relay.sendinblue.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
-        $mail->Password = 'Find4room!';             
+        $mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
+        $mail->Password = '0hsk74E8gSayRIXr';             
         $mail->SMTPOptions = array(
             'ssl' => array(
             'verify_peer' => false,
@@ -47,15 +45,14 @@ if (strlen($_SESSION['alogin']) == 0) {
             'allow_self_signed' => true
             )
         );                         
-        $mail->SMTPSecure = 'none';                           
-        $mail->Port = 2525;                                   
-
+        $mail->SMTPSecure = 'tls';                           
+        $mail->Port = 587;
         //Send Email
-        $mail->setFrom('jrobertosy@findaroom.app');
+        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
         
         //Recipients
         $mail->addAddress($email);              
-        $mail->addReplyTo('jrobertosy@findaroom.app');
+        $mail->addReplyTo('ryfu.luzentales.swu@phinmaed.com');
         
         //Content
         $mail->isHTML(true);                                  
@@ -63,69 +60,12 @@ if (strlen($_SESSION['alogin']) == 0) {
         $mail->Body    = $message;
 
         $mail->send();
-		
-       $_SESSION['result'] = 'Message has been sent';
+        $_SESSION['result'] = 'Message has been sent';
 	   $_SESSION['status'] = 'ok';
+
 }
-
-
-
-	if(isset($_REQUEST['aeid'])){
-		$aeid = intval($_GET['aeid']);
-		$status = 1;
-		$name = $_GET['Apartmentname'];
-		$address = $_GET['Address'];
-		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblapartments(Apartmentname,address) VALUES(:name,:address)";
-		$query = $dbh->prepare($sql);
-		$query->bindParam(':status', $status, PDO::PARAM_STR);
-		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
-		$query->bindParam(':name', $name, PDO::PARAM_STR);
-		$query->bindParam(':address', $address, PDO::PARAM_STR);
-		$query->execute();
-		echo '<script type="text/javascript">alert("Apartment confirmed");</script>';
-		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
-
-	} if(isset($_REQUEST['aeid'])){
-		$email = 'jrobertosy@gmail.com';
-        $subject = "APARTMENT APPROVED";
-        $message = "Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.";
-
-
-
-    $mail = new PHPMailer(true);                            
-        //Server settings
-        $mail->isSMTP();                                     
-        $mail->Host = 'mail.smtp2go.com';                      
-        $mail->SMTPAuth = true;                             
-        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
-        $mail->Password = 'Find4room!';             
-        $mail->SMTPOptions = array(
-            'ssl' => array(
-            'verify_peer' => false,
-            'verify_peer_name' => false,
-            'allow_self_signed' => true
-            )
-        );                         
-        $mail->SMTPSecure = 'none';                           
-        $mail->Port = 2525;                                   
-
-        //Send Email
-        $mail->setFrom('jrobertosy@findaroom.app');
-        
-        //Recipients
-        $mail->addAddress($email);              
-        $mail->addReplyTo('jrobertosy@findaroom.app');
-        
-        //Content
-        $mail->isHTML(true);                                  
-        $mail->Subject = $subject;
-        $mail->Body    = $message;
-
-        $mail->send();
-       $_SESSION['result'] = 'Message has been sent';
-	   $_SESSION['status'] = 'ok';
-		
-}
+                                                            
+                                                        
 
 ?>
 
@@ -302,11 +242,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <?php if ($result->Status == 0) { ?>
                                                 <tr>
                                                     <td style="text-align:center" colspan="4">
-                                                        <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
-                                                            name="approve" class="btn btn-primary">Submit</a>
+                                                        <a href="deny-apartment.php?eid=<?php echo htmlentities($result->id); ?>"
+                                                            onclick="sendEmail();" name="approve" name="approve"
+                                                            class="btn btn-primary">Submit</a>
+
+
+
 
                                                         <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
-                                                            name="deny " class="btn btn-danger"> Deny</a>
+                                                            name="deny " class="btn btn-danger"> Cancel</a>
 
                                                     </td>
                                                 </tr>
