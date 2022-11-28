@@ -10,10 +10,10 @@ else{
 if(isset($_REQUEST['eid']))
 	{
 $eid=intval($_GET['eid']);
-$status="2";
-$sql = "UPDATE tblbooking SET Status=:status WHERE  id=:eid";
+$Commissionstatus="2";
+$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:eid";
 $query = $dbh->prepare($sql);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
+$query -> bindParam(':Commissionstatus',$Commissionstatus, PDO::PARAM_STR);
 $query-> bindParam(':eid',$eid, PDO::PARAM_STR);
 $query -> execute();
 
@@ -24,11 +24,11 @@ $msg="Booking Successfully Cancelled";
 if(isset($_REQUEST['aeid']))
 	{
 $aeid=intval($_GET['aeid']);
-$status=1;
+$Commissionstatus=1;
 
-$sql = "UPDATE tblbooking SET Status=:status WHERE  id=:aeid";
+$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:aeid";
 $query = $dbh->prepare($sql);
-$query -> bindParam(':status',$status, PDO::PARAM_STR);
+$query -> bindParam(':Commissionstatus',$Commissionstatus, PDO::PARAM_STR);
 $query-> bindParam(':aeid',$aeid, PDO::PARAM_STR);
 $query -> execute();
 
@@ -110,9 +110,119 @@ $msg="Booking Successfully Confirmed";
 
                 <div id="London" class="tabcontent">
 
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h2 class="page-title">Manage Bookings</h2>
+
+                                <!-- Zero Configuration Table -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Bookings Info</div>
+                                    <div class="panel-body">
+                                        <?php if($error){?><div class="errorWrap">
+                                            <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                                        </div><?php } 
+				            else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div>
+                                        <?php }?>
+                                        <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                            cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='0' ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{				?>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt);?></td>
+                                                    <td><?php echo htmlentities($result->FullName);?></td>
+                                                    <td><?php echo htmlentities($result->Apartmentname);?>
+
+                                                    <td><?php echo htmlentities($result->FromDate);?></td>
+                                                    <td>
+                                                        <?php 
+if($result->Commissionstatus==0)
+{
+echo htmlentities('Uncollected');
+} else if ($result->Commissionstatus==1) {
+echo htmlentities('Collected');
+}
+ else{
+ 	echo htmlentities('Canceled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->message);?></td>
+                                                    <td><?php 
+if($result->Status==0)
+{
+echo htmlentities('Not Confirmed yet');
+} else if ($result->Status==1) {
+echo htmlentities('Confirmed');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->PostingDate);?></td>
+                                                    <td><a href="manage-bookings.php?aeid=<?php echo htmlentities($result->id);?>"
+                                                            onclick="return confirm('Do you really want to Confirm this booking')">
+                                                            Confirm</a> /
 
 
-                    <h2> display text here</h2>
+                                                        <a href="manage-bookings.php?eid=<?php echo htmlentities($result->id);?>"
+                                                            onclick="return confirm('Do you really want to Cancel this Booking')">
+                                                            Cancel</a>
+                                                    </td>
+
+                                                </tr>
+                                                <?php $cnt=$cnt+1; }} ?>
+
+                                            </tbody>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div id="Paris" class="tabcontent">
@@ -162,7 +272,7 @@ $msg="Booking Successfully Confirmed";
                                             </tfoot>
                                             <tbody>
 
-                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='1' ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -186,9 +296,9 @@ echo htmlentities('Uncollected');
 echo htmlentities('Collected');
 }
  else{
- 	echo htmlentities('Cancelled');
+ 	echo htmlentities('Canceled');
  }
-										?></< /td>
+										?></td>
                                                     <td><?php echo htmlentities($result->message);?></td>
                                                     <td><?php 
 if($result->Status==0)
@@ -232,11 +342,110 @@ echo htmlentities('Confirmed');
                 </div>
 
                 <div id="US" class="tabcontent">
-                    <br>
-                    <br>
-                    <br>
-                    <h6>Booked</h6>
-                    <p>This is the tab for the booked room</p>
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h2 class="page-title">Manage Bookings</h2>
+
+                                <!-- Zero Configuration Table -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Bookings Info</div>
+                                    <div class="panel-body">
+                                        <?php if($error){?><div class="errorWrap">
+                                            <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                                        </div><?php } 
+				            else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div>
+                                        <?php }?>
+                                        <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                            cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{				?>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt);?></td>
+                                                    <td><?php echo htmlentities($result->FullName);?></td>
+                                                    <td><?php echo htmlentities($result->Apartmentname);?>
+
+                                                    <td><?php echo htmlentities($result->FromDate);?></td>
+                                                    <td>
+                                                        <?php 
+if($result->Commissionstatus==0)
+{
+echo htmlentities('Uncollected');
+} else if ($result->Commissionstatus==1) {
+echo htmlentities('Collected');
+}
+ else{
+ 	echo htmlentities('Canceled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->message);?></td>
+                                                    <td><?php 
+if($result->Status==0)
+{
+echo htmlentities('Not Confirmed yet');
+} else if ($result->Status==1) {
+echo htmlentities('Confirmed');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->PostingDate);?></td>
+
+                                                </tr>
+                                                <?php $cnt=$cnt+1; }} ?>
+
+                                            </tbody>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
