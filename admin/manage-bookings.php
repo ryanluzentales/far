@@ -26,7 +26,7 @@ if(isset($_REQUEST['aeid']))
 $aeid=intval($_GET['aeid']);
 $Commissionstatus=1;
 
-$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:aeid";
+$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:aeid; UPDATE tblbooking, tblrooms SET tblrooms.Roomstatus ='1' WHERE tblrooms.id=tblbooking.VehicleId;";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':Commissionstatus',$Commissionstatus, PDO::PARAM_STR);
 $query-> bindParam(':aeid',$aeid, PDO::PARAM_STR);
@@ -34,7 +34,6 @@ $query -> execute();
 
 $msg="Booking Successfully Confirmed";
 }
-
 
  ?>
 
@@ -96,8 +95,8 @@ $msg="Booking Successfully Confirmed";
         <?php include('includes/leftbar.php');?>
         <div class="content-wrapper">
 
-            <h2>Registered User</h2>
-            <p>This is where you can see the Owner's account and Clients account.</p>
+            <h2>Bookings</h2>
+
             <div>
                 <br>
                 <div class="tab">
@@ -138,7 +137,7 @@ $msg="Booking Successfully Confirmed";
                                                     <th>Message</th>
                                                     <th>Status</th>
                                                     <th>Posting date</th>
-                                                    <th>Action</th>
+
                                                 </tr>
                                             </thead>
                                             <tfoot>
@@ -151,7 +150,7 @@ $msg="Booking Successfully Confirmed";
                                                     <th>Message</th>
                                                     <th>Status</th>
                                                     <th>Posting date</th>
-                                                    <th>Action</th>
+
                                                 </tr>
                                             </tfoot>
                                             <tbody>
@@ -196,15 +195,7 @@ echo htmlentities('Confirmed');
  }
 										?></td>
                                                     <td><?php echo htmlentities($result->PostingDate);?></td>
-                                                    <td><a href="manage-bookings.php?aeid=<?php echo htmlentities($result->id);?>"
-                                                            onclick="return confirm('Do you really want to Confirm this booking')">
-                                                            Confirm</a> /
 
-
-                                                        <a href="manage-bookings.php?eid=<?php echo htmlentities($result->id);?>"
-                                                            onclick="return confirm('Do you really want to Cancel this Booking')">
-                                                            Cancel</a>
-                                                    </td>
 
                                                 </tr>
                                                 <?php $cnt=$cnt+1; }} ?>
@@ -388,7 +379,7 @@ echo htmlentities('Confirmed');
                                             </tfoot>
                                             <tbody>
 
-                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' ";
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' AND tblbooking.Status='1'";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

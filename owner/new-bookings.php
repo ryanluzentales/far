@@ -99,68 +99,49 @@ if (strlen($_SESSION['ologin']) == 0) {
                 <!-- Tab content -->
 
                 <div id="London" class="tabcontent">
-                    <br>
-                    <br>
-                    <br>
-                    <h6>New</h6>
-                    <p>This is the tab for the room owner</p>
-                </div>
+                    <div class="container-fluid">
 
-                <div id="Paris" class="tabcontent">
-                    <br>
-                    <br>
-                    <br>
-                    <h6>Booked</h6>
-                    <p>This is the tap for Clients</p>
-                    <p>This is the tap for Clients</p>
-                    <p>This is the tap for Clients</p>
-                </div>
-            </div>
+                        <div class="row">
+                            <div class="col-md-12">
 
+                                <h2 class="page-title">New Bookings</h2>
 
-            <div class="container-fluid">
+                                <!-- Zero Configuration Table -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Bookings Info</div>
+                                    <div class="panel-body">
 
-                <div class="row">
-                    <div class="col-md-12">
+                                        <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                            cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Booking No.</th>
+                                                    <th>Room</th>
+                                                    <th>Date</th>
 
-                        <h2 class="page-title">New Bookings</h2>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Booking No.</th>
+                                                    <th>Room</th>
+                                                    <th>Date</th>
 
-                        <!-- Zero Configuration Table -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Bookings Info</div>
-                            <div class="panel-body">
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
 
-                                <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                    cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Booking No.</th>
-                                            <th>Room</th>
-                                            <th>Date</th>
-
-                                            <th>Status</th>
-                                            <th>Posting date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Booking No.</th>
-                                            <th>Room</th>
-                                            <th>Date</th>
-
-                                            <th>Status</th>
-                                            <th>Posting date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-
-                                        <?php
+                                                <?php
 											$status = 0;
 											$sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id,tblbooking.BookingNumber  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id where tblbooking.Status=:status";
 											$query = $dbh->prepare($sql);
@@ -170,15 +151,16 @@ if (strlen($_SESSION['ologin']) == 0) {
 											$cnt = 1;
 											if ($query->rowCount() > 0) {
 												foreach ($results as $result) {				?>
-                                        <tr>
-                                            <td><?php echo htmlentities($cnt); ?></td>
-                                            <td><?php echo htmlentities($result->FullName); ?></td>
-                                            <td><?php echo htmlentities($result->BookingNumber); ?></td>
-                                            <td><a href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                                    , <?php echo htmlentities($result->Landmark); ?></td>
-                                            <td><?php echo htmlentities($result->FromDate); ?></td>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt); ?></td>
+                                                    <td><?php echo htmlentities($result->FullName); ?></td>
+                                                    <td><?php echo htmlentities($result->BookingNumber); ?></td>
+                                                    <td><a
+                                                            href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
+                                                            , <?php echo htmlentities($result->Landmark); ?></td>
+                                                    <td><?php echo htmlentities($result->FromDate); ?></td>
 
-                                            <td><?php
+                                                    <td><?php
 															if ($result->Status == 0) {
 																echo htmlentities('Not Confirmed yet');
 															} else if ($result->Status == 1) {
@@ -187,33 +169,131 @@ if (strlen($_SESSION['ologin']) == 0) {
 																echo htmlentities('Cancelled');
 															}
 															?></td>
-                                            <td><?php echo htmlentities($result->PostingDate); ?></td>
-                                            <td>
+                                                    <td><?php echo htmlentities($result->PostingDate); ?></td>
+                                                    <td>
 
 
-                                                <a
-                                                    href="bookig-details.php?bid=<?php echo htmlentities($result->id); ?>">
-                                                    View</a>
-                                            </td>
+                                                        <a
+                                                            href="bookig-details.php?bid=<?php echo htmlentities($result->id); ?>">
+                                                            View</a>
+                                                    </td>
 
-                                        </tr>
-                                        <?php $cnt = $cnt + 1;
+                                                </tr>
+                                                <?php $cnt = $cnt + 1;
 												}
 											} ?>
 
-                                    </tbody>
-                                </table>
+                                            </tbody>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
 
 
 
                             </div>
                         </div>
 
-
-
                     </div>
                 </div>
 
+                <div id="Paris" class="tabcontent">
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h2 class="page-title">Manage Bookings</h2>
+
+                                <!-- Zero Configuration Table -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Bookings Info</div>
+                                    <div class="panel-body">
+                                        <?php if($error){?><div class="errorWrap">
+                                            <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                                        </div><?php } 
+				            else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div>
+                                        <?php }?>
+                                        <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                            cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' AND tblbooking.Status='1'";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{				?>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt);?></td>
+                                                    <td><?php echo htmlentities($result->FullName);?></td>
+                                                    <td><?php echo htmlentities($result->Apartmentname);?>
+
+                                                    <td><?php echo htmlentities($result->FromDate);?></td>
+
+                                                    <td><?php echo htmlentities($result->message);?></td>
+                                                    <td><?php 
+if($result->Status==0)
+{
+echo htmlentities('Not Confirmed yet');
+} else if ($result->Status==1) {
+echo htmlentities('Confirmed');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->PostingDate);?></td>
+
+                                                </tr>
+                                                <?php $cnt=$cnt+1; }} ?>
+
+                                            </tbody>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
