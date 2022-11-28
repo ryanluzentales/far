@@ -84,6 +84,40 @@ if (strlen($_SESSION['ologin']) == 0) {
     <div class="ts-main-content">
         <?php include('includes/leftbar.php'); ?>
         <div class="content-wrapper">
+
+
+            <h2>New Booking</h2>
+            <p>This is where you can see the New Bookings.</p>
+            <div>
+                <br>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'London')">New</button>
+                    <button class="tablinks" onclick="openCity(event, 'Paris')">Booked</button>
+
+                </div>
+
+                <!-- Tab content -->
+
+                <div id="London" class="tabcontent">
+                    <br>
+                    <br>
+                    <br>
+                    <h6>New</h6>
+                    <p>This is the tab for the room owner</p>
+                </div>
+
+                <div id="Paris" class="tabcontent">
+                    <br>
+                    <br>
+                    <br>
+                    <h6>Booked</h6>
+                    <p>This is the tap for Clients</p>
+                    <p>This is the tap for Clients</p>
+                    <p>This is the tap for Clients</p>
+                </div>
+            </div>
+
+
             <div class="container-fluid">
 
                 <div class="row">
@@ -185,6 +219,23 @@ if (strlen($_SESSION['ologin']) == 0) {
     </div>
 
     <!-- Loading Scripts -->
+
+    <script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
+
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap-select.js"></script>
     <script src="js/bootstrap-select.min.js"></script>
