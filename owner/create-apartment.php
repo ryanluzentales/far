@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('includes/config.php');
-error_reporting(0);
+//error_reporting(0);
 if (isset($_POST['submit'])) {
     $apartmentname = $_POST['apartmentname'];
     $address = $_POST['address'];
@@ -10,20 +10,30 @@ if (isset($_POST['submit'])) {
     $contactnumber = $_POST['contactnumber'];
     $housingtype = $_POST['housingtype'];
     $gender = $_POST['gender'];
+    $termsofpayment = $_POST['termsofpayment'];
     $useremail = $_SESSION['ologin'];
+    $referencenumber = $_POST['referencenumber'];
     $status = 0;
     $paymentreceipt = $_FILES["payment"]["name"];
     $apartmentimage = $_FILES["apartmentimage"]["name"];
+    $businesspermit = $_FILES["businesspermit"]["name"];
+    $governmentid = $_FILES["governmentid"]["name"];
     $bookingno = mt_rand(100000000, 999999999);
     move_uploaded_file($_FILES["payment"]["tmp_name"], "../admin/img/payment/" . $_FILES["payment"]["name"]);
     move_uploaded_file($_FILES["apartmentimage"]["tmp_name"], "../admin/img/apartmentimages/" . $_FILES["apartmentimage"]["name"]);
+    move_uploaded_file($_FILES["businesspermit"]["tmp_name"], "../admin/img/businesspermit/" . $_FILES["businesspermit"]["name"]);
+    move_uploaded_file($_FILES["governmentid"]["tmp_name"], "../admin/img/governmentid/" . $_FILES["governmentid"]["name"]);
 
-    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,Address,Landmark,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:address,:Landmark,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
+    $sql = "INSERT INTO tblapartments(BookingNumber,OwnerName,userEmail,Apartmentname,Address,Landmark,Governmentid,Businesspermit,Referencenumber,Termsofpayment,ContactNumber,HousingType,ApartmentImage,gender,Payment,Status) VALUES(:bookingno,:ownername,:useremail,:apartmentname,:address,:Landmark,:governmentid,:businesspermit,:referencenumber,:termsofpayment,:contactnumber,:housingtype,:apartmentimage,:gender,:paymentreceipt,:status); INSERT INTO verify(BookingNumber) VALUES(:bookingno)";
     $query = $dbh->prepare($sql);
     $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
     $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
     $query->bindParam(':ownername', $ownername, PDO::PARAM_STR);
     $query->bindParam(':gender', $gender, PDO::PARAM_STR);
+    $query->bindParam(':referencenumber', $referencenumber, PDO::PARAM_STR);
+    $query->bindParam(':governmentid', $governmentid, PDO::PARAM_STR);
+    $query->bindParam(':businesspermit', $businesspermit, PDO::PARAM_STR);
+    $query->bindParam(':termsofpayment', $termsofpayment, PDO::PARAM_STR);
     $query->bindParam(':contactnumber', $contactnumber, PDO::PARAM_STR);
     $query->bindParam(':housingtype', $housingtype, PDO::PARAM_STR);
     $query->bindParam(':apartmentimage', $apartmentimage, PDO::PARAM_STR);
@@ -176,11 +186,37 @@ if (isset($_POST['submit'])) {
                                     <option value="Boarding House">Boarding House</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label>Terms of payment: </label> <br>
+                                <select class="selectpicker" name="termsofpayment">
+                                    <option value=""> Select </option>
+                                    <option value="1 month deposit 1 month advance">1 month deposit, 1 month advance
+                                    </option>
+                                    <option value="1 month deposit 2 months advance">1 month deposit, 1 month advance
+                                    </option>
+                                </select>
+                            </div>
+
                             <div class="form-group">
                                 <label>Please upload an image of your Apartment</label>
                                 <input type="file" class="form-control" name="apartmentimage"
                                     placeholder="Apartment Image">
+                                <hr>
                             </div>
+                            <h3>Upload Important Files</h3>
+                            <div class="form-group">
+                                <label>Government Id</label>
+                                <input type="file" class="form-control" name="governmentid" placeholder="Government Id">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Business Permit</label>
+                                <input type="file" class="form-control" name="businesspermit"
+                                    placeholder="Business Permit">
+                            </div>
+
+                            <hr>
                             <div class="form-group">
                                 <label>Gender allowed:</label> <br>
                                 <select class="selectpicker" name="gender">
@@ -198,7 +234,7 @@ if (isset($_POST['submit'])) {
 
                             </div>
                             <p>You can also pay through GCASH using the number above or QR code below.</p>
-                            <img src="assets/imagess/download.png" alt="QR Code" width="250" height="250">
+                            <img src="assets/imagess/qrcode.jpg" alt="QR Code" width="250" height="250">
 
                             <p>For the post to be confirm, we need to check the proof of payment and other details.
                                 Please upload your
@@ -206,6 +242,11 @@ if (isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label>Proof of Payment</label>
                                 <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
+                            </div>
+                            <div class="form-group">
+                                <label>Reference Number: *</label>
+                                <input type="text" class="form-control" name="referencenumber"
+                                    placeholder="Reference Number">
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn" name="submit" value="Submit">
