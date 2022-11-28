@@ -14,6 +14,119 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
+	if (isset($_REQUEST['eid'])) {
+		$eid = intval($_GET['eid']);
+ 		$status = "2";
+		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:eid";
+		$query = $dbh->prepare($sql);
+		$query->bindParam(':status', $status, PDO::PARAM_STR);
+		$query->bindParam(':eid', $eid, PDO::PARAM_STR);
+		$query->execute();
+		echo "<script>alert('Booking Successfully Cancelled');</script>";
+		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
+
+	} if(isset($_REQUEST['eid'])){
+        $email = 'jrobertosy@gmail.com';
+        $subject = "APARTMENT DENIED";
+        $message = "Good day owner! your request has been reviewed and unfortunately it has been denied. Your request will be reviewed further. If you have any questions please feel free to contact us. Thank you for using FAR app";
+
+
+
+        $mail = new PHPMailer(true);                            
+
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'mail.smtp2go.com';                      
+        $mail->SMTPAuth = true;                             
+        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
+        $mail->Password = 'Find4room!';             
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+        );                         
+        $mail->SMTPSecure = 'none';                           
+        $mail->Port = 2525;                                   
+
+        //Send Email
+        $mail->setFrom('jrobertosy@findaroom.app');
+        
+        //Recipients
+        $mail->addAddress($email);              
+        $mail->addReplyTo('jrobertosy@findaroom.app');
+        
+        //Content
+        $mail->isHTML(true);                                  
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        $mail->send();
+		
+       $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
+}
+
+
+
+	if(isset($_REQUEST['aeid'])){
+		$aeid = intval($_GET['aeid']);
+		$status = 1;
+		$name = $_GET['Apartmentname'];
+		$address = $_GET['Address'];
+		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:aeid; INSERT INTO tblapartments(Apartmentname,address) VALUES(:name,:address)";
+		$query = $dbh->prepare($sql);
+		$query->bindParam(':status', $status, PDO::PARAM_STR);
+		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
+		$query->bindParam(':name', $name, PDO::PARAM_STR);
+		$query->bindParam(':address', $address, PDO::PARAM_STR);
+		$query->execute();
+		echo '<script type="text/javascript">alert("Apartment confirmed");</script>';
+		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
+
+	} if(isset($_REQUEST['aeid'])){
+		$email = 'jrobertosy@gmail.com';
+        $subject = "APARTMENT APPROVED";
+        $message = "Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.";
+
+
+
+    $mail = new PHPMailer(true);                            
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'mail.smtp2go.com';                      
+        $mail->SMTPAuth = true;                             
+        $mail->Username = 'swu.phinma.edu.ph.findaroom';     
+        $mail->Password = 'Find4room!';             
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+        );                         
+        $mail->SMTPSecure = 'none';                           
+        $mail->Port = 2525;                                   
+
+        //Send Email
+        $mail->setFrom('jrobertosy@findaroom.app');
+        
+        //Recipients
+        $mail->addAddress($email);              
+        $mail->addReplyTo('jrobertosy@findaroom.app');
+        
+        //Content
+        $mail->isHTML(true);                                  
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        $mail->send();
+       $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
+		
+}
+
 ?>
 
 <!doctype html>
@@ -27,7 +140,7 @@ if (strlen($_SESSION['alogin']) == 0) {
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
 
-    <title>FAR | New Apartment</title>
+    <title>FAR | New Bookings </title>
 
     <!--Bootstrap -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
@@ -185,9 +298,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
                                                     <a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>"
+                                                        onclick="return confirm('Confirm and send email notification')"
                                                         name="approve" class="btn btn-primary"> Approve</a>
 
-                                                    <a href="deny-apartment.php?eid=<?php echo htmlentities($result->id); ?>"
+                                                    <a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>"
+                                                        onclick="return confirm('Deny and send email notification')"
                                                         name="deny " class="btn btn-danger"> Deny</a>
                                                 </td>
                                             </tr>
