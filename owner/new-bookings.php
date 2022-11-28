@@ -118,7 +118,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <th>#</th>
                                                     <th>Name</th>
                                                     <th>Booking No.</th>
-                                                    <th>Room</th>
+                                                    <th>Apartment Name</th>
                                                     <th>Date</th>
 
                                                     <th>Status</th>
@@ -131,7 +131,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <th>#</th>
                                                     <th>Name</th>
                                                     <th>Booking No.</th>
-                                                    <th>Room</th>
+                                                    <th>Apartment Name</th>
                                                     <th>Date</th>
 
                                                     <th>Status</th>
@@ -155,9 +155,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <td><?php echo htmlentities($cnt); ?></td>
                                                     <td><?php echo htmlentities($result->FullName); ?></td>
                                                     <td><?php echo htmlentities($result->BookingNumber); ?></td>
-                                                    <td><a
-                                                            href="edit-room.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->Apartmentname); ?>
-                                                            , <?php echo htmlentities($result->Landmark); ?></td>
+                                                    <td><?php echo htmlentities($result->Apartmentname); ?>
+                                                    </td>
                                                     <td><?php echo htmlentities($result->FromDate); ?></td>
 
                                                     <td><?php

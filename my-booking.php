@@ -81,7 +81,7 @@ if (strlen($_SESSION['login']) == 0) {
                                 <ul class="vehicle_listing">
                                     <?php
                                                 $useremail = $_SESSION['login'];
-                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.Landmark,tblrooms.id as vid,tblapartments.Apartmentname,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblbooking.userEmail=:useremail order by tblbooking.id desc";
+                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.Landmark,tblrooms.id as vid,tblapartments.Apartmentname,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblbooking.Commissionstatus,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblbooking.userEmail=:useremail order by tblbooking.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -111,13 +111,13 @@ if (strlen($_SESSION['login']) == 0) {
                                                 <p><b>Message:</b> <?php echo htmlentities($result->message); ?> </p>
                                             </div>
                                         </div>
-                                        <?php if ($result->Status == 1) { ?>
+                                        <?php if ($result->Commissionstatus == 1) { ?>
                                         <div class="vehicle_status"> <a href="#"
                                                 class="btn outline btn-xs active-btn">Confirmed</a>
                                             <div class="clearfix"></div>
                                         </div>
 
-                                        <?php } else if ($result->Status == 2) { ?>
+                                        <?php } else if ($result->Commissionstatus == 2) { ?>
                                         <div class="vehicle_status"> <a href="#"
                                                 class="btn outline btn-xs">Cancelled</a>
                                             <div class="clearfix"></div>
