@@ -91,7 +91,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     person</li>
                                 <li><i class="fa fa-calendar"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
+                                        aria-hidden="true"></i><?php echo htmlentities($result->Housingtype); ?>
                                 </li>
                                 <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>

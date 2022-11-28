@@ -94,7 +94,7 @@ error_reporting(0);
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     seats</li>
                                 <li><i class="fa fa-calendar"
-                                        aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
+                                        aria-hidden="true"></i><?php echo htmlentities($result->Housingtype); ?> model
                                 </li>
                                 <li><i class="fa " aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>

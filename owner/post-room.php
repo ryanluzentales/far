@@ -14,7 +14,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $roomname = $_POST['roomname'];
         $priceperday = $_POST['priceperday'];
         $BathType = $_POST['BathType'];
-        $modelyear = $_POST['modelyear'];
+        $Housingtype = $_POST['Housingtype'];
         $seatingcapacity = $_POST['seatingcapacity'];
         $vimage1 = $_FILES["img1"]["name"];
         $vimage2 = $_FILES["img2"]["name"];
@@ -39,7 +39,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         move_uploaded_file($_FILES["img4"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img4"]["name"]);
         move_uploaded_file($_FILES["img5"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-        $sql = "INSERT INTO tblrooms(RoomName,Landmark,Apartmentname,Overview,Address,PricePerDay,BathType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:roomname,:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:BathType,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+        $sql = "INSERT INTO tblrooms(RoomName,Landmark,Apartmentname,Overview,Address,PricePerDay,BathType,Housingtype,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:roomname,:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:BathType,:Housingtype,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
@@ -47,7 +47,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $query->bindParam(':vehicleoverview', $vehicleoverview, PDO::PARAM_STR);
         $query->bindParam(':priceperday', $priceperday, PDO::PARAM_STR);
         $query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
-        $query->bindParam(':modelyear', $modelyear, PDO::PARAM_STR);
+        $query->bindParam(':Housingtype', $Housingtype, PDO::PARAM_STR);
         $query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
         $query->bindParam(':address', $address, PDO::PARAM_STR);
         $query->bindParam(':vimage1', $vimage1, PDO::PARAM_STR);
@@ -225,7 +225,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" id="modelyear" name="modelyear"
+                                                    <input type="text" id="Housingtype" name="Housingtype"
                                                         class="form-control">
                                                 </div>
                                             </div>
@@ -441,7 +441,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         if (str.length == 0) {
             document.getElementById("address").value = "";
             document.getElementById("vehicletitle").value = "";
-            document.getElementById("modelyear").value = "";
+            document.getElementById("Housingtype").value = "";
             return;
         } else {
 
@@ -469,7 +469,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                     // last name input field
                     document.getElementById("vehicletitle").value = myObj[1];
 
-                    document.getElementById("modelyear").value = myObj[2];
+                    document.getElementById("Housingtype").value = myObj[2];
                 }
             };
 

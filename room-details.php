@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                         <ul>
 
                             <li> <i class="fa fa-home" aria-hidden="true"></i>
-                                <h5><?php echo htmlentities($result->ModelYear); ?></h5>
+                                <h5><?php echo htmlentities($result->Housingtype); ?></h5>
                                 <p>Housing Type</p>
                             </li>
 
@@ -387,7 +387,7 @@ if (isset($_POST['submit'])) {
                 <div class="row">
                     <?php
                             $bid = $_SESSION['brndid'];
-                            $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:bid";
+                            $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:bid";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':bid', $bid, PDO::PARAM_STR);
                             $query->execute();

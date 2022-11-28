@@ -12,7 +12,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$vehicleoverview = $_POST['vehicalorcview'];
 		$priceperday = $_POST['priceperday'];
 		$BathType = $_POST['BathType'];
-		$modelyear = $_POST['modelyear'];
+		$Housingtype = $_POST['Housingtype'];
 		$seatingcapacity = $_POST['seatingcapacity'];
 		$airconditioner = $_POST['airconditioner'];
 		$powerdoorlocks = $_POST['powerdoorlocks'];
@@ -28,14 +28,14 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$leatherseats = $_POST['leatherseats'];
 		$id = intval($_GET['id']);
 
-		$sql = "update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,BathType=:BathType,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
+		$sql = "update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,BathType=:BathType,Housingtype=:Housingtype,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
 		$query->bindParam(':vehicleoverview', $vehicleoverview, PDO::PARAM_STR);
 		$query->bindParam(':priceperday', $priceperday, PDO::PARAM_STR);
 		$query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
-		$query->bindParam(':modelyear', $modelyear, PDO::PARAM_STR);
+		$query->bindParam(':Housingtype', $Housingtype, PDO::PARAM_STR);
 		$query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
 		$query->bindParam(':airconditioner', $airconditioner, PDO::PARAM_STR);
 		$query->bindParam(':powerdoorlocks', $powerdoorlocks, PDO::PARAM_STR);
@@ -230,8 +230,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Housing Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="modelyear" class="form-control"
-                                                        value="<?php echo htmlentities($result->ModelYear); ?>"
+                                                    <input type="text" name="Housingtype" class="form-control"
+                                                        value="<?php echo htmlentities($result->Housingtype); ?>"
                                                         required>
                                                 </div>
                                                 <label class="col-sm-2 control-label">Room Capacity<span

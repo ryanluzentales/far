@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
+                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
