@@ -213,11 +213,11 @@ if (strlen($_SESSION['alogin']) == 0) {
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2 class="page-title">Apartment Details</h2>
+                        <h2 class="page-title">Preview Apartment</h2>
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Apartment Info</div>
+                            <div class="panel-heading">Apartment Details</div>
                             <div class="panel-body">
 
 
@@ -251,37 +251,42 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                     value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
                                             </div>
 
-                                            <tr>
-                                                <th colspan="4" style="text-align:center;color:blue">Details</th>
+                                            <div class="form-group">
+                                                <label>REASON: </label>
+                                                <input type="text" name="reason" id="reason" class="form-control"
+                                                    placeholder="Type the reason here..." </div>
 
-                                            </tr>
-                                            <tr>
-                                                <th>Booking No.</th>
-                                                <td>#<?php echo htmlentities($result->BookingNumber); ?></td>
+                                                <tr>
+                                                    <th colspan="4" style="text-align:center;color:blue">Details</th>
 
-                                            </tr>
-                                            <tr>
-                                                <th>Email Id</th>
-                                                <td><?php echo htmlentities($result->EmailId); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Booking No.</th>
+                                                    <td>#<?php echo htmlentities($result->BookingNumber); ?></td>
 
-
-                                            </tr>
-
-                                            <tr>
-                                                <th>Apartment Name</th>
-                                                <td><?php echo htmlentities($result->Apartmentname); ?></td>
-
-                                            </tr>
-                                            <tr>
-
-                                                <th>Address</th>
-                                                <td><?php echo htmlentities($result->Address); ?></td>
-                                            </tr>
+                                                </tr>
+                                                <tr>
+                                                    <th>Email Id</th>
+                                                    <td><?php echo htmlentities($result->EmailId); ?></td>
 
 
-                                            <tr>
-                                                <th>Apartment Status</th>
-                                                <td><?php
+                                                </tr>
+
+                                                <tr>
+                                                    <th>Apartment Name</th>
+                                                    <td><?php echo htmlentities($result->Apartmentname); ?></td>
+
+                                                </tr>
+                                                <tr>
+
+                                                    <th>Address</th>
+                                                    <td><?php echo htmlentities($result->Address); ?></td>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>Apartment Status</th>
+                                                    <td><?php
 																if ($result->Status == 0) {
 																	echo htmlentities('Not Confirmed yet');
 																} else if ($result->Status == 1) {
@@ -291,18 +296,22 @@ if (strlen($_SESSION['alogin']) == 0) {
 																}
 																?></td>
 
-                                            </tr>
+                                                </tr>
 
 
-                                            <?php if ($result->Status == 0) { ?>
-                                            <tr>
-                                                <td style="text-align:center" colspan="4">
-                                                    <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
-                                                        name="approve" class="btn btn-primary">Submit</a>
-                                                </td>
-                                            </tr>
-                                            <?php } ?>
-                                            <?php $cnt = $cnt + 1;
+                                                <?php if ($result->Status == 0) { ?>
+                                                <tr>
+                                                    <td style="text-align:center" colspan="4">
+                                                        <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                            name="approve" class="btn btn-primary">Submit</a>
+
+                                                        <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                            name="deny " class="btn btn-danger"> Deny</a>
+
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                                <?php $cnt = $cnt + 1;
 													}
 												} ?>
 

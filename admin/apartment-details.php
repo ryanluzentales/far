@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 error_reporting(0);
 include('includes/config.php');
@@ -177,14 +178,18 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
                                                     <a href="approve-apartment.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                        onclick="return confirm('Are you sure, Do you want approve this apartment? ')"
                                                         name="approve" class="btn btn-primary"> Approve</a>
 
-                                                    <a href="deny-apartment.php?=bid<?php echo htmlentities($result->id); ?>"
+
+                                                    <a href="deny-apartment.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                        onclick="return confirm('Are you sure, Do you want to deny this apartment?')"
                                                         name="deny " class="btn btn-danger"> Deny</a>
+
                                                 </td>
                                             </tr>
 
-                                            <?php $cnt = $cnt + 1;
+                                            <?php 
 													}
 												} ?>
 
