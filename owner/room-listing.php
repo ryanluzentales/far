@@ -93,7 +93,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                 <li><i class="fa fa-calendar"
                                         aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>
                                 </li>
-                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>
                             </ul>
                             <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View

@@ -14,7 +14,7 @@ $vehicletitle=$_POST['vehicletitle'];
 $brand=$_POST['Apartmentname'];
 $vehicleoverview=$_POST['vehicalorcview'];
 $priceperday=$_POST['priceperday'];
-$fueltype=$_POST['fueltype'];
+$BathType=$_POST['BathType'];
 $modelyear=$_POST['modelyear'];
 $seatingcapacity=$_POST['seatingcapacity'];
 $airconditioner=$_POST['airconditioner'];
@@ -31,13 +31,13 @@ $crashcensor=$_POST['crashcensor'];
 $leatherseats=$_POST['leatherseats'];
 $id=intval($_GET['id']);
 
-$sql="update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,FuelType=:fueltype,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
+$sql="update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,BathType=:BathType,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
 $query = $dbh->prepare($sql);
 $query->bindParam(':vehicletitle',$vehicletitle,PDO::PARAM_STR);
 $query->bindParam(':brand',$brand,PDO::PARAM_STR);
 $query->bindParam(':vehicleoverview',$vehicleoverview,PDO::PARAM_STR);
 $query->bindParam(':priceperday',$priceperday,PDO::PARAM_STR);
-$query->bindParam(':fueltype',$fueltype,PDO::PARAM_STR);
+$query->bindParam(':BathType',$BathType,PDO::PARAM_STR);
 $query->bindParam(':modelyear',$modelyear,PDO::PARAM_STR);
 $query->bindParam(':seatingcapacity',$seatingcapacity,PDO::PARAM_STR);
 $query->bindParam(':airconditioner',$airconditioner,PDO::PARAM_STR);
@@ -203,9 +203,9 @@ continue;
                                                 <label class="col-sm-2 control-label">Select Fuel Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="fueltype" required>
-                                                        <option value="<?php echo htmlentities($result->FuelType);?>">
-                                                            <?php echo htmlentities($result->FuelType);?> </option>
+                                                    <select class="selectpicker" name="BathType" required>
+                                                        <option value="<?php echo htmlentities($result->BathType);?>">
+                                                            <?php echo htmlentities($result->BathType);?> </option>
 
                                                         <option value="Petrol">Petrol</option>
                                                         <option value="Diesel">Diesel</option>

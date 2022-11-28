@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
+                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.ModelYear,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -68,7 +68,7 @@ error_reporting(0);
                                             src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                             class="img-responsive" alt="image"></a>
                                     <ul>
-                                        <li><i aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                        <li><i aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                         </li>
 
                                         <li><i class="fa fa-user"

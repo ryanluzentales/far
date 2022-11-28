@@ -120,7 +120,7 @@ $msg="Vehicle  record deleted successfully";
                                     </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.FuelType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
+                                        <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.ModelYear,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -134,7 +134,7 @@ foreach($results as $result)
                                             <td><?php echo htmlentities($result->Landmark);?></td>
                                             <td><?php echo htmlentities($result->Apartmentname);?></td>
                                             <td><?php echo htmlentities($result->PricePerDay);?></td>
-                                            <td><?php echo htmlentities($result->FuelType);?></td>
+                                            <td><?php echo htmlentities($result->BathType);?></td>
                                             <td><?php echo htmlentities($result->ModelYear);?></td>
                                             <td><a href="edit-vehicle.php?id=<?php echo $result->id;?>"><i
                                                         class="fa fa-edit"></i></a>&nbsp;&nbsp;

@@ -59,7 +59,7 @@ error_reporting(0);
                             $endprice = $_POST['endprice'];
                             $sql = "SELECT tblrooms.*,tblrooms.RoomName from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.Apartmentname 
-where tblrooms.Landmark LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice";
+where tblrooms.Landmark LIKE :search OR tblrooms.BathType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice";
                             $query = $dbh->prepare($sql);
                             $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                             $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
@@ -75,7 +75,7 @@ where tblrooms.Landmark LIKE :search OR tblrooms.FuelType LIKE :search OR tblapa
                     <?php
                     $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms 
 join tblapartments on tblapartments.id=tblrooms.Apartmentname 
-where tblrooms.Landmark LIKE :search OR tblrooms.FuelType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblapartments.Address LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
+where tblrooms.Landmark LIKE :search OR tblrooms.BathType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblapartments.Address LIKE :search OR tblrooms.ModelYear LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.RoomName LIKE :search  OR tblrooms.PricePerDay BETWEEN :startprice AND :endprice ";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':search', $searchdata, PDO::PARAM_STR);
                     $query->bindParam(':startprice', $startprice, PDO::PARAM_STR);
@@ -102,7 +102,7 @@ where tblrooms.Landmark LIKE :search OR tblrooms.FuelType LIKE :search OR tblapa
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     seats</li>
 
-                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>
                             </ul>
                             <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View

@@ -87,7 +87,7 @@ error_reporting(0);
                                         aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                     person</li>
 
-                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                <li><i class="fa" aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>
                             </ul>
                             <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View

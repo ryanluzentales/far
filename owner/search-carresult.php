@@ -56,11 +56,11 @@ error_reporting(0);
                             <?php
               //Query for Listing count
               $brand = $_POST['brand'];
-              $fueltype = $_POST['fueltype'];
-              $sql = "SELECT id from tblrooms where tblrooms.Apartmentname=:brand and tblrooms.FuelType=:fueltype";
+              $BathType = $_POST['BathType'];
+              $sql = "SELECT id from tblrooms where tblrooms.Apartmentname=:brand and tblrooms.BathType=:BathType";
               $query = $dbh->prepare($sql);
               $query->bindParam(':brand', $brand, PDO::PARAM_STR);
-              $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
+              $query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
               $query->execute();
               $results = $query->fetchAll(PDO::FETCH_OBJ);
               $cnt = $query->rowCount();
@@ -71,10 +71,10 @@ error_reporting(0);
 
                     <?php
 
-          $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:brand and tblrooms.FuelType=:fueltype";
+          $sql = "SELECT tblrooms.*,tblapartments.Apartmentname,tblapartments.id as bid  from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblrooms.Apartmentname=:brand and tblrooms.BathType=:BathType";
           $query = $dbh->prepare($sql);
           $query->bindParam(':brand', $brand, PDO::PARAM_STR);
-          $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
+          $query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
           $query->execute();
           $results = $query->fetchAll(PDO::FETCH_OBJ);
           $cnt = 1;
@@ -96,7 +96,7 @@ error_reporting(0);
                                 <li><i class="fa fa-calendar"
                                         aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?> model
                                 </li>
-                                <li><i class="fa " aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                <li><i class="fa " aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                 </li>
                             </ul>
                             <a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>" class="btn">View

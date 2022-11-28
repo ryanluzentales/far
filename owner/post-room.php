@@ -13,7 +13,7 @@ if (strlen($_SESSION['ologin']) == 0) {
         $address = $_POST['address'];
         $roomname = $_POST['roomname'];
         $priceperday = $_POST['priceperday'];
-        $fueltype = $_POST['fueltype'];
+        $BathType = $_POST['BathType'];
         $modelyear = $_POST['modelyear'];
         $seatingcapacity = $_POST['seatingcapacity'];
         $vimage1 = $_FILES["img1"]["name"];
@@ -39,14 +39,14 @@ if (strlen($_SESSION['ologin']) == 0) {
         move_uploaded_file($_FILES["img4"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img4"]["name"]);
         move_uploaded_file($_FILES["img5"]["tmp_name"], "../admin/img/vehicleimages/" . $_FILES["img5"]["name"]);
 
-        $sql = "INSERT INTO tblrooms(RoomName,Landmark,Apartmentname,Overview,Address,PricePerDay,FuelType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:roomname,:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
+        $sql = "INSERT INTO tblrooms(RoomName,Landmark,Apartmentname,Overview,Address,PricePerDay,BathType,ModelYear,SeatingCapacity,Vimage1,Vimage2,Vimage3,Vimage4,Vimage5,AirConditioner,PowerDoorLocks,AntiLockBrakingSystem,BrakeAssist,PowerSteering,DriverAirbag,PassengerAirbag,PowerWindows,CDPlayer,CentralLocking,CrashSensor,LeatherSeats) VALUES(:roomname,:vehicletitle,:brand,:vehicleoverview,:address,:priceperday,:BathType,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,:airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
         $query->bindParam(':brand', $brand, PDO::PARAM_STR);
         $query->bindParam(':roomname', $roomname, PDO::PARAM_STR);
         $query->bindParam(':vehicleoverview', $vehicleoverview, PDO::PARAM_STR);
         $query->bindParam(':priceperday', $priceperday, PDO::PARAM_STR);
-        $query->bindParam(':fueltype', $fueltype, PDO::PARAM_STR);
+        $query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
         $query->bindParam(':modelyear', $modelyear, PDO::PARAM_STR);
         $query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
         $query->bindParam(':address', $address, PDO::PARAM_STR);
@@ -249,7 +249,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="fueltype">
+                                                    <select class="selectpicker" name="BathType">
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Private Bath</option>
