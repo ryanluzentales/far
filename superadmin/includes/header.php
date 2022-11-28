@@ -1,5 +1,5 @@
 <div class="brand clearfix">
-    <a href="dashboard.php" style="font-size: 20px;">FAR | Admin Panel</a>
+    <a href="dashboard.php" style="font-size: 20px;">FAR | SuperAdmin Panel</a>
     <span class="menu-btn"><i class="fa fa-bars"></i></span>
     <ul class="ts-profile-nav">
 

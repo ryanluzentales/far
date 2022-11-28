@@ -1,6 +1,6 @@
 <?php
 session_start();
-error_reporting(0);
+//error_reporting(0);
 include('includes/config.php');
 $showAlert = false;
 $showError = false;
@@ -21,6 +21,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	$cpassword = $_POST["cpassword"];
+    $fullname =$_POST["fullname"];
+    $address =$_POST["address"];
+    $contactnumber =$_POST["contactnumber"];
 			
 	
 	$sql = "Select * from admin where UserName='$username'";
@@ -35,8 +38,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			$hash = md5($password);
 				
 			// Password Hashing is used here.
-			$sql = "INSERT INTO `admin` ( `UserName`,
-				`Password`, `updationDate`) VALUES ('$username',
+			$sql = "INSERT INTO `admin` ( `UserName`, `Fullname`, `Address`, `Contactnumber`,
+				`Password`, `updationDate`) VALUES ('$username', '$fullname', '$address', '$contactnumber',
 				'$hash', current_timestamp())";
 	
 			$result = mysqli_query($conn, $sql);
@@ -69,7 +72,7 @@ if($num>0)
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
 
-    <title>FAR | Admin Dashboard</title>
+    <title>FAR | SuperAdmin Dashboard</title>
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -98,95 +101,6 @@ if($num>0)
             <div class="container-fluid">
 
 
-                <?php
-	
-	if($showAlert) {
-	
-		echo ' <div class="alert alert-success
-			alert-dismissible fade show" role="alert">
-	
-			<strong>Success!</strong> Your account is
-			now created and you can login.
-			<button type="button" class="close"
-				data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">×</span>
-			</button>
-		</div> ';
-	}
-	
-	if($showError) {
-	
-		echo ' <div class="alert alert-danger
-			alert-dismissible fade show" role="alert">
-		<strong>Error!</strong> '. $showError.'
-	
-	<button type="button" class="close"
-			data-dismiss="alert aria-label="Close">
-			<span aria-hidden="true">×</span>
-	</button>
-	</div> ';
-}
-		
-	if($exists) {
-		echo ' <div class="alert alert-danger
-			alert-dismissible fade show" role="alert">
-	
-		<strong>Error!</strong> '. $exists.'
-		<button type="button" class="close"
-			data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">×</span>
-		</button>
-	</div> ';
-	}
-
-?>
-
-                <div class="container my-4 ">
-
-                    <h1 class="text-center">Create Admin Accounts</h1>
-                    <form action="signup.php" method="post">
-
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"
-                                aria-describedby="emailHelp">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="username">Full Name</label>
-                            <input type="text" class="form-control" id="fullname" name="username"
-                                aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Address</label>
-                            <input type="text" class="form-control" id="address" name="username"
-                                aria-describedby="emailHelp">
-                        </div>
-                        <div class="form-group">
-                            <label for="username">Contact Number</label>
-                            <input type="text" class="form-control" id="contactnumber" name="username"
-                                aria-describedby="emailHelp">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="cpassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="cpassword" name="cpassword">
-
-                            <small id="emailHelp" class="form-text text-muted">
-                                Make sure to type the same password
-                            </small>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            SignUp
-                        </button>
-                    </form>
-                </div>
 
 
 
