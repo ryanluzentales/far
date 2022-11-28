@@ -109,21 +109,126 @@ $msg="Booking Successfully Confirmed";
                 <!-- Tab content -->
 
                 <div id="London" class="tabcontent">
-                    <br>
-                    <br>
-                    <br>
-                    <h6>New</h6>
-                    <p>This is the tab for the new room</p>
+
+
+
+                    <h2> display text here</h2>
                 </div>
 
                 <div id="Paris" class="tabcontent">
-                    <br>
-                    <br>
-                    <br>
-                    <h6>Reserved</h6>
-                    <p>This is the tab for the reserved rooom</p>
-                    <p>This is the tap for Clients</p>
-                    <p>This is the tap for Clients</p>
+                    <div class="container-fluid">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h2 class="page-title">Manage Bookings</h2>
+
+                                <!-- Zero Configuration Table -->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">Bookings Info</div>
+                                    <div class="panel-body">
+                                        <?php if($error){?><div class="errorWrap">
+                                            <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
+                                        </div><?php } 
+				            else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div>
+                                        <?php }?>
+                                        <table id="zctb" class="display table table-striped table-bordered table-hover"
+                                            cellspacing="0" width="100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Apartment Name</th>
+                                                    <th>Reservation Date</th>
+                                                    <th>Commission Status</th>
+                                                    <th>Message</th>
+                                                    <th>Status</th>
+                                                    <th>Posting date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
+$query = $dbh -> prepare($sql);
+$query->execute();
+$results=$query->fetchAll(PDO::FETCH_OBJ);
+$cnt=1;
+if($query->rowCount() > 0)
+{
+foreach($results as $result)
+{				?>
+                                                <tr>
+                                                    <td><?php echo htmlentities($cnt);?></td>
+                                                    <td><?php echo htmlentities($result->FullName);?></td>
+                                                    <td><?php echo htmlentities($result->Apartmentname);?>
+
+                                                    <td><?php echo htmlentities($result->FromDate);?></td>
+                                                    <td>
+                                                        <?php 
+if($result->Commissionstatus==0)
+{
+echo htmlentities('Uncollected');
+} else if ($result->Commissionstatus==1) {
+echo htmlentities('Collected');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></< /td>
+                                                    <td><?php echo htmlentities($result->message);?></td>
+                                                    <td><?php 
+if($result->Status==0)
+{
+echo htmlentities('Not Confirmed yet');
+} else if ($result->Status==1) {
+echo htmlentities('Confirmed');
+}
+ else{
+ 	echo htmlentities('Cancelled');
+ }
+										?></td>
+                                                    <td><?php echo htmlentities($result->PostingDate);?></td>
+                                                    <td><a href="manage-bookings.php?aeid=<?php echo htmlentities($result->id);?>"
+                                                            onclick="return confirm('Do you really want to Confirm this booking')">
+                                                            Confirm</a> /
+
+
+                                                        <a href="manage-bookings.php?eid=<?php echo htmlentities($result->id);?>"
+                                                            onclick="return confirm('Do you really want to Cancel this Booking')">
+                                                            Cancel</a>
+                                                    </td>
+
+                                                </tr>
+                                                <?php $cnt=$cnt+1; }} ?>
+
+                                            </tbody>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div id="US" class="tabcontent">
@@ -135,107 +240,7 @@ $msg="Booking Successfully Confirmed";
                 </div>
             </div>
 
-            <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-md-12">
-
-                        <h2 class="page-title">Manage Bookings</h2>
-
-                        <!-- Zero Configuration Table -->
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Bookings Info</div>
-                            <div class="panel-body">
-                                <?php if($error){?><div class="errorWrap">
-                                    <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
-                                </div><?php } 
-				else if($msg){?><div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?> </div><?php }?>
-                                <table id="zctb" class="display table table-striped table-bordered table-hover"
-                                    cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Vehicle</th>
-                                            <th>From Date</th>
-                                            <th>To Date</th>
-                                            <th>Message</th>
-                                            <th>Status</th>
-                                            <th>Posting date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Vehicle</th>
-                                            <th>From Date</th>
-                                            <th>To Date</th>
-                                            <th>Message</th>
-                                            <th>Status</th>
-                                            <th>Posting date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-
-                                        <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id  ";
-$query = $dbh -> prepare($sql);
-$query->execute();
-$results=$query->fetchAll(PDO::FETCH_OBJ);
-$cnt=1;
-if($query->rowCount() > 0)
-{
-foreach($results as $result)
-{				?>
-                                        <tr>
-                                            <td><?php echo htmlentities($cnt);?></td>
-                                            <td><?php echo htmlentities($result->FullName);?></td>
-                                            <td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->Apartmentname);?>
-                                                    , <?php echo htmlentities($result->Landmark);?></td>
-                                            <td><?php echo htmlentities($result->FromDate);?></td>
-                                            <td><?php echo htmlentities($result->ToDate);?></td>
-                                            <td><?php echo htmlentities($result->message);?></td>
-                                            <td><?php 
-if($result->Status==0)
-{
-echo htmlentities('Not Confirmed yet');
-} else if ($result->Status==1) {
-echo htmlentities('Confirmed');
-}
- else{
- 	echo htmlentities('Cancelled');
- }
-										?></td>
-                                            <td><?php echo htmlentities($result->PostingDate);?></td>
-                                            <td><a href="manage-bookings.php?aeid=<?php echo htmlentities($result->id);?>"
-                                                    onclick="return confirm('Do you really want to Confirm this booking')">
-                                                    Confirm</a> /
-
-
-                                                <a href="manage-bookings.php?eid=<?php echo htmlentities($result->id);?>"
-                                                    onclick="return confirm('Do you really want to Cancel this Booking')">
-                                                    Cancel</a>
-                                            </td>
-
-                                        </tr>
-                                        <?php $cnt=$cnt+1; }} ?>
-
-                                    </tbody>
-                                </table>
-
-
-
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 
