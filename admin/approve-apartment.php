@@ -297,13 +297,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <?php if ($result->Status == 0) { ?>
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
-                                                    <a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>"
-                                                        onclick="return confirm('Confirm and send email notification')"
-                                                        name="approve" class="btn btn-primary"> Approve</a>
-
-                                                    <a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>"
-                                                        onclick="return confirm('Deny and send email notification')"
-                                                        name="deny " class="btn btn-danger"> Deny</a>
+                                                    <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                        name="approve" class="btn btn-primary">Submit</a>
                                                 </td>
                                             </tr>
                                             <?php } ?>
@@ -313,10 +308,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                         </tbody>
                                     </table>
-                                    <form method="post">
-                                        <input name="Submit2" type="submit" class="txtbox4" value="Print"
-                                            onClick="return f3();" style="cursor: pointer;" />
-                                    </form>
+
 
                                 </div>
                             </div>

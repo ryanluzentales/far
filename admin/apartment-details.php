@@ -1,12 +1,4 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/PHPMailer/src/Exception.php';
-require 'vendor/PHPMailer/src/PHPMailer.php';
-require 'vendor/PHPMailer/src/SMTP.php';
-
-
 
 session_start();
 error_reporting(0);
@@ -181,27 +173,24 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             </tr>
 
 
-                                            <?php if ($result->Status == 0) { ?>
+
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
-                                                    <a href="apartment-details.php?aeid=<?php echo htmlentities($result->id); ?>"
+                                                    <a href="approve-apartment.php?bid=<?php echo htmlentities($result->id); ?>"
                                                         name="approve" class="btn btn-primary"> Approve</a>
 
-                                                    <a href="deny-apartment.php?eid=<?php echo htmlentities($result->id); ?>"
+                                                    <a href="deny-apartment.php?=bid<?php echo htmlentities($result->id); ?>"
                                                         name="deny " class="btn btn-danger"> Deny</a>
                                                 </td>
                                             </tr>
-                                            <?php } ?>
+
                                             <?php $cnt = $cnt + 1;
 													}
 												} ?>
 
                                         </tbody>
                                     </table>
-                                    <form method="post">
-                                        <input name="Submit2" type="submit" class="txtbox4" value="Print"
-                                            onClick="return f3();" style="cursor: pointer;" />
-                                    </form>
+
 
                                 </div>
                             </div>
