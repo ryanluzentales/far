@@ -1,5 +1,11 @@
-<?php session_start(); /* Starts the session */
-
+<?php
+session_start();
+error_reporting(0);
+include('includes/config.php');
+$showAlert = false;
+$showError = false;
+$exists=false;
+	
 if(!isset($_SESSION['UserData']['Username'])){
 	header("location:login.php");
 }
@@ -143,6 +149,22 @@ if($num>0)
                         <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="username">Full Name</label>
+                            <input type="text" class="form-control" id="fullname" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Address</label>
+                            <input type="text" class="form-control" id="address" name="username"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="form-group">
+                            <label for="username">Contact Number</label>
+                            <input type="text" class="form-control" id="contactnumber" name="username"
                                 aria-describedby="emailHelp">
                         </div>
 
