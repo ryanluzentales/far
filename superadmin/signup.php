@@ -151,7 +151,7 @@ if($num>0)
                     <form action="signup.php" method="post">
 
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="username">Username *</label>
                             <input type="text" class="form-control" id="username" name="username"
                                 aria-describedby="emailHelp">
                         </div>
