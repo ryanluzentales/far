@@ -277,8 +277,10 @@ if (isset($_POST['submit'])) {
 
 
                                 <div role="tabpanel" class="tab-pane" id="location">
-                                    <iframe width="100%" height="500"
-                                        src="https://maps.google.com/maps?q=<?php echo $result->Address; ?>&output=embed"></iframe>
+                                    <iframe width="100%" height="500" style="border:0" loading="lazy" allowfullscreen
+                                        referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDkfWDWEUzigI4008L_f7uA7CkIx4uZSg4
+    &q=<?php echo $result->Address; ?>">">
+                                    </iframe>
                                 </div>
 
                                 <!-- Accessories -->

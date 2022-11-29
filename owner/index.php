@@ -74,6 +74,18 @@ error_reporting(0);
                                         <li><i class="fa fa-user"
                                                 aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                             Person</li>
+
+                                        <li>
+                                            <?php 
+if($result->Roomstatus==0)
+{
+echo htmlentities('Available');
+} else if ($result->Roomstatus==1) {
+echo htmlentities('Occupied');
+}
+										?>
+
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="car-title-m">
