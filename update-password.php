@@ -94,24 +94,6 @@ if (strlen($_SESSION['login']) == 0) {
 
     <!--Header-->
     <?php include('includes/header.php'); ?>
-    <!-- /Header -->
-    <!--Page Header-->
-    <section class="page-header profile_page">
-        <div class="container">
-            <div class="page-header_wrap">
-                <div class="page-heading">
-                    <h1>Update Password</h1>
-                </div>
-                <ul class="coustom-breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>Update Password</li>
-                </ul>
-            </div>
-        </div>
-        <!-- Dark Overlay-->
-        <div class="dark-overlay"></div>
-    </section>
-    <!-- /Page Header-->
 
     <?php
     $useremail = $_SESSION['login'];

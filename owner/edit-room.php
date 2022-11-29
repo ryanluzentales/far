@@ -11,6 +11,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$brand = $_POST['brandname'];
 		$vehicleoverview = $_POST['vehicalorcview'];
 		$priceperday = $_POST['priceperday'];
+        $Roomstatus = $_POST['Roomstatus'];
 		$BathType = $_POST['BathType'];
 		$Housingtype = $_POST['Housingtype'];
 		$seatingcapacity = $_POST['seatingcapacity'];
@@ -28,13 +29,14 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$leatherseats = $_POST['leatherseats'];
 		$id = intval($_GET['id']);
 
-		$sql = "update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,PricePerDay=:priceperday,BathType=:BathType,Housingtype=:Housingtype,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
+		$sql = "update tblrooms set Landmark=:vehicletitle,Apartmentname=:brand,Overview=:vehicleoverview,Roomstatus=:Roomstatus,PricePerDay=:priceperday,BathType=:BathType,Housingtype=:Housingtype,SeatingCapacity=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':vehicletitle', $vehicletitle, PDO::PARAM_STR);
 		$query->bindParam(':brand', $brand, PDO::PARAM_STR);
 		$query->bindParam(':vehicleoverview', $vehicleoverview, PDO::PARAM_STR);
 		$query->bindParam(':priceperday', $priceperday, PDO::PARAM_STR);
 		$query->bindParam(':BathType', $BathType, PDO::PARAM_STR);
+        $query->bindParam(':Roomstatus', $$Roomstatus, PDO::PARAM_STR);
 		$query->bindParam(':Housingtype', $Housingtype, PDO::PARAM_STR);
 		$query->bindParam(':seatingcapacity', $seatingcapacity, PDO::PARAM_STR);
 		$query->bindParam(':airconditioner', $airconditioner, PDO::PARAM_STR);
@@ -223,6 +225,18 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         <option value="CNG">CNG</option>
                                                     </select>
                                                 </div>
+                                                <br><br><br>
+                                                <label class="col-sm-2 control-label">Room Status<span
+                                                        style="color:red">*</span></label>
+                                                <div class="col-sm-4">
+                                                    <select class="selectpicker" name="Roomstatus" required>
+                                                        <option> SELECT</option>
+                                                        <option value="0">Available</option>
+                                                        <option value="1">Occupied</option>
+                                                    </select>
+                                                </div>
+
+
                                             </div>
 
 

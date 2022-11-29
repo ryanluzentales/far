@@ -3,6 +3,7 @@ session_start();
 include('includes/config.php');
 error_reporting(0);
 if (isset($_POST['submit'])) {
+    $preferreddate = $_POST['preferreddate'];
     $fromdate = $_POST['fromdate'];
     $todate = $_POST['todate'];
     $message = $_POST['message'];
@@ -20,11 +21,12 @@ if (isset($_POST['submit'])) {
 
     if ($query1->rowCount() == 0) {
 
-        $sql = "INSERT INTO  tblbooking(BookingNumber,userEmail,VehicleId,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:fromdate,:todate,:message,:status)";
+        $sql = "INSERT INTO  tblbooking(BookingNumber,userEmail,VehicleId,Preferreddate,FromDate,ToDate,message,Status) VALUES(:bookingno,:useremail,:vhid,:preferreddate,:fromdate,:todate,:message,:status)";
         $query = $dbh->prepare($sql);
         $query->bindParam(':bookingno', $bookingno, PDO::PARAM_STR);
         $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
         $query->bindParam(':vhid', $vhid, PDO::PARAM_STR);
+        $query->bindParam(':preferreddate', $preferreddate, PDO::PARAM_STR);
         $query->bindParam(':fromdate', $fromdate, PDO::PARAM_STR);
         $query->bindParam(':todate', $todate, PDO::PARAM_STR);
         $query->bindParam(':message', $message, PDO::PARAM_STR);
@@ -354,9 +356,15 @@ if (isset($_POST['submit'])) {
                         </div>
                         <form method="post">
                             <div class="form-group">
-                                <label>Date:</label>
-                                <input type="date" value="<?php echo date('Y-m-d');?>" class="form-control"
+
+                                <input type="hidden" value="<?php echo date('Y-m-d');?>" class="form-control"
                                     name="fromdate" placeholder="From Date" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred date of visit:</label>
+                                <input type="date" value="<?php echo date('Y-m-d');?>" class="form-control"
+                                    name="preferreddate" placeholder="Preferred date of visits" required>
                             </div>
 
                             <div class="form-group">

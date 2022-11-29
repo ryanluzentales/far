@@ -81,7 +81,7 @@ if (strlen($_SESSION['login']) == 0) {
                                 <ul class="vehicle_listing">
                                     <?php
                                                 $useremail = $_SESSION['login'];
-                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.Landmark,tblrooms.id as vid,tblapartments.Apartmentname,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Status,tblbooking.Commissionstatus,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblbooking.userEmail=:useremail order by tblbooking.id desc";
+                                                $sql = "SELECT tblrooms.RoomName, tblrooms.Vimage1 as Vimage1,tblrooms.Landmark,tblrooms.id as vid,tblapartments.Apartmentname,tblapartments.Address,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Preferreddate,tblbooking.Status,tblbooking.Commissionstatus,tblrooms.PricePerDay,DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totaldays,tblbooking.BookingNumber  from tblbooking join tblrooms on tblbooking.VehicleId=tblrooms.id join tblapartments on tblapartments.id=tblrooms.Apartmentname where tblbooking.userEmail=:useremail order by tblbooking.id desc";
                                                 $query = $dbh->prepare($sql);
                                                 $query->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                                                 $query->execute();
@@ -103,9 +103,11 @@ if (strlen($_SESSION['login']) == 0) {
                                                     href="room-details.php?vhid=<?php echo htmlentities($result->vid); ?>">
                                                     <?php echo htmlentities($result->Apartmentname); ?> ,
                                                     <?php echo htmlentities($result->Landmark); ?></a></h6>
-                                            <p><b>Reservation Date: </b> <?php echo htmlentities($result->FromDate); ?>
+                                            <p><b>Address: </b> <?php echo htmlentities($result->Address); ?></p>
+                                            <p><b>Reservation Date: </b>
+                                                <?php echo htmlentities($result->FromDate); ?>
                                                 <b></b>
-                                                <?php echo htmlentities($result->ToDate); ?>
+
                                             </p>
                                             <div style="float: left">
                                                 <p><b>Message:</b> <?php echo htmlentities($result->message); ?> </p>
@@ -138,13 +140,12 @@ if (strlen($_SESSION['login']) == 0) {
                                     <table>
                                         <tr>
                                             <th>Room Name</th>
-                                            <th>Date</th>
+                                            <th>Preferred date for visit:</th>
                                             <th>Rent / Month</th>
                                         </tr>
                                         <tr>
                                             <td><?php echo htmlentities($result->RoomName); ?>
-
-                                            <td><?php echo htmlentities($result->FromDate); ?></td>
+                                            <td><?php echo htmlentities($result->Preferreddate); ?></td>
                                             <td> <?php echo htmlentities($ppd = $result->PricePerDay); ?></td>
                                         </tr>
 
