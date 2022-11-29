@@ -16,6 +16,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 } else {
 	if (isset($_REQUEST['eid'])) {
 		$eid = intval($_GET['eid']);
+        $message = $_GET['reason'];
  		$status = "2";
 		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:eid";
 		$query = $dbh->prepare($sql);
@@ -24,20 +25,17 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->execute();
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
 		echo "<script type='text/javascript'> document.location = 'canceled-apartment.php'; </script>";
-
-	}                                      
-if (isset($_REQUEST['eid'])) {
-        $email =  "ryanluzentales@gmail.com";
+        $email =  "jrobertosy@gmail.com";
         $subject = "APARTMENT DENIED";
-        $message ="apartment deny";
+        $message = 'Apartment denied';
         $mail = new PHPMailer(true);                            
 
         //Server settings
         $mail->isSMTP();                                     
         $mail->Host = 'smtp-relay.sendinblue.com';                      
         $mail->SMTPAuth = true;                             
-        $mail->Username = 'ryfu.luzentales.swu@phinmaed.com';     
-        $mail->Password = '0hsk74E8gSayRIXr';             
+        $mail->Username = 'ryfu.luzentales@swu.phinma.edu.ph';     
+        $mail->Password = 'mC6haDOrVAcfTY3G';             
         $mail->SMTPOptions = array(
             'ssl' => array(
             'verify_peer' => false,
@@ -63,7 +61,8 @@ if (isset($_REQUEST['eid'])) {
         $_SESSION['result'] = 'Message has been sent';
 	   $_SESSION['status'] = 'ok';
 
-}
+	}                                      
+
                                                             
                                                         
 
@@ -243,11 +242,8 @@ if (isset($_REQUEST['eid'])) {
                                                 <tr>
                                                     <td style="text-align:center" colspan="4">
                                                         <a href="deny-apartment.php?eid=<?php echo htmlentities($result->id); ?>"
-                                                            onclick="sendEmail();" name="approve" name="approve"
+                                                            name="approve" name="approve"
                                                             class="btn btn-primary">Submit</a>
-
-
-
 
                                                         <a href="apartment-details.php?bid=<?php echo htmlentities($result->id); ?>"
                                                             name="deny " class="btn btn-danger"> Cancel</a>

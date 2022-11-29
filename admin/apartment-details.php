@@ -1,4 +1,10 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'vendor/PHPMailer/src/Exception.php';
+require 'vendor/PHPMailer/src/PHPMailer.php';
+require 'vendor/PHPMailer/src/SMTP.php';
 
 
 session_start();
@@ -7,6 +13,53 @@ include('includes/config.php');
 if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
+
+    if (isset($_REQUEST['eid'])) {
+		$eid = intval($_GET['eid']);
+ 		$status = "1";
+		$sql = "UPDATE tblapartments SET Status=:status WHERE  id=:eid";
+		$query = $dbh->prepare($sql);
+		$query->bindParam(':status', $status, PDO::PARAM_STR);
+		$query->bindParam(':eid', $eid, PDO::PARAM_STR);
+		$query->execute();
+		echo "<script>alert('Booking Successfully Approved');</script>";
+		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
+        $email =  "jrobertosy@gmail.com";
+        $subject = "Apartment Approved";
+        $message = 'Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.';
+        $mail = new PHPMailer(true);                            
+
+        //Server settings
+        $mail->isSMTP();                                     
+        $mail->Host = 'smtp-relay.sendinblue.com';                      
+        $mail->SMTPAuth = true;                             
+        $mail->Username = 'ryfu.luzentales@swu.phinma.edu.ph';     
+        $mail->Password = 'mC6haDOrVAcfTY3G';             
+        $mail->SMTPOptions = array(
+            'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+            )
+        );                         
+        $mail->SMTPSecure = 'tls';                           
+        $mail->Port = 587;
+        //Send Email
+        $mail->setFrom('ryfu.luzentales.swu@phinmaed.com');
+        
+        //Recipients
+        $mail->addAddress($email);              
+        $mail->addReplyTo('ryfu.luzentales.swu@phinmaed.com');
+        
+        //Content
+        $mail->isHTML(true);                                  
+        $mail->Subject = $subject;
+        $mail->Body    = $message;
+
+        $mail->send();
+        $_SESSION['result'] = 'Message has been sent';
+	   $_SESSION['status'] = 'ok';
+    }
 ?>
 
 <!doctype html>
@@ -177,7 +230,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                             <tr>
                                                 <td style="text-align:center" colspan="4">
-                                                    <a href="approve-apartment.php?bid=<?php echo htmlentities($result->id); ?>"
+                                                    <a href="apartment-details.php?eid=<?php echo htmlentities($result->id); ?>"
                                                         onclick="return confirm('Are you sure, Do you want approve this apartment? ')"
                                                         name="approve" class="btn btn-primary"> Approve</a>
 
