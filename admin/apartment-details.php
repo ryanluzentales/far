@@ -24,6 +24,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 		$query->execute();
 		echo "<script>alert('Booking Successfully Approved');</script>";
 		echo "<script type='text/javascript'> document.location = 'confirmed-apartment.php'; </script>";
+        
         $email =  "jrobertosy@gmail.com";
         $subject = "Apartment Approved";
         $message = 'Good day owner! your request has been reviewed and is now accepted, your apartment will now be posted. Thank you for using FAR app.';
