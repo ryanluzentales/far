@@ -241,6 +241,7 @@ echo htmlentities('Confirmed');
                                                     <th>Name</th>
                                                     <th>Apartment Name</th>
                                                     <th>Reservation Date</th>
+                                                    <th>Reference Number</th>
                                                     <th>Commission Status</th>
                                                     <th>Message</th>
                                                     <th>Status</th>
@@ -254,6 +255,7 @@ echo htmlentities('Confirmed');
                                                     <th>Name</th>
                                                     <th>Apartment Name</th>
                                                     <th>Reservation Date</th>
+                                                    <th>Reference Number</th>
                                                     <th>Commission Status</th>
                                                     <th>Message</th>
                                                     <th>Status</th>
@@ -263,7 +265,7 @@ echo htmlentities('Confirmed');
                                             </tfoot>
                                             <tbody>
 
-                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='1' ";
+                                                <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Referencenumber,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='1' ";
 $query = $dbh -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
@@ -278,6 +280,7 @@ foreach($results as $result)
                                                     <td><?php echo htmlentities($result->Apartmentname);?>
 
                                                     <td><?php echo htmlentities($result->FromDate);?></td>
+                                                    <td><?php echo htmlentities($result->Referencenumber);?></td>
                                                     <td>
                                                         <?php 
 if($result->Commissionstatus==0)
