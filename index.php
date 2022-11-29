@@ -46,13 +46,10 @@ error_reporting(0);
 
             <div class="row">
 
-                <!-- Nav tabs -->
-
-                <!-- Recently Listed New Cars -->
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
+                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Roomstatus,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -74,6 +71,19 @@ error_reporting(0);
                                         <li><i class="fa fa-user"
                                                 aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                             Person</li>
+
+                                        <li>
+                                            <?php 
+if($result->Roomstatus==0)
+{
+echo htmlentities('Available');
+} else if ($result->Roomstatus==1) {
+echo htmlentities('Occupied');
+}
+										?>
+
+                                        </li>
+
                                     </ul>
                                 </div>
                                 <div class="car-title-m">
