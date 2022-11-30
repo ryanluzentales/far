@@ -373,15 +373,35 @@ if (isset($_POST['submit'])) {
                                 <textarea rows="4" class="form-control" name="message" placeholder="Message"
                                     required></textarea>
                             </div>
+
                             <?php if ($_SESSION['login']) { ?>
+                            <?php if($result->Roomstatus==1){ ?>
                             <div class="form-group">
-                                <input type="submit" class="btn" name="submit" value="Reserve Now">
+                                <a>This Room is Occupied</a>
                             </div>
-                            <?php } else { ?>
+                            <?php } if($result->Roomstatus==0){ ?>
+                            <div class="form-group">
+                                <input type="submit" class="btnn" name="submit" value="Reserve Now">
+                            </div>
+                            <?php } else {?>
+                            <div class="form-group">
+                                <input type="hidden" class="btnn" name="submit" value="Reserve Now">
+                            </div>
+                            <?php } ?>
+                            <?php } ?>
+
+                            <?php if (!isset($_SESSION['login'])) { ?>
+                            <?php if($result->Roomstatus==1){ ?>
+                            <div class="form-group">
+                                <a>This Room is Occupied</a>
+                            </div>
+                            <?php } if($result->Roomstatus==0){ ?>
                             <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                 data-dismiss="modal">Login to Reserve</a>
-
                             <?php } ?>
+                            <?php } ?>
+
+
                         </form>
                     </div>
                 </aside>
