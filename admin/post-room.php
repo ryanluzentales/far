@@ -176,7 +176,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Name<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="roomname" class="form-control">
+                                                    <input type="text" name="roomname" class="form-control" required>
                                                 </div>
                                                 <label class="col-sm-2 control-label">Select an Apartment<span
                                                         style="color:red">*</span></label>
@@ -184,7 +184,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 <div class="col-sm-4">
                                                     <input type="text" id="brandname" name="brandname"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                 </div>
                                                 <br>
                                                 <br>
@@ -194,7 +194,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         style="color:red">*</span></label>
 
                                                 <div class="col-sm-4">
-                                                    <input type="text" id="address" name="address" class="form-control">
+                                                    <input type="text" id="address" name="address" class="form-control"
+                                                        required>
                                                 </div>
 
                                                 <label class="col-sm-2 control-label">Landmark:<span
@@ -202,7 +203,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 <div class="col-sm-4">
                                                     <input type="text" id="vehicletitle" name="vehicletitle"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                 </div>
                                                 <br>
                                                 <br>
@@ -211,7 +212,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" id="Housingtype" name="Housingtype"
-                                                        class="form-control">
+                                                        class="form-control" required>
                                                 </div>
                                             </div>
 
@@ -220,8 +221,8 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Description<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-10">
-                                                    <textarea class="form-control" name="vehicalorcview"
-                                                        rows="3"></textarea>
+                                                    <textarea class="form-control" name="vehicalorcview" rows="3"
+                                                        required></textarea>
                                                 </div>
                                             </div>
 
@@ -229,12 +230,12 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <label class="col-sm-2 control-label">Price Per Month (in PHP)<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="priceperday" class="form-control">
+                                                    <input type="text" name="priceperday" class="form-control" required>
                                                 </div>
                                                 <label class="col-sm-2 control-label">Type of Bath<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="BathType">
+                                                    <select class="selectpicker" name="BathType" required>
                                                         <option value=""> Select </option>
 
                                                         <option value="Private Bath">Private Bath</option>
@@ -270,15 +271,15 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <div class="form-group">
                                                 <div class="col-sm-4">
                                                     Image 1 <span style="color:red">*</span><input type="file"
-                                                        name="img1">
+                                                        name="img1" required>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 2<span style="color:red">*</span><input type="file"
-                                                        name="img2">
+                                                        name="img2" required>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     Image 3<span style="color:red">*</span><input type="file"
-                                                        name="img3">
+                                                        name="img3" required>
                                                 </div>
                                             </div>
 

@@ -140,9 +140,9 @@ if (isset($_POST['submit'])) {
                         </div>
                         <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Apartment Name:</label>
+                                <label>Apartment Name*:</label>
                                 <input type="text" class="form-control" name="apartmentname"
-                                    placeholder="Apartment Name">
+                                    placeholder="Apartment Name" required>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="ownername"
@@ -151,9 +151,9 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-group">
-                                <label>Address:</label>
+                                <label>Address*:</label>
                                 <input type="text" class="form-control" id="location" name="address"
-                                    placeholder="Location">
+                                    placeholder="Location" required>
                             </div>
 
                             <div class="form-group">
@@ -168,18 +168,18 @@ if (isset($_POST['submit'])) {
                             </div>
                             <br>
                             <div class="form-group">
-                                <label>Landmark:</label>
-                                <input type="text" class="form-control" name="Landmark" placeholder="Landmark">
+                                <label>Landmark*:</label>
+                                <input type="text" class="form-control" name="Landmark" placeholder="Landmark" required>
                             </div>
                             <div class="form-group">
-                                <label>Contact Number:</label>
+                                <label>Contact Number*:</label>
                                 <input type="text" class="form-control" name="contactnumber"
                                     value="<?php echo (isset($result->ContactNo))?$result->ContactNo:'';?>"
                                     placeholder="Contact Number">
                             </div>
                             <div class="form-group">
-                                <label>Housing Type:</label> <br>
-                                <select class="selectpicker" name="housingtype">
+                                <label>Housing Type*:</label> <br>
+                                <select class="selectpicker" name="housingtype" required>
                                     <option value=""> Select </option>
                                     <option value="Apartment">Apartment</option>
                                     <option value="Dormitory">Dormitory</option>
@@ -188,8 +188,8 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-group">
-                                <label>Terms of payment: </label> <br>
-                                <select class="selectpicker" name="termsofpayment">
+                                <label>Terms of payment*: </label> <br>
+                                <select class="selectpicker" name="termsofpayment" required>
                                     <option value=""> Select </option>
                                     <option value="1 month deposit 1 month advance">1 month deposit, 1 month advance
                                     </option>
@@ -199,27 +199,28 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="form-group">
-                                <label>Please upload an image of your Apartment</label>
+                                <label>Please upload an image of your Apartment*</label>
                                 <input type="file" class="form-control" name="apartmentimage"
-                                    placeholder="Apartment Image">
+                                    placeholder="Apartment Image" required>
                                 <hr>
                             </div>
                             <h3>Upload Important Files</h3>
                             <div class="form-group">
-                                <label>Government Id</label>
-                                <input type="file" class="form-control" name="governmentid" placeholder="Government Id">
+                                <label>Government Id*</label>
+                                <input type="file" class="form-control" name="governmentid" placeholder="Government Id"
+                                    required>
                             </div>
 
                             <div class="form-group">
-                                <label>Business Permit</label>
+                                <label>Business Permit*</label>
                                 <input type="file" class="form-control" name="businesspermit"
-                                    placeholder="Business Permit">
+                                    placeholder="Business Permit" required>
                             </div>
 
                             <hr>
                             <div class="form-group">
-                                <label>Gender allowed:</label> <br>
-                                <select class="selectpicker" name="gender">
+                                <label>Gender allowed*:</label> <br>
+                                <select class="selectpicker" name="gender" required>
                                     <option value=""> Select </option>
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
@@ -240,13 +241,14 @@ if (isset($_POST['submit'])) {
                                 Please upload your
                                 proof of payment below:</p>
                             <div class="form-group">
-                                <label>Proof of Payment</label>
-                                <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
+                                <label>Proof of Payment*</label>
+                                <input type="file" class="form-control" name="payment" placeholder="Proof of Payment"
+                                    required>
                             </div>
                             <div class="form-group">
-                                <label>Reference Number: *</label>
+                                <label>Reference Number*:</label>
                                 <input type="text" class="form-control" name="referencenumber"
-                                    placeholder="Reference Number">
+                                    placeholder="Reference Number" required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn" name="submit" value="Submit">

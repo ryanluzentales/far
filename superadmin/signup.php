@@ -151,35 +151,35 @@ if($num>0)
                     <form action="signup.php" method="post">
 
                         <div class="form-group">
-                            <label for="username">Username *</label>
+                            <label for="username">Username*</label>
                             <input type="text" class="form-control" id="username" name="username"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="fullname">Full Name</label>
+                            <label for="fullname">Full Name*</label>
                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
-                            <label for="address">Address</label>
+                            <label for="address">Address*</label>
                             <input type="text" class="form-control" id="address" name="address"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
-                            <label for="contactnumber">Contact Number</label>
+                            <label for="contactnumber">Contact Number*</label>
                             <input type="text" class="form-control" id="contactnumber" name="contactnumber"
-                                aria-describedby="emailHelp">
+                                aria-describedby="emailHelp" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
+                            <label for="password">Password*</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="cpassword">Confirm Password</label>
-                            <input type="password" class="form-control" id="cpassword" name="cpassword">
+                            <label for="cpassword">Confirm Password*</label>
+                            <input type="password" class="form-control" id="cpassword" name="cpassword" required>
 
                             <small id="emailHelp" class="form-text text-muted">
                                 Make sure to type the same password

@@ -89,7 +89,8 @@ if (isset($_POST['submit'])) {
                 <form method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Apartment Name:</label>
-                        <input type="text" class="form-control" name="apartmentname" placeholder="Apartment Name">
+                        <input type="text" class="form-control" name="apartmentname" placeholder="Apartment Name"
+                            required>
                     </div>
                     <div class="form-group">
                         <input type="hidden" class="form-control" name="ownername"
@@ -99,7 +100,8 @@ if (isset($_POST['submit'])) {
 
                     <div class="form-group">
                         <label>Address:</label>
-                        <input type="text" class="form-control" id="location" name="address" placeholder="Location">
+                        <input type="text" class="form-control" id="location" name="address" placeholder="Location"
+                            required>
                     </div>
 
                     <div class="form-group">
@@ -115,7 +117,7 @@ if (isset($_POST['submit'])) {
                     <br>
                     <div class="form-group">
                         <label>Landmark:</label>
-                        <input type="text" class="form-control" name="Landmark" placeholder="Landmark">
+                        <input type="text" class="form-control" name="Landmark" placeholder="Landmark" required>
                     </div>
                     <div class="form-group">
                         <label>Contact Number:</label>
@@ -125,7 +127,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                         <label>Housing Type:</label> <br>
-                        <select class="selectpicker" name="housingtype">
+                        <select class="selectpicker" name="housingtype" required>
                             <option value=""> Select </option>
                             <option value="Apartment">Apartment</option>
                             <option value="Dormitory">Dormitory</option>
@@ -134,11 +136,12 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="form-group">
                         <label>Please upload an image of your Apartment</label>
-                        <input type="file" class="form-control" name="apartmentimage" placeholder="Apartment Image">
+                        <input type="file" class="form-control" name="apartmentimage" placeholder="Apartment Image"
+                            required>
                     </div>
                     <div class="form-group">
                         <label>Gender allowed:</label> <br>
-                        <select class="selectpicker" name="gender">
+                        <select class="selectpicker" name="gender" required>
                             <option value=""> Select </option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -160,7 +163,7 @@ if (isset($_POST['submit'])) {
                         proof of payment below:</p>
                     <div class="form-group">
                         <label>Proof of Payment</label>
-                        <input type="file" class="form-control" name="payment" placeholder="Proof of Payment">
+                        <input type="file" class="form-control" name="payment" placeholder="Proof of Payment" required>
                     </div>
                     <div class="form-group">
                         <input type="submit" class="btn" name="submit" value="Submit">

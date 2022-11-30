@@ -62,25 +62,25 @@ function valid() {
                         <div class="col-md-12 col-sm-6">
                             <form method="post" name="signup" onSubmit="return valid();">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                                    <input type="text" class="form-control" name="fullname" placeholder="Full Name*"
                                         required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="mobileno" placeholder="Mobile Number"
+                                    <input type="text" class="form-control" name="mobileno" placeholder="Mobile Number*"
                                         maxlength="11" required="required">
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control" name="emailid" id="emailid"
-                                        onBlur="checkAvailability()" placeholder="Email Address" required="required">
+                                        onBlur="checkAvailability()" placeholder="Email Address*" required="required">
                                     <span id="user-availability-status" style="font-size:12px;"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Password"
+                                    <input type="password" class="form-control" name="password" placeholder="Password*"
                                         required="required">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="confirmpassword"
-                                        placeholder="Confirm Password" required="required">
+                                        placeholder="Confirm Password*" required="required">
                                 </div>
                                 <div class="form-group checkbox">
                                     <input type="checkbox" id="terms_agree" required="required" checked="">
