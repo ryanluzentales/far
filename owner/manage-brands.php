@@ -99,11 +99,11 @@ if (strlen($_SESSION['ologin']) == 0) {
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2 class="page-title">Manage Brands</h2>
+                        <h2 class="page-title">My Apartments</h2>
 
                         <!-- Zero Configuration Table -->
                         <div class="panel panel-default">
-                            <div class="panel-heading">Listed Brands</div>
+                            <div class="panel-heading">My apartments</div>
                             <div class="panel-body">
                                 <?php if ($error) { ?><div class="errorWrap">
                                     <strong>ERROR</strong>:<?php echo htmlentities($error); ?>
@@ -123,20 +123,10 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Apartment Name</th>
-                                            <th>Address</th>
-                                            <th>Creation Date</th>
-                                            <th>Updation date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </tr>
-                                    </tfoot>
+
                                     <tbody>
 
-                                        <?php $sql = "SELECT * from  tblapartments ";
+                                        <?php $sql = "SELECT id from  tblapartments ";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);

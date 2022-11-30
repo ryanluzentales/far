@@ -126,19 +126,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Booking No.</th>
-                                                    <th>Apartment Name</th>
-                                                    <th>Date</th>
 
-                                                    <th>Status</th>
-                                                    <th>Posting date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
 
                                                 <?php
@@ -230,19 +218,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Apartment Name</th>
-                                                    <th>Reservation Date</th>
 
-                                                    <th>Message</th>
-                                                    <th>Status</th>
-                                                    <th>Posting date</th>
-
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
 
                                                 <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' AND tblbooking.Status='1'";

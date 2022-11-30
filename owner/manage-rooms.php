@@ -117,27 +117,16 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <th>#</th>
                                             <th>Room Title</th>
                                             <th>Apartment </th>
+                                            <th>Room Status</th>
                                             <th>Price Per Month</th>
                                             <th>Bath Type</th>
                                             <th>Housing Type</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Room Title</th>
-                                            <th>Apartment </th>
-                                            <th>Price Per Month</th>
-                                            <th>Bath Type</th>
-                                            <th>Housing Type</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
 
-                                        <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
+                                        <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.Roomstatus,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";
 											$query = $dbh->prepare($sql);
 											$query->execute();
 											$results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -148,6 +137,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <td><?php echo htmlentities($cnt); ?></td>
                                             <td><?php echo htmlentities($result->Landmark); ?></td>
                                             <td><?php echo htmlentities($result->Apartmentname); ?></td>
+                                            <td><?php 
+                                            if($result->Roomstatus==0)
+                                            {
+                                                echo htmlentities('Available');
+                                            } else if ($result->Roomstatus==1) {
+                                                     echo htmlentities('Occupied'); 
+                                                }?></td>
                                             <td><?php echo htmlentities($result->PricePerDay); ?></td>
                                             <td><?php echo htmlentities($result->BathType); ?></td>
                                             <td><?php echo htmlentities($result->Housingtype); ?></td>

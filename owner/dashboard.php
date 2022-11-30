@@ -100,7 +100,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php
-                                                        $sql2 = "SELECT id from tblbooking ";
+                                                        $sql2 = "SELECT id from tblbooking WHERE Status='0' ";
                                                         $query2 = $dbh->prepare($sql2);
                                                         $query2->execute();
                                                         $results2 = $query2->fetchAll(PDO::FETCH_OBJ);
@@ -109,10 +109,10 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                     <div class="stat-panel-number h1 ">
                                                         <?php echo htmlentities($bookings); ?></div>
-                                                    <div class="stat-panel-title text-uppercase">Total Bookings</div>
+                                                    <div class="stat-panel-title text-uppercase">New Bookings</div>
                                                 </div>
                                             </div>
-                                            <a href="manage-bookings.php"
+                                            <a href="new-bookings.php"
                                                 class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                     class="fa fa-arrow-right"></i></a>
                                         </div>
@@ -122,22 +122,47 @@ if (strlen($_SESSION['ologin']) == 0) {
                                             <div class="panel-body">
                                                 <div class="stat-panel text-center">
                                                     <?php
-                                                        $sql3 = "SELECT id from tblapartments ";
-                                                        $query3 = $dbh->prepare($sql3);
-                                                        $query3->execute();
-                                                        $results3 = $query3->fetchAll(PDO::FETCH_OBJ);
-                                                        $brands = $query3->rowCount();
+                                                        $sql2 = "SELECT id from tblbooking WHERE Status='1' AND Commissionstatus='1'";
+                                                        $query2 = $dbh->prepare($sql2);
+                                                        $query2->execute();
+                                                        $results2 = $query2->fetchAll(PDO::FETCH_OBJ);
+                                                        $bookings = $query2->rowCount();
                                                         ?>
+
                                                     <div class="stat-panel-number h1 ">
-                                                        <?php echo htmlentities($brands); ?></div>
-                                                    <div class="stat-panel-title text-uppercase">Listed Apartments</div>
+                                                        <?php echo htmlentities($bookings); ?></div>
+                                                    <div class="stat-panel-title text-uppercase">Booked</div>
                                                 </div>
                                             </div>
-                                            <a href="manage-brands.php"
+                                            <a href="new-bookings.php"
                                                 class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
                                                     class="fa fa-arrow-right"></i></a>
                                         </div>
                                     </div>
+                                    <div class="col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-body">
+                                                <div class="stat-panel text-center">
+                                                    <?php
+                                                        $sql2 = "SELECT id from tblbooking WHERE Status='2' ";
+                                                        $query2 = $dbh->prepare($sql2);
+                                                        $query2->execute();
+                                                        $results2 = $query2->fetchAll(PDO::FETCH_OBJ);
+                                                        $bookings = $query2->rowCount();
+                                                        ?>
+
+                                                    <div class="stat-panel-number h1 ">
+                                                        <?php echo htmlentities($bookings); ?></div>
+                                                    <div class="stat-panel-title text-uppercase">Canceled Apartments
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <a href="new-bookings.php"
+                                                class="block-anchor panel-footer text-center">Full Detail &nbsp; <i
+                                                    class="fa fa-arrow-right"></i></a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

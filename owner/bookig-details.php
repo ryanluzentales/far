@@ -14,7 +14,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$query->bindParam(':eid', $eid, PDO::PARAM_STR);
 		$query->execute();
 		echo "<script>alert('Booking Successfully Cancelled');</script>";
-		echo "<script type='text/javascript'> document.location = 'canceled-bookings.php; </script>";
+		echo "<script type='text/javascript'> document.location = 'canceled-bookings.php'; </script>";
 	}
 
 
@@ -236,10 +236,6 @@ DATEDIFF(tblbooking.ToDate,tblbooking.FromDate) as totalnodays,tblrooms.PricePer
 
                                         </tbody>
                                     </table>
-                                    <form method="post">
-                                        <input name="Submit2" type="submit" class="txtbox4" value="Print"
-                                            onClick="return f3();" style="cursor: pointer;" />
-                                    </form>
 
                                 </div>
                             </div>

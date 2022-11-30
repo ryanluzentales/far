@@ -115,11 +115,11 @@ if (strlen($_SESSION['login']) == 0) {
                                         </div>
                                         <?php if ($result->Commissionstatus == 1) { ?>
                                         <div class="vehicle_status"> <a href="#"
-                                                class="btn outline btn-xs active-btn">Confirmed</a>
+                                                class="btn outline btn-xs">Confirmed</a>
                                             <div class="clearfix"></div>
                                         </div>
 
-                                        <?php } else if ($result->Commissionstatus == 2) { ?>
+                                        <?php } else if ($result->Commissionstatus == 2 || $result->Status == 2 ) { ?>
                                         <div class="vehicle_status"> <a href="#"
                                                 class="btn outline btn-xs">Cancelled</a>
                                             <div class="clearfix"></div>
