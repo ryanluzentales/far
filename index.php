@@ -65,6 +65,9 @@ error_reporting(0);
                                             src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                             class="img-responsive" alt="image"></a>
                                     <ul>
+                                        <li>
+                                            <div class="occu">Occupied</div>
+                                        </li>
                                         <li><i aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                         </li>
 
