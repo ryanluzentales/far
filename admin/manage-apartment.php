@@ -112,7 +112,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <td><?php echo htmlentities($result->BookingNumber); ?></td>
                                             <td><?php echo htmlentities($result->userEmail); ?></td>
                                             <td><a href="view-payment.php?id=<?php echo htmlentities($result->id);?>">View
-                                                    Proof of Payment</td>
+                                                    Required Documents</td>
                                             <td><?php echo htmlentities($result->gender); ?></td>
                                             <td><?php echo htmlentities($result->Apartmentname); ?></td>
                                             <td><?php echo htmlentities($result->Address); ?></td>

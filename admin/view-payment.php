@@ -22,7 +22,7 @@ else{
     <meta name="author" content="">
     <meta name="theme-color" content="#3e454c">
 
-    <title>FAR | View Proof of Payment</title>
+    <title>FAR |Required Documentst</title>
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -73,12 +73,12 @@ else{
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2 class="page-title">Proof of Payment </h2>
+                        <h2 class="page-title">Required Documents </h2>
 
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Proof of payment</div>
+                                    <div class="panel-heading">Required Documents</div>
                                     <div class="panel-body">
                                         <form method="post" class="form-horizontal" enctype="multipart/form-data">
 
@@ -94,7 +94,7 @@ else{
 
                                                 <?php 
 $id=intval($_GET['id']);
-$sql ="SELECT Payment from tblapartments where tblapartments.id=:id";
+$sql ="SELECT Payment,Governmentid,Businesspermit from tblapartments where tblapartments.id=:id";
 $query = $dbh -> prepare($sql);
 $query-> bindParam(':id', $id, PDO::PARAM_STR);
 $query->execute();
@@ -106,22 +106,31 @@ foreach($results as $result)
 {	?>
 
                                                 <div class="col-sm-8">
+                                                    <h3>Receipt</h3>
                                                     <img src="img/payment/<?php echo htmlentities($result->Payment);?>"
+                                                        width="300" height="200" style="border:solid 1px #000">
+
+                                                    <h3>Government Id</h3>
+                                                    <img src="img/payment/<?php echo htmlentities($result->Governmentid);?>"
+                                                        width="300" height="200" style="border:solid 1px #000">
+
+                                                    <h3>Business Permit</h3>
+                                                    <img src="img/payment/<?php echo htmlentities($result->Businesspermit);?>"
                                                         width="300" height="200" style="border:solid 1px #000">
                                                 </div>
                                                 <?php }}?>
-                                            </div>
 
 
 
 
 
-                                            <div class="form-group">
-                                                <div class="col-sm-8 col-sm-offset-4">
 
-                                                    <a href="manage-apartment.php" class="btn btn-primary">Back</a>
+                                                <div class="form-group">
+                                                    <div class="col-sm-8 col-sm-offset-4">
+
+                                                        <a href="manage-apartment.php" class="btn btn-primary">Back</a>
+                                                    </div>
                                                 </div>
-                                            </div>
 
                                         </form>
 

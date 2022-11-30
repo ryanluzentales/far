@@ -68,6 +68,23 @@ error_reporting(0);
                                             src="../admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                             class="img-responsive" alt="image"></a>
                                     <ul>
+                                        <li>
+                                            <?php 
+                                            if($result->Roomstatus==0)
+                                            {?>
+                                            <div class="occu" style="background-color: green;">
+                                                <?php echo htmlentities('Available'); ?></div>
+                                            <?php 
+                                            } else if ($result->Roomstatus==1) {?>
+
+
+                                            <div class="occu" style="background-color: red;">
+                                                <?php echo htmlentities('Occupied'); ?> </div>
+
+                                            <?php 
+                                            }?>
+
+                                        </li>
                                         <li><i aria-hidden="true"></i><?php echo htmlentities($result->BathType); ?>
                                         </li>
 
@@ -75,17 +92,7 @@ error_reporting(0);
                                                 aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
                                             Person</li>
 
-                                        <li>
-                                            <?php 
-if($result->Roomstatus==0)
-{
-echo htmlentities('Available');
-} else if ($result->Roomstatus==1) {
-echo htmlentities('Occupied');
-}
-										?>
 
-                                        </li>
                                     </ul>
                                 </div>
                                 <div class="car-title-m">

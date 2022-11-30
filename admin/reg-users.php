@@ -121,20 +121,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th> Name</th>
-                                                    <th>Email </th>
-                                                    <th>Contact no</th>
-                                                    <th>DOB</th>
-                                                    <th>Address</th>
-                                                    <th>City</th>
-                                                    <th>Country</th>
-                                                    <th>Reg Date</th>
-                                                </tr>
-                                                </tr>
-                                            </tfoot>
+
                                             <tbody>
 
                                                 <?php $sql = "SELECT * from  tblowner ";
@@ -210,20 +197,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th> Name</th>
-                                                    <th>Email </th>
-                                                    <th>Contact no</th>
-                                                    <th>DOB</th>
-                                                    <th>Address</th>
-                                                    <th>City</th>
-                                                    <th>Country</th>
-                                                    <th>Reg Date</th>
-                                                </tr>
-                                                </tr>
-                                            </tfoot>
+
                                             <tbody>
 
                                                 <?php $sql = "SELECT * from  tblusers ";

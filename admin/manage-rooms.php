@@ -106,18 +106,7 @@ $msg="Vehicle  record deleted successfully";
                                             <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Room Title</th>
-                                            <th>Apartment</th>
-                                            <th>Price Per Month</th>
-                                            <th>Bath Type</th>
-                                            <th>Housing Type</th>
-                                            <th>Action</th>
-                                        </tr>
-                                        </tr>
-                                    </tfoot>
+
                                     <tbody>
 
                                         <?php $sql = "SELECT tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname";

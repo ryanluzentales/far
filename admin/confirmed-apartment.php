@@ -93,18 +93,7 @@ else{
                                                 <th>Action</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>#</th>
 
-                                            <th>Apartment No.</th>
-                                            <th>Apartment Name</th>
-                                            <th>Address</th>
-                                            <th>Status</th>
-                                            <th>Posting date</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </tfoot>
                                     <tbody>
 
                                         <?php 

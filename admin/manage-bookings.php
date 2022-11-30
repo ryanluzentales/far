@@ -140,19 +140,7 @@ $msg="Booking Successfully Confirmed";
 
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Apartment Name</th>
-                                                    <th>Reservation Date</th>
-                                                    <th>Commission Status</th>
-                                                    <th>Message</th>
-                                                    <th>Status</th>
-                                                    <th>Posting date</th>
 
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
 
                                                 <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='0' ";
@@ -249,20 +237,7 @@ echo htmlentities('Confirmed');
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Apartment Name</th>
-                                                    <th>Reservation Date</th>
-                                                    <th>Reference Number</th>
-                                                    <th>Commission Status</th>
-                                                    <th>Message</th>
-                                                    <th>Status</th>
-                                                    <th>Posting date</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </tfoot>
+
                                             <tbody>
 
                                                 <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.Referencenumber,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='0' AND tblbooking.Status='1' ";
@@ -367,19 +342,7 @@ echo htmlentities('Confirmed');
 
                                                 </tr>
                                             </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Name</th>
-                                                    <th>Apartment Name</th>
-                                                    <th>Reservation Date</th>
-                                                    <th>Commission Status</th>
-                                                    <th>Message</th>
-                                                    <th>Status</th>
-                                                    <th>Posting date</th>
 
-                                                </tr>
-                                            </tfoot>
                                             <tbody>
 
                                                 <?php $sql = "SELECT tblusers.FullName,tblapartments.Apartmentname,tblrooms.Landmark,tblbooking.FromDate,tblbooking.ToDate,tblbooking.message,tblbooking.VehicleId as vid,tblbooking.Status,tblbooking.Commissionstatus,tblbooking.PostingDate,tblbooking.id  from tblbooking join tblrooms on tblrooms.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail join tblapartments on tblrooms.Apartmentname=tblapartments.id WHERE tblbooking.Commissionstatus='1' AND tblbooking.Status='1'";
