@@ -60,7 +60,7 @@ function valid() {
                 <div class="row">
                     <div class="signup_wrap">
                         <div class="col-md-12 col-sm-6">
-                            <form method="post" name="signup" onSubmit="return valid();">
+                            <form method="post" name="signup" onsubmit="valid()">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="fullname" placeholder="Full Name"
                                         required="required">
@@ -75,12 +75,12 @@ function valid() {
                                     <span id="user-availability-status" style="font-size:12px;"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" name="password" placeholder="Password"
-                                        required="required">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Password" required="required">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control" name="confirmpassword"
-                                        placeholder="Confirm Password" required="required">
+                                        id="confirmpassword" placeholder="Confirm Password" required="required">
                                 </div>
                                 <div class="form-group checkbox">
                                     <input type="checkbox" id="terms_agree" required="required" checked="">

@@ -69,13 +69,33 @@ error_reporting(0);
                                             <?php 
                                             if($result->Roomstatus==0)
                                             {?>
-                                            <div class="occu" style="background-color: green;">
+                                            <div class="occu" style="background-color: green;
+  width: 100%;
+  height: 30%;
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;background-color: green;">
                                                 <?php echo htmlentities('Available'); ?></div>
                                             <?php 
                                             } else if ($result->Roomstatus==1) {?>
 
 
-                                            <div class="occu" style="background-color: red;">
+                                            <div class="occu" style="background-color: red;
+  width: 100%;
+  height: 30%;
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;background-color: red;">
                                                 <?php echo htmlentities('Occupied'); ?> </div>
 
                                             <?php 

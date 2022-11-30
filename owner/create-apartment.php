@@ -43,6 +43,8 @@ if (isset($_POST['submit'])) {
     $query->bindParam(':Landmark', $Landmark, PDO::PARAM_STR);
     $query->bindParam(':status', $status, PDO::PARAM_STR);
     $query->execute();
+    echo "<script>alert('Apartment successfully created!');</script>";
+    echo "<script type='text/javascript'> document.location = 'create-apartment.php'; </script>";
     $lastInsertId = $dbh->lastInsertId();
     if ($lastInsertId) {
         echo "<script>alert('Booking successfull.');</script>";

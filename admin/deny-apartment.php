@@ -193,7 +193,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <div class="form-group">
                                                 <label>REASON: </label>
                                                 <input type="text" name="reason" id="reason" class="form-control"
-                                                    placeholder="Type the reason here..." </div>
+                                                    placeholder="Type the reason here..." required>
 
                                                 <tr>
                                                     <th colspan="4" style="text-align:center;color:blue">Details</th>

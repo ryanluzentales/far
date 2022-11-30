@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
         $query->execute();
         $lastInsertId = $dbh->lastInsertId();
         if ($lastInsertId) {
-            echo "<script>alert('Booking successfull.');</script>";
+            echo "<script>alert('Reservation has been sent!');</script>";
             echo "<script type='text/javascript'> document.location = 'my-booking.php'; </script>";
         } else {
             echo "<script>alert('Something went wrong. Please try again');</script>";

@@ -18,7 +18,8 @@ if (strlen($_SESSION['ologin']) == 0) {
         $query->bindParam(':commission', $commission, PDO::PARAM_STR);
         $query->bindParam(':bookingnumber', $bookingnumber, PDO::PARAM_STR);
         $query -> execute();
-        $msg="Receipt Successfully Added";
+        echo "<script>alert('Commission payment is successfully sent!');</script>";
+        echo "<script type='text/javascript'> document.location = 'commission.php'; </script>";
     }
 ?>
 <!doctype html>
@@ -97,12 +98,13 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" id="referencenumber" name="referencenumber"
-                                                        class="form-control">
+                                                        class="form-control" required="required">
                                                 </div>
 
                                                 <div class="col-sm-4">
                                                     Insert receipt here: <span style="color:red">*</span>
-                                                    <input type="file" id="commission" name="commission">
+                                                    <input type="file" id="commission" name="commission"
+                                                        required="required">
                                                 </div>
 
                                                 <br><br><br>
@@ -110,7 +112,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
                                                     <input type="text" id="bookingnumber" name="bookingnumber"
-                                                        class="form-control">
+                                                        class="form-control" required="required">
                                                 </div>
 
 

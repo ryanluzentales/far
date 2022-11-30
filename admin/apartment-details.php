@@ -237,7 +237,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 
                                                     <a href="deny-apartment.php?bid=<?php echo htmlentities($result->id); ?>"
-                                                        onclick="return confirm('Are you sure, Do you want to deny this apartment?')"
                                                         name="deny " class="btn btn-danger"> Deny</a>
 
                                                 </td>

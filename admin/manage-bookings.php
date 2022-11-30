@@ -11,7 +11,7 @@ if(isset($_REQUEST['eid']))
 	{
 $eid=intval($_GET['eid']);
 $Commissionstatus="2";
-$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:eid";
+$sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:eid; UPDATE tblbooking SET Status='2' WHERE id=:eid";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':Commissionstatus',$Commissionstatus, PDO::PARAM_STR);
 $query-> bindParam(':eid',$eid, PDO::PARAM_STR);
@@ -25,7 +25,6 @@ if(isset($_REQUEST['aeid']))
 	{
 $aeid=intval($_GET['aeid']);
 $Commissionstatus=1;
-
 $sql = "UPDATE tblbooking SET Commissionstatus=:Commissionstatus WHERE  id=:aeid; UPDATE tblbooking, tblrooms SET tblrooms.Roomstatus ='1' WHERE tblrooms.id=tblbooking.VehicleId;";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':Commissionstatus',$Commissionstatus, PDO::PARAM_STR);
