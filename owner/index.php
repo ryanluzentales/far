@@ -52,7 +52,7 @@ error_reporting(0);
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
 
-                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
+                        <?php $sql = "SELECT tblrooms.Apartmentname,tblrooms.RoomName,tblrooms.Landmark,tblapartments.Apartmentname,tblrooms.Address,tblrooms.PricePerDay,tblrooms.BathType,tblrooms.Housingtype,tblrooms.id,tblrooms.SeatingCapacity,tblrooms.Overview,tblrooms.Vimage1 from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -72,13 +72,33 @@ error_reporting(0);
                                             <?php 
                                             if($result->Roomstatus==0)
                                             {?>
-                                            <div class="occu" style="background-color: green;">
+                                            <div class="occu" style="background-color: green;
+  width: 100%;
+  height: 30%;
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;background-color: green;">
                                                 <?php echo htmlentities('Available'); ?></div>
                                             <?php 
                                             } else if ($result->Roomstatus==1) {?>
 
 
-                                            <div class="occu" style="background-color: red;">
+                                            <div class="occu" style="background-color: red;
+  width: 100%;
+  height: 30%;
+  color: white;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;background-color: red;">
                                                 <?php echo htmlentities('Occupied'); ?> </div>
 
                                             <?php 
@@ -106,9 +126,10 @@ error_reporting(0);
                                     <h6><a href="room-details.php?vhid=<?php echo htmlentities($result->id); ?>">
                                             <?php echo htmlentities($result->Apartmentname); ?></a></h6>
 
-                                    <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Day</span>
+                                    <span class="price">₱<?php echo htmlentities($result->PricePerDay); ?> /Month</span>
                                 </div>
                                 <div class="inventory_info_m">
+                                    <p> <?php echo htmlentities($result->Address); ?></p>
                                     <p><?php echo substr($result->Overview, 0, 70); ?></p>
                                 </div>
                             </div>
