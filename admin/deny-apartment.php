@@ -189,7 +189,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                             <div class="form-group">
                                                 <form>
                                                     <div class="form-group">
-                                                        <input type="text" name="currentemail" id="currentemail"
+                                                        <input type="hidden" name="currentemail" id="currentemail"
                                                             class="form-control"
                                                             value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
                                                     </div>
