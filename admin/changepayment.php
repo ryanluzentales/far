@@ -17,7 +17,8 @@ $query = $dbh->prepare($sql);
 $query->bindParam(':vimage1',$vimage1,PDO::PARAM_STR);
 $query->execute();
 
-$msg="Image updated successfully";
+	echo "<script>alert('QR CODE UPDATED');</script>";
+	echo "<script type='text/javascript'> document.location = ''; </script>";
 
 
 
