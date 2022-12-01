@@ -4,4 +4,4 @@ tblrooms.Landmark LIKE :search OR tblrooms.BathType LIKE :search OR tblapartment
 
 
 
-SELECT tblrooms.*,tblrooms.RoomName from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname WHERE MATCH(tblrooms.Address,tblrooms.RoomName,tblrooms.Landmark,tblrooms.Overview,tblrooms.Housingtype,tblrooms.Roomstatus) AGAINST('".$searchdata."') LIMIT 0, 25
+SELECT tblrooms.*,tblrooms.RoomName from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname WHERE MATCH(tblrooms.Address,tblrooms.RoomName,tblrooms.Landmark,tblrooms.Overview,tblrooms.Housingtype,tblrooms.Roomstatus) AGAINST(:searchdata)
