@@ -168,12 +168,12 @@ if (isset($_POST['submit'])) {
                     </div>
 
 
-                    <div class="review-wrapper">
+                    <!--<div class="review-wrapper">
                         <a class="review-click" href="review-room.php?vhid=<?php echo htmlentities($result->id); ?>">
                             Give Ratings
                             and
                             Reviews</a>
-                    </div>
+                    </div>-->
 
                     <div class="listing_more_info">
                         <div class="listing_detail_wrap">
