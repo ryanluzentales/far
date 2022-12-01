@@ -184,19 +184,24 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 
                                                 ?>
                                             </h3>
-                                            <div class="form-group">
-                                                <input type="hidden" name="currentemail" id="currentemail"
-                                                    class="form-control"
-                                                    value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
-                                            </div>
+
 
                                             <div class="form-group">
-                                                <label>REASON: </label>
-                                                <input type="text" name="reason" id="reason" class="form-control"
-                                                    placeholder="Type the reason here..." required>
+                                                <form>
+                                                    <div class="form-group">
+                                                        <input type="text" name="currentemail" id="currentemail"
+                                                            class="form-control"
+                                                            value="<?php echo (isset($result->EmailId))?$result->EmailId:'';?>" />
+                                                    </div>
 
+                                                    <label>REASON: </label>
+                                                    <input type="text" name="reason" id="reason" class="form-control"
+                                                        placeholder="Type the reason here..." required">
+
+                                                </form>
                                                 <tr>
-                                                    <th colspan="4" style="text-align:center;color:blue">Details</th>
+                                                    <th colspan="4" style="text-align:center;color:blue">Details
+                                                    </th>
 
                                                 </tr>
                                                 <tr>
@@ -254,6 +259,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                                 <?php $cnt = $cnt + 1;
 													}
 												} ?>
+                                            </div>
 
                                         </tbody>
                                     </table>
@@ -272,6 +278,7 @@ if (strlen($_SESSION['alogin']) == 0) {
             </div>
 
             <!-- Loading Scripts -->
+
             <script src="js/jquery.min.js"></script>
             <script src="js/bootstrap-select.js"></script>
             <script src="js/bootstrap-select.min.js"></script>

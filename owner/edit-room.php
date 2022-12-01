@@ -54,7 +54,8 @@ if (strlen($_SESSION['ologin']) == 0) {
 		$query->bindParam(':id', $id, PDO::PARAM_STR);
 		$query->execute();
 
-		$msg = "Data updated successfully";
+		echo "<script>alert('Room details successfully changed');</script>";
+		echo "<script type='text/javascript'> document.location = ''; </script>";$msg = "Data updated successfully";
 	}
 
 
@@ -222,8 +223,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                         <option value="<?php echo htmlentities($result->BathType); ?>">
                                                             <?php echo htmlentities($result->BathType); ?> </option>
 
-                                                        <option value="Shared Bath">Petrol</option>
-                                                        <option value="Private Bath">Diesel</option>
+                                                        <option value="Shared Bath">Shared bath</option>
+                                                        <option value="Private Bath">Private Bath</option>
 
                                                     </select>
                                                 </div>
@@ -231,10 +232,14 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Status<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="picker" name="Roomstatus" required>
-                                                        <option> SELECT</option>
+                                                    <select class="picker" name="BathType" required>
+                                                        <option
+                                                            value="<?php echo htmlentities($result->Roomstatus); ?>">
+                                                            <?php echo htmlentities($result->Roomstatus); ?> </option>
+
                                                         <option value="0">Available</option>
-                                                        <option value="1">Occupied</option>
+                                                        <option value="1">Occupied<on>
+
                                                     </select>
                                                 </div>
 
