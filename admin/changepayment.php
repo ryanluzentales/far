@@ -86,17 +86,17 @@ $msg="Image updated successfully";
                 <div class="row">
                     <div class="col-md-12">
 
-                        <h2 class="page-title">Room Image 1 </h2>
+                        <h2 class="page-title">Change QR CODE</h2>
 
                         <div class="row">
                             <div class="col-md-10">
                                 <div class="panel panel-default">
-                                    <div class="panel-heading">Room Image 1 Details</div>
+                                    <div class="panel-heading">Change QR CODE</div>
                                     <div class="panel-body">
                                         <form method="post" class="form-horizontal" enctype="multipart/form-data">
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label">Current Image1</label>
+                                                <label class="col-sm-4 control-label">Current QR CODE</label>
                                                 <?php 
 
 $sql ="SELECT qr from changepayment where changepayment.id='1'";
@@ -117,7 +117,7 @@ foreach($results as $result)
                                             </div>
 
                                             <div class="form-group">
-                                                <label class="col-sm-4 control-label">Upload New Image 1<span
+                                                <label class="col-sm-4 control-label">Upload New QR CODE<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-8">
                                                     <input type="file" name="img1" required>
