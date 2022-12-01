@@ -1,0 +1,7 @@
+
+tblrooms.Landmark LIKE :search OR tblrooms.BathType LIKE :search OR tblapartments.Apartmentname LIKE :search OR tblrooms.Housingtype LIKE :search OR tblrooms.PricePerDay LIKE :search OR tblrooms.Address LIKE :search OR tblrooms.RoomName LIKE :search OR tblrooms.PricePerDay
+
+
+
+
+SELECT tblrooms.*,tblrooms.RoomName from tblrooms join tblapartments on tblapartments.id=tblrooms.Apartmentname WHERE MATCH(tblrooms.Address,tblrooms.RoomName,tblrooms.Landmark,tblrooms.Overview,tblrooms.Housingtype,tblrooms.Roomstatus) AGAINST('".$searchdata."') LIMIT 0, 25
