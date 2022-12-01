@@ -166,10 +166,11 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                     <input type="text" name="vehicletitle" class="form-control"
                                                         value="<?php echo htmlentities($result->Landmark) ?>" required>
                                                 </div>
+
                                                 <label class="col-sm-2 control-label">Apartment<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="brandname" required>
+                                                    <select class="picker" name="brandname" required>
                                                         <option value="<?php echo htmlentities($result->bid); ?>">
                                                             <?php echo htmlentities($bdname = $result->Apartmentname); ?>
                                                         </option>
@@ -193,6 +194,7 @@ if (strlen($_SESSION['ologin']) == 0) {
 
                                                     </select>
                                                 </div>
+
                                             </div>
 
                                             <div class="hr-dashed"></div>
@@ -216,20 +218,20 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Bath Type<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="BathType" required>
+                                                    <select class="picker" name="BathType" required>
                                                         <option value="<?php echo htmlentities($result->BathType); ?>">
                                                             <?php echo htmlentities($result->BathType); ?> </option>
 
-                                                        <option value="Petrol">Petrol</option>
-                                                        <option value="Diesel">Diesel</option>
-                                                        <option value="CNG">CNG</option>
+                                                        <option value="Shared Bath">Petrol</option>
+                                                        <option value="Private Bath">Diesel</option>
+
                                                     </select>
                                                 </div>
                                                 <br><br><br>
                                                 <label class="col-sm-2 control-label">Room Status<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="selectpicker" name="Roomstatus" required>
+                                                    <select class="picker" name="Roomstatus" required>
                                                         <option> SELECT</option>
                                                         <option value="0">Available</option>
                                                         <option value="1">Occupied</option>

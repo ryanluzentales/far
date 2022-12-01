@@ -23,11 +23,9 @@
 	            </ul>
 	        </li>
 
-	        <li><a href="reg-users.php"><i class="fa fa-users"></i>Change Payment QR</a></li>
+	        <li><a href="changepayment.php"><i class="fa fa-users"></i>Change Payment QR</a></li>
 	        <li><a href="reg-users.php"><i class="fa fa-users"></i> Registered Users</a></li>
 	        <li><a href="manage-reviews.php"><i class="fa fa-comment-o"></i> Manage Reviews</a></li>
-
-
 
 	        </li>
 
