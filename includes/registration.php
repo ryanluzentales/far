@@ -40,9 +40,9 @@ function checkAvailability() {
 </script>
 <script type="text/javascript">
 function valid() {
-    if (document.signup.password.value != document.signup.confirmpassword.value) {
+    if (signup.password.value != signup.confirmpassword.value) {
         alert("Password and Confirm Password Field do not match  !!");
-        document.signup.confirmpassword.focus();
+        signup.confirmpassword.focus();
         return false;
     }
     return true;
@@ -60,7 +60,7 @@ function valid() {
                 <div class="row">
                     <div class="signup_wrap">
                         <div class="col-md-12 col-sm-6">
-                            <form method="post" name="signup" onsubmit="valid()">
+                            <form method="post" name="signup" onsubmit="return valid()">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="fullname" placeholder="Full Name"
                                         required="required">
