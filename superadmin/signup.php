@@ -47,7 +47,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	
 			if ($result) {
                 $showAlert = true;
-                echo '<input username="text" value="" />';
                 
 			    
                 
@@ -121,7 +120,6 @@ if($num>0)
 	}
 
 ?>
-
                 <div class="container my-4 ">
 
                     <h1 class="text-center">Create Admin Accounts</h1>
@@ -130,27 +128,23 @@ if($num>0)
                         <div class="form-group">
                             <label for="username">Username*</label>
                             <input type="text" class="form-control" id="username" name="username"
-                                aria-describedby="emailHelp"
-                                value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>" required>
+                                aria-describedby="emailHelp" required>
                         </div>
 
                         <div class="form-group">
                             <label for="fullname">Full Name*</label>
                             <input type="text" class="form-control" id="fullname" name="fullname"
-                                aria-describedby="emailHelp"
-                                value="<?php if (isset($_POST['fullname'])) echo $_POST['fullname']; ?>" required>
+                                aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
                             <label for="address">Address*</label>
                             <input type="text" class="form-control" id="address" name="address"
-                                aria-describedby="emailHelp"
-                                value="<?php if (isset($_POST['address'])) echo $_POST['address']; ?>" required>
+                                aria-describedby="emailHelp" required>
                         </div>
                         <div class="form-group">
                             <label for="contactnumber">Contact Number*</label>
                             <input type="text" class="form-control" id="contactnumber" name="contactnumber"
-                                aria-describedby="emailHelp"
-                                value="<?php if (isset($_POST['address'])) echo $_POST['address']; ?>" required>
+                                aria-describedby="emailHelp" required>
                         </div>
 
                         <div class="form-group">
@@ -170,6 +164,7 @@ if($num>0)
                         <button type="submit" class="btn btn-primary">
                             SignUp
                         </button>
+
                     </form>
                 </div>
 
@@ -184,3 +179,6 @@ if($num>0)
 
 </html>
 <?php } ?>
+
+
+<?php // if (!($_POST['result'])) echo $_POST['username'];  add value=""?>
