@@ -236,12 +236,25 @@ if (isset($_POST['submit'])) {
                                 <p>Gcash: 09208262854</p>
 
                             </div>
+                            <?php
+                                
+                                $sql = "SELECT qr FROM changepayment";
+                                $query = $dbh->prepare($sql);
+                                $query->execute();
+                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                if ($query->rowCount() > 0) {
+                                    foreach ($results as $result) {
+                                    }
+                                } ?>
                             <p>You can also pay through GCASH using the number above or QR code below.</p>
-                            <img src="assets/imagess/qrcode.jpg" alt="QR Code" width="250" height="250">
+                            <img src="assets/imagess/<?php echo htmlentities($result->qr); ?>" alt="QR Code" width="250"
+                                height="250">
 
                             <p>For the post to be confirm, we need to check the proof of payment and other details.
                                 Please upload your
-                                proof of payment below:</p>
+                                proof of payment below:
+                            </p>
+
                             <div class="form-group">
                                 <label>Proof of Payment*</label>
                                 <input type="file" class="form-control" name="payment" placeholder="Proof of Payment"
