@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 05, 2022 at 01:26 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 05, 2022 at 04:51 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,7 +42,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `UserName`, `Fullname`, `Address`, `Contactnumber`, `Password`, `updationDate`) VALUES
-(18, 'admin', 'Roberto', 'Urgello', '09208264854', 'f5bb0c8de146c67b44babbf4e6584cc0', '2022-12-01 08:59:09');
+(19, 'admin', 'ryan luzentales', 'tabok mandaue city', '09750987323', '21232f297a57a5a743894a0e4a801fc3', '2022-12-05 03:03:16');
 
 -- --------------------------------------------------------
 
@@ -60,7 +60,7 @@ CREATE TABLE `changepayment` (
 --
 
 INSERT INTO `changepayment` (`id`, `qr`) VALUES
-(2, 'qrcode.jpg');
+(1, 'qrcode.jpg');
 
 -- --------------------------------------------------------
 
@@ -110,8 +110,7 @@ CREATE TABLE `tblapartments` (
 --
 
 INSERT INTO `tblapartments` (`id`, `BookingNumber`, `OwnerName`, `userEmail`, `Apartmentname`, `Address`, `Landmark`, `Governmentid`, `Businesspermit`, `Referencenumber`, `Termsofpayment`, `ContactNumber`, `HousingType`, `ApartmentImage`, `gender`, `Payment`, `Status`, `PostingDate`, `LastUpdationDate`) VALUES
-(1, 961629175, 'Roberto Sy Jr', 'jrobertosy@gmail.com', 'Don\'s Apartment', '8V2V+R76, J. Urgello St, Cebu City, Cebu, Philippines', 'SWU', 'd2.JPG', 'd2.JPG', '123123123', '1 month deposit 1 month advance', 9208264854, 'Apartment', 'd1.JPG', 'Mixed', 'receipt.png', 1, '2022-12-01 09:09:29', '2022-12-01 09:10:25'),
-(2, 807610884, 'Roberto Sy Jr', 'jrobertosy@gmail.com', 'Sofia\'s Apartment', '8WHJ+F65, Tipolo, Mandaue City, Cebu, Philippines', 'SWU', 'r2.JPG', 'r1.JPG', '123456', '1 month deposit 1 month advance', 9208264854, 'Dormitory', 'r2.JPG', 'Female', 'receipt.png', 2, '2022-12-01 09:21:25', '2022-12-01 09:22:01');
+(1, 304134621, 'roberto sy', 'jrobertosy@gmail.com', 'ROBERTO\'s APARTMENT', '7XVM+MQP, Fuentes Rd, Lapu-Lapu City, Cebu, Philippines', 'Abuno ', 'receipt.jpg', 'receipt.jpg', '03230222300', '1 month deposit 1 month advance', 9009090909, 'Dormitory', '1.jpg', 'Female', 'receipt.jpg', 1, '2022-12-05 03:10:34', '2022-12-05 03:11:35');
 
 -- --------------------------------------------------------
 
@@ -141,7 +140,7 @@ CREATE TABLE `tblbooking` (
 --
 
 INSERT INTO `tblbooking` (`id`, `BookingNumber`, `userEmail`, `Referencenumber`, `Commissionimage`, `Commissionstatus`, `VehicleId`, `Preferreddate`, `FromDate`, `ToDate`, `message`, `Status`, `PostingDate`, `LastUpdationDate`) VALUES
-(3, 958177990, 'donreyes@gmail.com', '123123', '', 1, 4, '2022-12-09', '2022-12-01', NULL, 'I wanna know more about this room', 1, '2022-12-01 09:12:44', '2022-12-01 09:17:01');
+(1, 416835857, 'donreyes@gmail.com', '', '', 1, 1, '2022-12-05', '2022-12-05', NULL, 'I want this room', 1, '2022-12-05 03:22:07', '2022-12-05 03:28:10');
 
 -- --------------------------------------------------------
 
@@ -168,7 +167,7 @@ CREATE TABLE `tblowner` (
 --
 
 INSERT INTO `tblowner` (`userID`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`, `Address`, `City`, `Country`, `RegDate`, `UpdationDate`) VALUES
-(2, 'Roberto Sy Jr', 'jrobertosy@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '09208264854', NULL, NULL, NULL, NULL, '2022-12-01 09:00:12', NULL);
+(1, 'roberto sy', 'jrobertosy@gmail.com', '4297f44b13955235245b2497399d7a93', '09009090909', '', 'Cordova Lapu Lapu City', 'Lapu Lapu City', 'Philippines', '2022-12-05 03:06:15', '2022-12-05 03:33:54');
 
 -- --------------------------------------------------------
 
@@ -183,7 +182,7 @@ CREATE TABLE `tblrooms` (
   `Apartmentname` varchar(255) DEFAULT NULL,
   `Overview` longtext DEFAULT NULL,
   `Address` varchar(255) NOT NULL,
-  `Roomstatus` varchar(11) DEFAULT NULL,
+  `Roomstatus` varchar(11) DEFAULT '0',
   `PricePerDay` int(11) DEFAULT NULL,
   `BathType` varchar(100) DEFAULT NULL,
   `Housingtype` varchar(150) DEFAULT NULL,
@@ -214,8 +213,8 @@ CREATE TABLE `tblrooms` (
 --
 
 INSERT INTO `tblrooms` (`id`, `RoomName`, `Landmark`, `Apartmentname`, `Overview`, `Address`, `Roomstatus`, `PricePerDay`, `BathType`, `Housingtype`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(3, 'Deluxe 1', 'SWU', ' 1', 'This room is great', '8V2V+R76, J. Urgello St, Cebu City, Cebu, Philippines', NULL, 3000, 'Private Bath', 'Apartment', 3, 'd1.JPG', 'd2.JPG', 'd3.JPG', 'd1.JPG', '', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, NULL, NULL, '2022-12-01 09:11:15', NULL),
-(4, 'Deluxe 2', 'SWU', '1', 'Great room', '8V2V+R76, J. Urgello St, Cebu City, Cebu, Philippines', NULL, 5000, '0', 'Apartment', 2, 'r2.JPG', 'r1.JPG', 'r2.JPG', 'r1.JPG', '', NULL, 1, NULL, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, '2022-12-01 09:12:18', '2022-12-01 09:18:30');
+(1, 'ROOM 1', 'Abuno ', ' 1', 'Best room for students', '7XVM+MQP, Fuentes Rd, Lapu-Lapu City, Cebu, Philippines', '1', 2000, 'Private Bath', 'Dormitory', 2, '2.jpg', '1.jpg', '2.jpg', '2.jpg', '2.jpg', 1, 1, NULL, NULL, NULL, 1, NULL, NULL, NULL, NULL, 1, NULL, '2022-12-05 03:13:14', '2022-12-05 03:35:50'),
+(2, 'ROOM 2', 'Abuno ', ' 1', 'Best room for teachers.', '7XVM+MQP, Fuentes Rd, Lapu-Lapu City, Cebu, Philippines', '0', 4000, 'Shared Bath', 'Dormitory', 3, '3.jpg', '2.jpg', '1.jpg', '1.jpg', '2.jpg', 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '2022-12-05 03:25:17', '2022-12-05 03:35:19');
 
 -- --------------------------------------------------------
 
@@ -242,7 +241,7 @@ CREATE TABLE `tblusers` (
 --
 
 INSERT INTO `tblusers` (`id`, `FullName`, `EmailId`, `Password`, `ContactNo`, `dob`, `Address`, `City`, `Country`, `RegDate`, `UpdationDate`) VALUES
-(1, 'Don Reyes', 'donreyes@gmail.com', 'f5bb0c8de146c67b44babbf4e6584cc0', '09208264854', NULL, NULL, NULL, NULL, '2022-12-01 09:00:39', NULL);
+(1, 'Don Reyes', 'donreyes@gmail.com', '4297f44b13955235245b2497399d7a93', '90909090909', '', 'Tisa Cebu ', 'Cebu City', 'Philippines', '2022-12-05 03:06:47', '2022-12-05 03:29:24');
 
 -- --------------------------------------------------------
 
@@ -260,8 +259,7 @@ CREATE TABLE `verify` (
 --
 
 INSERT INTO `verify` (`id`, `BookingNumber`) VALUES
-(1, 961629175),
-(2, 807610884);
+(1, 304134621);
 
 --
 -- Indexes for dumped tables
@@ -332,7 +330,7 @@ ALTER TABLE `verify`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `changepayment`
@@ -350,25 +348,25 @@ ALTER TABLE `review_table`
 -- AUTO_INCREMENT for table `tblapartments`
 --
 ALTER TABLE `tblapartments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblbooking`
 --
 ALTER TABLE `tblbooking`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblowner`
 --
 ALTER TABLE `tblowner`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tblrooms`
 --
 ALTER TABLE `tblrooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tblusers`
@@ -380,7 +378,7 @@ ALTER TABLE `tblusers`
 -- AUTO_INCREMENT for table `verify`
 --
 ALTER TABLE `verify`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
