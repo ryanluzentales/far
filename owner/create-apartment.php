@@ -128,9 +128,12 @@ if (isset($_POST['submit'])) {
                                     foreach ($results as $result) {
                                     }
                                 } ?>
+    <div class="ts-main-content">
+        <?php include('includes/leftbar.php'); ?>
+        <div class="content-wrapper">
+            <div class="container-fluid">
 
-    <section class="listing-detail">
-        <div class="container">
+
             <div class="row">
                 <div class="col-md-9">
                 </div>
@@ -166,7 +169,7 @@ if (isset($_POST['submit'])) {
 
                                 <input type="hidden" class="form-control" id="lng" name="lat" placeholder="Longitude">
                             </div>
-                            <div id="us2" style="width: 1100px; height: 400px;">
+                            <div id="us2" style="width: 1650px; height: 400px;">
                             </div>
                             <br>
                             <div class="form-group">
@@ -275,7 +278,7 @@ if (isset($_POST['submit'])) {
 
             </div>
         </div>
-
+    </div>
     </section>
 
     <!--/Listing-detail-->

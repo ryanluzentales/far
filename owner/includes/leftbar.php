@@ -27,7 +27,7 @@
 	            </ul>
 	        </li>
 
-	        <li><a href="pending-apartment.php"><i class="fa fa-file"></i> Manage Apartment </a>
+	        <li><a href="pending-apartment.php"><i class="fa fa-file"></i> My Apartments </a>
 
 	        </li>
 	        <li><a href="commission.php"><i class="fa fa-file"></i> Commission </a>

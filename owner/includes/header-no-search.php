@@ -56,7 +56,7 @@
                                 <?php if ($_SESSION['ologin']) { ?>
                                 <li><a href="profile.php">Profile Settings</a></li>
                                 <li><a href="update-password.php">Update Password</a></li>
-                                <li><a href="my-booking.php">My Booking</a></li>
+                                <li><a href="pending-apartment.php">My Booking</a></li>
                                 <li><a href="logout.php">Sign Out</a></li>
                                 <?php } ?>
                             </ul>
