@@ -115,8 +115,8 @@ if (strlen($_SESSION['ologin']) == 0) {
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Room Title</th>
-                                            <th>Apartment </th>
+                                            <th>Landmark</th>
+                                            <th>Apartment Name </th>
                                             <th>Room Status</th>
                                             <th>Price Per Month</th>
                                             <th>Bath Type</th>

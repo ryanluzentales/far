@@ -165,7 +165,7 @@ foreach($results as $result)
                                             <tr>
                                                 <th>Room Name</th>
                                                 <td><a
-                                                        href="edit-vehicle.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->Apartmentname);?>
+                                                        href="edit-room.php?id=<?php echo htmlentities($result->vid);?>"><?php echo htmlentities($result->Apartmentname);?>
                                                         , <?php echo htmlentities($result->Landmark);?></td>
                                                 <th>Booking Date</th>
                                                 <td><?php echo htmlentities($result->PostingDate);?></td>

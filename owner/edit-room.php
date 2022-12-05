@@ -232,7 +232,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Status<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <select class="picker" name="BathType" required>
+                                                    <select class="picker" name="Roomstatus" required>
                                                         <option
                                                             value="<?php echo htmlentities($result->Roomstatus); ?>">
                                                             <?php echo htmlentities($result->Roomstatus); ?> </option>
@@ -258,7 +258,7 @@ if (strlen($_SESSION['ologin']) == 0) {
                                                 <label class="col-sm-2 control-label">Room Capacity<span
                                                         style="color:red">*</span></label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" name="seatingcapacity" class="form-control"
+                                                    <input type="text" name="seatingcapacity" class="form-control"edit-vehicle.php
                                                         value="<?php echo htmlentities($result->SeatingCapacity); ?>"
                                                         required>
                                                 </div>
