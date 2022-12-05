@@ -390,7 +390,6 @@ if (isset($_POST['submit'])) {
                             </div>
                             <?php } ?>
                             <?php } ?>
-
                             <?php if (!isset($_SESSION['login'])) { ?>
                             <?php if($result->Roomstatus==1){ ?>
                             <div class="form-group">
@@ -401,8 +400,6 @@ if (isset($_POST['submit'])) {
                                 data-dismiss="modal">Login to Reserve</a>
                             <?php } ?>
                             <?php } ?>
-
-
                         </form>
                     </div>
                 </aside>
